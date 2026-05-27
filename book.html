@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kırmızı Defter — Runik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:#F7F4EF;
+    font-family:'Jost',sans-serif;
+    min-height:100vh;
+    padding:0 32px;
+    color:#3B2A1C;
+  }
+
+  /* ============ SITE HEADER (index ile aynı) ============ */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    margin:0 -32px;
+    background:rgba(247,244,239,.88);
+    -webkit-backdrop-filter:saturate(140%) blur(12px);
+    backdrop-filter:saturate(140%) blur(12px);
+    border-bottom:1px solid #E8E1D2;
+  }
+  .header-inner{
+    max-width:1240px;margin:0 auto;
+    padding:20px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:32px;
+  }
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:#3B2A1C;}
+  .logo-img{height:46px;width:auto;display:block;}
+  .nav{display:flex;gap:36px;align-items:center;}
+  .nav a,.nav-trigger{color:#3B2A1C;text-decoration:none;background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.4px;position:relative;padding:6px 0;transition:color .2s ease;display:inline-flex;align-items:center;gap:4px;}
+  .nav a::after,.nav-trigger::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left center;transition:transform .3s cubic-bezier(.16,1,.3,1);}
+  .nav a:hover::after,.nav-item:hover .nav-trigger::after,.nav-item.is-active .nav-trigger::after{transform:scaleX(1);}
+  .nav-trigger i{font-size:14px;transition:transform .3s ease;}
+  .nav-item.is-active .nav-trigger i{transform:rotate(180deg);}
+
+  /* nav dropdown */
+  .nav-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid #E8E1D2;border-bottom:1px solid #E8E1D2;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease;z-index:40;}
+  .nav-dropdown.is-open{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .dropdown-inner{max-width:1240px;margin:0 auto;padding:44px 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:stretch;}
+  .dropdown-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid #E8E1D2;}
+  .dropdown-head .dh-title{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3B2A1C;font-weight:500;}
+  .dropdown-head .dh-title b{color:#9B8A75;font-weight:400;margin-left:6px;}
+  .dropdown-head .dh-meta{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;color:#9B8A75;text-transform:uppercase;}
+  .dropdown-links{display:grid;grid-template-columns:1fr 1fr;gap:2px 36px;}
+  .dropdown-links a{display:block;font-family:'Jost',sans-serif;font-size:15px;font-weight:400;color:#3B2A1C;text-decoration:none;padding:10px 0;transition:color .2s ease,padding-left .2s ease;}
+  .dropdown-links a::after{display:none;}
+  .dropdown-links a:hover{color:#F2541B;padding-left:4px;}
+  .dropdown-right{position:relative;aspect-ratio:5/3.4;overflow:hidden;background:#1F3A2E;display:flex;align-items:flex-end;justify-content:space-between;padding:28px;}
+  .dropdown-right .dr-bg{position:absolute;inset:0;background-size:cover;background-position:right center;background-repeat:no-repeat;}
+  .dropdown-right .dr-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(31,58,46,.92) 0%,rgba(31,58,46,.5) 60%,rgba(31,58,46,.15) 100%);}
+  .dropdown-right .dr-label{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#F4ECDD;line-height:1.1;max-width:200px;}
+  .dropdown-right .dr-logo{position:relative;z-index:1;height:36px;width:auto;align-self:flex-end;filter:brightness(1.5);opacity:.9;}
+  .nav-actions{display:flex;gap:4px;align-items:center;}
+  .icon-btn{width:40px;height:40px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#3B2A1C;font-size:19px;transition:background .2s ease;position:relative;}
+  .icon-btn:hover{background:rgba(59,42,28,.07);}
+  .icon-btn .badge{position:absolute;top:6px;right:6px;background:#F2541B;color:#fff;min-width:16px;height:16px;padding:0 4px;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;display:flex;align-items:center;justify-content:center;border-radius:8px;}
+
+  /* ============ BREADCRUMB ============ */
+  .breadcrumb{
+    max-width:1240px;margin:32px auto 28px;
+    font-family:'Jost',sans-serif;font-size:12.5px;letter-spacing:.4px;
+    color:#9B8A75;
+  }
+  .breadcrumb a{color:#9B8A75;text-decoration:none;transition:color .2s ease;}
+  .breadcrumb a:hover{color:#3B2A1C;}
+  .breadcrumb .sep{margin:0 8px;opacity:.5;}
+  .breadcrumb .current{color:#3B2A1C;}
+
+  /* ============ PRODUCT DETAIL ============ */
+  .product-detail{
+    max-width:1240px;margin:0 auto 64px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:64px;
+    align-items:flex-start;
+  }
+
+  /* ----- gallery (sol) ----- */
+  .gallery{
+    position:relative;
+    background:#F4ECDD;
+    padding:28px;
+  }
+  .cover{
+    position:relative;
+    background:transparent;
+    aspect-ratio:1/1;
+    display:flex;align-items:center;justify-content:center;
+    padding:32px;
+    overflow:hidden;
+  }
+  .fav-toggle{
+    position:absolute;top:20px;right:20px;z-index:3;
+    width:44px;height:44px;border-radius:50%;
+    background:#fff;
+    border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    color:#3B2A1C;font-size:18px;
+    box-shadow:0 4px 10px -2px rgba(0,0,0,.08);
+    transition:transform .2s ease,color .2s ease;
+  }
+  .fav-toggle:hover{transform:scale(1.06);color:#F2541B;}
+  .fav-toggle.is-active{color:#F2541B;}
+
+  /* CSS ile çizilmiş kitap kapağı */
+  .book-cover{
+    width:100%;max-width:420px;
+    aspect-ratio:2/3;
+    background:var(--cover-color,#C03A2B);
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;
+    padding:14% 10% 8%;
+    color:#fff;
+    box-shadow:
+      0 30px 50px -20px rgba(0,0,0,.35),
+      inset -8px 0 0 -4px rgba(0,0,0,.18);
+  }
+  .book-cover .bc-logo{
+    width:42%;aspect-ratio:1/1.15;
+    background:#A38855;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:9% 0;
+    margin-bottom:12%;
+  }
+  .book-cover .bc-logo .bc-brand{
+    font-family:'Cormorant Garamond',serif;
+    font-size:13px;font-weight:600;letter-spacing:3px;color:#fff;
+    margin-bottom:6%;
+  }
+  .book-cover .bc-logo .bc-glyph{
+    width:50%;height:48%;
+    background:
+      linear-gradient(135deg,transparent 38%,#fff 38% 50%,transparent 50% 60%,#fff 60% 72%,transparent 72%);
+    opacity:.95;
+  }
+  .book-cover .bc-title{
+    font-family:'Jost',sans-serif;
+    font-size:18px;letter-spacing:3px;font-weight:500;
+    text-transform:uppercase;text-align:center;line-height:1.1;
+    margin-bottom:14px;
+  }
+  .book-cover .bc-author{
+    font-family:'Jost',sans-serif;
+    font-size:13px;letter-spacing:2.5px;font-weight:400;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .book-cover .bc-genre{
+    font-family:'Jost',sans-serif;
+    font-size:11px;letter-spacing:1px;font-weight:300;opacity:.85;
+  }
+  .book-cover .bc-publisher{
+    position:absolute;bottom:6%;right:8%;
+    width:18px;height:24px;
+    background:#fff;
+    -webkit-mask:linear-gradient(#000,#000) center/8px 14px no-repeat;
+    mask:linear-gradient(#000,#000) center/8px 14px no-repeat;
+    opacity:.9;
+  }
+
+  /* küçük resim seçici */
+  .thumbs{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    margin-top:14px;
+  }
+  .thumb{
+    background:#fff;
+    border:1px solid transparent;
+    aspect-ratio:1/1;
+    cursor:pointer;
+    padding:14px;
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s ease;
+  }
+  .thumb:hover{border-color:#D4C9B8;}
+  .thumb.is-active{border-color:#F2541B;}
+  .thumb .mini{
+    width:100%;height:100%;
+    background:#C03A2B;
+    position:relative;
+    box-shadow:inset -2px 0 0 -1px rgba(0,0,0,.2);
+  }
+  .thumb.spine .mini{background:linear-gradient(90deg,#7E2418 0%,#C03A2B 30%,#C03A2B 70%,#7E2418 100%);}
+  .thumb.back .mini{
+    background:#C03A2B;
+  }
+  .thumb.back .mini::after{
+    content:'';position:absolute;inset:18% 12%;
+    background:repeating-linear-gradient(transparent 0 2px,rgba(255,255,255,.18) 2px 3px);
+  }
+  .thumb.open .mini{
+    background:#F0E6D2;
+    position:relative;
+  }
+  .thumb.open .mini::before{
+    content:'';position:absolute;inset:0;
+    background:
+      linear-gradient(90deg,transparent 48%,rgba(0,0,0,.25) 49% 51%,transparent 52%),
+      repeating-linear-gradient(transparent 0 3px,rgba(59,42,28,.5) 3px 4px);
+    background-size:100% 100%,50% 100%;
+    background-position:center,18% center;
+    background-repeat:no-repeat,repeat-y;
+  }
+
+  /* ----- info (sağ) ----- */
+  .info{
+    background:#F4ECDD;
+    padding:48px 44px;
+  }
+  .info .cat-badge{
+    display:inline-block;
+    font-family:'Jost',sans-serif;
+    font-size:11px;letter-spacing:2px;font-weight:500;
+    color:#F2541B;text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .info h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:54px;font-weight:600;line-height:1;
+    letter-spacing:.2px;color:#3B2A1C;
+    margin-bottom:18px;
+  }
+  .info .author{
+    font-family:'Jost',sans-serif;
+    font-size:18px;font-weight:500;
+    color:#F2541B;text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease;
+  }
+  .info .author:hover{border-color:#F2541B;}
+
+  .rating{
+    display:flex;align-items:center;gap:14px;
+    margin-top:18px;
+    font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;
+  }
+  .stars{
+    display:inline-flex;gap:3px;color:#F2541B;font-size:17px;line-height:1;
+  }
+  .stars .empty{color:#E0D6C4;}
+  .rating .pipe{opacity:.4;margin:0 6px;}
+
+  .info .description{
+    margin-top:22px;
+    font-family:'Jost',sans-serif;font-size:14.5px;line-height:1.65;
+    color:#6E5D4B;font-weight:300;
+  }
+  .read-more{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:14px;
+    font-family:'Jost',sans-serif;font-size:13.5px;font-weight:500;
+    color:#F2541B;text-decoration:none;
+    cursor:pointer;
+  }
+  .read-more:hover{filter:brightness(.9);}
+
+  .info hr{
+    border:none;border-top:1px solid #E8E1D2;
+    margin:28px 0;
+  }
+
+  /* meta-row */
+  .meta-row{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:32px;
+  }
+  .meta-item{
+    display:flex;align-items:center;gap:11px;
+  }
+  .meta-item i{
+    width:36px;height:36px;
+    border:1px solid #E8E1D2;
+    display:flex;align-items:center;justify-content:center;
+    color:#3B2A1C;font-size:18px;flex-shrink:0;
+  }
+  .meta-item .ml{font-family:'Jost',sans-serif;}
+  .meta-item .ml .lab{font-size:11px;color:#9B8A75;letter-spacing:.4px;}
+  .meta-item .ml .val{font-size:13.5px;color:#3B2A1C;font-weight:500;margin-top:2px;}
+
+  /* fiyat kutusu */
+  .price-box{
+    background:#FAF3E3;
+    padding:28px;
+    margin:0 -8px;
+  }
+  .price{
+    font-family:'Jost',sans-serif;
+    font-size:30px;font-weight:500;color:#F2541B;
+    letter-spacing:.3px;
+  }
+  .shipping{
+    display:flex;align-items:center;gap:10px;
+    margin-top:12px;
+    font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;
+  }
+  .shipping i{color:#9B8A75;font-size:17px;}
+
+  .actions{
+    display:grid;grid-template-columns:1.4fr 1fr;
+    gap:12px;margin-top:24px;
+  }
+  .btn-cart,.btn-fav{
+    border:1px solid transparent;cursor:pointer;
+    font-family:'Jost',sans-serif;font-size:14px;font-weight:500;letter-spacing:.4px;
+    padding:18px 22px;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    transition:filter .2s ease,background .2s ease;
+    text-decoration:none;
+  }
+  .btn-cart{background:#F2541B;color:#fff;}
+  .btn-cart:hover{filter:brightness(1.08);}
+  .btn-fav{background:transparent;border-color:#F2541B;color:#F2541B;}
+  .btn-fav:hover{background:rgba(242,84,27,.06);}
+
+  .delivery{
+    display:flex;align-items:center;gap:10px;
+    margin-top:18px;
+    font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;
+  }
+  .delivery i{color:#9B8A75;font-size:18px;}
+
+  /* ============ TABS ============ */
+  .tabs{
+    max-width:1240px;margin:0 auto 80px;
+    border-top:1px solid #E8E1D2;
+  }
+  .tabs-nav{
+    display:flex;gap:48px;
+    padding:0;
+  }
+  .tab{
+    background:transparent;border:none;cursor:pointer;
+    font-family:'Jost',sans-serif;font-size:14px;font-weight:400;letter-spacing:.3px;
+    color:#9B8A75;
+    padding:22px 0;
+    position:relative;
+    transition:color .2s ease;
+  }
+  .tab:hover{color:#3B2A1C;}
+  .tab.is-active{color:#3B2A1C;font-weight:500;}
+  .tab.is-active::after{
+    content:'';position:absolute;
+    left:0;right:0;bottom:-1px;height:2px;
+    background:#F2541B;
+  }
+
+  .tab-panels{padding:40px 0 0;}
+  .tab-panel{display:none;}
+  .tab-panel.is-active{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;}
+
+  .panel-body p{
+    font-family:'Jost',sans-serif;font-size:15px;line-height:1.7;
+    color:#3B2A1C;font-weight:300;
+  }
+  .panel-body p + p{margin-top:18px;}
+  .panel-body .quote{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;font-style:italic;font-weight:500;
+    color:#3B2A1C;line-height:1.35;
+    padding-left:18px;
+    border-left:2px solid #F2541B;
+    margin-top:24px;
+  }
+
+  .panel-table{
+    background:#FBF7F0;
+    padding:8px 24px;
+  }
+  .panel-table .row{
+    display:grid;grid-template-columns:1fr 1.4fr;
+    padding:16px 0;
+    border-bottom:1px solid #EDE3D2;
+    font-family:'Jost',sans-serif;font-size:13.5px;
+  }
+  .panel-table .row:last-child{border-bottom:none;}
+  .panel-table .row .k{color:#9B8A75;letter-spacing:.3px;}
+  .panel-table .row .v{color:#3B2A1C;font-weight:500;}
+
+  /* responsive */
+  @media (max-width:880px){
+    .nav{display:none;}
+    .product-detail{grid-template-columns:1fr;gap:36px;}
+    .info h1{font-size:38px;}
+    .meta-row{grid-template-columns:repeat(2,1fr);}
+    .tab-panel.is-active{grid-template-columns:1fr;gap:32px;}
+    .tabs-nav{gap:24px;overflow-x:auto;}
+  }
+
+  /* ============ SITE FOOTER ============ */
+  .site-footer{margin:0 -32px;background:#1F3A2E;color:#C9BFA8;}
+  .footer-inner{max-width:1240px;margin:0 auto;padding:80px 32px 36px;}
+  .footer-top{display:grid;grid-template-columns:1fr 2fr;gap:96px;align-items:flex-start;padding-bottom:56px;border-bottom:1px solid rgba(231,222,200,.12);}
+  .footer-logo{height:108px;width:auto;display:block;}
+  .footer-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;margin-top:24px;color:#E7DEC8;line-height:1.4;max-width:280px;}
+  .footer-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;}
+  .footer-col h4{font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:22px;}
+  .footer-col a{display:block;font-family:'Jost',sans-serif;font-size:13.5px;color:#A89C82;text-decoration:none;padding:5px 0;transition:color .2s ease;}
+  .footer-col a:hover{color:#F4ECDD;}
+  .footer-bottom{padding-top:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;font-family:'Jost',sans-serif;font-size:12px;color:#8D8268;letter-spacing:.3px;}
+  .footer-social{display:flex;gap:10px;}
+  .footer-social a{color:#C9BFA8;font-size:17px;text-decoration:none;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);transition:all .2s ease;}
+  .footer-social a:hover{color:#1F3A2E;background:#E7DEC8;border-color:#E7DEC8;}
+
+  @media (max-width:880px){
+    .footer-top{grid-template-columns:1fr;gap:48px;}
+    .footer-cols{grid-template-columns:repeat(2,1fr);}
+    .footer-bottom{justify-content:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HIZLI DÜZENLEME ALANI — sadece aşağıdaki BOOK objesini değiştir
+     ============================================================ -->
+<script>
+const BOOK = {
+  // temel bilgi
+  category: 'Roman',
+  title: 'Kırmızı Defter',
+  author: 'M. Kara',
+
+  // değerlendirme
+  rating: 4.6,
+  reviewCount: 128,
+
+  // açıklama
+  shortDescription: 'Kırmızı Defter, hafızanın kırılganlığı ile yüzleşen bir adamın iç dünyasında geçen sarsıcı bir yolculuk. Geçmişin izlerini silmeye çalışan kahraman, karşılaştığı insanlar ve anılar aracılığıyla kendini yeniden kurmaya çalışır.',
+
+  // teknik
+  pages: '192',
+  size: '13,5 x 21 cm',
+  binding: 'Amerikan Cilt',
+  paper: '70 gr. Enso Creamy',
+
+  // fiyat ve teslimat
+  price: '240,00 TL',
+  freeShippingNote: '150 TL ve üzeri siparişlerde kargo ücretsiz.',
+  deliveryNote: 'Tahmini Teslimat: 2-3 iş günü içinde kargoda',
+
+  // sekmeler
+  about: {
+    intro: 'M. Kara, bu romanında kimlik, pişmanlık ve affetme üzerine derinlikli ve etkileyici bir anlatı sunuyor.',
+    quote: 'Bazı defterler kapanmaz, sadece renk değiştirir.'
+  },
+  details: {
+    'Yayınevi': 'Runik Yayınları',
+    'İlk Baskı Yılı': 'Nisan 2024',
+    'Baskı Sayısı': '1. Baskı',
+    'ISBN': '978-625-01-2345-6',
+    'Kategori': 'Roman'
+  },
+
+  // kapak görseli (CSS) renk + opsiyonel görsel
+  coverColor: '#C03A2B',     // ana kapak rengi
+  // not: kapak CSS ile çiziliyor; gerçek görsel istersen
+  // .book-cover'ın yerine <img> koyabilirsin
+};
+</script>
+
+<!-- ============================================================ -->
+
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/" aria-label="Runik anasayfa">
+      <img src="/assets/runik-logo.png" alt="Runik" class="logo-img">
+    </a>
+    <nav class="nav" aria-label="Ana menü">
+      <a href="#">Yeni Çıkanlar</a>
+      <a href="#">Çok Satanlar</a>
+      <div class="nav-item" data-dropdown="kategoriler">
+        <button class="nav-trigger">Kategoriler <i class="ti ti-chevron-down"></i></button>
+      </div>
+      <div class="nav-item" data-dropdown="yazarlar">
+        <button class="nav-trigger">Yazarlar <i class="ti ti-chevron-down"></i></button>
+      </div>
+      <a href="#">Hakkımızda</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Ara"><i class="ti ti-search"></i></button>
+      <button class="icon-btn" aria-label="Hesabım"><i class="ti ti-user"></i></button>
+      <button class="icon-btn" aria-label="Favoriler"><i class="ti ti-heart"></i></button>
+      <button class="icon-btn" aria-label="Sepet">
+        <i class="ti ti-shopping-bag"></i>
+        <span class="badge">2</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- KATEGORİLER DROPDOWN -->
+  <div class="nav-dropdown" data-panel="kategoriler">
+    <div class="dropdown-inner">
+      <div class="dropdown-left">
+        <div class="dropdown-head">
+          <span class="dh-title">Kategoriler <b>(10)</b></span>
+          <a href="/kitaplar" class="dh-meta" style="text-decoration:none;color:#F2541B;">Tüm Kitaplar &rarr;</a>
+        </div>
+        <div class="dropdown-links">
+          <a href="/kitaplar?cat=Roman">Roman</a><a href="/kitaplar?cat=Şiir">Şiir</a>
+          <a href="/kitaplar?cat=Felsefe">Felsefe &amp; Düşünce</a><a href="/kitaplar?cat=Tarih">Tarih</a>
+          <a href="#">Çocuk</a><a href="#">Polisiye &amp; Gerilim</a>
+          <a href="/kitaplar?cat=Deneme">Deneme</a><a href="/kitaplar?cat=Biyografi">Biyografi &amp; Anı</a>
+          <a href="#">Sanat &amp; Mimari</a><a href="#">Klasikler</a>
+        </div>
+      </div>
+      <div class="dropdown-right">
+        <div class="dr-bg" style="background-image:url('/assets/hero-runik.png');"></div>
+        <div class="dr-overlay"></div>
+        <span class="dr-label">Kataloğumuzu keşfedin</span>
+        <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
+      </div>
+    </div>
+  </div>
+
+  <!-- YAZARLAR DROPDOWN -->
+  <div class="nav-dropdown" data-panel="yazarlar">
+    <div class="dropdown-inner">
+      <div class="dropdown-left">
+        <div class="dropdown-head">
+          <span class="dh-title">Öne Çıkan Yazarlar <b>(8)</b></span>
+          <a href="/yazarlar" class="dh-meta" style="text-decoration:none;color:#F2541B;">Tüm Yazarlar &rarr;</a>
+        </div>
+        <div class="dropdown-links">
+          <a href="/yazarlar">Ahmet Hamdi Tanpınar</a><a href="/yazarlar">Elif Şafak</a>
+          <a href="/yazarlar">Nazım Hikmet</a><a href="/yazarlar">Oğuz Atay</a>
+          <a href="/yazarlar">Orhan Pamuk</a><a href="/yazarlar">Sabahattin Ali</a>
+          <a href="/yazarlar">Sait Faik Abasıyanık</a><a href="/yazarlar">Yaşar Kemal</a>
+        </div>
+      </div>
+      <div class="dropdown-right" style="background:linear-gradient(135deg,#3B2A1C,#1F3A2E);">
+        <div class="dr-overlay" style="background:linear-gradient(120deg,rgba(31,58,46,.7) 0%,transparent 100%);"></div>
+        <span class="dr-label" style="max-width:240px;">Edebiyatın seslerini keşfedin</span>
+        <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  /* dropdown hover */
+  (function(){
+    var triggers = document.querySelectorAll('.nav-item');
+    var panels = document.querySelectorAll('.nav-dropdown');
+    var hideTimer = null;
+    function open(key){ clearTimeout(hideTimer); panels.forEach(function(p){ p.classList.toggle('is-open', p.dataset.panel === key); }); triggers.forEach(function(t){ t.classList.toggle('is-active', t.dataset.dropdown === key); }); }
+    function close(){ panels.forEach(function(p){ p.classList.remove('is-open'); }); triggers.forEach(function(t){ t.classList.remove('is-active'); }); }
+    function scheduleClose(){ hideTimer = setTimeout(close, 180); }
+    function cancelClose(){ clearTimeout(hideTimer); }
+    triggers.forEach(function(t){ t.addEventListener('mouseenter', function(){ open(t.dataset.dropdown); }); t.addEventListener('mouseleave', scheduleClose); });
+    panels.forEach(function(p){ p.addEventListener('mouseenter', cancelClose); p.addEventListener('mouseleave', scheduleClose); });
+  })();
+</script>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Sayfa konumu">
+  <a href="/">Anasayfa</a>
+  <span class="sep">/</span>
+  <a href="#">Edebiyat</a>
+  <span class="sep">/</span>
+  <a href="#" data-bind="category">Roman</a>
+  <span class="sep">/</span>
+  <span class="current" data-bind="title">Kırmızı Defter</span>
+</nav>
+
+<!-- PRODUCT DETAIL -->
+<section class="product-detail">
+
+  <!-- Sol: gallery -->
+  <div class="gallery">
+    <div class="cover">
+      <button class="fav-toggle" aria-label="Favorilere ekle">
+        <i class="ti ti-heart"></i>
+      </button>
+
+      <div class="book-cover" id="mainCover">
+        <div class="bc-logo">
+          <span class="bc-brand">RUNIK</span>
+          <span class="bc-glyph"></span>
+        </div>
+        <div class="bc-title" data-bind="title">Kırmızı Defter</div>
+        <div class="bc-author" data-bind="author">M. Kara</div>
+        <div class="bc-genre" data-bind="category">Roman</div>
+        <span class="bc-publisher"></span>
+      </div>
+    </div>
+
+    <div class="thumbs" role="tablist" aria-label="Görseller">
+      <button class="thumb is-active" aria-label="Ön kapak"><span class="mini"></span></button>
+      <button class="thumb spine" aria-label="Sırt"><span class="mini"></span></button>
+      <button class="thumb" aria-label="Açılı"><span class="mini"></span></button>
+      <button class="thumb back" aria-label="Arka kapak"><span class="mini"></span></button>
+      <button class="thumb open" aria-label="İç sayfa"><span class="mini"></span></button>
+    </div>
+  </div>
+
+  <!-- Sağ: info -->
+  <div class="info">
+    <span class="cat-badge" data-bind="category">Roman</span>
+    <h1 data-bind="title">Kırmızı Defter</h1>
+    <a href="#" class="author" data-bind="author">M. Kara</a>
+
+    <div class="rating">
+      <span class="stars" id="stars" aria-label="Yıldız değerlendirme"></span>
+      <span><strong data-bind="rating">4.6</strong> <span class="pipe">|</span> <span data-bind="reviewCount">128</span> Değerlendirme</span>
+    </div>
+
+    <p class="description" data-bind="shortDescription">Kırmızı Defter, hafızanın kırılganlığı…</p>
+    <a class="read-more" id="readMore">Daha Fazla Oku <i class="ti ti-chevron-down"></i></a>
+
+    <hr>
+
+    <div class="meta-row">
+      <div class="meta-item">
+        <i class="ti ti-book"></i>
+        <span class="ml"><span class="lab">Sayfa Sayısı</span><div class="val" data-bind="pages">192</div></span>
+      </div>
+      <div class="meta-item">
+        <i class="ti ti-ruler"></i>
+        <span class="ml"><span class="lab">Boyut</span><div class="val" data-bind="size">13,5 x 21 cm</div></span>
+      </div>
+      <div class="meta-item">
+        <i class="ti ti-book-2"></i>
+        <span class="ml"><span class="lab">Cilt</span><div class="val" data-bind="binding">Amerikan Cilt</div></span>
+      </div>
+      <div class="meta-item">
+        <i class="ti ti-file"></i>
+        <span class="ml"><span class="lab">Kağıt</span><div class="val" data-bind="paper">70 gr. Enso Creamy</div></span>
+      </div>
+    </div>
+
+    <div class="price-box">
+      <div class="price" data-bind="price">240,00 TL</div>
+      <div class="shipping">
+        <i class="ti ti-discount"></i>
+        <span data-bind="freeShippingNote">150 TL ve üzeri siparişlerde kargo ücretsiz.</span>
+      </div>
+      <div class="actions">
+        <button class="btn-cart"><i class="ti ti-shopping-bag-plus"></i> Sepete Ekle</button>
+        <button class="btn-fav"><i class="ti ti-bookmark"></i> Favorilere Ekle</button>
+      </div>
+      <div class="delivery">
+        <i class="ti ti-truck"></i>
+        <span data-bind="deliveryNote">Tahmini Teslimat: 2-3 iş günü içinde kargoda</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABS -->
+<section class="tabs">
+  <div class="tabs-nav" role="tablist">
+    <button class="tab is-active" data-tab="about">Kitap Hakkında</button>
+    <button class="tab" data-tab="details">Detaylar</button>
+    <button class="tab" data-tab="author">Yazar Hakkında</button>
+    <button class="tab" data-tab="reviews">Yorumlar (<span data-bind="reviewCount">128</span>)</button>
+  </div>
+
+  <div class="tab-panels">
+    <div class="tab-panel is-active" data-panel="about">
+      <div class="panel-body">
+        <p data-bind="about.intro">M. Kara, bu romanında kimlik, pişmanlık ve affetme üzerine derinlikli ve etkileyici bir anlatı sunuyor.</p>
+        <p class="quote" data-bind="about.quote">"Bazı defterler kapanmaz, sadece renk değiştirir."</p>
+      </div>
+      <div class="panel-table" id="detailsTable"></div>
+    </div>
+
+    <div class="tab-panel" data-panel="details">
+      <div class="panel-body">
+        <p>Bu sekmede kitabın teknik özelliklerini ve baskı bilgilerini bulabilirsiniz.</p>
+      </div>
+      <div class="panel-table" id="detailsTable2"></div>
+    </div>
+
+    <div class="tab-panel" data-panel="author">
+      <div class="panel-body">
+        <p>Yazar biyografisi için BOOK.author alanını ve bu bölümü güncelleyebilirsiniz.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="reviews">
+      <div class="panel-body">
+        <p>Henüz yorum bulunmuyor. (Yorumlar BOOK.reviewCount değerinden bağımsız olarak buraya eklenir.)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="/assets/runik-logo.png" alt="Runik" class="footer-logo">
+        <p class="footer-tag">Edebiyatın izini sürenler için, özenle seçilmiş kitaplar.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Yayınevi</h4>
+          <a href="#">Hakkımızda</a>
+          <a href="/yazarlar">Yazarlar</a>
+          <a href="#">Künye</a>
+          <a href="#">Kariyer</a>
+          <a href="#">Basın Odası</a>
+        </div>
+        <div class="footer-col">
+          <h4>Yardım</h4>
+          <a href="#">Sıkça Sorulanlar</a>
+          <a href="#">Kargo &amp; Teslimat</a>
+          <a href="#">İade &amp; Değişim</a>
+          <a href="#">Gizlilik Politikası</a>
+          <a href="#">Kullanım Şartları</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hesabım</h4>
+          <a href="#">Giriş Yap</a>
+          <a href="#">Üye Ol</a>
+          <a href="#">Siparişlerim</a>
+          <a href="#">Favorilerim</a>
+          <a href="#">Adreslerim</a>
+        </div>
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <a href="mailto:info@runik.com.tr">info@runik.com.tr</a>
+          <a href="tel:+902120000000">+90 212 000 00 00</a>
+          <a href="#">İstanbul, Türkiye</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="copy">© 2026 Runik Yayınevi. Tüm hakları saklıdır.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+        <a href="#" aria-label="X"><i class="ti ti-brand-x"></i></a>
+        <a href="#" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* ============ DATA BINDING ============ */
+  function getPath(obj, path){
+    return path.split('.').reduce(function(o,k){ return (o && o[k] !== undefined) ? o[k] : undefined; }, obj);
+  }
+  document.querySelectorAll('[data-bind]').forEach(function(el){
+    var v = getPath(BOOK, el.dataset.bind);
+    if(v !== undefined) el.textContent = v;
+  });
+
+  /* yıldızlar */
+  (function renderStars(){
+    var el = document.getElementById('stars');
+    if(!el) return;
+    var full = Math.round(BOOK.rating);
+    var html = '';
+    for(var i=1;i<=5;i++){
+      html += i<=full ? '★' : '<span class="empty">★</span>';
+    }
+    el.innerHTML = html;
+  })();
+
+  /* details tablosu */
+  (function renderDetails(){
+    var rows = Object.entries(BOOK.details).map(function(pair){
+      return '<div class="row"><span class="k">'+pair[0]+'</span><span class="v">'+pair[1]+'</span></div>';
+    }).join('');
+    var t1 = document.getElementById('detailsTable');
+    var t2 = document.getElementById('detailsTable2');
+    if(t1) t1.innerHTML = rows;
+    if(t2) t2.innerHTML = rows;
+  })();
+
+  /* kapak rengi */
+  document.getElementById('mainCover').style.setProperty('--cover-color', BOOK.coverColor);
+
+  /* favori toggle */
+  document.querySelector('.fav-toggle').addEventListener('click', function(){
+    this.classList.toggle('is-active');
+  });
+
+  /* daha fazla oku */
+  document.getElementById('readMore').addEventListener('click', function(e){
+    e.preventDefault();
+    var p = document.querySelector('.info .description');
+    p.style.maxHeight = p.style.maxHeight ? '' : 'none';
+    this.innerHTML = p.style.maxHeight === '' ? 'Daha Fazla Oku <i class="ti ti-chevron-down"></i>' : 'Daha Az Oku <i class="ti ti-chevron-up"></i>';
+  });
+
+  /* tablar */
+  document.querySelectorAll('.tab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.dataset.tab;
+      document.querySelectorAll('.tab').forEach(function(b){ b.classList.toggle('is-active', b===btn); });
+      document.querySelectorAll('.tab-panel').forEach(function(p){
+        p.classList.toggle('is-active', p.dataset.panel === key);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

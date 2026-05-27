@@ -1,0 +1,10 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
+
+# Logs / bağımlılıklar (ileride eklenirse)
+node_modules
+*.log

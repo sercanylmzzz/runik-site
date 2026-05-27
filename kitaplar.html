@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tüm Kitaplar — Runik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#F7F4EF;font-family:'Jost',sans-serif;min-height:100vh;padding:0 32px;color:#3B2A1C;}
+
+  /* ============ HEADER (paylaşılan) ============ */
+  .site-header{position:sticky;top:0;z-index:50;margin:0 -32px;}
+  .h-top{background:#1F3A2E;color:#E7DEC8;font-family:'Jost',sans-serif;font-size:12.5px;}
+  .h-top-inner{max-width:1240px;margin:0 auto;padding:10px 32px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
+  .h-top-left{color:#C9BFA8;letter-spacing:.2px;}
+  .h-top-center{text-align:center;font-weight:500;color:#F4ECDD;letter-spacing:.3px;}
+  .h-top-right{display:flex;justify-content:flex-end;gap:0;}
+  .h-top-right a{color:#C9BFA8;text-decoration:none;padding:0 14px;border-right:1px solid rgba(231,222,200,.18);font-weight:500;transition:color .2s ease;}
+  .h-top-right a:hover{color:#F4ECDD;}
+  .h-top-right a:last-child{border-right:none;padding-right:0;}
+  .h-top-right a:first-child{padding-left:0;}
+  .h-main{background:rgba(247,244,239,.95);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid #E8E1D2;}
+  .h-main-inner{max-width:1240px;margin:0 auto;padding:18px 32px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;}
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:#3B2A1C;}
+  .logo-img{height:50px;width:auto;display:block;}
+  .h-search{display:flex;align-items:center;background:#fff;border:1px solid #E8E1D2;height:52px;padding:0 6px 0 22px;max-width:580px;transition:border-color .2s ease;}
+  .h-search:focus-within{border-color:#F2541B;}
+  .h-search input{flex:1;border:none;background:transparent;outline:none;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;}
+  .h-search input::placeholder{color:#9B8A75;}
+  .h-search button{background:#F2541B;color:#fff;border:none;width:44px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:filter .2s ease;}
+  .h-search button:hover{filter:brightness(1.08);}
+  .h-actions{display:flex;gap:12px;align-items:center;}
+  .h-user{display:inline-flex;align-items:center;gap:11px;padding:10px 18px;border:1px solid #E8E1D2;background:#fff;text-decoration:none;color:#3B2A1C;font-family:'Jost',sans-serif;transition:border-color .2s ease;}
+  .h-user:hover{border-color:#F2541B;}
+  .h-user-icon{font-size:22px;color:#F2541B;}
+  .h-user-text{display:flex;flex-direction:column;line-height:1.1;}
+  .h-user-text b{font-size:13px;font-weight:500;}
+  .h-user-text span{font-size:10.5px;color:#9B8A75;margin-top:3px;letter-spacing:.2px;}
+  .h-cart{background:#FAF3E3;display:inline-flex;align-items:center;gap:12px;padding:14px 22px;text-decoration:none;color:#3B2A1C;font-family:'Jost',sans-serif;font-size:13.5px;font-weight:500;position:relative;border:1px solid transparent;transition:border-color .2s ease;}
+  .h-cart:hover{border-color:#F2541B;}
+  .h-cart > i{font-size:22px;color:#F2541B;}
+  .h-cart .badge{position:absolute;top:8px;left:36px;background:#F2541B;color:#fff;min-width:18px;height:18px;padding:0 5px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;}
+  .h-nav{background:rgba(247,244,239,.95);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid #E8E1D2;position:relative;}
+  .h-nav-inner{max-width:1240px;margin:0 auto;padding:0 32px;display:flex;gap:34px;align-items:center;flex-wrap:nowrap;}
+  .h-nav .nav-item{display:inline-flex;align-items:center;}
+  .h-nav-link{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:#3B2A1C;text-decoration:none;padding:16px 0;display:inline-flex;align-items:center;gap:5px;letter-spacing:.2px;position:relative;cursor:pointer;background:transparent;border:none;}
+  .h-nav-link::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:#F2541B;transform:scaleX(0);transition:transform .25s ease;}
+  .h-nav-link:hover::after,.h-nav .nav-item:hover .h-nav-link::after,.h-nav .nav-item.is-active .h-nav-link::after,.h-nav-link.is-active::after{transform:scaleX(1);}
+  .h-nav-link i{font-size:14px;transition:transform .25s ease;}
+  .h-nav .nav-item:hover .h-nav-link i,.h-nav .nav-item.is-active .h-nav-link i{transform:rotate(180deg);}
+
+  /* dropdown */
+  .nav-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid #E8E1D2;border-bottom:1px solid #E8E1D2;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease;z-index:40;}
+  .nav-dropdown.is-open{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .dropdown-inner{max-width:1240px;margin:0 auto;padding:44px 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:stretch;}
+  .dropdown-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid #E8E1D2;}
+  .dropdown-head .dh-title{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3B2A1C;font-weight:500;}
+  .dropdown-head .dh-title b{color:#9B8A75;font-weight:400;margin-left:6px;}
+  .dropdown-head .dh-meta{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;color:#9B8A75;text-transform:uppercase;}
+  .dropdown-links{display:grid;grid-template-columns:1fr 1fr;gap:2px 36px;}
+  .dropdown-links a{display:block;font-family:'Jost',sans-serif;font-size:15px;font-weight:400;color:#3B2A1C;text-decoration:none;padding:10px 0;transition:color .2s ease,padding-left .2s ease;}
+  .dropdown-links a:hover{color:#F2541B;padding-left:4px;}
+  .dropdown-right{position:relative;aspect-ratio:5/3.4;overflow:hidden;background:#1F3A2E;display:flex;align-items:flex-end;justify-content:space-between;padding:28px;}
+  .dropdown-right .dr-bg{position:absolute;inset:0;background-size:cover;background-position:right center;background-repeat:no-repeat;}
+  .dropdown-right .dr-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(31,58,46,.92) 0%,rgba(31,58,46,.5) 60%,rgba(31,58,46,.15) 100%);}
+  .dropdown-right .dr-label{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#F4ECDD;line-height:1.1;max-width:200px;}
+  .dropdown-right .dr-logo{position:relative;z-index:1;height:36px;width:auto;align-self:flex-end;filter:brightness(1.5);opacity:.9;}
+
+  /* ============ PAGE DETAIL BANNER ============ */
+  .page-banner{
+    margin:0 -32px;
+    padding:88px 32px 100px;
+    background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.18) 0%,transparent 55%),radial-gradient(circle at 15% 80%,rgba(255,255,255,.1) 0%,transparent 50%),linear-gradient(155deg,#FF8A3D 0%,#F2541B 55%,#C53A0E 100%);
+    color:#fff;text-align:center;position:relative;overflow:hidden;
+  }
+  .page-banner-inner{max-width:780px;margin:0 auto;position:relative;z-index:1;}
+  .pb-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(0,0,0,.15);padding:8px 18px;
+    font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#fff;
+    border:1px solid rgba(255,255,255,.18);position:relative;
+  }
+  .pb-badge::after{content:'+';position:absolute;top:-6px;right:-10px;width:18px;height:18px;background:rgba(255,255,255,.92);color:#F2541B;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;border-radius:50%;}
+  .pb-title{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:500;line-height:1;letter-spacing:.5px;margin-top:28px;}
+  .pb-description{font-family:'Jost',sans-serif;font-size:15px;line-height:1.65;font-weight:300;margin-top:22px;color:rgba(255,255,255,.95);max-width:560px;margin-left:auto;margin-right:auto;}
+
+  /* ============ TOOLBAR (sıralama + sonuç sayısı) ============ */
+  .toolbar{
+    max-width:1240px;margin:36px auto 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+  .toolbar-left{display:flex;align-items:baseline;gap:14px;}
+  .toolbar-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#3B2A1C;line-height:1;}
+  .toolbar-count{font-family:'Jost',sans-serif;font-size:13px;color:#9B8A75;letter-spacing:.3px;}
+  .toolbar-right{display:flex;align-items:center;gap:10px;}
+  .toolbar-label{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#9B8A75;font-weight:500;}
+  .form-select{position:relative;width:240px;}
+  .form-select select{width:100%;appearance:none;background:#fff;border:1px solid #E8E1D2;padding:12px 36px 12px 16px;font-family:'Jost',sans-serif;font-size:13px;color:#3B2A1C;cursor:pointer;outline:none;transition:border-color .2s ease;}
+  .form-select select:focus{border-color:#F2541B;}
+  .form-select::after{content:'';position:absolute;right:14px;top:50%;transform:translateY(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #9B8A75;pointer-events:none;}
+
+  /* ============ MAIN SHELL ============ */
+  .kt-shell{
+    max-width:1240px;margin:0 auto 64px;
+    display:grid;grid-template-columns:260px 1fr;gap:36px;
+    align-items:flex-start;
+  }
+
+  /* Filtre paneli */
+  .filter-panel{
+    background:#fff;border:1px solid #E8E1D2;padding:24px;
+    position:sticky;top:170px;
+  }
+  .filter-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+  .filter-panel-head h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#3B2A1C;line-height:1;}
+  .filter-clear{background:transparent;border:none;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.5px;color:#F2541B;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+  .filter-section{margin-top:22px;padding-top:22px;border-top:1px solid #F0E9D6;}
+  .filter-section:first-of-type{border-top:none;padding-top:8px;margin-top:14px;}
+  .filter-section h4{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:#9B8A75;font-weight:500;margin-bottom:14px;}
+  .form-check{display:flex;align-items:center;gap:10px;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;color:#3B2A1C;padding:5px 0;}
+  .form-check input[type="checkbox"]{appearance:none;width:16px;height:16px;border:1px solid #D5C9B7;background:#fff;cursor:pointer;position:relative;flex-shrink:0;transition:all .15s ease;}
+  .form-check input[type="checkbox"]:checked{background:#F2541B;border-color:#F2541B;}
+  .form-check input[type="checkbox"]:checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:11px;font-weight:700;}
+  .form-check .ct{flex:1;}
+  .form-check .ck{color:#9B8A75;font-size:11px;}
+  .range-slider{width:100%;}
+  .range-slider-labels{display:flex;justify-content:space-between;font-family:'Jost',sans-serif;font-size:12px;color:#6E5D4B;margin-bottom:8px;}
+  .range-slider input[type="range"]{width:100%;appearance:none;height:3px;background:#E8E1D2;outline:none;}
+  .range-slider input[type="range"]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:#F2541B;cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.15);}
+
+  /* ============ KİTAP GRID ============ */
+  .books-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:22px;
+  }
+  .b-card{
+    position:relative;
+    background:#ECE6DC;
+    height:420px;
+    display:flex;flex-direction:column;
+    text-decoration:none;color:inherit;
+    cursor:pointer;
+    transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease;
+  }
+  .b-card:hover{transform:translateY(-6px);box-shadow:0 22px 40px -18px rgba(59,42,28,.25);}
+  .b-card-top{display:flex;justify-content:flex-end;padding:14px 16px 0;height:42px;}
+  .b-fav{width:32px;height:32px;background:rgba(59,42,28,.08);border:none;color:#3B2A1C;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:background .2s ease;}
+  .b-fav:hover{background:rgba(242,84,27,.15);color:#F2541B;}
+  .b-cover-area{flex:1;display:flex;align-items:center;justify-content:center;padding:0 24px;}
+  .b-cover{
+    width:140px;height:210px;
+    background:var(--cv,linear-gradient(135deg,#1A4863,#0A2A3E));
+    box-shadow:0 16px 26px -10px rgba(0,0,0,.5);
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:14px 12px;
+    color:#fff;
+    position:relative;
+  }
+  .b-cover-author{font-family:'Jost',sans-serif;font-size:9px;letter-spacing:1px;color:rgba(255,255,255,.7);text-transform:uppercase;}
+  .b-cover-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:#fff;line-height:1.1;margin-top:5px;}
+  .b-cover-line{width:22px;height:2px;background:#FF8A3D;margin-top:8px;}
+  .b-bottom{padding:0 20px 22px;text-align:center;}
+  .b-bottom-author{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#A68A6D;}
+  .b-bottom-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#3B2A1C;margin-top:4px;line-height:1.15;min-height:2.2em;display:flex;align-items:center;justify-content:center;}
+  .b-bottom-meta{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-top:8px;}
+  .b-bottom-old{font-family:'Jost',sans-serif;font-size:12px;color:#A68A6D;text-decoration:line-through;}
+  .b-bottom-price{font-family:'Jost',sans-serif;font-size:16px;font-weight:500;color:#3B2A1C;}
+  .b-ribbon{position:absolute;top:14px;left:0;z-index:2;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;color:#fff;}
+  .b-ribbon.r-new{background:#F2541B;}
+  .b-ribbon.r-sale{background:#C53A0E;}
+
+  /* Boş sonuç */
+  .empty-state{
+    grid-column:1/-1;
+    padding:80px 24px;text-align:center;
+    background:#fff;border:1px dashed #E8E1D2;
+  }
+  .empty-state h4{font-family:'Cormorant Garamond',serif;font-size:24px;color:#3B2A1C;font-style:italic;}
+  .empty-state p{font-family:'Jost',sans-serif;font-size:13px;color:#9B8A75;margin-top:8px;}
+
+  /* ============ PAGINATION ============ */
+  .pagination{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:48px;}
+  .pagination a,.pagination span{font-family:'Jost',sans-serif;font-size:13px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#6E5D4B;border:1px solid transparent;cursor:pointer;transition:all .2s ease;}
+  .pagination a:hover{border-color:#E8E1D2;color:#3B2A1C;}
+  .pagination .active{background:#F2541B;color:#fff;border-color:#F2541B;}
+  .pagination .dots{cursor:default;color:#9B8A75;}
+  .pagination .pg-arrow{font-size:16px;color:#3B2A1C;}
+
+  /* ============ FOOTER ============ */
+  .site-footer{margin:0 -32px;background:#1F3A2E;color:#C9BFA8;}
+  .footer-inner{max-width:1240px;margin:0 auto;padding:72px 32px 32px;}
+  .footer-top{display:grid;grid-template-columns:1fr 2fr;gap:96px;align-items:flex-start;padding-bottom:48px;border-bottom:1px solid rgba(231,222,200,.12);}
+  .footer-logo{height:96px;width:auto;display:block;}
+  .footer-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;margin-top:22px;color:#E7DEC8;line-height:1.4;max-width:260px;}
+  .footer-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+  .footer-col h4{font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:20px;}
+  .footer-col a{display:block;font-family:'Jost',sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:5px 0;transition:color .2s ease;}
+  .footer-col a:hover{color:#F4ECDD;}
+  .footer-bottom{padding-top:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;font-family:'Jost',sans-serif;font-size:12px;color:#8D8268;}
+  .footer-social{display:flex;gap:10px;}
+  .footer-social a{color:#C9BFA8;font-size:16px;text-decoration:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);transition:all .2s ease;}
+  .footer-social a:hover{color:#1F3A2E;background:#E7DEC8;border-color:#E7DEC8;}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .kt-shell{grid-template-columns:1fr;}
+    .filter-panel{position:static;}
+    .books-grid{grid-template-columns:repeat(2,1fr);}
+    .pb-title{font-size:48px;}
+    .h-nav-inner{overflow-x:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     KİTAP VERİSİ — düzenlemek için BOOKS dizisini güncelle
+     ============================================================ -->
+<script>
+const BOOKS = [
+  { title:'Kürk Mantolu Madonna', author:'Sabahattin Ali',           category:'Roman',     price:89,  oldPrice:120, format:'Ciltsiz', year:1943, cover:'linear-gradient(135deg,#1B95C0,#0A5F7C)', link:'kurk-mantolu-madonna.html', ribbon:'sale' },
+  { title:'İnce Memed',           author:'Yaşar Kemal',              category:'Roman',     price:110, oldPrice:null, format:'Ciltli',  year:1955, cover:'linear-gradient(135deg,#E8AB42,#9E6817)', link:'#' },
+  { title:'Tutunamayanlar',       author:'Oğuz Atay',                category:'Roman',     price:145, oldPrice:180, format:'Ciltli',  year:1971, cover:'linear-gradient(135deg,#8B2D2D,#4F1818)', link:'#', ribbon:'sale' },
+  { title:'Saatleri Ayarlama Enstitüsü', author:'Ahmet Hamdi Tanpınar', category:'Roman', price:130, oldPrice:null, format:'Ciltli',  year:1961, cover:'linear-gradient(135deg,#1E4A5A,#0C2530)', link:'#' },
+  { title:'Kırmızı Defter',       author:'M. Kara',                  category:'Roman',     price:240, oldPrice:null, format:'Ciltli',  year:2024, cover:'linear-gradient(135deg,#C03A2B,#7E2418)', link:'book.html', ribbon:'new' },
+  { title:'Aylak Adam',           author:'Yusuf Atılgan',            category:'Roman',     price:95,  oldPrice:null, format:'Ciltsiz', year:1959, cover:'linear-gradient(135deg,#3E5F32,#1B2E14)', link:'#' },
+  { title:'Huzur',                author:'Ahmet Hamdi Tanpınar',     category:'Roman',     price:135, oldPrice:155, format:'Ciltsiz', year:1949, cover:'linear-gradient(135deg,#2D5A3D,#1A3526)', link:'#', ribbon:'sale' },
+  { title:'Anayurt Oteli',        author:'Yusuf Atılgan',            category:'Roman',     price:88,  oldPrice:null, format:'Ciltsiz', year:1973, cover:'linear-gradient(135deg,#4A3D5A,#1F1A2E)', link:'#' },
+  { title:'Memleketimden İnsan Manzaraları', author:'Nazım Hikmet', category:'Şiir',      price:175, oldPrice:null, format:'Ciltli',  year:1939, cover:'linear-gradient(135deg,#5A3D7A,#2A1F3D)', link:'#' },
+  { title:'Bütün Şiirleri',       author:'Cemal Süreya',             category:'Şiir',      price:165, oldPrice:200, format:'Ciltli',  year:1990, cover:'linear-gradient(135deg,#7A2D3F,#3D161F)', link:'#', ribbon:'sale' },
+  { title:'Çile',                 author:'Necip Fazıl Kısakürek',    category:'Şiir',      price:120, oldPrice:null, format:'Ciltsiz', year:1962, cover:'linear-gradient(135deg,#3B2A1C,#1A130C)', link:'#' },
+  { title:'Korkuyu Beklerken',    author:'Oğuz Atay',                category:'Öykü',      price:115, oldPrice:null, format:'Ciltsiz', year:1975, cover:'linear-gradient(135deg,#A33F2C,#5A1F14)', link:'#' },
+  { title:'Semaver',              author:'Sait Faik Abasıyanık',     category:'Öykü',      price:75,  oldPrice:95,  format:'Ciltsiz', year:1936, cover:'linear-gradient(135deg,#2D4A5A,#15252E)', link:'#', ribbon:'sale' },
+  { title:'Şu Çılgın Türkler',    author:'Turgut Özakman',           category:'Tarih',     price:195, oldPrice:null, format:'Ciltli',  year:2005, cover:'linear-gradient(135deg,#5A2D18,#2E150A)', link:'#' },
+  { title:'Bu Ülke',              author:'Cemil Meriç',              category:'Deneme',    price:128, oldPrice:null, format:'Ciltsiz', year:1974, cover:'linear-gradient(135deg,#4A5A3D,#22291B)', link:'#' },
+  { title:'Beyaz Kale',           author:'Orhan Pamuk',              category:'Roman',     price:140, oldPrice:null, format:'Ciltli',  year:1985, cover:'linear-gradient(135deg,#5A4A2D,#2D2415)', link:'#' },
+  { title:'Sevgili Arsız Ölüm',   author:'Latife Tekin',             category:'Roman',     price:105, oldPrice:130, format:'Ciltsiz', year:1983, cover:'linear-gradient(135deg,#2D5A6E,#152932)', link:'#', ribbon:'sale' },
+  { title:'Kalpazanlar',          author:'André Gide',               category:'Roman',     price:155, oldPrice:null, format:'Ciltli',  year:1925, cover:'linear-gradient(135deg,#3D2A1C,#1C130D)', link:'#' },
+  { title:'Mai ve Siyah',         author:'Halid Ziya Uşaklıgil',     category:'Roman',     price:118, oldPrice:null, format:'Ciltli',  year:1898, cover:'linear-gradient(135deg,#1F3A5A,#0F1D2E)', link:'#' },
+  { title:'Yaprak Dökümü',        author:'Reşat Nuri Güntekin',      category:'Roman',     price:92,  oldPrice:115, format:'Ciltsiz', year:1930, cover:'linear-gradient(135deg,#5A3D2D,#2C1D15)', link:'#', ribbon:'sale' },
+  { title:'Hayvan Çiftliği',      author:'George Orwell',            category:'Roman',     price:78,  oldPrice:null, format:'Ciltsiz', year:1945, cover:'linear-gradient(135deg,#7A4B36,#3D241B)', link:'#' },
+  { title:'Felsefe Tarihi',       author:'Macit Gökberk',            category:'Felsefe',   price:220, oldPrice:null, format:'Ciltli',  year:1961, cover:'linear-gradient(135deg,#3D4A5A,#1F252E)', link:'#' },
+  { title:'Bütün Eserleri',       author:'Halikarnas Balıkçısı',     category:'Biyografi', price:185, oldPrice:240, format:'Ciltli',  year:1990, cover:'linear-gradient(135deg,#1F4654,#0E2229)', link:'#', ribbon:'sale' },
+  { title:'Devlet',               author:'Platon',                   category:'Felsefe',   price:165, oldPrice:null, format:'Ciltli',  year:-380, cover:'linear-gradient(135deg,#5A3D2D,#2C1D15)', link:'#' }
+];
+</script>
+<!-- ============================================================ -->
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="h-top">
+    <div class="h-top-inner">
+      <span class="h-top-left">Edebiyatın izini sürenler için, özenle seçilmiş kitaplar.</span>
+      <span class="h-top-center">Yeni Üyelere Özel İlk Sepette %15 İndirim</span>
+      <span class="h-top-right">
+        <a href="tel:+902120000000">+90 (212) 000 00 00</a>
+        <a href="#">Bayi Girişi</a>
+        <a href="#">Sipariş Takip</a>
+      </span>
+    </div>
+  </div>
+  <div class="h-main">
+    <div class="h-main-inner">
+      <a class="logo" href="/" aria-label="Runik anasayfa">
+        <img src="/assets/runik-logo.png" alt="Runik" class="logo-img">
+      </a>
+      <div class="h-search">
+        <input type="text" placeholder="Aradığınız kitap, kategori veya yazar yazınız">
+        <button aria-label="Ara"><i class="ti ti-search"></i></button>
+      </div>
+      <div class="h-actions">
+        <a href="#" class="h-user">
+          <i class="ti ti-user h-user-icon"></i>
+          <span class="h-user-text"><b>Üye Girişi</b><span>veya Üye Ol</span></span>
+        </a>
+        <a href="#" class="h-cart">
+          <i class="ti ti-shopping-bag"></i> Sepetim
+          <span class="badge">2</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <nav class="h-nav" aria-label="Ana menü">
+    <div class="h-nav-inner">
+      <div class="nav-item" data-dropdown="kategoriler">
+        <button class="h-nav-link">Kitaplar <i class="ti ti-chevron-down"></i></button>
+      </div>
+      <a class="h-nav-link" href="/kitaplar">Tüm Kitaplar</a>
+      <a class="h-nav-link" href="/kitaplar">Yeni Çıkanlar</a>
+      <a class="h-nav-link" href="/kitaplar">Çok Satanlar</a>
+      <div class="nav-item" data-dropdown="yazarlar">
+        <button class="h-nav-link">Yazarlar <i class="ti ti-chevron-down"></i></button>
+      </div>
+      <a class="h-nav-link" href="#">Koleksiyonlar</a>
+      <a class="h-nav-link" href="#">Dergi</a>
+      <a class="h-nav-link" href="#">Hakkımızda</a>
+    </div>
+  </nav>
+
+  <!-- KATEGORİLER DROPDOWN -->
+  <div class="nav-dropdown" data-panel="kategoriler">
+    <div class="dropdown-inner">
+      <div class="dropdown-left">
+        <div class="dropdown-head">
+          <span class="dh-title">Kategoriler <b>(10)</b></span>
+          <a href="/kitaplar" class="dh-meta" style="text-decoration:none;color:#F2541B;">Tüm Kitaplar &rarr;</a>
+        </div>
+        <div class="dropdown-links">
+          <a href="/kitaplar?cat=Roman">Roman</a><a href="/kitaplar?cat=Şiir">Şiir</a>
+          <a href="/kitaplar?cat=Felsefe">Felsefe &amp; Düşünce</a><a href="/kitaplar?cat=Tarih">Tarih</a>
+          <a href="#">Çocuk</a><a href="#">Polisiye &amp; Gerilim</a>
+          <a href="/kitaplar?cat=Deneme">Deneme</a><a href="/kitaplar?cat=Biyografi">Biyografi &amp; Anı</a>
+          <a href="#">Sanat &amp; Mimari</a><a href="#">Klasikler</a>
+        </div>
+      </div>
+      <div class="dropdown-right">
+        <div class="dr-bg" style="background-image:url('/assets/hero-runik.png');"></div>
+        <div class="dr-overlay"></div>
+        <span class="dr-label">Kataloğumuzu keşfedin</span>
+        <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
+      </div>
+    </div>
+  </div>
+
+  <!-- YAZARLAR DROPDOWN -->
+  <div class="nav-dropdown" data-panel="yazarlar">
+    <div class="dropdown-inner">
+      <div class="dropdown-left">
+        <div class="dropdown-head">
+          <span class="dh-title">Öne Çıkan Yazarlar <b>(8)</b></span>
+          <a href="/yazarlar" class="dh-meta" style="text-decoration:none;color:#F2541B;">Tüm Yazarlar &rarr;</a>
+        </div>
+        <div class="dropdown-links">
+          <a href="/yazarlar">Ahmet Hamdi Tanpınar</a><a href="/yazarlar">Elif Şafak</a>
+          <a href="/yazarlar">Nazım Hikmet</a><a href="/yazarlar">Oğuz Atay</a>
+          <a href="/yazarlar">Orhan Pamuk</a><a href="/yazarlar">Sabahattin Ali</a>
+          <a href="/yazarlar">Sait Faik Abasıyanık</a><a href="/yazarlar">Yaşar Kemal</a>
+        </div>
+      </div>
+      <div class="dropdown-right" style="background:linear-gradient(135deg,#3B2A1C,#1F3A2E);">
+        <div class="dr-overlay" style="background:linear-gradient(120deg,rgba(31,58,46,.7) 0%,transparent 100%);"></div>
+        <span class="dr-label" style="max-width:240px;">Edebiyatın seslerini keşfedin</span>
+        <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  /* dropdown hover */
+  (function(){
+    var triggers = document.querySelectorAll('.nav-item');
+    var panels = document.querySelectorAll('.nav-dropdown');
+    var hideTimer = null;
+    function open(key){ clearTimeout(hideTimer); panels.forEach(function(p){ p.classList.toggle('is-open', p.dataset.panel === key); }); triggers.forEach(function(t){ t.classList.toggle('is-active', t.dataset.dropdown === key); }); }
+    function close(){ panels.forEach(function(p){ p.classList.remove('is-open'); }); triggers.forEach(function(t){ t.classList.remove('is-active'); }); }
+    function scheduleClose(){ hideTimer = setTimeout(close, 180); }
+    function cancelClose(){ clearTimeout(hideTimer); }
+    triggers.forEach(function(t){ t.addEventListener('mouseenter', function(){ open(t.dataset.dropdown); }); t.addEventListener('mouseleave', scheduleClose); });
+    panels.forEach(function(p){ p.addEventListener('mouseenter', cancelClose); p.addEventListener('mouseleave', scheduleClose); });
+  })();
+</script>
+
+<!-- PAGE BANNER -->
+<section class="page-banner">
+  <div class="page-banner-inner">
+    <span class="pb-badge">Koleksiyon</span>
+    <h1 class="pb-title">Tüm Kitaplar</h1>
+    <p class="pb-description">Runik kataloğundaki tüm kitapları kategori, yazar, fiyat ve formatla filtreleyerek keşfedin.</p>
+  </div>
+</section>
+
+<!-- TOOLBAR -->
+<header class="toolbar">
+  <div class="toolbar-left">
+    <h2 class="toolbar-title">Tüm Kitaplar</h2>
+    <span class="toolbar-count" id="resultCount"></span>
+  </div>
+  <div class="toolbar-right">
+    <span class="toolbar-label">Sırala</span>
+    <div class="form-select">
+      <select id="sortSelect">
+        <option value="default">Önerilen</option>
+        <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
+        <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
+        <option value="title-asc">İsim: A → Z</option>
+        <option value="title-desc">İsim: Z → A</option>
+        <option value="year-desc">Yıl: Yeniden Eskiye</option>
+        <option value="year-asc">Yıl: Eskiden Yeniye</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<div class="kt-shell">
+
+  <!-- Sidebar filter -->
+  <aside class="filter-panel">
+    <div class="filter-panel-head">
+      <h3>Filtreler</h3>
+      <button class="filter-clear" id="clearFilters">Temizle</button>
+    </div>
+
+    <div class="filter-section">
+      <h4>Kategori</h4>
+      <div id="filterCategories"></div>
+    </div>
+
+    <div class="filter-section">
+      <h4>Fiyat Aralığı</h4>
+      <div class="range-slider">
+        <div class="range-slider-labels"><span id="priceMin">0 ₺</span><span id="priceMax">300 ₺</span></div>
+        <input type="range" id="priceRange" min="0" max="300" value="300" step="10">
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h4>Format</h4>
+      <div id="filterFormats"></div>
+    </div>
+
+    <div class="filter-section">
+      <h4>Yazar</h4>
+      <div id="filterAuthors" style="max-height:200px;overflow-y:auto;"></div>
+    </div>
+  </aside>
+
+  <!-- Books grid + pagination -->
+  <div>
+    <div class="books-grid" id="booksGrid"></div>
+    <nav class="pagination" id="pagination" aria-label="Sayfa numaraları"></nav>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="/assets/runik-logo.png" alt="Runik" class="footer-logo">
+        <p class="footer-tag">Edebiyatın izini sürenler için, özenle seçilmiş kitaplar.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Yayınevi</h4>
+          <a href="#">Hakkımızda</a>
+          <a href="/yazarlar">Yazarlar</a>
+          <a href="/kitaplar">Tüm Kitaplar</a>
+          <a href="#">Künye</a>
+          <a href="#">Kariyer</a>
+        </div>
+        <div class="footer-col">
+          <h4>Yardım</h4>
+          <a href="#">Sıkça Sorulanlar</a>
+          <a href="#">Kargo &amp; Teslimat</a>
+          <a href="#">İade &amp; Değişim</a>
+          <a href="#">Gizlilik Politikası</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hesabım</h4>
+          <a href="#">Giriş Yap</a>
+          <a href="#">Üye Ol</a>
+          <a href="#">Siparişlerim</a>
+          <a href="#">Favorilerim</a>
+        </div>
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <a href="mailto:info@runik.com.tr">info@runik.com.tr</a>
+          <a href="tel:+902120000000">+90 (212) 000 00 00</a>
+          <a href="#">İstanbul, Türkiye</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Runik Yayınevi. Tüm hakları saklıdır.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+        <a href="#" aria-label="X"><i class="ti ti-brand-x"></i></a>
+        <a href="#" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ============ STATE ============ */
+  var state = {
+    categories: new Set(),
+    formats: new Set(),
+    authors: new Set(),
+    maxPrice: 300,
+    sort: 'default',
+    page: 1,
+    perPage: 12
+  };
+
+  // URL parametresi: ?cat=Roman gibi
+  (function(){
+    var p = new URLSearchParams(location.search);
+    if(p.get('cat')) state.categories.add(p.get('cat'));
+  })();
+
+  /* ============ FILTRELERİ DOLDUR ============ */
+  function uniq(arr){ return Array.from(new Set(arr)); }
+  function countBy(arr){
+    var m = {};
+    arr.forEach(function(v){ m[v] = (m[v]||0)+1; });
+    return m;
+  }
+
+  var allCategories = uniq(BOOKS.map(function(b){ return b.category; })).sort();
+  var allFormats    = uniq(BOOKS.map(function(b){ return b.format; })).sort();
+  var allAuthors    = uniq(BOOKS.map(function(b){ return b.author; })).sort(function(a,b){ return a.localeCompare(b,'tr'); });
+  var catCount      = countBy(BOOKS.map(function(b){ return b.category; }));
+  var fmtCount      = countBy(BOOKS.map(function(b){ return b.format; }));
+  var authCount     = countBy(BOOKS.map(function(b){ return b.author; }));
+
+  function renderChecks(parentId, items, counts, stateSet){
+    var html = items.map(function(v){
+      var checked = stateSet.has(v) ? 'checked' : '';
+      return '<label class="form-check"><input type="checkbox" data-val="'+v+'" '+checked+'><span class="ct">'+v+'</span><span class="ck">'+(counts[v]||0)+'</span></label>';
+    }).join('');
+    document.getElementById(parentId).innerHTML = html;
+    document.getElementById(parentId).addEventListener('change', function(e){
+      var v = e.target.dataset.val;
+      if(!v) return;
+      if(e.target.checked) stateSet.add(v); else stateSet.delete(v);
+      state.page = 1; render();
+    });
+  }
+  renderChecks('filterCategories', allCategories, catCount,  state.categories);
+  renderChecks('filterFormats',    allFormats,    fmtCount,  state.formats);
+  renderChecks('filterAuthors',    allAuthors,    authCount, state.authors);
+
+  /* fiyat slider */
+  document.getElementById('priceRange').addEventListener('input', function(e){
+    state.maxPrice = parseInt(e.target.value, 10);
+    document.getElementById('priceMax').textContent = state.maxPrice + ' ₺';
+    state.page = 1; render();
+  });
+
+  /* sıralama */
+  document.getElementById('sortSelect').addEventListener('change', function(e){
+    state.sort = e.target.value; render();
+  });
+
+  /* temizle */
+  document.getElementById('clearFilters').addEventListener('click', function(){
+    state.categories.clear(); state.formats.clear(); state.authors.clear();
+    state.maxPrice = 300; state.sort = 'default'; state.page = 1;
+    document.getElementById('sortSelect').value = 'default';
+    document.getElementById('priceRange').value = 300;
+    document.getElementById('priceMax').textContent = '300 ₺';
+    document.querySelectorAll('.form-check input').forEach(function(c){ c.checked = false; });
+    render();
+  });
+
+  /* ============ FILTRELE + SIRALA + RENDER ============ */
+  function applyFilters(){
+    return BOOKS.filter(function(b){
+      if(state.categories.size && !state.categories.has(b.category)) return false;
+      if(state.formats.size    && !state.formats.has(b.format))      return false;
+      if(state.authors.size    && !state.authors.has(b.author))      return false;
+      if(b.price > state.maxPrice) return false;
+      return true;
+    });
+  }
+  function applySort(list){
+    var s = state.sort;
+    var arr = list.slice();
+    if(s==='price-asc')  arr.sort(function(a,b){ return a.price-b.price; });
+    if(s==='price-desc') arr.sort(function(a,b){ return b.price-a.price; });
+    if(s==='title-asc')  arr.sort(function(a,b){ return a.title.localeCompare(b.title,'tr'); });
+    if(s==='title-desc') arr.sort(function(a,b){ return b.title.localeCompare(a.title,'tr'); });
+    if(s==='year-desc')  arr.sort(function(a,b){ return b.year-a.year; });
+    if(s==='year-asc')   arr.sort(function(a,b){ return a.year-b.year; });
+    return arr;
+  }
+  function paginate(list){
+    var start = (state.page - 1) * state.perPage;
+    return { items: list.slice(start, start + state.perPage), total: list.length };
+  }
+
+  function cardHtml(b){
+    var ribbon = b.ribbon === 'new'  ? '<span class="b-ribbon r-new">Yeni</span>'
+               : b.ribbon === 'sale' ? '<span class="b-ribbon r-sale">İndirim</span>'
+               : '';
+    var oldP = b.oldPrice ? '<span class="b-bottom-old">'+b.oldPrice+' ₺</span>' : '';
+    return ''
+      + '<a class="b-card" href="'+(b.link||'#')+'">'
+      +   ribbon
+      +   '<div class="b-card-top"><button class="b-fav" aria-label="Favori" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle(\'is-fav\');"><i class="ti ti-heart"></i></button></div>'
+      +   '<div class="b-cover-area"><div class="b-cover" style="background:'+b.cover+';">'
+      +     '<span class="b-cover-author">'+b.author.toUpperCase()+'</span>'
+      +     '<span class="b-cover-title">'+b.title+'</span>'
+      +     '<span class="b-cover-line"></span>'
+      +   '</div></div>'
+      +   '<div class="b-bottom">'
+      +     '<div class="b-bottom-author">'+b.author+'</div>'
+      +     '<div class="b-bottom-title">'+b.title+'</div>'
+      +     '<div class="b-bottom-meta">'+oldP+'<span class="b-bottom-price">'+b.price+' ₺</span></div>'
+      +   '</div>'
+      + '</a>';
+  }
+
+  function renderPagination(total){
+    var pages = Math.ceil(total / state.perPage);
+    var el = document.getElementById('pagination');
+    if(pages <= 1){ el.innerHTML = ''; return; }
+    var html = '';
+    html += '<a class="pg-arrow" data-pg="prev"><i class="ti ti-chevron-left"></i></a>';
+    for(var i=1; i<=pages; i++){
+      var act = i === state.page ? ' active' : '';
+      html += '<a class="'+act.trim()+'" data-pg="'+i+'">'+i+'</a>';
+    }
+    html += '<a class="pg-arrow" data-pg="next"><i class="ti ti-chevron-right"></i></a>';
+    el.innerHTML = html;
+    el.querySelectorAll('[data-pg]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        var v = a.dataset.pg;
+        if(v==='prev') state.page = Math.max(1, state.page-1);
+        else if(v==='next') state.page = Math.min(pages, state.page+1);
+        else state.page = parseInt(v,10);
+        render(); window.scrollTo({top: document.querySelector('.toolbar').offsetTop - 100, behavior:'smooth'});
+      });
+    });
+  }
+
+  function render(){
+    var filtered = applyFilters();
+    var sorted   = applySort(filtered);
+    var paged    = paginate(sorted);
+    var grid = document.getElementById('booksGrid');
+    document.getElementById('resultCount').textContent = paged.total + ' kitap';
+    if(paged.items.length === 0){
+      grid.innerHTML = '<div class="empty-state"><h4>Sonuç bulunamadı.</h4><p>Filtreleri değiştirerek tekrar deneyin veya "Temizle" ile sıfırlayın.</p></div>';
+    } else {
+      grid.innerHTML = paged.items.map(cardHtml).join('');
+    }
+    renderPagination(paged.total);
+  }
+
+  render();
+</script>
+
+</body>
+</html>

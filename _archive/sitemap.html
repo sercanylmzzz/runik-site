@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Haritası — Runik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:#F7F4EF;
+    font-family:'Jost',sans-serif;
+    min-height:100vh;
+    padding:0 32px;
+    color:#3B2A1C;
+  }
+
+  /* HEADER (kısa) */
+  .site-header{
+    margin:0 -32px;
+    background:rgba(247,244,239,.88);
+    border-bottom:1px solid #E8E1D2;
+  }
+  .header-inner{
+    max-width:1240px;margin:0 auto;
+    padding:20px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:32px;
+  }
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:#3B2A1C;}
+  .logo-img{height:46px;width:auto;display:block;}
+  .badge-dev{
+    font-family:'Jost',sans-serif;font-size:10px;letter-spacing:1.8px;
+    text-transform:uppercase;color:#F2541B;font-weight:500;
+    border:1px solid #F2541B;padding:6px 12px;
+  }
+
+  /* HERO */
+  .sm-hero{
+    max-width:1240px;margin:64px auto 56px;
+    text-align:center;
+  }
+  .sm-eyebrow{
+    font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2.5px;
+    text-transform:uppercase;color:#F2541B;font-weight:500;
+  }
+  .sm-hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:72px;font-weight:600;line-height:1;
+    letter-spacing:.3px;margin-top:18px;
+  }
+  .sm-hero p{
+    font-family:'Jost',sans-serif;font-size:15px;
+    color:#6E5D4B;font-weight:300;line-height:1.6;
+    margin:20px auto 0;max-width:560px;
+  }
+
+  /* GRID */
+  .sm-grid{
+    max-width:1240px;margin:0 auto 96px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .sm-card{
+    position:relative;
+    background:#fff;border:1px solid #E8E1D2;
+    padding:36px 32px 28px;
+    display:flex;flex-direction:column;
+    text-decoration:none;color:inherit;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+    min-height:260px;
+  }
+  .sm-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px -16px rgba(59,42,28,.18);
+    border-color:#F2541B;
+  }
+  .sm-num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:54px;font-weight:600;
+    color:#F4ECDD;line-height:1;
+    position:absolute;top:18px;right:24px;
+    pointer-events:none;
+  }
+  .sm-card:hover .sm-num{color:#FAEBD5;}
+  .sm-tag{
+    font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;color:#F2541B;font-weight:500;
+    position:relative;z-index:1;
+  }
+  .sm-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;font-weight:600;color:#3B2A1C;
+    line-height:1.1;margin-top:10px;
+    position:relative;z-index:1;
+  }
+  .sm-card code{
+    font-family:'SF Mono',Menlo,monospace;font-size:11px;
+    color:#9B8A75;letter-spacing:0;
+    margin-top:8px;display:inline-block;
+    background:#FAF3E3;padding:4px 8px;
+    align-self:flex-start;
+  }
+  .sm-card p{
+    font-family:'Jost',sans-serif;font-size:13.5px;
+    color:#6E5D4B;font-weight:300;line-height:1.55;
+    margin-top:18px;flex:1;
+  }
+  .sm-link{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Jost',sans-serif;font-size:13px;font-weight:500;
+    color:#3B2A1C;letter-spacing:.4px;
+    border-bottom:1px solid #3B2A1C;
+    padding-bottom:6px;
+    align-self:flex-start;margin-top:20px;
+    transition:gap .25s ease,color .25s ease;
+  }
+  .sm-card:hover .sm-link{color:#F2541B;border-bottom-color:#F2541B;gap:14px;}
+
+  .sm-meta{
+    font-family:'Jost',sans-serif;font-size:11px;color:#9B8A75;
+    letter-spacing:.4px;margin-top:8px;
+    display:flex;gap:14px;flex-wrap:wrap;
+  }
+  .sm-meta span{display:inline-flex;align-items:center;gap:5px;}
+  .sm-meta i{font-size:13px;color:#A68A6D;}
+
+  .sm-footer{
+    max-width:1240px;margin:0 auto 64px;
+    padding:28px 24px;
+    background:#FAF3E3;border:1px solid #EDE3D2;
+    font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;
+    line-height:1.55;
+  }
+  .sm-footer strong{color:#3B2A1C;font-weight:500;}
+  .sm-footer code{background:#fff;padding:2px 6px;font-family:'SF Mono',Menlo,monospace;font-size:11.5px;color:#3B2A1C;border:1px solid #E8E1D2;}
+
+  @media (max-width:880px){
+    .sm-grid{grid-template-columns:1fr;}
+    .sm-hero h1{font-size:48px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html" aria-label="Runik anasayfa">
+      <img src="runik-logo.png" alt="Runik" class="logo-img">
+    </a>
+    <span class="badge-dev">Development</span>
+  </div>
+</header>
+
+<section class="sm-hero">
+  <span class="sm-eyebrow">İç Kullanım</span>
+  <h1>Site Haritası</h1>
+  <p>Geliştirme aşamasındaki tüm çalışan sayfalar. Her karta tıklayarak ilgili sayfaya gidebilirsin.</p>
+</section>
+
+<section class="sm-grid">
+
+  <a class="sm-card" href="index.html">
+    <span class="sm-num">01</span>
+    <span class="sm-tag">Ana Sayfa</span>
+    <h3>Anasayfa</h3>
+    <code>index.html</code>
+    <p>Hero slider, "Öne Çıkanlar" kartlar, Yeni Çıkanlar &amp; Çok Satanlar panelleri, 4 kategori, Ayın En Çok Satanları, Öne Çıkan Yazarlar, Sizin İçin Seçtiklerimiz, CTA banner ve footer.</p>
+    <div class="sm-meta">
+      <span><i class="ti ti-layout-grid"></i> 8 section</span>
+      <span><i class="ti ti-photo"></i> Hero slider</span>
+    </div>
+    <span class="sm-link">Aç <i class="ti ti-arrow-right"></i></span>
+  </a>
+
+  <a class="sm-card" href="kurk-mantolu-madonna.html">
+    <span class="sm-num">02</span>
+    <span class="sm-tag">Kitap Detay</span>
+    <h3>Kürk Mantolu Madonna</h3>
+    <code>kurk-mantolu-madonna.html</code>
+    <p>Gerçek kapak görseli ile kitap detay sayfası. Sol galeri, sağ info paneli (kategori, başlık, yazar, rating, açıklama, meta, fiyat, butonlar), tab'lı içerik.</p>
+    <div class="sm-meta">
+      <span><i class="ti ti-book"></i> Sabahattin Ali</span>
+      <span><i class="ti ti-photo"></i> Gerçek kapak</span>
+    </div>
+    <span class="sm-link">Aç <i class="ti ti-arrow-right"></i></span>
+  </a>
+
+  <a class="sm-card" href="book.html">
+    <span class="sm-num">03</span>
+    <span class="sm-tag">Kitap Detay</span>
+    <h3>Kırmızı Defter</h3>
+    <code>book.html</code>
+    <p>CSS ile çizilmiş kapak (Runik marka). Detay sayfası şablonu — yeni kitaplar eklerken bu yapıyı çoğaltabilirsin. <code>BOOK</code> objesinden tüm veri.</p>
+    <div class="sm-meta">
+      <span><i class="ti ti-template"></i> Şablon</span>
+      <span><i class="ti ti-paint"></i> CSS kapak</span>
+    </div>
+    <span class="sm-link">Aç <i class="ti ti-arrow-right"></i></span>
+  </a>
+
+  <a class="sm-card" href="kitaplar.html">
+    <span class="sm-num">04</span>
+    <span class="sm-tag">Liste Sayfası</span>
+    <h3>Tüm Kitaplar</h3>
+    <code>kitaplar.html</code>
+    <p>Page-detail banner (turuncu gradient), sol sticky filtre paneli (kategori, fiyat, format, yazar), sıralama, 4 sütunlu kart grid'i ve pagination. URL parametresi ile kategori önceden seçilebilir (?cat=Roman).</p>
+    <div class="sm-meta">
+      <span><i class="ti ti-books"></i> 24 kitap</span>
+      <span><i class="ti ti-filter"></i> Çoklu filtre</span>
+      <span><i class="ti ti-sort-ascending"></i> Sıralama</span>
+    </div>
+    <span class="sm-link">Aç <i class="ti ti-arrow-right"></i></span>
+  </a>
+
+  <a class="sm-card" href="yazarlar.html">
+    <span class="sm-num">05</span>
+    <span class="sm-tag">Liste Sayfası</span>
+    <h3>Yazarlar</h3>
+    <code>yazarlar.html</code>
+    <p>Page-detail banner (turuncu gradient), Türkçe A-Z filter (Ç, Ğ, I, İ, Ö, Ş, Ü dahil), 50 yazar kartı. Harf seçilince ilgili yazarlar listelenir.</p>
+    <div class="sm-meta">
+      <span><i class="ti ti-users"></i> 50 yazar</span>
+      <span><i class="ti ti-filter"></i> A-Z filter</span>
+    </div>
+    <span class="sm-link">Aç <i class="ti ti-arrow-right"></i></span>
+  </a>
+
+  <a class="sm-card" href="components.html">
+    <span class="sm-num">06</span>
+    <span class="sm-tag">Design System</span>
+    <h3>Bileşenler</h3>
+    <code>components.html</code>
+    <p>Tasarım sistemindeki tüm bileşenler — renkler, tipografi, butonlar, etiketler, formlar, kartlar (10+ varyant), section'lar (book detail hero, review, filtre, mini sepet), navigasyon (mega menü, pagination, tab bar).</p>
+    <div class="sm-meta">
+      <span><i class="ti ti-components"></i> 50+ bileşen</span>
+      <span><i class="ti ti-palette"></i> Stil rehberi</span>
+    </div>
+    <span class="sm-link">Aç <i class="ti ti-arrow-right"></i></span>
+  </a>
+
+</section>
+
+<section class="sm-footer">
+  <strong>Not:</strong> Bu sayfa geçici geliştirme aracıdır. Sağ alt köşedeki turuncu "Harita" butonu her sayfada bulunur — buradan haritaya geri dönebilirsin. Bittiğinde sitemap.html dosyasını ve diğer sayfalardaki <code>.site-map-btn</code> sınıflı elementleri silerek temizleyebilirsin.
+</section>
+
+</body>
+</html>

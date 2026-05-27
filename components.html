@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bileşenler — Runik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#F7F4EF;font-family:'Jost',sans-serif;min-height:100vh;padding:0 32px;color:#3B2A1C;}
+
+  /* ============ SHARED HEADER ============ */
+  .site-header{position:sticky;top:0;z-index:50;margin:0 -32px;background:rgba(247,244,239,.88);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid #E8E1D2;}
+  .header-inner{max-width:1240px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:32px;}
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:#3B2A1C;}
+  .logo-img{height:46px;width:auto;display:block;}
+  .nav{display:flex;gap:36px;align-items:center;}
+  .nav a{color:#3B2A1C;text-decoration:none;font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.4px;position:relative;padding:6px 0;transition:color .2s ease;}
+  .nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left center;transition:transform .3s cubic-bezier(.16,1,.3,1);}
+  .nav a:hover::after,.nav a.is-active::after{transform:scaleX(1);}
+  .nav-actions{display:flex;gap:4px;align-items:center;}
+  .icon-btn{width:40px;height:40px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#3B2A1C;font-size:19px;transition:background .2s ease;position:relative;}
+  .icon-btn:hover{background:rgba(59,42,28,.07);}
+  .icon-btn .badge{position:absolute;top:6px;right:6px;background:#F2541B;color:#fff;min-width:16px;height:16px;padding:0 4px;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;display:flex;align-items:center;justify-content:center;border-radius:8px;}
+
+  /* ============ COMPONENTS PAGE LAYOUT ============ */
+  .cmp-page-head{
+    max-width:1240px;margin:48px auto 32px;padding:0 4px;
+  }
+  .cmp-eyebrow{
+    font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2.5px;
+    text-transform:uppercase;color:#F2541B;font-weight:500;
+  }
+  .cmp-page-head h1{
+    font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:600;
+    line-height:1;margin-top:14px;letter-spacing:.2px;
+  }
+  .cmp-page-head p{
+    font-family:'Jost',sans-serif;font-size:15px;color:#6E5D4B;
+    font-weight:300;line-height:1.55;margin-top:18px;max-width:560px;
+  }
+
+  .cmp-shell{
+    max-width:1240px;margin:0 auto 96px;
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:64px;
+    align-items:flex-start;
+  }
+  .cmp-side{
+    position:sticky;top:104px;
+    display:flex;flex-direction:column;gap:2px;
+    padding-top:8px;
+  }
+  .cmp-side h4{
+    font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:#9B8A75;font-weight:500;
+    margin-bottom:12px;
+  }
+  .cmp-side a{
+    font-family:'Jost',sans-serif;font-size:13.5px;
+    color:#6E5D4B;text-decoration:none;
+    padding:8px 0;
+    border-left:1px solid transparent;
+    padding-left:14px;margin-left:-14px;
+    transition:all .2s ease;
+  }
+  .cmp-side a:hover{color:#3B2A1C;}
+  .cmp-side a.is-active{color:#F2541B;border-left-color:#F2541B;}
+
+  .cmp-main{display:flex;flex-direction:column;gap:64px;}
+  .cmp-section{}
+  .cmp-section > h2{
+    font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;
+    color:#3B2A1C;letter-spacing:.2px;line-height:1;
+    padding-bottom:18px;border-bottom:1px solid #E8E1D2;
+    margin-bottom:28px;
+  }
+  .cmp-row{
+    display:flex;flex-direction:column;gap:14px;
+    margin-bottom:36px;
+  }
+  .cmp-label{
+    font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;
+    text-transform:uppercase;color:#9B8A75;font-weight:500;
+  }
+  .cmp-label code{
+    font-family:'SF Mono',Menlo,monospace;font-size:10.5px;
+    background:#EDE4D3;padding:3px 7px;color:#3B2A1C;letter-spacing:0;
+    text-transform:none;margin-left:8px;
+  }
+  .cmp-demo{
+    background:#fff;border:1px solid #E8E1D2;
+    padding:36px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+    min-height:120px;
+  }
+  .cmp-demo.dark{background:#1F3A2E;border-color:#1F3A2E;}
+  .cmp-demo.empty{padding:0;}
+  .cmp-demo.compact{min-height:auto;padding:24px;}
+  .cmp-desc{
+    font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;
+    font-weight:300;line-height:1.6;max-width:580px;margin-top:-4px;
+  }
+
+  /* ============ COLOR TILES ============ */
+  .colors-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  .color-tile{
+    aspect-ratio:1/.85;
+    background:var(--c);
+    position:relative;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:18px;
+    border:1px solid rgba(59,42,28,.08);
+  }
+  .color-tile .ct-hex{
+    font-family:'Jost',sans-serif;font-size:13px;font-weight:500;
+    color:var(--text,#fff);letter-spacing:.3px;
+  }
+  .color-tile .ct-name{
+    font-family:'Jost',sans-serif;font-size:11px;
+    color:var(--text,rgba(255,255,255,.75));letter-spacing:.4px;
+    margin-top:3px;
+  }
+
+  /* ============ TYPOGRAPHY SAMPLES ============ */
+  .type-sample{
+    background:#fff;border:1px solid #E8E1D2;
+    padding:28px 32px;
+    margin-bottom:14px;
+  }
+  .type-sample .ts-text{color:#3B2A1C;line-height:1.1;}
+  .type-sample .ts-meta{
+    font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;
+    color:#9B8A75;text-transform:uppercase;margin-top:10px;
+  }
+  .ts-h1{font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;letter-spacing:.3px;}
+  .ts-h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;}
+  .ts-h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;}
+  .ts-h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;font-style:italic;}
+  .ts-body{font-family:'Jost',sans-serif;font-size:15px;font-weight:300;line-height:1.6;color:#6E5D4B;}
+  .ts-small{font-family:'Jost',sans-serif;font-size:13px;font-weight:400;color:#6E5D4B;}
+  .ts-caps{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3B2A1C;font-weight:500;}
+
+  /* ============ BUTTONS (DEMO) ============ */
+  .btn-orange{background:#F2541B;color:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.4px;padding:16px 26px;display:inline-flex;align-items:center;gap:8px;transition:filter .2s ease;}
+  .btn-orange:hover{filter:brightness(1.08);}
+  .btn-dark{background:#1F1A14;color:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.4px;padding:16px 26px;display:inline-flex;align-items:center;gap:8px;transition:filter .2s ease;}
+  .btn-dark:hover{filter:brightness(1.4);}
+  .btn-outline{background:transparent;color:#F2541B;border:1px solid #F2541B;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.4px;padding:15px 26px;display:inline-flex;align-items:center;gap:8px;transition:background .2s ease;}
+  .btn-outline:hover{background:rgba(242,84,27,.06);}
+  .btn-pill{background:rgba(59,42,28,.1);color:#3B2A1C;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;padding:11px 18px;display:inline-flex;align-items:center;gap:7px;}
+  .btn-pill.dark{background:#3B2A1C;color:#fff;}
+  .btn-cream{background:#EFE9D9;color:#1F3A2E;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:20px 36px;}
+  .btn-link{font-family:'Jost',sans-serif;font-size:13px;color:#3B2A1C;text-decoration:none;border-bottom:1px solid #3B2A1C;padding-bottom:5px;display:inline-flex;align-items:center;gap:10px;transition:gap .25s ease;}
+  .btn-link:hover{gap:16px;}
+
+  /* ============ BADGES ============ */
+  .badge-cat{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;font-weight:500;color:#F2541B;text-transform:uppercase;}
+  .badge-new{display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,.15);padding:7px 16px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.18);}
+  .badge-new .tag{background:#3B2A1C;color:#fff;font-size:10px;font-weight:600;letter-spacing:1.5px;padding:4px 10px;text-transform:uppercase;line-height:1;}
+  .badge-count{background:#F2541B;color:#fff;min-width:18px;height:18px;padding:0 5px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;}
+  .stars-demo{display:inline-flex;gap:3px;color:#F2541B;font-size:17px;}
+  .stars-demo .empty{color:#E0D6C4;}
+
+  /* ============ CARDS DEMO (mini ürün kartı) ============ */
+  .mini-card{width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;}
+  .mini-card-top{display:flex;justify-content:flex-end;padding:16px 18px 0;}
+  .mini-fav{width:32px;height:32px;background:rgba(59,42,28,.08);border:none;color:#3B2A1C;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+  .mini-cover-area{flex:1;display:flex;align-items:center;justify-content:center;padding:12px;}
+  .mini-cover{width:130px;height:200px;background:linear-gradient(135deg,#1A4863,#0A2A3E);display:flex;flex-direction:column;justify-content:flex-end;padding:14px 12px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;line-height:1.1;box-shadow:0 14px 22px -10px rgba(0,0,0,.5);}
+  .mini-bot{padding:0 18px 18px;text-align:center;}
+  .mini-author{font-size:9px;letter-spacing:1.4px;color:#A68A6D;text-transform:uppercase;}
+  .mini-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#3B2A1C;margin-top:4px;}
+  .mini-price{font-size:14px;color:#3B2A1C;font-weight:500;margin-top:8px;}
+  .mini-old{text-decoration:line-through;color:#A68A6D;font-size:11px;margin-right:6px;}
+
+  /* author card demo */
+  .author-mini{display:flex;flex-direction:column;align-items:center;width:130px;cursor:pointer;}
+  .author-mini-photo{width:100%;aspect-ratio:1/1;background:#3B5C46;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:#F4ECDD;letter-spacing:1px;position:relative;overflow:hidden;}
+  .author-mini-photo::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.15) 0%,transparent 50%);}
+  .author-mini-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;margin-top:12px;text-align:center;}
+  .author-mini-meta{font-family:'Jost',sans-serif;font-size:10px;color:#9B8A75;margin-top:3px;letter-spacing:.4px;}
+
+  /* bestseller mini */
+  .bs-mini{background:#1F3A2E;padding:32px;display:flex;gap:24px;}
+  .bs-mini-item{position:relative;padding-left:24px;}
+  .bs-mini-number{position:absolute;left:-10px;top:-12px;font-family:'Jost',sans-serif;font-size:96px;font-weight:500;color:rgba(244,236,221,.16);line-height:.85;pointer-events:none;}
+  .bs-mini-cover{position:relative;z-index:1;width:80px;height:120px;background:linear-gradient(135deg,#1B95C0,#0A5F7C);display:flex;flex-direction:column;justify-content:flex-end;padding:10px 8px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:600;line-height:1.05;box-shadow:0 14px 22px -10px rgba(0,0,0,.45);}
+  .bs-mini-info{margin-top:10px;color:#F4ECDD;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;}
+  .bs-mini-info .p{font-family:'Jost',sans-serif;font-size:11px;color:#FF8A3D;margin-top:4px;}
+
+  /* a-z mini */
+  .alpha-mini{display:flex;gap:4px;flex-wrap:wrap;}
+  .alpha-mini button{width:30px;height:30px;background:transparent;border:none;font-family:'Jost',sans-serif;font-size:12px;color:#3B2A1C;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .alpha-mini button.active{background:#F2541B;color:#fff;}
+  .alpha-mini button.dis{color:#D5C9B7;}
+
+  /* page banner mini */
+  .pb-mini{padding:48px 32px;background:linear-gradient(155deg,#FF8A3D 0%,#F2541B 55%,#C53A0E 100%);color:#fff;text-align:center;}
+  .pb-mini .pbm-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;margin-top:12px;}
+  .pb-mini .pbm-desc{font-family:'Jost',sans-serif;font-size:13px;font-weight:300;margin-top:10px;opacity:.95;}
+
+  /* cta banner mini */
+  .cta-mini{padding:40px 36px;background:#1F3A2E;color:#EFE9D9;}
+  .cta-mini h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;line-height:1.05;margin-bottom:20px;}
+  .cta-mini .actions{display:flex;gap:10px;}
+
+  /* section head demo */
+  .sh-demo{display:flex;align-items:flex-end;justify-content:space-between;padding:18px 24px;background:#fff;border:1px solid #E8E1D2;}
+  .sh-demo h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;}
+
+  /* input */
+  .input-demo{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #E8E1D2;padding:14px 18px;width:340px;}
+  .input-demo i{color:#9B8A75;font-size:18px;}
+  .input-demo input{flex:1;border:none;background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;outline:none;}
+  .input-demo input::placeholder{color:#9B8A75;}
+
+  /* footer (kısa) */
+  .site-footer{margin:0 -32px;background:#1F3A2E;color:#C9BFA8;}
+  .footer-inner{max-width:1240px;margin:0 auto;padding:64px 32px 32px;}
+  .footer-bottom{padding-top:24px;border-top:1px solid rgba(231,222,200,.12);display:flex;justify-content:space-between;font-family:'Jost',sans-serif;font-size:12px;color:#8D8268;}
+  .footer-logo-mini{height:80px;width:auto;display:block;margin-bottom:20px;}
+  .footer-tag-mini{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#E7DEC8;}
+
+  /* ============ PRODUCT CARD VARIANTS ============ */
+  .mini-card{position:relative;transition:transform .25s ease,box-shadow .25s ease;}
+  .mini-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px -12px rgba(59,42,28,.18);}
+  .mini-card .card-ribbon{position:absolute;top:16px;left:0;z-index:2;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;padding:6px 14px 6px 12px;color:#fff;}
+  .mini-card .card-ribbon.ribbon-new{background:#F2541B;}
+  .mini-card .card-ribbon.ribbon-sale{background:#C53A0E;}
+  .mini-card .card-ribbon.ribbon-editor{background:#1F3A2E;}
+  .mini-card.card-soldout .mini-cover-area{opacity:.4;filter:grayscale(.5);}
+  .mini-card.card-soldout .soldout-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#3B2A1C;background:rgba(247,244,239,.92);padding:10px 20px;border:1px solid #E8E1D2;}
+  .mini-card .card-actions{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;gap:8px;opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:4;}
+  .mini-card:hover .card-actions{opacity:1;pointer-events:auto;}
+  .card-action-btn{width:38px;height:38px;background:rgba(255,255,255,.95);border:1px solid #E8E1D2;color:#3B2A1C;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:background .2s ease;}
+  .card-action-btn:hover{background:#F2541B;color:#fff;border-color:#F2541B;}
+  .discount-pct{position:absolute;top:64px;right:16px;z-index:2;background:#C53A0E;color:#fff;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 4px 10px -2px rgba(197,58,14,.3);}
+
+  /* horizontal card */
+  .h-card{display:flex;background:#fff;border:1px solid #E8E1D2;width:100%;max-width:520px;transition:box-shadow .25s ease;}
+  .h-card:hover{box-shadow:0 8px 28px -8px rgba(59,42,28,.12);}
+  .h-card-cover{width:140px;min-height:180px;background:#ECE6DC;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:16px;}
+  .h-card-cover .mini-cover{width:90px;height:135px;font-size:11px;padding:10px 8px;}
+  .h-card-body{flex:1;padding:20px 24px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
+  .h-card-cat{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:#F2541B;font-weight:500;}
+  .h-card-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#3B2A1C;line-height:1.15;}
+  .h-card-author{font-family:'Jost',sans-serif;font-size:12px;color:#9B8A75;letter-spacing:.3px;}
+  .h-card-desc{font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;font-weight:300;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .h-card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:6px;}
+  .h-card-price{font-family:'Jost',sans-serif;font-size:16px;font-weight:500;color:#3B2A1C;}
+
+  /* collection card */
+  .collection-card{width:260px;height:200px;position:relative;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;}
+  .collection-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(31,58,46,.85) 100%);z-index:1;}
+  .collection-card *{position:relative;z-index:2;}
+  .collection-card-cat{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FF8A3D;font-weight:500;}
+  .collection-card-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#F4ECDD;line-height:1.1;margin-top:4px;}
+  .collection-card-count{font-family:'Jost',sans-serif;font-size:11px;color:rgba(244,236,221,.7);margin-top:6px;}
+
+  /* author card detailed */
+  .author-detail{display:flex;flex-direction:column;align-items:center;width:200px;background:#fff;border:1px solid #E8E1D2;padding:24px 18px 20px;cursor:pointer;transition:box-shadow .25s ease;}
+  .author-detail:hover{box-shadow:0 8px 24px -6px rgba(59,42,28,.12);}
+  .author-detail-photo{width:80px;height:80px;border-radius:50%;background:#3B5C46;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#F4ECDD;overflow:hidden;position:relative;}
+  .author-detail-photo::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.15) 0%,transparent 50%);border-radius:50%;}
+  .author-detail-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-top:14px;text-align:center;color:#3B2A1C;}
+  .author-detail-bio{font-family:'Jost',sans-serif;font-size:12px;color:#6E5D4B;font-weight:300;line-height:1.5;text-align:center;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .author-detail-link{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#F2541B;font-weight:500;text-decoration:none;margin-top:12px;border-bottom:1px solid transparent;transition:border-color .2s ease;}
+  .author-detail-link:hover{border-bottom-color:#F2541B;}
+
+  /* ============ NEW BADGES ============ */
+  .badge-discount{display:inline-flex;align-items:center;gap:5px;background:#C53A0E;color:#fff;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;padding:5px 12px;}
+  .badge-stock{font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.5px;padding:5px 12px;display:inline-flex;align-items:center;gap:5px;}
+  .badge-stock.in-stock{background:rgba(31,58,46,.1);color:#1F3A2E;}
+  .badge-stock.low-stock{background:rgba(242,84,27,.1);color:#C53A0E;}
+  .badge-stock.out-stock{background:rgba(59,42,28,.08);color:#9B8A75;}
+  .badge-stock i{font-size:13px;}
+  .badge-format{font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border:1px solid #E8E1D2;color:#6E5D4B;display:inline-flex;align-items:center;gap:5px;}
+  .badge-format i{font-size:12px;}
+  .badge-editor{display:inline-flex;align-items:center;gap:6px;background:#1F3A2E;color:#EFE9D9;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;}
+  .badge-editor i{font-size:13px;}
+  .badge-award{display:inline-flex;align-items:center;gap:5px;background:#FAF3E3;color:#A68A6D;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border:1px solid #E8E1D2;}
+  .badge-award i{font-size:13px;color:#F2541B;}
+
+  /* ============ FORM ELEMENTS ============ */
+  .form-group{display:flex;flex-direction:column;gap:6px;width:320px;}
+  .form-label{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#9B8A75;font-weight:500;}
+  .form-input{background:#fff;border:1px solid #E8E1D2;padding:14px 16px;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;outline:none;transition:border-color .2s ease;}
+  .form-input:focus{border-color:#F2541B;}
+  .form-input::placeholder{color:#9B8A75;}
+  .form-input.error{border-color:#C53A0E;}
+  .form-error{font-family:'Jost',sans-serif;font-size:12px;color:#C53A0E;display:flex;align-items:center;gap:4px;}
+  .form-error i{font-size:14px;}
+
+  .form-select{position:relative;width:220px;}
+  .form-select select{width:100%;appearance:none;background:#fff;border:1px solid #E8E1D2;padding:12px 36px 12px 16px;font-family:'Jost',sans-serif;font-size:13px;color:#3B2A1C;cursor:pointer;outline:none;transition:border-color .2s ease;}
+  .form-select select:focus{border-color:#F2541B;}
+  .form-select::after{content:'';position:absolute;right:14px;top:50%;transform:translateY(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #9B8A75;pointer-events:none;}
+
+  .form-check{display:flex;align-items:center;gap:10px;cursor:pointer;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;}
+  .form-check input[type="checkbox"]{appearance:none;width:18px;height:18px;border:1px solid #E8E1D2;background:#fff;cursor:pointer;position:relative;flex-shrink:0;transition:all .15s ease;}
+  .form-check input[type="checkbox"]:checked{background:#F2541B;border-color:#F2541B;}
+  .form-check input[type="checkbox"]:checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:12px;font-weight:700;}
+
+  .qty-stepper{display:inline-flex;align-items:center;border:1px solid #E8E1D2;}
+  .qty-stepper button{width:36px;height:36px;background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:16px;color:#3B2A1C;display:flex;align-items:center;justify-content:center;transition:background .15s ease;}
+  .qty-stepper button:hover{background:rgba(59,42,28,.06);}
+  .qty-stepper span{width:40px;text-align:center;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:#3B2A1C;border-left:1px solid #E8E1D2;border-right:1px solid #E8E1D2;height:36px;display:flex;align-items:center;justify-content:center;}
+
+  .form-textarea{background:#fff;border:1px solid #E8E1D2;padding:14px 16px;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;outline:none;resize:vertical;min-height:100px;width:100%;transition:border-color .2s ease;}
+  .form-textarea:focus{border-color:#F2541B;}
+  .form-textarea::placeholder{color:#9B8A75;}
+
+  .range-slider{width:280px;}
+  .range-slider-labels{display:flex;justify-content:space-between;font-family:'Jost',sans-serif;font-size:12px;color:#6E5D4B;margin-bottom:8px;}
+  .range-slider input[type="range"]{width:100%;appearance:none;height:3px;background:#E8E1D2;outline:none;}
+  .range-slider input[type="range"]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:#F2541B;cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.15);}
+
+  /* ============ BUTTON STATES ============ */
+  .btn-icon{width:40px;height:40px;background:#fff;border:1px solid #E8E1D2;color:#3B2A1C;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:17px;transition:all .2s ease;}
+  .btn-icon:hover{background:#F2541B;color:#fff;border-color:#F2541B;}
+  .btn-icon.active{background:#F2541B;color:#fff;border-color:#F2541B;}
+  .btn-icon.rounded{border-radius:50%;}
+
+  .btn-orange.loading{pointer-events:none;opacity:.8;}
+  .btn-orange.loading .btn-text{opacity:0;}
+  .btn-orange.loading .btn-spinner{display:block;}
+  .btn-spinner{display:none;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;position:absolute;top:50%;left:50%;margin:-8px 0 0 -8px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .btn-orange.done{background:#1F3A2E;}
+  .btn-orange.done .btn-text-done{display:inline-flex;}
+  .btn-orange:disabled,.btn-dark:disabled,.btn-outline:disabled{opacity:.4;cursor:not-allowed;pointer-events:none;}
+
+  /* ============ NAVIGATION EXTRAS ============ */
+  .pagination{display:flex;align-items:center;gap:4px;}
+  .pagination a,.pagination span{font-family:'Jost',sans-serif;font-size:13px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#6E5D4B;border:1px solid transparent;transition:all .2s ease;}
+  .pagination a:hover{border-color:#E8E1D2;color:#3B2A1C;}
+  .pagination .active{background:#F2541B;color:#fff;border-color:#F2541B;}
+  .pagination .dots{border:none;cursor:default;color:#9B8A75;}
+  .pagination .pg-arrow{font-size:16px;color:#3B2A1C;}
+
+  .tab-bar{display:flex;gap:0;border-bottom:1px solid #E8E1D2;}
+  .tab-bar a{font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.4px;color:#9B8A75;text-decoration:none;padding:14px 24px;border-bottom:2px solid transparent;transition:all .2s ease;margin-bottom:-1px;}
+  .tab-bar a:hover{color:#3B2A1C;}
+  .tab-bar a.active{color:#F2541B;border-bottom-color:#F2541B;font-weight:500;}
+
+  .mega-menu-demo{background:#fff;border:1px solid #E8E1D2;padding:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;width:100%;}
+  .mega-col h5{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#F2541B;font-weight:500;margin-bottom:12px;}
+  .mega-col a{display:block;font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;text-decoration:none;padding:5px 0;transition:color .15s ease;}
+  .mega-col a:hover{color:#3B2A1C;}
+
+  /* ============ SECTIONS NEW ============ */
+  .book-detail-hero{display:flex;gap:48px;padding:40px;background:#fff;border:1px solid #E8E1D2;width:100%;}
+  .bdh-cover{width:200px;flex-shrink:0;}
+  .bdh-cover-img{width:100%;height:300px;background:linear-gradient(135deg,#1A4863,#0A2A3E);display:flex;flex-direction:column;justify-content:flex-end;padding:18px 14px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;line-height:1.1;box-shadow:0 20px 40px -12px rgba(0,0,0,.4);}
+  .bdh-info{flex:1;display:flex;flex-direction:column;gap:8px;padding-top:8px;}
+  .bdh-cat{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#F2541B;font-weight:500;}
+  .bdh-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#3B2A1C;line-height:1.05;}
+  .bdh-author{font-family:'Jost',sans-serif;font-size:14px;color:#6E5D4B;}
+  .bdh-author a{color:#F2541B;text-decoration:none;}
+  .bdh-meta{display:flex;gap:16px;font-family:'Jost',sans-serif;font-size:12px;color:#9B8A75;margin-top:4px;}
+  .bdh-meta span{display:flex;align-items:center;gap:4px;}
+  .bdh-meta i{font-size:14px;}
+  .bdh-price-box{background:#FAF3E3;padding:18px 22px;display:inline-flex;align-items:center;gap:14px;margin-top:8px;align-self:flex-start;flex-wrap:wrap;}
+  .bdh-price{font-family:'Jost',sans-serif;font-size:28px;font-weight:500;color:#3B2A1C;}
+  .bdh-price-old{font-family:'Jost',sans-serif;font-size:15px;color:#A68A6D;text-decoration:line-through;}
+  .bdh-actions{display:flex;gap:10px;margin-top:8px;}
+
+  .review-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid #E8E1D2;}
+  .review-avatar{width:40px;height:40px;background:#ECE6DC;display:flex;align-items:center;justify-content:center;border-radius:50%;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:#6E5D4B;flex-shrink:0;}
+  .review-body{flex:1;}
+  .review-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+  .review-name{font-family:'Jost',sans-serif;font-size:13px;font-weight:500;color:#3B2A1C;}
+  .review-date{font-family:'Jost',sans-serif;font-size:11px;color:#9B8A75;}
+  .review-stars{display:inline-flex;gap:2px;color:#F2541B;font-size:13px;}
+  .review-stars .empty{color:#E0D6C4;}
+  .review-text{font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;font-weight:300;line-height:1.6;margin-top:6px;}
+
+  .filter-panel{background:#fff;border:1px solid #E8E1D2;padding:24px;width:240px;}
+  .filter-panel h4{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9B8A75;font-weight:500;margin-bottom:14px;}
+  .filter-section{margin-bottom:24px;}
+  .filter-section:last-child{margin-bottom:0;}
+  .filter-section h5{font-family:'Jost',sans-serif;font-size:12px;font-weight:500;color:#3B2A1C;margin-bottom:10px;}
+  .filter-section .form-check{margin-bottom:8px;font-size:13px;}
+
+  /* ============ BANNER TABS (koleksiyon seçici) ============ */
+  .banner-tabs{
+    display:grid;
+    grid-template-columns:repeat(var(--cols,4),1fr);
+    background:#fff;
+    border:1px solid #E8E1D2;
+    position:relative;
+  }
+  .banner-tab{
+    padding:22px 20px;
+    background:#fff;
+    border:none;
+    cursor:pointer;
+    font-family:'Jost',sans-serif;
+    font-size:14.5px;
+    font-weight:500;
+    color:#3B2A1C;
+    text-align:center;
+    letter-spacing:.3px;
+    transition:background .2s ease,color .2s ease;
+    border-right:1px solid #E8E1D2;
+    position:relative;
+    line-height:1.2;
+  }
+  .banner-tab:last-child{border-right:none;}
+  .banner-tab:hover:not(.is-active){background:#FAF3E3;color:#F2541B;}
+  .banner-tab.is-active{
+    background:#F2541B;
+    color:#fff;
+    font-weight:600;
+    border-right-color:transparent;
+    box-shadow:0 4px 14px -4px rgba(242,84,27,.4);
+  }
+  .banner-tab.is-active + .banner-tab{border-left:1px solid transparent;}
+  .banner-tab.is-active::before{
+    content:'';
+    position:absolute;
+    left:0;right:0;top:0;
+    height:3px;
+    background:#C53A0E;
+  }
+  .banner-tab.is-active::after{
+    content:'';
+    position:absolute;
+    bottom:-10px;left:50%;
+    transform:translateX(-50%);
+    width:0;height:0;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-top:10px solid #F2541B;
+    z-index:1;
+  }
+
+  .mini-cart{background:#fff;border:1px solid #E8E1D2;width:340px;padding:24px;}
+  .mini-cart h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#3B2A1C;margin-bottom:16px;}
+  .cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #E8E1D2;}
+  .cart-item-cover{width:50px;height:75px;background:linear-gradient(135deg,#1A4863,#0A2A3E);flex-shrink:0;display:flex;flex-direction:column;justify-content:flex-end;padding:6px 5px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:8px;font-weight:600;line-height:1;}
+  .cart-item-info{flex:1;display:flex;flex-direction:column;gap:2px;}
+  .cart-item-title{font-family:'Jost',sans-serif;font-size:13px;font-weight:500;color:#3B2A1C;}
+  .cart-item-author{font-family:'Jost',sans-serif;font-size:11px;color:#9B8A75;}
+  .cart-item-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
+  .cart-item-price{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:#3B2A1C;}
+  .cart-item-remove{background:none;border:none;color:#9B8A75;font-size:14px;cursor:pointer;padding:2px;}
+  .cart-item-remove:hover{color:#C53A0E;}
+  .cart-total{display:flex;justify-content:space-between;padding:16px 0 0;margin-top:4px;font-family:'Jost',sans-serif;}
+  .cart-total-label{font-size:13px;color:#6E5D4B;letter-spacing:.5px;}
+  .cart-total-price{font-size:18px;font-weight:500;color:#3B2A1C;}
+
+  @media (max-width:880px){
+    .cmp-shell{grid-template-columns:1fr;}
+    .cmp-side{position:static;flex-direction:row;flex-wrap:wrap;}
+    .colors-grid{grid-template-columns:repeat(2,1fr);}
+    .nav{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/" aria-label="Runik anasayfa">
+      <img src="/assets/runik-logo.png" alt="Runik" class="logo-img">
+    </a>
+    <nav class="nav" aria-label="Ana menü">
+      <a href="/">Anasayfa</a>
+      <a href="/yazarlar">Yazarlar</a>
+      <a href="/components" class="is-active">Bileşenler</a>
+      <a href="#">Hakkımızda</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Ara"><i class="ti ti-search"></i></button>
+      <button class="icon-btn" aria-label="Hesabım"><i class="ti ti-user"></i></button>
+      <button class="icon-btn" aria-label="Favoriler"><i class="ti ti-heart"></i></button>
+      <button class="icon-btn" aria-label="Sepet"><i class="ti ti-shopping-bag"></i><span class="badge">2</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HEAD -->
+<header class="cmp-page-head">
+  <span class="cmp-eyebrow">Design System</span>
+  <h1>Bileşenler</h1>
+  <p>Runik'in tasarım sisteminde kullanılan tüm renkler, tipografi, butonlar, kart ve section bileşenleri. Yeni sayfa tasarlarken referans olarak kullan.</p>
+</header>
+
+<div class="cmp-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="cmp-side">
+    <h4>İçerik</h4>
+    <a href="#colors" class="is-active">Renkler</a>
+    <a href="#typography">Tipografi</a>
+    <a href="#buttons">Butonlar</a>
+    <a href="#badges">Etiketler</a>
+    <a href="#inputs">Form</a>
+    <a href="#cards">Kartlar</a>
+    <a href="#sections">Section'lar</a>
+    <a href="#navigation">Navigasyon</a>
+    <a href="#footer">Footer</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="cmp-main">
+
+    <!-- ============ COLORS ============ -->
+    <section id="colors" class="cmp-section">
+      <h2>Renkler</h2>
+      <p class="cmp-desc">Krem ve sıcak kahve tonları üzerine kurulu palet. Turuncu vurgu (accent), koyu yeşil derinlik için, koyu kahve metinler için.</p>
+      <div class="colors-grid" style="margin-top:24px;">
+        <div class="color-tile" style="--c:#F2541B"><span class="ct-hex">#F2541B</span><span class="ct-name">Primary / Orange</span></div>
+        <div class="color-tile" style="--c:#FF8A3D"><span class="ct-hex">#FF8A3D</span><span class="ct-name">Orange Light</span></div>
+        <div class="color-tile" style="--c:#C53A0E"><span class="ct-hex">#C53A0E</span><span class="ct-name">Orange Deep</span></div>
+        <div class="color-tile" style="--c:#1F3A2E"><span class="ct-hex">#1F3A2E</span><span class="ct-name">Forest Green</span></div>
+        <div class="color-tile" style="--c:#3B2A1C"><span class="ct-hex">#3B2A1C</span><span class="ct-name">Text / Bark</span></div>
+        <div class="color-tile" style="--c:#6E5D4B"><span class="ct-hex">#6E5D4B</span><span class="ct-name">Text Soft</span></div>
+        <div class="color-tile" style="--c:#9B8A75"><span class="ct-hex">#9B8A75</span><span class="ct-name">Muted</span></div>
+        <div class="color-tile" style="--c:#A68A6D"><span class="ct-hex">#A68A6D</span><span class="ct-name">Tan</span></div>
+        <div class="color-tile" style="--c:#F7F4EF;--text:#3B2A1C;border-color:#E8E1D2;"><span class="ct-hex">#F7F4EF</span><span class="ct-name">Body Cream</span></div>
+        <div class="color-tile" style="--c:#F1EADA;--text:#3B2A1C;"><span class="ct-hex">#F1EADA</span><span class="ct-name">Surface</span></div>
+        <div class="color-tile" style="--c:#F4ECDD;--text:#3B2A1C;"><span class="ct-hex">#F4ECDD</span><span class="ct-name">Container</span></div>
+        <div class="color-tile" style="--c:#ECE6DC;--text:#3B2A1C;"><span class="ct-hex">#ECE6DC</span><span class="ct-name">Card Cream</span></div>
+        <div class="color-tile" style="--c:#FAF3E3;--text:#3B2A1C;"><span class="ct-hex">#FAF3E3</span><span class="ct-name">Price Box</span></div>
+        <div class="color-tile" style="--c:#E8E1D2;--text:#3B2A1C;"><span class="ct-hex">#E8E1D2</span><span class="ct-name">Border</span></div>
+        <div class="color-tile" style="--c:#EFE9D9;--text:#3B2A1C;"><span class="ct-hex">#EFE9D9</span><span class="ct-name">On Forest</span></div>
+        <div class="color-tile" style="--c:#fff;--text:#3B2A1C;border-color:#E8E1D2;"><span class="ct-hex">#FFFFFF</span><span class="ct-name">White</span></div>
+      </div>
+    </section>
+
+    <!-- ============ TYPOGRAPHY ============ -->
+    <section id="typography" class="cmp-section">
+      <h2>Tipografi</h2>
+      <p class="cmp-desc">Başlıklar için <em>Cormorant Garamond</em> (serif), gövde metni için <em>Jost</em> (sans-serif).</p>
+      <div style="margin-top:24px;">
+        <div class="type-sample"><div class="ts-text ts-h1">Edebiyatın izini</div><div class="ts-meta">Cormorant Garamond · 62px · 600</div></div>
+        <div class="type-sample"><div class="ts-text ts-h2">Yeni Çıkanlar</div><div class="ts-meta">Cormorant Garamond · 44px · 500</div></div>
+        <div class="type-sample"><div class="ts-text ts-h3">Öne Çıkanlar</div><div class="ts-meta">Cormorant Garamond · 32px · 600</div></div>
+        <div class="type-sample"><div class="ts-text ts-h4">"Bazı defterler kapanmaz."</div><div class="ts-meta">Cormorant Garamond · 22px · 600 · italic</div></div>
+        <div class="type-sample"><div class="ts-text ts-body">Runik'in özenle seçilmiş kitap koleksiyonunda her okur kendi sesini bulur — köklü yazarlardan yeni nesle.</div><div class="ts-meta">Jost · 15px · 300 · line-height 1.6</div></div>
+        <div class="type-sample"><div class="ts-text ts-small">150 TL ve üzeri siparişlerde kargo ücretsiz.</div><div class="ts-meta">Jost · 13px · 400</div></div>
+        <div class="type-sample"><div class="ts-text ts-caps">SABAHATTİN ALİ</div><div class="ts-meta">Jost · 11px · 500 · letter-spacing 2px · uppercase</div></div>
+      </div>
+    </section>
+
+    <!-- ============ BUTTONS ============ -->
+    <section id="buttons" class="cmp-section">
+      <h2>Butonlar</h2>
+      <p class="cmp-desc">Birincil aksiyonlar için turuncu, ikincil için koyu, ghost olarak alt çizgili linkler.</p>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Primary <code>.btn-orange</code></span>
+        <div class="cmp-demo"><button class="btn-orange">Sepete Ekle</button><button class="btn-orange"><i class="ti ti-shopping-bag-plus"></i> Sepete Ekle</button></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Secondary <code>.btn-dark</code></span>
+        <div class="cmp-demo"><button class="btn-dark">İncele</button><button class="btn-dark">Yazar Hakkında</button></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Outline <code>.btn-outline</code></span>
+        <div class="cmp-demo"><button class="btn-outline"><i class="ti ti-bookmark"></i> Favorilere Ekle</button></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Pill (kart üzeri) <code>.btn-pill</code></span>
+        <div class="cmp-demo"><button class="btn-pill"><i class="ti ti-shopping-bag-plus"></i> Sepete Ekle</button><button class="btn-pill dark">İncele <i class="ti ti-arrow-right"></i></button></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">CTA cream (yeşil zemin üzerinde) <code>.btn-cream</code></span>
+        <div class="cmp-demo dark"><button class="btn-orange" style="padding:20px 36px;letter-spacing:2px;text-transform:uppercase;">Yeni Kitaplar</button><button class="btn-cream">Kataloğu İndir</button></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Text link <code>.btn-link</code></span>
+        <div class="cmp-demo"><a href="#" class="btn-link">Tümünü Gör <i class="ti ti-arrow-right"></i></a></div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Icon-only butonlar <code>.btn-icon</code></span>
+        <div class="cmp-demo">
+          <button class="btn-icon"><i class="ti ti-heart"></i></button>
+          <button class="btn-icon active"><i class="ti ti-heart"></i></button>
+          <button class="btn-icon"><i class="ti ti-share"></i></button>
+          <button class="btn-icon"><i class="ti ti-bookmark"></i></button>
+          <button class="btn-icon rounded"><i class="ti ti-heart"></i></button>
+          <button class="btn-icon rounded"><i class="ti ti-share"></i></button>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Loading state <code>.btn-orange.loading</code></span>
+        <div class="cmp-demo">
+          <button class="btn-orange" style="position:relative;"><span class="btn-text">Sepete Ekle</span></button>
+          <button class="btn-orange loading" style="position:relative;min-width:130px;"><span class="btn-text">Sepete Ekle</span><span class="btn-spinner"></span></button>
+          <button class="btn-orange done"><span class="btn-text" style="display:none;">Sepete Ekle</span><span class="btn-text-done" style="display:inline-flex;align-items:center;gap:6px;"><i class="ti ti-check"></i> Eklendi</span></button>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Disabled state</span>
+        <div class="cmp-demo">
+          <button class="btn-orange" disabled>Sepete Ekle</button>
+          <button class="btn-dark" disabled>İncele</button>
+          <button class="btn-outline" disabled>Favorilere Ekle</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BADGES ============ -->
+    <section id="badges" class="cmp-section">
+      <h2>Etiketler</h2>
+      <p class="cmp-desc">Kategori, durum, format, ödül ve rozet etiketleri.</p>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Kategori <code>.badge-cat</code></span>
+        <div class="cmp-demo"><span class="badge-cat">Roman</span><span class="badge-cat">Şiir</span><span class="badge-cat">Deneme</span><span class="badge-cat">Tarih</span></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Hero "NEW" <code>.badge-new</code></span>
+        <div class="cmp-demo" style="background:linear-gradient(155deg,#FF8A3D,#F2541B);"><span class="badge-new"><span class="tag">Yeni</span> Modern Türk Edebiyatı</span></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">İndirim rozeti <code>.badge-discount</code></span>
+        <div class="cmp-demo"><span class="badge-discount">%30 İndirim</span><span class="badge-discount">%50 İndirim</span></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Stok durumu <code>.badge-stock</code></span>
+        <div class="cmp-demo">
+          <span class="badge-stock in-stock"><i class="ti ti-check"></i> Stokta</span>
+          <span class="badge-stock low-stock"><i class="ti ti-alert-circle"></i> Son 3 Adet</span>
+          <span class="badge-stock out-stock"><i class="ti ti-x"></i> Tükendi</span>
+        </div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Format <code>.badge-format</code></span>
+        <div class="cmp-demo">
+          <span class="badge-format"><i class="ti ti-book"></i> Ciltli</span>
+          <span class="badge-format"><i class="ti ti-book-2"></i> Ciltsiz</span>
+          <span class="badge-format"><i class="ti ti-device-tablet"></i> E-Kitap</span>
+        </div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Editörün seçimi <code>.badge-editor</code></span>
+        <div class="cmp-demo"><span class="badge-editor"><i class="ti ti-star"></i> Editörün Seçimi</span></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Ödül rozeti <code>.badge-award</code></span>
+        <div class="cmp-demo">
+          <span class="badge-award"><i class="ti ti-trophy"></i> Nobel Edebiyat</span>
+          <span class="badge-award"><i class="ti ti-trophy"></i> Orhan Kemal Ödülü</span>
+        </div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Sepet sayısı <code>.badge-count</code></span>
+        <div class="cmp-demo"><button class="icon-btn"><i class="ti ti-shopping-bag"></i><span class="badge">2</span></button><button class="icon-btn"><i class="ti ti-heart"></i><span class="badge">12</span></button></div>
+      </div>
+      <div class="cmp-row">
+        <span class="cmp-label">Yıldız değerlendirme <code>.stars-demo</code></span>
+        <div class="cmp-demo"><span class="stars-demo">★★★★★</span><span class="stars-demo">★★★★<span class="empty">★</span></span><span class="stars-demo">★★★<span class="empty">★★</span></span></div>
+      </div>
+    </section>
+
+    <!-- ============ INPUTS ============ -->
+    <section id="inputs" class="cmp-section">
+      <h2>Form</h2>
+      <p class="cmp-desc">Arama, text input, select, checkbox, adet seçici, textarea ve fiyat aralığı bileşenleri.</p>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Arama input <code>.input-demo</code></span>
+        <div class="cmp-demo">
+          <div class="input-demo"><i class="ti ti-search"></i><input type="text" placeholder="Kitap, yazar veya kategori ara..."></div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Text input + hata durumu <code>.form-input</code></span>
+        <div class="cmp-demo" style="flex-direction:column;align-items:flex-start;gap:24px;">
+          <div class="form-group">
+            <label class="form-label">Ad Soyad</label>
+            <input class="form-input" type="text" placeholder="Adınızı girin...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">E-posta</label>
+            <input class="form-input error" type="email" value="gecersiz-mail">
+            <span class="form-error"><i class="ti ti-alert-circle"></i> Geçerli bir e-posta adresi girin.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Select / dropdown <code>.form-select</code></span>
+        <div class="cmp-demo">
+          <div class="form-select">
+            <select>
+              <option>Sıralama: Önerilen</option>
+              <option>Fiyat: Düşükten Yükseğe</option>
+              <option>Fiyat: Yüksekten Düşüğe</option>
+              <option>En Yeni</option>
+              <option>En Çok Satan</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Checkbox <code>.form-check</code></span>
+        <div class="cmp-demo" style="flex-direction:column;align-items:flex-start;gap:10px;">
+          <label class="form-check"><input type="checkbox" checked> Roman</label>
+          <label class="form-check"><input type="checkbox"> Şiir</label>
+          <label class="form-check"><input type="checkbox" checked> Deneme</label>
+          <label class="form-check"><input type="checkbox"> Tarih</label>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Adet seçici <code>.qty-stepper</code></span>
+        <div class="cmp-demo">
+          <div class="qty-stepper"><button>−</button><span>1</span><button>+</button></div>
+          <div class="qty-stepper"><button>−</button><span>3</span><button>+</button></div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Textarea <code>.form-textarea</code></span>
+        <div class="cmp-demo" style="flex-direction:column;align-items:flex-start;">
+          <div class="form-group" style="width:100%;max-width:480px;">
+            <label class="form-label">İnceleme yaz</label>
+            <textarea class="form-textarea" placeholder="Bu kitap hakkında düşüncelerinizi paylaşın..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Fiyat aralığı slider <code>.range-slider</code></span>
+        <div class="cmp-demo">
+          <div class="range-slider">
+            <div class="range-slider-labels"><span>0 ₺</span><span>500 ₺</span></div>
+            <input type="range" min="0" max="500" value="150">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CARDS ============ -->
+    <section id="cards" class="cmp-section">
+      <h2>Kartlar</h2>
+      <p class="cmp-desc">Ürün kartı varyantları, yazar kartı, bestseller ve koleksiyon kartları.</p>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Ürün kartı — Temel <code>.mini-card</code></span>
+        <div class="cmp-demo">
+          <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
+            <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover">SABAHATTİN ALİ<br><span style="font-size:13px;margin-top:6px;display:block;">Kürk Mantolu Madonna</span></div></div>
+            <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
+              <div class="mini-author">Sabahattin Ali</div>
+              <div class="mini-title">Kürk Mantolu Madonna</div>
+              <div class="mini-price">89 ₺</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Ürün kartı — Yeni <code>.card-ribbon.ribbon-new</code></span>
+        <div class="cmp-demo">
+          <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
+            <span class="card-ribbon ribbon-new">Yeni</span>
+            <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#6B3A5C,#3A1D30);">ELIF ŞAFAK<br><span style="font-size:13px;margin-top:6px;display:block;">Ada</span></div></div>
+            <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
+              <div class="mini-author">Elif Şafak</div>
+              <div class="mini-title">Ada</div>
+              <div class="mini-price">125 ₺</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Ürün kartı — İndirimli <code>.ribbon-sale</code> + <code>.discount-pct</code></span>
+        <div class="cmp-demo">
+          <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
+            <span class="card-ribbon ribbon-sale">İndirim</span>
+            <span class="discount-pct">%30</span>
+            <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#E8AB42,#9E6817);">YAŞAR KEMAL<br><span style="font-size:13px;margin-top:6px;display:block;">İnce Memed</span></div></div>
+            <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
+              <div class="mini-author">Yaşar Kemal</div>
+              <div class="mini-title">İnce Memed</div>
+              <div class="mini-price"><span class="mini-old">155 ₺</span> 110 ₺</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Ürün kartı — Editörün Seçimi <code>.ribbon-editor</code></span>
+        <div class="cmp-demo">
+          <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
+            <span class="card-ribbon ribbon-editor"><i class="ti ti-star" style="font-size:11px;margin-right:2px;"></i> Editörün Seçimi</span>
+            <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#2D5A3D,#1A3526);">AHMET HAMDİ TANPINAR<br><span style="font-size:13px;margin-top:6px;display:block;">Huzur</span></div></div>
+            <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
+              <div class="mini-author">Ahmet Hamdi Tanpınar</div>
+              <div class="mini-title">Huzur</div>
+              <div class="mini-price">98 ₺</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Ürün kartı — Tükendi <code>.card-soldout</code></span>
+        <div class="cmp-demo">
+          <div class="mini-card card-soldout" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
+            <div class="soldout-overlay">Tükendi</div>
+            <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#8B2D2D,#4F1818);">OĞUZ ATAY<br><span style="font-size:13px;margin-top:6px;display:block;">Tutunamayanlar</span></div></div>
+            <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
+              <div class="mini-author">Oğuz Atay</div>
+              <div class="mini-title">Tutunamayanlar</div>
+              <div class="mini-price">145 ₺</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Ürün kartı — Hover (quick-action) <code>.card-actions</code></span>
+        <p class="cmp-desc" style="margin-top:4px;">Hover ile kapak üzerinde hızlı aksiyon butonları belirir. Aşağıdaki kartın üzerine gelin.</p>
+        <div class="cmp-demo">
+          <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
+            <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;position:relative;">
+              <div class="card-actions">
+                <button class="card-action-btn" title="Sepete Ekle"><i class="ti ti-shopping-bag-plus"></i></button>
+                <button class="card-action-btn" title="İncele"><i class="ti ti-eye"></i></button>
+                <button class="card-action-btn" title="Favorilere Ekle"><i class="ti ti-heart"></i></button>
+              </div>
+              <div class="mini-cover">SABAHATTİN ALİ<br><span style="font-size:13px;margin-top:6px;display:block;">Kürk Mantolu Madonna</span></div>
+            </div>
+            <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
+              <div class="mini-author">Sabahattin Ali</div>
+              <div class="mini-title">Kürk Mantolu Madonna</div>
+              <div class="mini-price">89 ₺</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Yatay ürün kartı <code>.h-card</code></span>
+        <div class="cmp-demo" style="flex-direction:column;align-items:flex-start;">
+          <div class="h-card">
+            <div class="h-card-cover"><div class="mini-cover">SABAHATTİN ALİ<br><span style="font-size:11px;margin-top:4px;display:block;">Kürk Mantolu Madonna</span></div></div>
+            <div class="h-card-body">
+              <div class="h-card-cat">Roman</div>
+              <div class="h-card-title">Kürk Mantolu Madonna</div>
+              <div class="h-card-author">Sabahattin Ali</div>
+              <div class="h-card-desc">Bir Ankara memurunun, geçmişte Berlin'de yaşadığı büyük aşkın acı hikâyesini günlük defterinden öğreniyoruz.</div>
+              <div class="h-card-bottom">
+                <span class="h-card-price">89 ₺</span>
+                <button class="btn-pill" style="font-size:12px;padding:8px 14px;"><i class="ti ti-shopping-bag-plus"></i> Ekle</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Koleksiyon kartı <code>.collection-card</code></span>
+        <div class="cmp-demo">
+          <div class="collection-card" style="background:linear-gradient(135deg,#3B5C46 0%,#1F3A2E 100%);">
+            <div class="collection-card-cat">Seçki</div>
+            <div class="collection-card-title">Edebiyat Klasikleri</div>
+            <div class="collection-card-count">24 kitap</div>
+          </div>
+          <div class="collection-card" style="background:linear-gradient(135deg,#8B5A2B 0%,#4A2E14 100%);">
+            <div class="collection-card-cat">Seçki</div>
+            <div class="collection-card-title">Felsefe Serüveni</div>
+            <div class="collection-card-count">18 kitap</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Yazar kartı — Temel <code>.author-card</code></span>
+        <div class="cmp-demo">
+          <div class="author-mini"><div class="author-mini-photo" style="background:#3B5C46">SA</div><div class="author-mini-name">Sabahattin Ali</div><div class="author-mini-meta">12 kitap</div></div>
+          <div class="author-mini"><div class="author-mini-photo" style="background:#8B5A2B">YK</div><div class="author-mini-name">Yaşar Kemal</div><div class="author-mini-meta">18 kitap</div></div>
+          <div class="author-mini"><div class="author-mini-photo" style="background:#A33F2C">OA</div><div class="author-mini-name">Oğuz Atay</div><div class="author-mini-meta">5 kitap</div></div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Yazar kartı — Detaylı <code>.author-detail</code></span>
+        <div class="cmp-demo">
+          <div class="author-detail">
+            <div class="author-detail-photo" style="background:#3B5C46">SA</div>
+            <div class="author-detail-name">Sabahattin Ali</div>
+            <div class="author-detail-bio">Türk edebiyatının en önemli hikâye ve roman yazarlarından biri. Realizm akımının öncü ismi.</div>
+            <a href="#" class="author-detail-link">Kitaplarını Gör →</a>
+          </div>
+          <div class="author-detail">
+            <div class="author-detail-photo" style="background:#8B5A2B">YK</div>
+            <div class="author-detail-name">Yaşar Kemal</div>
+            <div class="author-detail-bio">Anadolu'nun destansı anlatıcısı. Nobel Edebiyat Ödülü'ne aday gösterilmiş dünyaca ünlü yazar.</div>
+            <a href="#" class="author-detail-link">Kitaplarını Gör →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">En çok satan kartı <code>.bs-item</code></span>
+        <div class="cmp-demo empty">
+          <div class="bs-mini" style="width:100%;">
+            <div class="bs-mini-item"><span class="bs-mini-number">1</span><div class="bs-mini-cover">SABAHATTİN ALİ<br>Kürk Mantolu Madonna</div><div class="bs-mini-info">Kürk Mantolu Madonna<div class="p">89 ₺</div></div></div>
+            <div class="bs-mini-item"><span class="bs-mini-number">2</span><div class="bs-mini-cover" style="background:linear-gradient(135deg,#E8AB42,#9E6817);">YAŞAR KEMAL<br>İnce Memed</div><div class="bs-mini-info">İnce Memed<div class="p">110 ₺</div></div></div>
+            <div class="bs-mini-item"><span class="bs-mini-number">3</span><div class="bs-mini-cover" style="background:linear-gradient(135deg,#8B2D2D,#4F1818);">OĞUZ ATAY<br>Tutunamayanlar</div><div class="bs-mini-info">Tutunamayanlar<div class="p">145 ₺</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTIONS ============ -->
+    <section id="sections" class="cmp-section">
+      <h2>Section'lar</h2>
+      <p class="cmp-desc">Sayfa-içi bölümler, bannerlar, detay hero, yorum alanı, filtre paneli ve mini sepet.</p>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Section başlığı <code>.section-head</code></span>
+        <div class="cmp-demo empty">
+          <div class="sh-demo" style="width:100%;"><h3>Öne Çıkanlar</h3><a href="#" class="btn-link">Tümünü Gör <i class="ti ti-arrow-right"></i></a></div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">A-Z Filter <code>.alphabet</code></span>
+        <div class="cmp-demo empty">
+          <div class="alpha-mini" style="width:100%;background:#fff;padding:18px 24px;border:1px solid #E8E1D2;justify-content:center;">
+            <button>Tümü</button>
+            <button>A</button><button>B</button><button>C</button><button class="dis">Ç</button><button>D</button>
+            <button class="active">E</button><button>F</button><button class="dis">G</button><button>H</button>
+            <button>İ</button><button>K</button><button>L</button><button>M</button><button>N</button>
+            <button>O</button><button class="dis">Ö</button><button>P</button><button>R</button><button>S</button>
+            <button>Ş</button><button>T</button><button class="dis">U</button><button class="dis">Ü</button><button>V</button>
+            <button>Y</button><button>Z</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Page detail banner <code>.page-banner</code></span>
+        <div class="cmp-demo empty">
+          <div class="pb-mini" style="width:100%;">
+            <span class="badge-new"><span class="tag">Edebiyat</span></span>
+            <div class="pbm-title">Yazarlar</div>
+            <div class="pbm-desc">Runik kataloğunda yer alan tüm yazarları alfabetik olarak keşfedin.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">CTA banner <code>.cta-banner</code></span>
+        <div class="cmp-demo empty">
+          <div class="cta-mini" style="width:100%;">
+            <h3>Edebiyatın<br>izini sürenler için.</h3>
+            <div class="actions"><button class="btn-orange" style="padding:18px 28px;letter-spacing:2px;text-transform:uppercase;">Yeni Kitaplar</button><button class="btn-cream" style="padding:18px 28px;">Kataloğu İndir</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Banner altı sekme grubu <code>.banner-tabs</code></span>
+        <p class="cmp-desc" style="margin-top:4px;">Hero/banner altında koleksiyon veya tema seçici. Aktif sekme turuncu zemin + beyaz yazı, üstte koyu turuncu ince çizgi, altında banner'a yönlenen ok göstergesi. Tıklayınca seçim değişir.</p>
+        <div class="cmp-demo empty" style="padding:0 0 20px;background:transparent;border:none;">
+          <div class="banner-tabs" id="bannerTabsDemo" style="width:100%;">
+            <button class="banner-tab is-active" data-tab="0">Runik Mayıs Koleksiyonu</button>
+            <button class="banner-tab" data-tab="1">Runik Çocuk</button>
+            <button class="banner-tab" data-tab="2">Runik Genç</button>
+            <button class="banner-tab" data-tab="3">Klasikler Serisi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Kitap detay hero <code>.book-detail-hero</code></span>
+        <div class="cmp-demo empty">
+          <div class="book-detail-hero">
+            <div class="bdh-cover">
+              <div class="bdh-cover-img">SABAHATTİN ALİ<br><span style="font-size:14px;margin-top:8px;display:block;">Kürk Mantolu Madonna</span></div>
+            </div>
+            <div class="bdh-info">
+              <div class="bdh-cat">Roman</div>
+              <div class="bdh-title">Kürk Mantolu Madonna</div>
+              <div class="bdh-author">Yazar: <a href="/yazarlar">Sabahattin Ali</a></div>
+              <div class="bdh-meta">
+                <span><i class="ti ti-book"></i> 176 sayfa</span>
+                <span><i class="ti ti-calendar"></i> 1943</span>
+                <span class="stars-demo" style="font-size:14px;">★★★★★</span>
+                <span style="color:#6E5D4B;">(324 değerlendirme)</span>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:4px;">
+                <span class="badge-format"><i class="ti ti-book"></i> Ciltli</span>
+                <span class="badge-stock in-stock"><i class="ti ti-check"></i> Stokta</span>
+              </div>
+              <div class="bdh-price-box">
+                <span class="bdh-price">89 ₺</span>
+                <span class="bdh-price-old">120 ₺</span>
+                <span class="badge-discount" style="margin-left:8px;">%26 İndirim</span>
+              </div>
+              <div class="bdh-actions">
+                <div class="qty-stepper"><button>−</button><span>1</span><button>+</button></div>
+                <button class="btn-orange"><i class="ti ti-shopping-bag-plus"></i> Sepete Ekle</button>
+                <button class="btn-icon"><i class="ti ti-heart"></i></button>
+                <button class="btn-icon"><i class="ti ti-share"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Yorum / review kartı <code>.review-item</code></span>
+        <div class="cmp-demo" style="flex-direction:column;align-items:stretch;">
+          <div class="review-item">
+            <div class="review-avatar">AY</div>
+            <div class="review-body">
+              <div class="review-head">
+                <span class="review-name">Ayşe Yılmaz</span>
+                <span class="review-stars">★★★★★</span>
+                <span class="review-date">2 gün önce</span>
+              </div>
+              <div class="review-text">Sabahattin Ali'nin en güzel eserlerinden biri. Raif Efendi'nin hikâyesi yıllar sonra bile aynı duyguyu veriyor. Kesinlikle herkesin okuması gereken bir kitap.</div>
+            </div>
+          </div>
+          <div class="review-item" style="border-bottom:none;">
+            <div class="review-avatar">MK</div>
+            <div class="review-body">
+              <div class="review-head">
+                <span class="review-name">Mehmet Kaya</span>
+                <span class="review-stars">★★★★<span class="empty">★</span></span>
+                <span class="review-date">1 hafta önce</span>
+              </div>
+              <div class="review-text">Çok akıcı bir dille yazılmış, bir solukta okudum. Sonu biraz buruk bırakıyor ama edebiyatın gücünü hissettiriyor.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Sidebar filtre paneli <code>.filter-panel</code></span>
+        <div class="cmp-demo">
+          <div class="filter-panel">
+            <h4>Filtreler</h4>
+            <div class="filter-section">
+              <h5>Kategori</h5>
+              <label class="form-check"><input type="checkbox" checked> Roman</label>
+              <label class="form-check"><input type="checkbox"> Şiir</label>
+              <label class="form-check"><input type="checkbox" checked> Deneme</label>
+              <label class="form-check"><input type="checkbox"> Tarih</label>
+            </div>
+            <div class="filter-section">
+              <h5>Fiyat Aralığı</h5>
+              <div class="range-slider" style="width:100%;">
+                <div class="range-slider-labels"><span>0 ₺</span><span>500 ₺</span></div>
+                <input type="range" min="0" max="500" value="200" style="width:100%;">
+              </div>
+            </div>
+            <div class="filter-section">
+              <h5>Format</h5>
+              <label class="form-check"><input type="checkbox" checked> Ciltli</label>
+              <label class="form-check"><input type="checkbox" checked> Ciltsiz</label>
+              <label class="form-check"><input type="checkbox"> E-Kitap</label>
+            </div>
+            <button class="btn-orange" style="width:100%;justify-content:center;margin-top:8px;padding:12px;">Filtrele</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Mini sepet <code>.mini-cart</code></span>
+        <div class="cmp-demo">
+          <div class="mini-cart">
+            <h4>Sepetim (2)</h4>
+            <div class="cart-item">
+              <div class="cart-item-cover">SABAHATTİN ALİ<br>Kürk Mantolu</div>
+              <div class="cart-item-info">
+                <span class="cart-item-title">Kürk Mantolu Madonna</span>
+                <span class="cart-item-author">Sabahattin Ali</span>
+                <div class="cart-item-bottom">
+                  <span class="cart-item-price">89 ₺</span>
+                  <button class="cart-item-remove"><i class="ti ti-trash"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="cart-item">
+              <div class="cart-item-cover" style="background:linear-gradient(135deg,#E8AB42,#9E6817);">YAŞAR KEMAL<br>İnce Memed</div>
+              <div class="cart-item-info">
+                <span class="cart-item-title">İnce Memed</span>
+                <span class="cart-item-author">Yaşar Kemal</span>
+                <div class="cart-item-bottom">
+                  <span class="cart-item-price">110 ₺</span>
+                  <button class="cart-item-remove"><i class="ti ti-trash"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="cart-total">
+              <span class="cart-total-label">Toplam</span>
+              <span class="cart-total-price">199 ₺</span>
+            </div>
+            <button class="btn-orange" style="width:100%;justify-content:center;margin-top:14px;">Ödemeye Geç <i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NAVIGATION ============ -->
+    <section id="navigation" class="cmp-section">
+      <h2>Navigasyon</h2>
+      <p class="cmp-desc">Header, breadcrumb, mega menü, pagination ve tab bar bileşenleri.</p>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Header (yukarıda canlı görünüyor) <code>.site-header</code></span>
+        <p class="cmp-desc" style="margin-top:8px;">Logo + nav linkleri + icon butonlar. <strong>Yeni Çıkanlar</strong>, <strong>Çok Satanlar</strong>, <strong>Kategoriler (dropdown)</strong>, <strong>Yazarlar (dropdown)</strong>, <strong>Hakkımızda</strong>.</p>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Breadcrumb <code>.breadcrumb</code></span>
+        <div class="cmp-demo">
+          <nav style="font-family:'Jost',sans-serif;font-size:12.5px;color:#9B8A75;letter-spacing:.4px;">
+            <a href="#" style="color:#9B8A75;text-decoration:none;">Anasayfa</a>
+            <span style="margin:0 8px;opacity:.5;">/</span>
+            <a href="#" style="color:#9B8A75;text-decoration:none;">Edebiyat</a>
+            <span style="margin:0 8px;opacity:.5;">/</span>
+            <a href="#" style="color:#9B8A75;text-decoration:none;">Roman</a>
+            <span style="margin:0 8px;opacity:.5;">/</span>
+            <span style="color:#3B2A1C;">Kürk Mantolu Madonna</span>
+          </nav>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Mega menü <code>.mega-menu</code></span>
+        <div class="cmp-demo empty">
+          <div class="mega-menu-demo">
+            <div class="mega-col">
+              <h5>Edebiyat</h5>
+              <a href="/kitaplar?cat=Roman">Roman</a>
+              <a href="/kitaplar?cat=Şiir">Şiir</a>
+              <a href="#">Öykü</a>
+              <a href="/kitaplar?cat=Deneme">Deneme</a>
+              <a href="#">Tiyatro</a>
+            </div>
+            <div class="mega-col">
+              <h5>Bilim & Düşünce</h5>
+              <a href="#">Felsefe</a>
+              <a href="#">Psikoloji</a>
+              <a href="/kitaplar?cat=Tarih">Tarih</a>
+              <a href="#">Bilim</a>
+            </div>
+            <div class="mega-col">
+              <h5>Yaşam</h5>
+              <a href="#">Kişisel Gelişim</a>
+              <a href="#">Seyahat</a>
+              <a href="#">Yemek</a>
+              <a href="#">Sanat</a>
+            </div>
+            <div class="mega-col">
+              <h5>Çocuk & Genç</h5>
+              <a href="#">Resimli Kitap</a>
+              <a href="#">Masal</a>
+              <a href="#">Genç Yetişkin</a>
+              <a href="#">Eğitim</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Pagination <code>.pagination</code></span>
+        <div class="cmp-demo">
+          <nav class="pagination">
+            <a href="#" class="pg-arrow"><i class="ti ti-chevron-left"></i></a>
+            <a href="#">1</a>
+            <span class="active">2</span>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <span class="dots">…</span>
+            <a href="#">12</a>
+            <a href="#" class="pg-arrow"><i class="ti ti-chevron-right"></i></a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="cmp-row">
+        <span class="cmp-label">Tab bar <code>.tab-bar</code></span>
+        <div class="cmp-demo empty" style="padding:0;">
+          <div class="tab-bar" style="width:100%;">
+            <a href="#" class="active">Açıklama</a>
+            <a href="#">Detaylar</a>
+            <a href="#">Yorumlar (24)</a>
+            <a href="#">Benzer Kitaplar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <section id="footer" class="cmp-section">
+      <h2>Footer</h2>
+      <p class="cmp-desc">Tam genişlik koyu yeşil banner, 4 sütun link grubu, sosyal medya ikonları.</p>
+      <div class="cmp-row">
+        <span class="cmp-label">Site footer <code>.site-footer</code></span>
+        <p class="cmp-desc" style="margin-top:8px;">Sayfanın altında canlı olarak görüntüleniyor ↓</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER (canlı örnek) -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:flex-start;padding-bottom:48px;border-bottom:1px solid rgba(231,222,200,.12);">
+      <div>
+        <img src="/assets/runik-logo.png" alt="Runik" class="footer-logo-mini">
+        <p class="footer-tag-mini">Edebiyatın izini sürenler için.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;">
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:18px;">Yayınevi</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Hakkımızda</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Yazarlar</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:18px;">Yardım</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">SSS</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Kargo &amp; Teslimat</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:18px;">Hesabım</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Giriş Yap</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Siparişlerim</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:18px;">İletişim</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">info@runik.com.tr</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">İstanbul, Türkiye</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Runik Yayınevi. Tüm hakları saklıdır.</span>
+      <div style="display:flex;gap:10px;">
+        <a href="#" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-instagram"></i></a>
+        <a href="#" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-x"></i></a>
+        <a href="#" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* sidebar active link tracking */
+  var links = document.querySelectorAll('.cmp-side a');
+  var sections = document.querySelectorAll('.cmp-section');
+  function onScroll(){
+    var top = window.scrollY + 200;
+    var current = null;
+    sections.forEach(function(s){
+      if(s.offsetTop <= top) current = s.id;
+    });
+    links.forEach(function(l){
+      l.classList.toggle('is-active', l.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  /* smooth scroll */
+  links.forEach(function(l){
+    l.addEventListener('click', function(e){
+      var id = l.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        window.scrollTo({top:target.offsetTop - 100, behavior:'smooth'});
+        history.replaceState(null, '', '#' + id);
+      }
+    });
+  });
+
+  /* banner tabs demo */
+  document.querySelectorAll('#bannerTabsDemo .banner-tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('#bannerTabsDemo .banner-tab').forEach(function(b){ b.classList.remove('is-active'); });
+      t.classList.add('is-active');
+    });
+  });
+</script>
+</body>
+</html>
