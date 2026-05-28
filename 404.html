@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aradığınız sayfa bulunamadı. Runik Yayınevi kataloğuna geri dönün veya yeni keşifler için kitaplara göz atın.">
+<title>404 — Sayfa Bulunamadı · Runik Yayınevi</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style id="runik-theme-vars">
+:root{
+  --bg:#F7F4EF;
+  --bg-soft:#FAF3E3;
+  --bg-tint:#F4ECDD;
+  --bg-tint-h:#FAEBD5;
+  --border:#E8E1D2;
+  --border-2:#EDE3D2;
+  --text:#3B2A1C;
+  --text-soft:#6E5D4B;
+  --text-faint:#9B8A75;
+  --accent:#F2541B;
+  --card:#FFFFFF;
+}
+html[data-theme="light"]{
+  --bg:#FFFFFF;
+  --bg-soft:#FAFAFA;
+  --bg-tint:#F2F2F2;
+  --bg-tint-h:#E8E8E8;
+  --border:#EAEAEA;
+  --border-2:#ECECEC;
+  --card:#FFFFFF;
+}
+html[data-theme="light"] body{background:#FFFFFF;}
+html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
+</style>
+<script>(function(){try{var t=localStorage.getItem('runik-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    font-family:'Jost',sans-serif;
+    color:var(--text);
+    min-height:100vh;
+    padding:0 32px;
+    display:flex;flex-direction:column;
+  }
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    margin:0 -32px;
+    background:rgba(247,244,239,.88);
+    -webkit-backdrop-filter:saturate(140%) blur(12px);
+    backdrop-filter:saturate(140%) blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .header-inner{
+    max-width:1240px;margin:0 auto;
+    padding:20px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:32px;
+  }
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--text);}
+  .logo-img{height:46px;width:auto;display:block;}
+  .header-nav{display:flex;gap:30px;align-items:center;}
+  .header-nav a{
+    font-family:'Jost',sans-serif;font-size:14px;font-weight:500;
+    color:var(--text);text-decoration:none;position:relative;padding:6px 0;
+  }
+  .header-nav a::after{
+    content:'';position:absolute;left:0;right:0;bottom:0;height:2px;
+    background:var(--accent);transform:scaleX(0);transition:transform .25s ease;
+  }
+  .header-nav a:hover::after{transform:scaleX(1);}
+
+  /* 404 HERO */
+  main.nf{
+    flex:1;
+    max-width:780px;margin:0 auto;
+    padding:120px 24px 96px;
+    text-align:center;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .nf-eyebrow{
+    font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2.8px;
+    text-transform:uppercase;color:var(--accent);font-weight:500;
+  }
+  .nf-code{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(120px, 22vw, 240px);
+    font-weight:600;line-height:.85;
+    color:var(--text);
+    margin-top:18px;
+    letter-spacing:-.04em;
+  }
+  .nf-code span{color:var(--accent);font-style:italic;}
+  .nf-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(28px, 4.5vw, 44px);
+    font-weight:600;line-height:1.15;
+    margin-top:24px;
+    color:var(--text);
+  }
+  .nf-desc{
+    font-family:'Jost',sans-serif;font-size:16px;
+    color:var(--text-soft);font-weight:300;line-height:1.65;
+    max-width:520px;margin:18px auto 0;
+  }
+  .nf-actions{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+    margin-top:36px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Jost',sans-serif;font-size:13px;font-weight:500;
+    letter-spacing:1.6px;text-transform:uppercase;
+    padding:14px 26px;text-decoration:none;
+    border:1px solid var(--text);color:var(--text);
+    background:transparent;cursor:pointer;
+    transition:background .2s ease,color .2s ease,border-color .2s ease;
+  }
+  .btn:hover{background:var(--text);color:var(--bg);}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .btn.primary:hover{filter:brightness(.95);background:var(--accent);color:#fff;}
+  .btn i{font-size:16px;}
+
+  .nf-suggest{
+    margin-top:60px;padding-top:36px;
+    border-top:1px solid var(--border);
+    width:100%;
+  }
+  .nf-suggest-title{
+    font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2.4px;
+    text-transform:uppercase;color:var(--text-faint);font-weight:500;
+    margin-bottom:18px;
+  }
+  .nf-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+  .nf-links a{
+    font-family:'Jost',sans-serif;font-size:13px;
+    color:var(--text);text-decoration:none;
+    padding:8px 16px;border:1px solid var(--border);
+    background:var(--card);
+    transition:border-color .2s ease,color .2s ease;
+  }
+  .nf-links a:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* Compact footer */
+  .nf-footer{
+    margin:0 -32px;
+    padding:32px;
+    border-top:1px solid var(--border);
+    background:var(--bg-soft);
+    font-family:'Jost',sans-serif;font-size:12px;color:var(--text-faint);
+    text-align:center;letter-spacing:.4px;
+  }
+  .nf-footer a{color:var(--text-soft);text-decoration:none;border-bottom:1px solid var(--border);}
+  .nf-footer a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+
+  @media (max-width:680px){
+    body{padding:0 16px;}
+    .site-header{margin:0 -16px;}
+    .header-nav{display:none;}
+    .header-inner{padding:18px 16px;}
+    main.nf{padding:60px 12px 60px;}
+    .nf-footer{margin:0 -16px;padding:24px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/" aria-label="Runik anasayfa">
+      <img src="/assets/runik-logo.png" alt="Runik" class="logo-img">
+    </a>
+    <nav class="header-nav" aria-label="Ana menü">
+      <a href="/kitaplar">Kitaplar</a>
+      <a href="/yazarlar">Yazarlar</a>
+      <a href="/">Anasayfa</a>
+    </nav>
+  </div>
+</header>
+
+<main class="nf">
+  <span class="nf-eyebrow">Hata 404</span>
+  <h1 class="nf-code">4<span>0</span>4</h1>
+  <p class="nf-title">Aradığınız sayfayı bulamadık.</p>
+  <p class="nf-desc">
+    Belki adresi yanlış yazdınız ya da sayfa taşındı. Yine de iyi bir hikâye
+    buradaysa, doğru yere geldiniz — kataloğumuza göz atın.
+  </p>
+  <div class="nf-actions">
+    <a class="btn primary" href="/"><i class="ti ti-arrow-left"></i> Anasayfaya Dön</a>
+    <a class="btn" href="/kitaplar">Tüm Kitaplar <i class="ti ti-arrow-right"></i></a>
+  </div>
+
+  <div class="nf-suggest">
+    <p class="nf-suggest-title">Belki şunlar ilgini çeker</p>
+    <div class="nf-links">
+      <a href="/kitaplar?cat=Roman">Roman</a>
+      <a href="/kitaplar?cat=Şiir">Şiir</a>
+      <a href="/kitaplar?cat=Felsefe">Felsefe</a>
+      <a href="/kitaplar?cat=Tarih">Tarih</a>
+      <a href="/yazarlar">Yazarlar</a>
+      <a href="/kurk-mantolu-madonna">Kürk Mantolu Madonna</a>
+    </div>
+  </div>
+</main>
+
+<footer class="nf-footer">
+  © Runik Yayınevi · <a href="/">runik-site.vercel.app</a>
+</footer>
+
+<!-- Tema toggle (test) -->
+<button id="runikThemeToggle" class="runik-theme-toggle" aria-label="Tema değiştir" title="Tema değiştir">
+  <span class="rtt-icon rtt-sun">&#9728;</span>
+  <span class="rtt-track"><span class="rtt-thumb"></span></span>
+  <span class="rtt-icon rtt-moon">&#9680;</span>
+  <span class="rtt-label">Tema</span>
+</button>
+<style>
+  .runik-theme-toggle{position:fixed;bottom:20px;left:20px;z-index:1000;background:var(--card);border:1px solid var(--border);padding:10px 14px;display:inline-flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:500;color:var(--text);cursor:pointer;box-shadow:0 10px 24px -10px rgba(0,0,0,.18);transition:background .2s ease,border-color .2s ease,color .2s ease;}
+  .runik-theme-toggle:hover{filter:brightness(.98);transform:translateY(-1px);}
+  .runik-theme-toggle .rtt-icon{font-size:12px;color:var(--text-faint);line-height:1;}
+  .runik-theme-toggle .rtt-track{width:30px;height:16px;background:var(--border);border-radius:99px;position:relative;transition:background .2s;}
+  .runik-theme-toggle .rtt-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;background:var(--accent);border-radius:50%;transition:transform .2s ease,background .2s ease;}
+  html[data-theme="light"] .runik-theme-toggle .rtt-thumb{transform:translateX(14px);background:#222;}
+  @media (max-width:680px){
+    .runik-theme-toggle .rtt-label{display:none;}
+  }
+</style>
+<script>
+(function(){
+  var b=document.getElementById('runikThemeToggle');if(!b)return;
+  b.addEventListener('click',function(){
+    var c=document.documentElement.getAttribute('data-theme')||'warm';
+    var n=c==='light'?'warm':'light';
+    document.documentElement.setAttribute('data-theme',n);
+    try{localStorage.setItem('runik-theme',n);}catch(e){}
+  });
+})();
+</script>
+
+</body>
+</html>

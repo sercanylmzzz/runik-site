@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_archive/
+
+Sitemap: https://runik-site.vercel.app/sitemap.xml
