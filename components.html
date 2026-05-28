@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bileşenler — Runik</title>
+<title>BileÅenler â Runik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:#F7F4EF;font-family:'Jost',sans-serif;min-height:100vh;padding:0 32px;color:#3B2A1C;}
+  body{background:var(--bg);font-family:'Jost',sans-serif;min-height:100vh;padding:0 32px;color:var(--text);}
 
   /* ============ SHARED HEADER ============ */
-  .site-header{position:sticky;top:0;z-index:50;margin:0 -32px;background:rgba(247,244,239,.88);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid #E8E1D2;}
+  .site-header{position:sticky;top:0;z-index:50;margin:0 -32px;background:rgba(247,244,239,.88);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--border);}
   .header-inner{max-width:1240px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:32px;}
-  .logo{display:inline-flex;align-items:center;text-decoration:none;color:#3B2A1C;}
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--text);}
   .logo-img{height:46px;width:auto;display:block;}
   .nav{display:flex;gap:36px;align-items:center;}
-  .nav a{color:#3B2A1C;text-decoration:none;font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.4px;position:relative;padding:6px 0;transition:color .2s ease;}
+  .nav a{color:var(--text);text-decoration:none;font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.4px;position:relative;padding:6px 0;transition:color .2s ease;}
   .nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left center;transition:transform .3s cubic-bezier(.16,1,.3,1);}
   .nav a:hover::after,.nav a.is-active::after{transform:scaleX(1);}
   .nav-actions{display:flex;gap:4px;align-items:center;}
-  .icon-btn{width:40px;height:40px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#3B2A1C;font-size:19px;transition:background .2s ease;position:relative;}
+  .icon-btn{width:40px;height:40px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);font-size:19px;transition:background .2s ease;position:relative;}
   .icon-btn:hover{background:rgba(59,42,28,.07);}
-  .icon-btn .badge{position:absolute;top:6px;right:6px;background:#F2541B;color:#fff;min-width:16px;height:16px;padding:0 4px;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;display:flex;align-items:center;justify-content:center;border-radius:8px;}
+  .icon-btn .badge{position:absolute;top:6px;right:6px;background:var(--accent);color:#fff;min-width:16px;height:16px;padding:0 4px;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;display:flex;align-items:center;justify-content:center;border-radius:8px;}
 
   /* ============ COMPONENTS PAGE LAYOUT ============ */
   .cmp-page-head{
@@ -32,14 +32,14 @@
   }
   .cmp-eyebrow{
     font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2.5px;
-    text-transform:uppercase;color:#F2541B;font-weight:500;
+    text-transform:uppercase;color:var(--accent);font-weight:500;
   }
   .cmp-page-head h1{
     font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:600;
     line-height:1;margin-top:14px;letter-spacing:.2px;
   }
   .cmp-page-head p{
-    font-family:'Jost',sans-serif;font-size:15px;color:#6E5D4B;
+    font-family:'Jost',sans-serif;font-size:15px;color:var(--text-soft);
     font-weight:300;line-height:1.55;margin-top:18px;max-width:560px;
   }
 
@@ -57,26 +57,26 @@
   }
   .cmp-side h4{
     font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;
-    text-transform:uppercase;color:#9B8A75;font-weight:500;
+    text-transform:uppercase;color:var(--text-faint);font-weight:500;
     margin-bottom:12px;
   }
   .cmp-side a{
     font-family:'Jost',sans-serif;font-size:13.5px;
-    color:#6E5D4B;text-decoration:none;
+    color:var(--text-soft);text-decoration:none;
     padding:8px 0;
     border-left:1px solid transparent;
     padding-left:14px;margin-left:-14px;
     transition:all .2s ease;
   }
-  .cmp-side a:hover{color:#3B2A1C;}
-  .cmp-side a.is-active{color:#F2541B;border-left-color:#F2541B;}
+  .cmp-side a:hover{color:var(--text);}
+  .cmp-side a.is-active{color:var(--accent);border-left-color:var(--accent);}
 
   .cmp-main{display:flex;flex-direction:column;gap:64px;}
   .cmp-section{}
   .cmp-section > h2{
     font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;
-    color:#3B2A1C;letter-spacing:.2px;line-height:1;
-    padding-bottom:18px;border-bottom:1px solid #E8E1D2;
+    color:var(--text);letter-spacing:.2px;line-height:1;
+    padding-bottom:18px;border-bottom:1px solid var(--border);
     margin-bottom:28px;
   }
   .cmp-row{
@@ -85,15 +85,15 @@
   }
   .cmp-label{
     font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;
-    text-transform:uppercase;color:#9B8A75;font-weight:500;
+    text-transform:uppercase;color:var(--text-faint);font-weight:500;
   }
   .cmp-label code{
     font-family:'SF Mono',Menlo,monospace;font-size:10.5px;
-    background:#EDE4D3;padding:3px 7px;color:#3B2A1C;letter-spacing:0;
+    background:#EDE4D3;padding:3px 7px;color:var(--text);letter-spacing:0;
     text-transform:none;margin-left:8px;
   }
   .cmp-demo{
-    background:#fff;border:1px solid #E8E1D2;
+    background:#fff;border:1px solid var(--border);
     padding:36px;
     display:flex;align-items:center;gap:20px;flex-wrap:wrap;
     min-height:120px;
@@ -102,7 +102,7 @@
   .cmp-demo.empty{padding:0;}
   .cmp-demo.compact{min-height:auto;padding:24px;}
   .cmp-desc{
-    font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;
+    font-family:'Jost',sans-serif;font-size:13px;color:var(--text-soft);
     font-weight:300;line-height:1.6;max-width:580px;margin-top:-4px;
   }
 
@@ -130,79 +130,79 @@
 
   /* ============ TYPOGRAPHY SAMPLES ============ */
   .type-sample{
-    background:#fff;border:1px solid #E8E1D2;
+    background:#fff;border:1px solid var(--border);
     padding:28px 32px;
     margin-bottom:14px;
   }
-  .type-sample .ts-text{color:#3B2A1C;line-height:1.1;}
+  .type-sample .ts-text{color:var(--text);line-height:1.1;}
   .type-sample .ts-meta{
     font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;
-    color:#9B8A75;text-transform:uppercase;margin-top:10px;
+    color:var(--text-faint);text-transform:uppercase;margin-top:10px;
   }
   .ts-h1{font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;letter-spacing:.3px;}
   .ts-h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;}
   .ts-h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;}
   .ts-h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;font-style:italic;}
-  .ts-body{font-family:'Jost',sans-serif;font-size:15px;font-weight:300;line-height:1.6;color:#6E5D4B;}
-  .ts-small{font-family:'Jost',sans-serif;font-size:13px;font-weight:400;color:#6E5D4B;}
-  .ts-caps{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3B2A1C;font-weight:500;}
+  .ts-body{font-family:'Jost',sans-serif;font-size:15px;font-weight:300;line-height:1.6;color:var(--text-soft);}
+  .ts-small{font-family:'Jost',sans-serif;font-size:13px;font-weight:400;color:var(--text-soft);}
+  .ts-caps{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text);font-weight:500;}
 
   /* ============ BUTTONS (DEMO) ============ */
-  .btn-orange{background:#F2541B;color:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.4px;padding:16px 26px;display:inline-flex;align-items:center;gap:8px;transition:filter .2s ease;}
+  .btn-orange{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.4px;padding:16px 26px;display:inline-flex;align-items:center;gap:8px;transition:filter .2s ease;}
   .btn-orange:hover{filter:brightness(1.08);}
   .btn-dark{background:#1F1A14;color:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.4px;padding:16px 26px;display:inline-flex;align-items:center;gap:8px;transition:filter .2s ease;}
   .btn-dark:hover{filter:brightness(1.4);}
-  .btn-outline{background:transparent;color:#F2541B;border:1px solid #F2541B;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.4px;padding:15px 26px;display:inline-flex;align-items:center;gap:8px;transition:background .2s ease;}
+  .btn-outline{background:transparent;color:var(--accent);border:1px solid var(--accent);cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.4px;padding:15px 26px;display:inline-flex;align-items:center;gap:8px;transition:background .2s ease;}
   .btn-outline:hover{background:rgba(242,84,27,.06);}
-  .btn-pill{background:rgba(59,42,28,.1);color:#3B2A1C;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;padding:11px 18px;display:inline-flex;align-items:center;gap:7px;}
-  .btn-pill.dark{background:#3B2A1C;color:#fff;}
+  .btn-pill{background:rgba(59,42,28,.1);color:var(--text);border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;padding:11px 18px;display:inline-flex;align-items:center;gap:7px;}
+  .btn-pill.dark{background:var(--text);color:#fff;}
   .btn-cream{background:#EFE9D9;color:#1F3A2E;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:20px 36px;}
-  .btn-link{font-family:'Jost',sans-serif;font-size:13px;color:#3B2A1C;text-decoration:none;border-bottom:1px solid #3B2A1C;padding-bottom:5px;display:inline-flex;align-items:center;gap:10px;transition:gap .25s ease;}
+  .btn-link{font-family:'Jost',sans-serif;font-size:13px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--text);padding-bottom:5px;display:inline-flex;align-items:center;gap:10px;transition:gap .25s ease;}
   .btn-link:hover{gap:16px;}
 
   /* ============ BADGES ============ */
-  .badge-cat{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;font-weight:500;color:#F2541B;text-transform:uppercase;}
+  .badge-cat{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;font-weight:500;color:var(--accent);text-transform:uppercase;}
   .badge-new{display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,.15);padding:7px 16px;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.18);}
-  .badge-new .tag{background:#3B2A1C;color:#fff;font-size:10px;font-weight:600;letter-spacing:1.5px;padding:4px 10px;text-transform:uppercase;line-height:1;}
-  .badge-count{background:#F2541B;color:#fff;min-width:18px;height:18px;padding:0 5px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;}
-  .stars-demo{display:inline-flex;gap:3px;color:#F2541B;font-size:17px;}
+  .badge-new .tag{background:var(--text);color:#fff;font-size:10px;font-weight:600;letter-spacing:1.5px;padding:4px 10px;text-transform:uppercase;line-height:1;}
+  .badge-count{background:var(--accent);color:#fff;min-width:18px;height:18px;padding:0 5px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;}
+  .stars-demo{display:inline-flex;gap:3px;color:var(--accent);font-size:17px;}
   .stars-demo .empty{color:#E0D6C4;}
 
-  /* ============ CARDS DEMO (mini ürün kartı) ============ */
+  /* ============ CARDS DEMO (mini Ã¼rÃ¼n kartÄ±) ============ */
   .mini-card{width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;}
   .mini-card-top{display:flex;justify-content:flex-end;padding:16px 18px 0;}
-  .mini-fav{width:32px;height:32px;background:rgba(59,42,28,.08);border:none;color:#3B2A1C;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+  .mini-fav{width:32px;height:32px;background:rgba(59,42,28,.08);border:none;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;}
   .mini-cover-area{flex:1;display:flex;align-items:center;justify-content:center;padding:12px;}
   .mini-cover{width:130px;height:200px;background:linear-gradient(135deg,#1A4863,#0A2A3E);display:flex;flex-direction:column;justify-content:flex-end;padding:14px 12px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;line-height:1.1;box-shadow:0 14px 22px -10px rgba(0,0,0,.5);}
   .mini-bot{padding:0 18px 18px;text-align:center;}
   .mini-author{font-size:9px;letter-spacing:1.4px;color:#A68A6D;text-transform:uppercase;}
-  .mini-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#3B2A1C;margin-top:4px;}
-  .mini-price{font-size:14px;color:#3B2A1C;font-weight:500;margin-top:8px;}
+  .mini-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--text);margin-top:4px;}
+  .mini-price{font-size:14px;color:var(--text);font-weight:500;margin-top:8px;}
   .mini-old{text-decoration:line-through;color:#A68A6D;font-size:11px;margin-right:6px;}
 
   /* author card demo */
   .author-mini{display:flex;flex-direction:column;align-items:center;width:130px;cursor:pointer;}
-  .author-mini-photo{width:100%;aspect-ratio:1/1;background:#3B5C46;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:#F4ECDD;letter-spacing:1px;position:relative;overflow:hidden;}
+  .author-mini-photo{width:100%;aspect-ratio:1/1;background:#3B5C46;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:var(--bg-tint);letter-spacing:1px;position:relative;overflow:hidden;}
   .author-mini-photo::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.15) 0%,transparent 50%);}
   .author-mini-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;margin-top:12px;text-align:center;}
-  .author-mini-meta{font-family:'Jost',sans-serif;font-size:10px;color:#9B8A75;margin-top:3px;letter-spacing:.4px;}
+  .author-mini-meta{font-family:'Jost',sans-serif;font-size:10px;color:var(--text-faint);margin-top:3px;letter-spacing:.4px;}
 
   /* bestseller mini */
   .bs-mini{background:#1F3A2E;padding:32px;display:flex;gap:24px;}
   .bs-mini-item{position:relative;padding-left:24px;}
   .bs-mini-number{position:absolute;left:-10px;top:-12px;font-family:'Jost',sans-serif;font-size:96px;font-weight:500;color:rgba(244,236,221,.16);line-height:.85;pointer-events:none;}
   .bs-mini-cover{position:relative;z-index:1;width:80px;height:120px;background:linear-gradient(135deg,#1B95C0,#0A5F7C);display:flex;flex-direction:column;justify-content:flex-end;padding:10px 8px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:600;line-height:1.05;box-shadow:0 14px 22px -10px rgba(0,0,0,.45);}
-  .bs-mini-info{margin-top:10px;color:#F4ECDD;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;}
+  .bs-mini-info{margin-top:10px;color:var(--bg-tint);font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;}
   .bs-mini-info .p{font-family:'Jost',sans-serif;font-size:11px;color:#FF8A3D;margin-top:4px;}
 
   /* a-z mini */
   .alpha-mini{display:flex;gap:4px;flex-wrap:wrap;}
-  .alpha-mini button{width:30px;height:30px;background:transparent;border:none;font-family:'Jost',sans-serif;font-size:12px;color:#3B2A1C;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-  .alpha-mini button.active{background:#F2541B;color:#fff;}
+  .alpha-mini button{width:30px;height:30px;background:transparent;border:none;font-family:'Jost',sans-serif;font-size:12px;color:var(--text);cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .alpha-mini button.active{background:var(--accent);color:#fff;}
   .alpha-mini button.dis{color:#D5C9B7;}
 
   /* page banner mini */
-  .pb-mini{padding:48px 32px;background:linear-gradient(155deg,#FF8A3D 0%,#F2541B 55%,#C53A0E 100%);color:#fff;text-align:center;}
+  .pb-mini{padding:48px 32px;background:linear-gradient(155deg,#FF8A3D 0%,var(--accent) 55%,#C53A0E 100%);color:#fff;text-align:center;}
   .pb-mini .pbm-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;margin-top:12px;}
   .pb-mini .pbm-desc{font-family:'Jost',sans-serif;font-size:13px;font-weight:300;margin-top:10px;opacity:.95;}
 
@@ -212,16 +212,16 @@
   .cta-mini .actions{display:flex;gap:10px;}
 
   /* section head demo */
-  .sh-demo{display:flex;align-items:flex-end;justify-content:space-between;padding:18px 24px;background:#fff;border:1px solid #E8E1D2;}
+  .sh-demo{display:flex;align-items:flex-end;justify-content:space-between;padding:18px 24px;background:#fff;border:1px solid var(--border);}
   .sh-demo h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;}
 
   /* input */
-  .input-demo{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #E8E1D2;padding:14px 18px;width:340px;}
-  .input-demo i{color:#9B8A75;font-size:18px;}
-  .input-demo input{flex:1;border:none;background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;outline:none;}
-  .input-demo input::placeholder{color:#9B8A75;}
+  .input-demo{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);padding:14px 18px;width:340px;}
+  .input-demo i{color:var(--text-faint);font-size:18px;}
+  .input-demo input{flex:1;border:none;background:transparent;font-family:'Jost',sans-serif;font-size:14px;color:var(--text);outline:none;}
+  .input-demo input::placeholder{color:var(--text-faint);}
 
-  /* footer (kısa) */
+  /* footer (kÄ±sa) */
   .site-footer{margin:0 -32px;background:#1F3A2E;color:#C9BFA8;}
   .footer-inner{max-width:1240px;margin:0 auto;padding:64px 32px 32px;}
   .footer-bottom{padding-top:24px;border-top:1px solid rgba(231,222,200,.12);display:flex;justify-content:space-between;font-family:'Jost',sans-serif;font-size:12px;color:#8D8268;}
@@ -232,100 +232,100 @@
   .mini-card{position:relative;transition:transform .25s ease,box-shadow .25s ease;}
   .mini-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px -12px rgba(59,42,28,.18);}
   .mini-card .card-ribbon{position:absolute;top:16px;left:0;z-index:2;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;padding:6px 14px 6px 12px;color:#fff;}
-  .mini-card .card-ribbon.ribbon-new{background:#F2541B;}
+  .mini-card .card-ribbon.ribbon-new{background:var(--accent);}
   .mini-card .card-ribbon.ribbon-sale{background:#C53A0E;}
   .mini-card .card-ribbon.ribbon-editor{background:#1F3A2E;}
   .mini-card.card-soldout .mini-cover-area{opacity:.4;filter:grayscale(.5);}
-  .mini-card.card-soldout .soldout-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#3B2A1C;background:rgba(247,244,239,.92);padding:10px 20px;border:1px solid #E8E1D2;}
+  .mini-card.card-soldout .soldout-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--text);background:rgba(247,244,239,.92);padding:10px 20px;border:1px solid var(--border);}
   .mini-card .card-actions{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;gap:8px;opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:4;}
   .mini-card:hover .card-actions{opacity:1;pointer-events:auto;}
-  .card-action-btn{width:38px;height:38px;background:rgba(255,255,255,.95);border:1px solid #E8E1D2;color:#3B2A1C;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:background .2s ease;}
-  .card-action-btn:hover{background:#F2541B;color:#fff;border-color:#F2541B;}
+  .card-action-btn{width:38px;height:38px;background:rgba(255,255,255,.95);border:1px solid var(--border);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:background .2s ease;}
+  .card-action-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
   .discount-pct{position:absolute;top:64px;right:16px;z-index:2;background:#C53A0E;color:#fff;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 4px 10px -2px rgba(197,58,14,.3);}
 
   /* horizontal card */
-  .h-card{display:flex;background:#fff;border:1px solid #E8E1D2;width:100%;max-width:520px;transition:box-shadow .25s ease;}
+  .h-card{display:flex;background:#fff;border:1px solid var(--border);width:100%;max-width:520px;transition:box-shadow .25s ease;}
   .h-card:hover{box-shadow:0 8px 28px -8px rgba(59,42,28,.12);}
   .h-card-cover{width:140px;min-height:180px;background:#ECE6DC;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:16px;}
   .h-card-cover .mini-cover{width:90px;height:135px;font-size:11px;padding:10px 8px;}
   .h-card-body{flex:1;padding:20px 24px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
-  .h-card-cat{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:#F2541B;font-weight:500;}
-  .h-card-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#3B2A1C;line-height:1.15;}
-  .h-card-author{font-family:'Jost',sans-serif;font-size:12px;color:#9B8A75;letter-spacing:.3px;}
-  .h-card-desc{font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;font-weight:300;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .h-card-cat{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);font-weight:500;}
+  .h-card-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--text);line-height:1.15;}
+  .h-card-author{font-family:'Jost',sans-serif;font-size:12px;color:var(--text-faint);letter-spacing:.3px;}
+  .h-card-desc{font-family:'Jost',sans-serif;font-size:13px;color:var(--text-soft);font-weight:300;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
   .h-card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:6px;}
-  .h-card-price{font-family:'Jost',sans-serif;font-size:16px;font-weight:500;color:#3B2A1C;}
+  .h-card-price{font-family:'Jost',sans-serif;font-size:16px;font-weight:500;color:var(--text);}
 
   /* collection card */
   .collection-card{width:260px;height:200px;position:relative;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;}
   .collection-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(31,58,46,.85) 100%);z-index:1;}
   .collection-card *{position:relative;z-index:2;}
   .collection-card-cat{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FF8A3D;font-weight:500;}
-  .collection-card-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#F4ECDD;line-height:1.1;margin-top:4px;}
+  .collection-card-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--bg-tint);line-height:1.1;margin-top:4px;}
   .collection-card-count{font-family:'Jost',sans-serif;font-size:11px;color:rgba(244,236,221,.7);margin-top:6px;}
 
   /* author card detailed */
-  .author-detail{display:flex;flex-direction:column;align-items:center;width:200px;background:#fff;border:1px solid #E8E1D2;padding:24px 18px 20px;cursor:pointer;transition:box-shadow .25s ease;}
+  .author-detail{display:flex;flex-direction:column;align-items:center;width:200px;background:#fff;border:1px solid var(--border);padding:24px 18px 20px;cursor:pointer;transition:box-shadow .25s ease;}
   .author-detail:hover{box-shadow:0 8px 24px -6px rgba(59,42,28,.12);}
-  .author-detail-photo{width:80px;height:80px;border-radius:50%;background:#3B5C46;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#F4ECDD;overflow:hidden;position:relative;}
+  .author-detail-photo{width:80px;height:80px;border-radius:50%;background:#3B5C46;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--bg-tint);overflow:hidden;position:relative;}
   .author-detail-photo::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.15) 0%,transparent 50%);border-radius:50%;}
-  .author-detail-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-top:14px;text-align:center;color:#3B2A1C;}
-  .author-detail-bio{font-family:'Jost',sans-serif;font-size:12px;color:#6E5D4B;font-weight:300;line-height:1.5;text-align:center;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .author-detail-link{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#F2541B;font-weight:500;text-decoration:none;margin-top:12px;border-bottom:1px solid transparent;transition:border-color .2s ease;}
-  .author-detail-link:hover{border-bottom-color:#F2541B;}
+  .author-detail-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;margin-top:14px;text-align:center;color:var(--text);}
+  .author-detail-bio{font-family:'Jost',sans-serif;font-size:12px;color:var(--text-soft);font-weight:300;line-height:1.5;text-align:center;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .author-detail-link{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:500;text-decoration:none;margin-top:12px;border-bottom:1px solid transparent;transition:border-color .2s ease;}
+  .author-detail-link:hover{border-bottom-color:var(--accent);}
 
   /* ============ NEW BADGES ============ */
   .badge-discount{display:inline-flex;align-items:center;gap:5px;background:#C53A0E;color:#fff;font-family:'Jost',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;padding:5px 12px;}
   .badge-stock{font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:.5px;padding:5px 12px;display:inline-flex;align-items:center;gap:5px;}
   .badge-stock.in-stock{background:rgba(31,58,46,.1);color:#1F3A2E;}
   .badge-stock.low-stock{background:rgba(242,84,27,.1);color:#C53A0E;}
-  .badge-stock.out-stock{background:rgba(59,42,28,.08);color:#9B8A75;}
+  .badge-stock.out-stock{background:rgba(59,42,28,.08);color:var(--text-faint);}
   .badge-stock i{font-size:13px;}
-  .badge-format{font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border:1px solid #E8E1D2;color:#6E5D4B;display:inline-flex;align-items:center;gap:5px;}
+  .badge-format{font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border:1px solid var(--border);color:var(--text-soft);display:inline-flex;align-items:center;gap:5px;}
   .badge-format i{font-size:12px;}
   .badge-editor{display:inline-flex;align-items:center;gap:6px;background:#1F3A2E;color:#EFE9D9;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;}
   .badge-editor i{font-size:13px;}
-  .badge-award{display:inline-flex;align-items:center;gap:5px;background:#FAF3E3;color:#A68A6D;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border:1px solid #E8E1D2;}
-  .badge-award i{font-size:13px;color:#F2541B;}
+  .badge-award{display:inline-flex;align-items:center;gap:5px;background:var(--bg-soft);color:#A68A6D;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border:1px solid var(--border);}
+  .badge-award i{font-size:13px;color:var(--accent);}
 
   /* ============ FORM ELEMENTS ============ */
   .form-group{display:flex;flex-direction:column;gap:6px;width:320px;}
-  .form-label{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#9B8A75;font-weight:500;}
-  .form-input{background:#fff;border:1px solid #E8E1D2;padding:14px 16px;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;outline:none;transition:border-color .2s ease;}
-  .form-input:focus{border-color:#F2541B;}
-  .form-input::placeholder{color:#9B8A75;}
+  .form-label{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-faint);font-weight:500;}
+  .form-input{background:#fff;border:1px solid var(--border);padding:14px 16px;font-family:'Jost',sans-serif;font-size:14px;color:var(--text);outline:none;transition:border-color .2s ease;}
+  .form-input:focus{border-color:var(--accent);}
+  .form-input::placeholder{color:var(--text-faint);}
   .form-input.error{border-color:#C53A0E;}
   .form-error{font-family:'Jost',sans-serif;font-size:12px;color:#C53A0E;display:flex;align-items:center;gap:4px;}
   .form-error i{font-size:14px;}
 
   .form-select{position:relative;width:220px;}
-  .form-select select{width:100%;appearance:none;background:#fff;border:1px solid #E8E1D2;padding:12px 36px 12px 16px;font-family:'Jost',sans-serif;font-size:13px;color:#3B2A1C;cursor:pointer;outline:none;transition:border-color .2s ease;}
-  .form-select select:focus{border-color:#F2541B;}
-  .form-select::after{content:'';position:absolute;right:14px;top:50%;transform:translateY(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #9B8A75;pointer-events:none;}
+  .form-select select{width:100%;appearance:none;background:#fff;border:1px solid var(--border);padding:12px 36px 12px 16px;font-family:'Jost',sans-serif;font-size:13px;color:var(--text);cursor:pointer;outline:none;transition:border-color .2s ease;}
+  .form-select select:focus{border-color:var(--accent);}
+  .form-select::after{content:'';position:absolute;right:14px;top:50%;transform:translateY(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--text-faint);pointer-events:none;}
 
-  .form-check{display:flex;align-items:center;gap:10px;cursor:pointer;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;}
-  .form-check input[type="checkbox"]{appearance:none;width:18px;height:18px;border:1px solid #E8E1D2;background:#fff;cursor:pointer;position:relative;flex-shrink:0;transition:all .15s ease;}
-  .form-check input[type="checkbox"]:checked{background:#F2541B;border-color:#F2541B;}
-  .form-check input[type="checkbox"]:checked::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:12px;font-weight:700;}
+  .form-check{display:flex;align-items:center;gap:10px;cursor:pointer;font-family:'Jost',sans-serif;font-size:14px;color:var(--text);}
+  .form-check input[type="checkbox"]{appearance:none;width:18px;height:18px;border:1px solid var(--border);background:#fff;cursor:pointer;position:relative;flex-shrink:0;transition:all .15s ease;}
+  .form-check input[type="checkbox"]:checked{background:var(--accent);border-color:var(--accent);}
+  .form-check input[type="checkbox"]:checked::after{content:'â';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:12px;font-weight:700;}
 
-  .qty-stepper{display:inline-flex;align-items:center;border:1px solid #E8E1D2;}
-  .qty-stepper button{width:36px;height:36px;background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:16px;color:#3B2A1C;display:flex;align-items:center;justify-content:center;transition:background .15s ease;}
+  .qty-stepper{display:inline-flex;align-items:center;border:1px solid var(--border);}
+  .qty-stepper button{width:36px;height:36px;background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:16px;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s ease;}
   .qty-stepper button:hover{background:rgba(59,42,28,.06);}
-  .qty-stepper span{width:40px;text-align:center;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:#3B2A1C;border-left:1px solid #E8E1D2;border-right:1px solid #E8E1D2;height:36px;display:flex;align-items:center;justify-content:center;}
+  .qty-stepper span{width:40px;text-align:center;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:var(--text);border-left:1px solid var(--border);border-right:1px solid var(--border);height:36px;display:flex;align-items:center;justify-content:center;}
 
-  .form-textarea{background:#fff;border:1px solid #E8E1D2;padding:14px 16px;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;outline:none;resize:vertical;min-height:100px;width:100%;transition:border-color .2s ease;}
-  .form-textarea:focus{border-color:#F2541B;}
-  .form-textarea::placeholder{color:#9B8A75;}
+  .form-textarea{background:#fff;border:1px solid var(--border);padding:14px 16px;font-family:'Jost',sans-serif;font-size:14px;color:var(--text);outline:none;resize:vertical;min-height:100px;width:100%;transition:border-color .2s ease;}
+  .form-textarea:focus{border-color:var(--accent);}
+  .form-textarea::placeholder{color:var(--text-faint);}
 
   .range-slider{width:280px;}
-  .range-slider-labels{display:flex;justify-content:space-between;font-family:'Jost',sans-serif;font-size:12px;color:#6E5D4B;margin-bottom:8px;}
-  .range-slider input[type="range"]{width:100%;appearance:none;height:3px;background:#E8E1D2;outline:none;}
-  .range-slider input[type="range"]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:#F2541B;cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.15);}
+  .range-slider-labels{display:flex;justify-content:space-between;font-family:'Jost',sans-serif;font-size:12px;color:var(--text-soft);margin-bottom:8px;}
+  .range-slider input[type="range"]{width:100%;appearance:none;height:3px;background:var(--border);outline:none;}
+  .range-slider input[type="range"]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.15);}
 
   /* ============ BUTTON STATES ============ */
-  .btn-icon{width:40px;height:40px;background:#fff;border:1px solid #E8E1D2;color:#3B2A1C;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:17px;transition:all .2s ease;}
-  .btn-icon:hover{background:#F2541B;color:#fff;border-color:#F2541B;}
-  .btn-icon.active{background:#F2541B;color:#fff;border-color:#F2541B;}
+  .btn-icon{width:40px;height:40px;background:#fff;border:1px solid var(--border);color:var(--text);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:17px;transition:all .2s ease;}
+  .btn-icon:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .btn-icon.active{background:var(--accent);color:#fff;border-color:var(--accent);}
   .btn-icon.rounded{border-radius:50%;}
 
   .btn-orange.loading{pointer-events:none;opacity:.8;}
@@ -340,62 +340,62 @@
 
   /* ============ NAVIGATION EXTRAS ============ */
   .pagination{display:flex;align-items:center;gap:4px;}
-  .pagination a,.pagination span{font-family:'Jost',sans-serif;font-size:13px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#6E5D4B;border:1px solid transparent;transition:all .2s ease;}
-  .pagination a:hover{border-color:#E8E1D2;color:#3B2A1C;}
-  .pagination .active{background:#F2541B;color:#fff;border-color:#F2541B;}
-  .pagination .dots{border:none;cursor:default;color:#9B8A75;}
-  .pagination .pg-arrow{font-size:16px;color:#3B2A1C;}
+  .pagination a,.pagination span{font-family:'Jost',sans-serif;font-size:13px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--text-soft);border:1px solid transparent;transition:all .2s ease;}
+  .pagination a:hover{border-color:var(--border);color:var(--text);}
+  .pagination .active{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .pagination .dots{border:none;cursor:default;color:var(--text-faint);}
+  .pagination .pg-arrow{font-size:16px;color:var(--text);}
 
-  .tab-bar{display:flex;gap:0;border-bottom:1px solid #E8E1D2;}
-  .tab-bar a{font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.4px;color:#9B8A75;text-decoration:none;padding:14px 24px;border-bottom:2px solid transparent;transition:all .2s ease;margin-bottom:-1px;}
-  .tab-bar a:hover{color:#3B2A1C;}
-  .tab-bar a.active{color:#F2541B;border-bottom-color:#F2541B;font-weight:500;}
+  .tab-bar{display:flex;gap:0;border-bottom:1px solid var(--border);}
+  .tab-bar a{font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.4px;color:var(--text-faint);text-decoration:none;padding:14px 24px;border-bottom:2px solid transparent;transition:all .2s ease;margin-bottom:-1px;}
+  .tab-bar a:hover{color:var(--text);}
+  .tab-bar a.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:500;}
 
-  .mega-menu-demo{background:#fff;border:1px solid #E8E1D2;padding:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;width:100%;}
-  .mega-col h5{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#F2541B;font-weight:500;margin-bottom:12px;}
-  .mega-col a{display:block;font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;text-decoration:none;padding:5px 0;transition:color .15s ease;}
-  .mega-col a:hover{color:#3B2A1C;}
+  .mega-menu-demo{background:#fff;border:1px solid var(--border);padding:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;width:100%;}
+  .mega-col h5{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:12px;}
+  .mega-col a{display:block;font-family:'Jost',sans-serif;font-size:13px;color:var(--text-soft);text-decoration:none;padding:5px 0;transition:color .15s ease;}
+  .mega-col a:hover{color:var(--text);}
 
   /* ============ SECTIONS NEW ============ */
-  .book-detail-hero{display:flex;gap:48px;padding:40px;background:#fff;border:1px solid #E8E1D2;width:100%;}
+  .book-detail-hero{display:flex;gap:48px;padding:40px;background:#fff;border:1px solid var(--border);width:100%;}
   .bdh-cover{width:200px;flex-shrink:0;}
   .bdh-cover-img{width:100%;height:300px;background:linear-gradient(135deg,#1A4863,#0A2A3E);display:flex;flex-direction:column;justify-content:flex-end;padding:18px 14px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;line-height:1.1;box-shadow:0 20px 40px -12px rgba(0,0,0,.4);}
   .bdh-info{flex:1;display:flex;flex-direction:column;gap:8px;padding-top:8px;}
-  .bdh-cat{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#F2541B;font-weight:500;}
-  .bdh-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#3B2A1C;line-height:1.05;}
-  .bdh-author{font-family:'Jost',sans-serif;font-size:14px;color:#6E5D4B;}
-  .bdh-author a{color:#F2541B;text-decoration:none;}
-  .bdh-meta{display:flex;gap:16px;font-family:'Jost',sans-serif;font-size:12px;color:#9B8A75;margin-top:4px;}
+  .bdh-cat{font-family:'Jost',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;}
+  .bdh-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--text);line-height:1.05;}
+  .bdh-author{font-family:'Jost',sans-serif;font-size:14px;color:var(--text-soft);}
+  .bdh-author a{color:var(--accent);text-decoration:none;}
+  .bdh-meta{display:flex;gap:16px;font-family:'Jost',sans-serif;font-size:12px;color:var(--text-faint);margin-top:4px;}
   .bdh-meta span{display:flex;align-items:center;gap:4px;}
   .bdh-meta i{font-size:14px;}
-  .bdh-price-box{background:#FAF3E3;padding:18px 22px;display:inline-flex;align-items:center;gap:14px;margin-top:8px;align-self:flex-start;flex-wrap:wrap;}
-  .bdh-price{font-family:'Jost',sans-serif;font-size:28px;font-weight:500;color:#3B2A1C;}
+  .bdh-price-box{background:var(--bg-soft);padding:18px 22px;display:inline-flex;align-items:center;gap:14px;margin-top:8px;align-self:flex-start;flex-wrap:wrap;}
+  .bdh-price{font-family:'Jost',sans-serif;font-size:28px;font-weight:500;color:var(--text);}
   .bdh-price-old{font-family:'Jost',sans-serif;font-size:15px;color:#A68A6D;text-decoration:line-through;}
   .bdh-actions{display:flex;gap:10px;margin-top:8px;}
 
-  .review-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid #E8E1D2;}
-  .review-avatar{width:40px;height:40px;background:#ECE6DC;display:flex;align-items:center;justify-content:center;border-radius:50%;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:#6E5D4B;flex-shrink:0;}
+  .review-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);}
+  .review-avatar{width:40px;height:40px;background:#ECE6DC;display:flex;align-items:center;justify-content:center;border-radius:50%;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:var(--text-soft);flex-shrink:0;}
   .review-body{flex:1;}
   .review-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
-  .review-name{font-family:'Jost',sans-serif;font-size:13px;font-weight:500;color:#3B2A1C;}
-  .review-date{font-family:'Jost',sans-serif;font-size:11px;color:#9B8A75;}
-  .review-stars{display:inline-flex;gap:2px;color:#F2541B;font-size:13px;}
+  .review-name{font-family:'Jost',sans-serif;font-size:13px;font-weight:500;color:var(--text);}
+  .review-date{font-family:'Jost',sans-serif;font-size:11px;color:var(--text-faint);}
+  .review-stars{display:inline-flex;gap:2px;color:var(--accent);font-size:13px;}
   .review-stars .empty{color:#E0D6C4;}
-  .review-text{font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;font-weight:300;line-height:1.6;margin-top:6px;}
+  .review-text{font-family:'Jost',sans-serif;font-size:13px;color:var(--text-soft);font-weight:300;line-height:1.6;margin-top:6px;}
 
-  .filter-panel{background:#fff;border:1px solid #E8E1D2;padding:24px;width:240px;}
-  .filter-panel h4{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9B8A75;font-weight:500;margin-bottom:14px;}
+  .filter-panel{background:#fff;border:1px solid var(--border);padding:24px;width:240px;}
+  .filter-panel h4{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint);font-weight:500;margin-bottom:14px;}
   .filter-section{margin-bottom:24px;}
   .filter-section:last-child{margin-bottom:0;}
-  .filter-section h5{font-family:'Jost',sans-serif;font-size:12px;font-weight:500;color:#3B2A1C;margin-bottom:10px;}
+  .filter-section h5{font-family:'Jost',sans-serif;font-size:12px;font-weight:500;color:var(--text);margin-bottom:10px;}
   .filter-section .form-check{margin-bottom:8px;font-size:13px;}
 
-  /* ============ BANNER TABS (koleksiyon seçici) ============ */
+  /* ============ BANNER TABS (koleksiyon seÃ§ici) ============ */
   .banner-tabs{
     display:grid;
     grid-template-columns:repeat(var(--cols,4),1fr);
     background:#fff;
-    border:1px solid #E8E1D2;
+    border:1px solid var(--border);
     position:relative;
   }
   .banner-tab{
@@ -406,18 +406,18 @@
     font-family:'Jost',sans-serif;
     font-size:14.5px;
     font-weight:500;
-    color:#3B2A1C;
+    color:var(--text);
     text-align:center;
     letter-spacing:.3px;
     transition:background .2s ease,color .2s ease;
-    border-right:1px solid #E8E1D2;
+    border-right:1px solid var(--border);
     position:relative;
     line-height:1.2;
   }
   .banner-tab:last-child{border-right:none;}
-  .banner-tab:hover:not(.is-active){background:#FAF3E3;color:#F2541B;}
+  .banner-tab:hover:not(.is-active){background:var(--bg-soft);color:var(--accent);}
   .banner-tab.is-active{
-    background:#F2541B;
+    background:var(--accent);
     color:#fff;
     font-weight:600;
     border-right-color:transparent;
@@ -439,24 +439,24 @@
     width:0;height:0;
     border-left:10px solid transparent;
     border-right:10px solid transparent;
-    border-top:10px solid #F2541B;
+    border-top:10px solid var(--accent);
     z-index:1;
   }
 
-  .mini-cart{background:#fff;border:1px solid #E8E1D2;width:340px;padding:24px;}
-  .mini-cart h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#3B2A1C;margin-bottom:16px;}
-  .cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #E8E1D2;}
+  .mini-cart{background:#fff;border:1px solid var(--border);width:340px;padding:24px;}
+  .mini-cart h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--text);margin-bottom:16px;}
+  .cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);}
   .cart-item-cover{width:50px;height:75px;background:linear-gradient(135deg,#1A4863,#0A2A3E);flex-shrink:0;display:flex;flex-direction:column;justify-content:flex-end;padding:6px 5px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:8px;font-weight:600;line-height:1;}
   .cart-item-info{flex:1;display:flex;flex-direction:column;gap:2px;}
-  .cart-item-title{font-family:'Jost',sans-serif;font-size:13px;font-weight:500;color:#3B2A1C;}
-  .cart-item-author{font-family:'Jost',sans-serif;font-size:11px;color:#9B8A75;}
+  .cart-item-title{font-family:'Jost',sans-serif;font-size:13px;font-weight:500;color:var(--text);}
+  .cart-item-author{font-family:'Jost',sans-serif;font-size:11px;color:var(--text-faint);}
   .cart-item-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
-  .cart-item-price{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:#3B2A1C;}
-  .cart-item-remove{background:none;border:none;color:#9B8A75;font-size:14px;cursor:pointer;padding:2px;}
+  .cart-item-price{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:var(--text);}
+  .cart-item-remove{background:none;border:none;color:var(--text-faint);font-size:14px;cursor:pointer;padding:2px;}
   .cart-item-remove:hover{color:#C53A0E;}
   .cart-total{display:flex;justify-content:space-between;padding:16px 0 0;margin-top:4px;font-family:'Jost',sans-serif;}
-  .cart-total-label{font-size:13px;color:#6E5D4B;letter-spacing:.5px;}
-  .cart-total-price{font-size:18px;font-weight:500;color:#3B2A1C;}
+  .cart-total-label{font-size:13px;color:var(--text-soft);letter-spacing:.5px;}
+  .cart-total-price{font-size:18px;font-weight:500;color:var(--text);}
 
   @media (max-width:880px){
     .cmp-shell{grid-template-columns:1fr;}
@@ -465,6 +465,35 @@
     .nav{display:none;}
   }
 </style>
+<style id="runik-theme-vars">
+:root{
+  --bg:#F7F4EF;
+  --bg-soft:#FAF3E3;
+  --bg-tint:#F4ECDD;
+  --bg-tint-h:#FAEBD5;
+  --border:#E8E1D2;
+  --border-2:#EDE3D2;
+  --text:#3B2A1C;
+  --text-soft:#6E5D4B;
+  --text-faint:#9B8A75;
+  --accent:#F2541B;
+  --card:#FFFFFF;
+}
+html[data-theme="light"]{
+  --bg:#FFFFFF;
+  --bg-soft:#FAFAFA;
+  --bg-tint:#F2F2F2;
+  --bg-tint-h:#E8E8E8;
+  --border:#EAEAEA;
+  --border-2:#ECECEC;
+  --card:#FFFFFF;
+}
+/* Light tema: bazı koyu/krem dolgular için ek dokunuşlar */
+html[data-theme="light"] body{background:#FFFFFF;}
+html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
+html[data-theme="light"] .h-top{background:#FAFAFA;}
+</style>
+<script>(function(){try{var t=localStorage.getItem('runik-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 </head>
 <body>
 
@@ -474,15 +503,15 @@
     <a class="logo" href="/" aria-label="Runik anasayfa">
       <img src="/assets/runik-logo.png" alt="Runik" class="logo-img">
     </a>
-    <nav class="nav" aria-label="Ana menü">
+    <nav class="nav" aria-label="Ana menÃ¼">
       <a href="/">Anasayfa</a>
       <a href="/yazarlar">Yazarlar</a>
-      <a href="/components" class="is-active">Bileşenler</a>
-      <a href="#">Hakkımızda</a>
+      <a href="/components" class="is-active">BileÅenler</a>
+      <a href="#">HakkÄ±mÄ±zda</a>
     </nav>
     <div class="nav-actions">
       <button class="icon-btn" aria-label="Ara"><i class="ti ti-search"></i></button>
-      <button class="icon-btn" aria-label="Hesabım"><i class="ti ti-user"></i></button>
+      <button class="icon-btn" aria-label="HesabÄ±m"><i class="ti ti-user"></i></button>
       <button class="icon-btn" aria-label="Favoriler"><i class="ti ti-heart"></i></button>
       <button class="icon-btn" aria-label="Sepet"><i class="ti ti-shopping-bag"></i><span class="badge">2</span></button>
     </div>
@@ -492,15 +521,15 @@
 <!-- PAGE HEAD -->
 <header class="cmp-page-head">
   <span class="cmp-eyebrow">Design System</span>
-  <h1>Bileşenler</h1>
-  <p>Runik'in tasarım sisteminde kullanılan tüm renkler, tipografi, butonlar, kart ve section bileşenleri. Yeni sayfa tasarlarken referans olarak kullan.</p>
+  <h1>BileÅenler</h1>
+  <p>Runik'in tasarÄ±m sisteminde kullanÄ±lan tÃ¼m renkler, tipografi, butonlar, kart ve section bileÅenleri. Yeni sayfa tasarlarken referans olarak kullan.</p>
 </header>
 
 <div class="cmp-shell">
 
   <!-- SIDEBAR -->
   <aside class="cmp-side">
-    <h4>İçerik</h4>
+    <h4>Ä°Ã§erik</h4>
     <a href="#colors" class="is-active">Renkler</a>
     <a href="#typography">Tipografi</a>
     <a href="#buttons">Butonlar</a>
@@ -518,46 +547,46 @@
     <!-- ============ COLORS ============ -->
     <section id="colors" class="cmp-section">
       <h2>Renkler</h2>
-      <p class="cmp-desc">Krem ve sıcak kahve tonları üzerine kurulu palet. Turuncu vurgu (accent), koyu yeşil derinlik için, koyu kahve metinler için.</p>
+      <p class="cmp-desc">Krem ve sÄ±cak kahve tonlarÄ± Ã¼zerine kurulu palet. Turuncu vurgu (accent), koyu yeÅil derinlik iÃ§in, koyu kahve metinler iÃ§in.</p>
       <div class="colors-grid" style="margin-top:24px;">
-        <div class="color-tile" style="--c:#F2541B"><span class="ct-hex">#F2541B</span><span class="ct-name">Primary / Orange</span></div>
+        <div class="color-tile" style="--c:var(--accent)"><span class="ct-hex">var(--accent)</span><span class="ct-name">Primary / Orange</span></div>
         <div class="color-tile" style="--c:#FF8A3D"><span class="ct-hex">#FF8A3D</span><span class="ct-name">Orange Light</span></div>
         <div class="color-tile" style="--c:#C53A0E"><span class="ct-hex">#C53A0E</span><span class="ct-name">Orange Deep</span></div>
         <div class="color-tile" style="--c:#1F3A2E"><span class="ct-hex">#1F3A2E</span><span class="ct-name">Forest Green</span></div>
-        <div class="color-tile" style="--c:#3B2A1C"><span class="ct-hex">#3B2A1C</span><span class="ct-name">Text / Bark</span></div>
-        <div class="color-tile" style="--c:#6E5D4B"><span class="ct-hex">#6E5D4B</span><span class="ct-name">Text Soft</span></div>
-        <div class="color-tile" style="--c:#9B8A75"><span class="ct-hex">#9B8A75</span><span class="ct-name">Muted</span></div>
+        <div class="color-tile" style="--c:var(--text)"><span class="ct-hex">var(--text)</span><span class="ct-name">Text / Bark</span></div>
+        <div class="color-tile" style="--c:var(--text-soft)"><span class="ct-hex">var(--text-soft)</span><span class="ct-name">Text Soft</span></div>
+        <div class="color-tile" style="--c:var(--text-faint)"><span class="ct-hex">var(--text-faint)</span><span class="ct-name">Muted</span></div>
         <div class="color-tile" style="--c:#A68A6D"><span class="ct-hex">#A68A6D</span><span class="ct-name">Tan</span></div>
-        <div class="color-tile" style="--c:#F7F4EF;--text:#3B2A1C;border-color:#E8E1D2;"><span class="ct-hex">#F7F4EF</span><span class="ct-name">Body Cream</span></div>
-        <div class="color-tile" style="--c:#F1EADA;--text:#3B2A1C;"><span class="ct-hex">#F1EADA</span><span class="ct-name">Surface</span></div>
-        <div class="color-tile" style="--c:#F4ECDD;--text:#3B2A1C;"><span class="ct-hex">#F4ECDD</span><span class="ct-name">Container</span></div>
-        <div class="color-tile" style="--c:#ECE6DC;--text:#3B2A1C;"><span class="ct-hex">#ECE6DC</span><span class="ct-name">Card Cream</span></div>
-        <div class="color-tile" style="--c:#FAF3E3;--text:#3B2A1C;"><span class="ct-hex">#FAF3E3</span><span class="ct-name">Price Box</span></div>
-        <div class="color-tile" style="--c:#E8E1D2;--text:#3B2A1C;"><span class="ct-hex">#E8E1D2</span><span class="ct-name">Border</span></div>
-        <div class="color-tile" style="--c:#EFE9D9;--text:#3B2A1C;"><span class="ct-hex">#EFE9D9</span><span class="ct-name">On Forest</span></div>
-        <div class="color-tile" style="--c:#fff;--text:#3B2A1C;border-color:#E8E1D2;"><span class="ct-hex">#FFFFFF</span><span class="ct-name">White</span></div>
+        <div class="color-tile" style="--c:var(--bg);--text:var(--text);border-color:var(--border);"><span class="ct-hex">var(--bg)</span><span class="ct-name">Body Cream</span></div>
+        <div class="color-tile" style="--c:#F1EADA;--text:var(--text);"><span class="ct-hex">#F1EADA</span><span class="ct-name">Surface</span></div>
+        <div class="color-tile" style="--c:var(--bg-tint);--text:var(--text);"><span class="ct-hex">var(--bg-tint)</span><span class="ct-name">Container</span></div>
+        <div class="color-tile" style="--c:#ECE6DC;--text:var(--text);"><span class="ct-hex">#ECE6DC</span><span class="ct-name">Card Cream</span></div>
+        <div class="color-tile" style="--c:var(--bg-soft);--text:var(--text);"><span class="ct-hex">var(--bg-soft)</span><span class="ct-name">Price Box</span></div>
+        <div class="color-tile" style="--c:var(--border);--text:var(--text);"><span class="ct-hex">var(--border)</span><span class="ct-name">Border</span></div>
+        <div class="color-tile" style="--c:#EFE9D9;--text:var(--text);"><span class="ct-hex">#EFE9D9</span><span class="ct-name">On Forest</span></div>
+        <div class="color-tile" style="--c:#fff;--text:var(--text);border-color:var(--border);"><span class="ct-hex">#FFFFFF</span><span class="ct-name">White</span></div>
       </div>
     </section>
 
     <!-- ============ TYPOGRAPHY ============ -->
     <section id="typography" class="cmp-section">
       <h2>Tipografi</h2>
-      <p class="cmp-desc">Başlıklar için <em>Cormorant Garamond</em> (serif), gövde metni için <em>Jost</em> (sans-serif).</p>
+      <p class="cmp-desc">BaÅlÄ±klar iÃ§in <em>Cormorant Garamond</em> (serif), gÃ¶vde metni iÃ§in <em>Jost</em> (sans-serif).</p>
       <div style="margin-top:24px;">
-        <div class="type-sample"><div class="ts-text ts-h1">Edebiyatın izini</div><div class="ts-meta">Cormorant Garamond · 62px · 600</div></div>
-        <div class="type-sample"><div class="ts-text ts-h2">Yeni Çıkanlar</div><div class="ts-meta">Cormorant Garamond · 44px · 500</div></div>
-        <div class="type-sample"><div class="ts-text ts-h3">Öne Çıkanlar</div><div class="ts-meta">Cormorant Garamond · 32px · 600</div></div>
-        <div class="type-sample"><div class="ts-text ts-h4">"Bazı defterler kapanmaz."</div><div class="ts-meta">Cormorant Garamond · 22px · 600 · italic</div></div>
-        <div class="type-sample"><div class="ts-text ts-body">Runik'in özenle seçilmiş kitap koleksiyonunda her okur kendi sesini bulur — köklü yazarlardan yeni nesle.</div><div class="ts-meta">Jost · 15px · 300 · line-height 1.6</div></div>
-        <div class="type-sample"><div class="ts-text ts-small">150 TL ve üzeri siparişlerde kargo ücretsiz.</div><div class="ts-meta">Jost · 13px · 400</div></div>
-        <div class="type-sample"><div class="ts-text ts-caps">SABAHATTİN ALİ</div><div class="ts-meta">Jost · 11px · 500 · letter-spacing 2px · uppercase</div></div>
+        <div class="type-sample"><div class="ts-text ts-h1">EdebiyatÄ±n izini</div><div class="ts-meta">Cormorant Garamond Â· 62px Â· 600</div></div>
+        <div class="type-sample"><div class="ts-text ts-h2">Yeni ÃÄ±kanlar</div><div class="ts-meta">Cormorant Garamond Â· 44px Â· 500</div></div>
+        <div class="type-sample"><div class="ts-text ts-h3">Ãne ÃÄ±kanlar</div><div class="ts-meta">Cormorant Garamond Â· 32px Â· 600</div></div>
+        <div class="type-sample"><div class="ts-text ts-h4">"BazÄ± defterler kapanmaz."</div><div class="ts-meta">Cormorant Garamond Â· 22px Â· 600 Â· italic</div></div>
+        <div class="type-sample"><div class="ts-text ts-body">Runik'in Ã¶zenle seÃ§ilmiÅ kitap koleksiyonunda her okur kendi sesini bulur â kÃ¶klÃ¼ yazarlardan yeni nesle.</div><div class="ts-meta">Jost Â· 15px Â· 300 Â· line-height 1.6</div></div>
+        <div class="type-sample"><div class="ts-text ts-small">150 TL ve Ã¼zeri sipariÅlerde kargo Ã¼cretsiz.</div><div class="ts-meta">Jost Â· 13px Â· 400</div></div>
+        <div class="type-sample"><div class="ts-text ts-caps">SABAHATTÄ°N ALÄ°</div><div class="ts-meta">Jost Â· 11px Â· 500 Â· letter-spacing 2px Â· uppercase</div></div>
       </div>
     </section>
 
     <!-- ============ BUTTONS ============ -->
     <section id="buttons" class="cmp-section">
       <h2>Butonlar</h2>
-      <p class="cmp-desc">Birincil aksiyonlar için turuncu, ikincil için koyu, ghost olarak alt çizgili linkler.</p>
+      <p class="cmp-desc">Birincil aksiyonlar iÃ§in turuncu, ikincil iÃ§in koyu, ghost olarak alt Ã§izgili linkler.</p>
 
       <div class="cmp-row">
         <span class="cmp-label">Primary <code>.btn-orange</code></span>
@@ -565,23 +594,23 @@
       </div>
       <div class="cmp-row">
         <span class="cmp-label">Secondary <code>.btn-dark</code></span>
-        <div class="cmp-demo"><button class="btn-dark">İncele</button><button class="btn-dark">Yazar Hakkında</button></div>
+        <div class="cmp-demo"><button class="btn-dark">Ä°ncele</button><button class="btn-dark">Yazar HakkÄ±nda</button></div>
       </div>
       <div class="cmp-row">
         <span class="cmp-label">Outline <code>.btn-outline</code></span>
         <div class="cmp-demo"><button class="btn-outline"><i class="ti ti-bookmark"></i> Favorilere Ekle</button></div>
       </div>
       <div class="cmp-row">
-        <span class="cmp-label">Pill (kart üzeri) <code>.btn-pill</code></span>
-        <div class="cmp-demo"><button class="btn-pill"><i class="ti ti-shopping-bag-plus"></i> Sepete Ekle</button><button class="btn-pill dark">İncele <i class="ti ti-arrow-right"></i></button></div>
+        <span class="cmp-label">Pill (kart Ã¼zeri) <code>.btn-pill</code></span>
+        <div class="cmp-demo"><button class="btn-pill"><i class="ti ti-shopping-bag-plus"></i> Sepete Ekle</button><button class="btn-pill dark">Ä°ncele <i class="ti ti-arrow-right"></i></button></div>
       </div>
       <div class="cmp-row">
-        <span class="cmp-label">CTA cream (yeşil zemin üzerinde) <code>.btn-cream</code></span>
-        <div class="cmp-demo dark"><button class="btn-orange" style="padding:20px 36px;letter-spacing:2px;text-transform:uppercase;">Yeni Kitaplar</button><button class="btn-cream">Kataloğu İndir</button></div>
+        <span class="cmp-label">CTA cream (yeÅil zemin Ã¼zerinde) <code>.btn-cream</code></span>
+        <div class="cmp-demo dark"><button class="btn-orange" style="padding:20px 36px;letter-spacing:2px;text-transform:uppercase;">Yeni Kitaplar</button><button class="btn-cream">KataloÄu Ä°ndir</button></div>
       </div>
       <div class="cmp-row">
         <span class="cmp-label">Text link <code>.btn-link</code></span>
-        <div class="cmp-demo"><a href="#" class="btn-link">Tümünü Gör <i class="ti ti-arrow-right"></i></a></div>
+        <div class="cmp-demo"><a href="#" class="btn-link">TÃ¼mÃ¼nÃ¼ GÃ¶r <i class="ti ti-arrow-right"></i></a></div>
       </div>
 
       <div class="cmp-row">
@@ -609,7 +638,7 @@
         <span class="cmp-label">Disabled state</span>
         <div class="cmp-demo">
           <button class="btn-orange" disabled>Sepete Ekle</button>
-          <button class="btn-dark" disabled>İncele</button>
+          <button class="btn-dark" disabled>Ä°ncele</button>
           <button class="btn-outline" disabled>Favorilere Ekle</button>
         </div>
       </div>
@@ -618,26 +647,26 @@
     <!-- ============ BADGES ============ -->
     <section id="badges" class="cmp-section">
       <h2>Etiketler</h2>
-      <p class="cmp-desc">Kategori, durum, format, ödül ve rozet etiketleri.</p>
+      <p class="cmp-desc">Kategori, durum, format, Ã¶dÃ¼l ve rozet etiketleri.</p>
 
       <div class="cmp-row">
         <span class="cmp-label">Kategori <code>.badge-cat</code></span>
-        <div class="cmp-demo"><span class="badge-cat">Roman</span><span class="badge-cat">Şiir</span><span class="badge-cat">Deneme</span><span class="badge-cat">Tarih</span></div>
+        <div class="cmp-demo"><span class="badge-cat">Roman</span><span class="badge-cat">Åiir</span><span class="badge-cat">Deneme</span><span class="badge-cat">Tarih</span></div>
       </div>
       <div class="cmp-row">
         <span class="cmp-label">Hero "NEW" <code>.badge-new</code></span>
-        <div class="cmp-demo" style="background:linear-gradient(155deg,#FF8A3D,#F2541B);"><span class="badge-new"><span class="tag">Yeni</span> Modern Türk Edebiyatı</span></div>
+        <div class="cmp-demo" style="background:linear-gradient(155deg,#FF8A3D,var(--accent));"><span class="badge-new"><span class="tag">Yeni</span> Modern TÃ¼rk EdebiyatÄ±</span></div>
       </div>
       <div class="cmp-row">
-        <span class="cmp-label">İndirim rozeti <code>.badge-discount</code></span>
-        <div class="cmp-demo"><span class="badge-discount">%30 İndirim</span><span class="badge-discount">%50 İndirim</span></div>
+        <span class="cmp-label">Ä°ndirim rozeti <code>.badge-discount</code></span>
+        <div class="cmp-demo"><span class="badge-discount">%30 Ä°ndirim</span><span class="badge-discount">%50 Ä°ndirim</span></div>
       </div>
       <div class="cmp-row">
         <span class="cmp-label">Stok durumu <code>.badge-stock</code></span>
         <div class="cmp-demo">
           <span class="badge-stock in-stock"><i class="ti ti-check"></i> Stokta</span>
           <span class="badge-stock low-stock"><i class="ti ti-alert-circle"></i> Son 3 Adet</span>
-          <span class="badge-stock out-stock"><i class="ti ti-x"></i> Tükendi</span>
+          <span class="badge-stock out-stock"><i class="ti ti-x"></i> TÃ¼kendi</span>
         </div>
       </div>
       <div class="cmp-row">
@@ -649,30 +678,30 @@
         </div>
       </div>
       <div class="cmp-row">
-        <span class="cmp-label">Editörün seçimi <code>.badge-editor</code></span>
-        <div class="cmp-demo"><span class="badge-editor"><i class="ti ti-star"></i> Editörün Seçimi</span></div>
+        <span class="cmp-label">EditÃ¶rÃ¼n seÃ§imi <code>.badge-editor</code></span>
+        <div class="cmp-demo"><span class="badge-editor"><i class="ti ti-star"></i> EditÃ¶rÃ¼n SeÃ§imi</span></div>
       </div>
       <div class="cmp-row">
-        <span class="cmp-label">Ödül rozeti <code>.badge-award</code></span>
+        <span class="cmp-label">ÃdÃ¼l rozeti <code>.badge-award</code></span>
         <div class="cmp-demo">
           <span class="badge-award"><i class="ti ti-trophy"></i> Nobel Edebiyat</span>
-          <span class="badge-award"><i class="ti ti-trophy"></i> Orhan Kemal Ödülü</span>
+          <span class="badge-award"><i class="ti ti-trophy"></i> Orhan Kemal ÃdÃ¼lÃ¼</span>
         </div>
       </div>
       <div class="cmp-row">
-        <span class="cmp-label">Sepet sayısı <code>.badge-count</code></span>
+        <span class="cmp-label">Sepet sayÄ±sÄ± <code>.badge-count</code></span>
         <div class="cmp-demo"><button class="icon-btn"><i class="ti ti-shopping-bag"></i><span class="badge">2</span></button><button class="icon-btn"><i class="ti ti-heart"></i><span class="badge">12</span></button></div>
       </div>
       <div class="cmp-row">
-        <span class="cmp-label">Yıldız değerlendirme <code>.stars-demo</code></span>
-        <div class="cmp-demo"><span class="stars-demo">★★★★★</span><span class="stars-demo">★★★★<span class="empty">★</span></span><span class="stars-demo">★★★<span class="empty">★★</span></span></div>
+        <span class="cmp-label">YÄ±ldÄ±z deÄerlendirme <code>.stars-demo</code></span>
+        <div class="cmp-demo"><span class="stars-demo">âââââ</span><span class="stars-demo">ââââ<span class="empty">â</span></span><span class="stars-demo">âââ<span class="empty">ââ</span></span></div>
       </div>
     </section>
 
     <!-- ============ INPUTS ============ -->
     <section id="inputs" class="cmp-section">
       <h2>Form</h2>
-      <p class="cmp-desc">Arama, text input, select, checkbox, adet seçici, textarea ve fiyat aralığı bileşenleri.</p>
+      <p class="cmp-desc">Arama, text input, select, checkbox, adet seÃ§ici, textarea ve fiyat aralÄ±ÄÄ± bileÅenleri.</p>
 
       <div class="cmp-row">
         <span class="cmp-label">Arama input <code>.input-demo</code></span>
@@ -686,12 +715,12 @@
         <div class="cmp-demo" style="flex-direction:column;align-items:flex-start;gap:24px;">
           <div class="form-group">
             <label class="form-label">Ad Soyad</label>
-            <input class="form-input" type="text" placeholder="Adınızı girin...">
+            <input class="form-input" type="text" placeholder="AdÄ±nÄ±zÄ± girin...">
           </div>
           <div class="form-group">
             <label class="form-label">E-posta</label>
             <input class="form-input error" type="email" value="gecersiz-mail">
-            <span class="form-error"><i class="ti ti-alert-circle"></i> Geçerli bir e-posta adresi girin.</span>
+            <span class="form-error"><i class="ti ti-alert-circle"></i> GeÃ§erli bir e-posta adresi girin.</span>
           </div>
         </div>
       </div>
@@ -701,11 +730,11 @@
         <div class="cmp-demo">
           <div class="form-select">
             <select>
-              <option>Sıralama: Önerilen</option>
-              <option>Fiyat: Düşükten Yükseğe</option>
-              <option>Fiyat: Yüksekten Düşüğe</option>
+              <option>SÄ±ralama: Ãnerilen</option>
+              <option>Fiyat: DÃ¼ÅÃ¼kten YÃ¼kseÄe</option>
+              <option>Fiyat: YÃ¼ksekten DÃ¼ÅÃ¼Äe</option>
               <option>En Yeni</option>
-              <option>En Çok Satan</option>
+              <option>En Ãok Satan</option>
             </select>
           </div>
         </div>
@@ -715,17 +744,17 @@
         <span class="cmp-label">Checkbox <code>.form-check</code></span>
         <div class="cmp-demo" style="flex-direction:column;align-items:flex-start;gap:10px;">
           <label class="form-check"><input type="checkbox" checked> Roman</label>
-          <label class="form-check"><input type="checkbox"> Şiir</label>
+          <label class="form-check"><input type="checkbox"> Åiir</label>
           <label class="form-check"><input type="checkbox" checked> Deneme</label>
           <label class="form-check"><input type="checkbox"> Tarih</label>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Adet seçici <code>.qty-stepper</code></span>
+        <span class="cmp-label">Adet seÃ§ici <code>.qty-stepper</code></span>
         <div class="cmp-demo">
-          <div class="qty-stepper"><button>−</button><span>1</span><button>+</button></div>
-          <div class="qty-stepper"><button>−</button><span>3</span><button>+</button></div>
+          <div class="qty-stepper"><button>â</button><span>1</span><button>+</button></div>
+          <div class="qty-stepper"><button>â</button><span>3</span><button>+</button></div>
         </div>
       </div>
 
@@ -733,17 +762,17 @@
         <span class="cmp-label">Textarea <code>.form-textarea</code></span>
         <div class="cmp-demo" style="flex-direction:column;align-items:flex-start;">
           <div class="form-group" style="width:100%;max-width:480px;">
-            <label class="form-label">İnceleme yaz</label>
-            <textarea class="form-textarea" placeholder="Bu kitap hakkında düşüncelerinizi paylaşın..."></textarea>
+            <label class="form-label">Ä°nceleme yaz</label>
+            <textarea class="form-textarea" placeholder="Bu kitap hakkÄ±nda dÃ¼ÅÃ¼ncelerinizi paylaÅÄ±n..."></textarea>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Fiyat aralığı slider <code>.range-slider</code></span>
+        <span class="cmp-label">Fiyat aralÄ±ÄÄ± slider <code>.range-slider</code></span>
         <div class="cmp-demo">
           <div class="range-slider">
-            <div class="range-slider-labels"><span>0 ₺</span><span>500 ₺</span></div>
+            <div class="range-slider-labels"><span>0 âº</span><span>500 âº</span></div>
             <input type="range" min="0" max="500" value="150">
           </div>
         </div>
@@ -753,123 +782,123 @@
     <!-- ============ CARDS ============ -->
     <section id="cards" class="cmp-section">
       <h2>Kartlar</h2>
-      <p class="cmp-desc">Ürün kartı varyantları, yazar kartı, bestseller ve koleksiyon kartları.</p>
+      <p class="cmp-desc">ÃrÃ¼n kartÄ± varyantlarÄ±, yazar kartÄ±, bestseller ve koleksiyon kartlarÄ±.</p>
 
       <div class="cmp-row">
-        <span class="cmp-label">Ürün kartı — Temel <code>.mini-card</code></span>
+        <span class="cmp-label">ÃrÃ¼n kartÄ± â Temel <code>.mini-card</code></span>
         <div class="cmp-demo">
           <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
             <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
-            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover">SABAHATTİN ALİ<br><span style="font-size:13px;margin-top:6px;display:block;">Kürk Mantolu Madonna</span></div></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover">SABAHATTÄ°N ALÄ°<br><span style="font-size:13px;margin-top:6px;display:block;">KÃ¼rk Mantolu Madonna</span></div></div>
             <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
               <div class="mini-author">Sabahattin Ali</div>
-              <div class="mini-title">Kürk Mantolu Madonna</div>
-              <div class="mini-price">89 ₺</div>
+              <div class="mini-title">KÃ¼rk Mantolu Madonna</div>
+              <div class="mini-price">89 âº</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Ürün kartı — Yeni <code>.card-ribbon.ribbon-new</code></span>
+        <span class="cmp-label">ÃrÃ¼n kartÄ± â Yeni <code>.card-ribbon.ribbon-new</code></span>
         <div class="cmp-demo">
           <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
             <span class="card-ribbon ribbon-new">Yeni</span>
             <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
-            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#6B3A5C,#3A1D30);">ELIF ŞAFAK<br><span style="font-size:13px;margin-top:6px;display:block;">Ada</span></div></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#6B3A5C,#3A1D30);">ELIF ÅAFAK<br><span style="font-size:13px;margin-top:6px;display:block;">Ada</span></div></div>
             <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
-              <div class="mini-author">Elif Şafak</div>
+              <div class="mini-author">Elif Åafak</div>
               <div class="mini-title">Ada</div>
-              <div class="mini-price">125 ₺</div>
+              <div class="mini-price">125 âº</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Ürün kartı — İndirimli <code>.ribbon-sale</code> + <code>.discount-pct</code></span>
+        <span class="cmp-label">ÃrÃ¼n kartÄ± â Ä°ndirimli <code>.ribbon-sale</code> + <code>.discount-pct</code></span>
         <div class="cmp-demo">
           <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
-            <span class="card-ribbon ribbon-sale">İndirim</span>
+            <span class="card-ribbon ribbon-sale">Ä°ndirim</span>
             <span class="discount-pct">%30</span>
             <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
-            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#E8AB42,#9E6817);">YAŞAR KEMAL<br><span style="font-size:13px;margin-top:6px;display:block;">İnce Memed</span></div></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#E8AB42,#9E6817);">YAÅAR KEMAL<br><span style="font-size:13px;margin-top:6px;display:block;">Ä°nce Memed</span></div></div>
             <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
-              <div class="mini-author">Yaşar Kemal</div>
-              <div class="mini-title">İnce Memed</div>
-              <div class="mini-price"><span class="mini-old">155 ₺</span> 110 ₺</div>
+              <div class="mini-author">YaÅar Kemal</div>
+              <div class="mini-title">Ä°nce Memed</div>
+              <div class="mini-price"><span class="mini-old">155 âº</span> 110 âº</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Ürün kartı — Editörün Seçimi <code>.ribbon-editor</code></span>
+        <span class="cmp-label">ÃrÃ¼n kartÄ± â EditÃ¶rÃ¼n SeÃ§imi <code>.ribbon-editor</code></span>
         <div class="cmp-demo">
           <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
-            <span class="card-ribbon ribbon-editor"><i class="ti ti-star" style="font-size:11px;margin-right:2px;"></i> Editörün Seçimi</span>
+            <span class="card-ribbon ribbon-editor"><i class="ti ti-star" style="font-size:11px;margin-right:2px;"></i> EditÃ¶rÃ¼n SeÃ§imi</span>
             <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
-            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#2D5A3D,#1A3526);">AHMET HAMDİ TANPINAR<br><span style="font-size:13px;margin-top:6px;display:block;">Huzur</span></div></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#2D5A3D,#1A3526);">AHMET HAMDÄ° TANPINAR<br><span style="font-size:13px;margin-top:6px;display:block;">Huzur</span></div></div>
             <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
-              <div class="mini-author">Ahmet Hamdi Tanpınar</div>
+              <div class="mini-author">Ahmet Hamdi TanpÄ±nar</div>
               <div class="mini-title">Huzur</div>
-              <div class="mini-price">98 ₺</div>
+              <div class="mini-price">98 âº</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Ürün kartı — Tükendi <code>.card-soldout</code></span>
+        <span class="cmp-label">ÃrÃ¼n kartÄ± â TÃ¼kendi <code>.card-soldout</code></span>
         <div class="cmp-demo">
           <div class="mini-card card-soldout" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
-            <div class="soldout-overlay">Tükendi</div>
+            <div class="soldout-overlay">TÃ¼kendi</div>
             <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
-            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#8B2D2D,#4F1818);">OĞUZ ATAY<br><span style="font-size:13px;margin-top:6px;display:block;">Tutunamayanlar</span></div></div>
+            <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;"><div class="mini-cover" style="background:linear-gradient(135deg,#8B2D2D,#4F1818);">OÄUZ ATAY<br><span style="font-size:13px;margin-top:6px;display:block;">Tutunamayanlar</span></div></div>
             <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
-              <div class="mini-author">Oğuz Atay</div>
+              <div class="mini-author">OÄuz Atay</div>
               <div class="mini-title">Tutunamayanlar</div>
-              <div class="mini-price">145 ₺</div>
+              <div class="mini-price">145 âº</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Ürün kartı — Hover (quick-action) <code>.card-actions</code></span>
-        <p class="cmp-desc" style="margin-top:4px;">Hover ile kapak üzerinde hızlı aksiyon butonları belirir. Aşağıdaki kartın üzerine gelin.</p>
+        <span class="cmp-label">ÃrÃ¼n kartÄ± â Hover (quick-action) <code>.card-actions</code></span>
+        <p class="cmp-desc" style="margin-top:4px;">Hover ile kapak Ã¼zerinde hÄ±zlÄ± aksiyon butonlarÄ± belirir. AÅaÄÄ±daki kartÄ±n Ã¼zerine gelin.</p>
         <div class="cmp-demo">
           <div class="mini-card" style="width:220px;height:380px;background:#ECE6DC;display:flex;flex-direction:column;">
             <div class="mini-card-top" style="display:flex;justify-content:flex-end;padding:16px 18px 0;"><button class="mini-fav"><i class="ti ti-heart"></i></button></div>
             <div class="mini-cover-area" style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px;position:relative;">
               <div class="card-actions">
                 <button class="card-action-btn" title="Sepete Ekle"><i class="ti ti-shopping-bag-plus"></i></button>
-                <button class="card-action-btn" title="İncele"><i class="ti ti-eye"></i></button>
+                <button class="card-action-btn" title="Ä°ncele"><i class="ti ti-eye"></i></button>
                 <button class="card-action-btn" title="Favorilere Ekle"><i class="ti ti-heart"></i></button>
               </div>
-              <div class="mini-cover">SABAHATTİN ALİ<br><span style="font-size:13px;margin-top:6px;display:block;">Kürk Mantolu Madonna</span></div>
+              <div class="mini-cover">SABAHATTÄ°N ALÄ°<br><span style="font-size:13px;margin-top:6px;display:block;">KÃ¼rk Mantolu Madonna</span></div>
             </div>
             <div class="mini-bot" style="padding:0 18px 18px;text-align:center;">
               <div class="mini-author">Sabahattin Ali</div>
-              <div class="mini-title">Kürk Mantolu Madonna</div>
-              <div class="mini-price">89 ₺</div>
+              <div class="mini-title">KÃ¼rk Mantolu Madonna</div>
+              <div class="mini-price">89 âº</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Yatay ürün kartı <code>.h-card</code></span>
+        <span class="cmp-label">Yatay Ã¼rÃ¼n kartÄ± <code>.h-card</code></span>
         <div class="cmp-demo" style="flex-direction:column;align-items:flex-start;">
           <div class="h-card">
-            <div class="h-card-cover"><div class="mini-cover">SABAHATTİN ALİ<br><span style="font-size:11px;margin-top:4px;display:block;">Kürk Mantolu Madonna</span></div></div>
+            <div class="h-card-cover"><div class="mini-cover">SABAHATTÄ°N ALÄ°<br><span style="font-size:11px;margin-top:4px;display:block;">KÃ¼rk Mantolu Madonna</span></div></div>
             <div class="h-card-body">
               <div class="h-card-cat">Roman</div>
-              <div class="h-card-title">Kürk Mantolu Madonna</div>
+              <div class="h-card-title">KÃ¼rk Mantolu Madonna</div>
               <div class="h-card-author">Sabahattin Ali</div>
-              <div class="h-card-desc">Bir Ankara memurunun, geçmişte Berlin'de yaşadığı büyük aşkın acı hikâyesini günlük defterinden öğreniyoruz.</div>
+              <div class="h-card-desc">Bir Ankara memurunun, geÃ§miÅte Berlin'de yaÅadÄ±ÄÄ± bÃ¼yÃ¼k aÅkÄ±n acÄ± hikÃ¢yesini gÃ¼nlÃ¼k defterinden Ã¶Äreniyoruz.</div>
               <div class="h-card-bottom">
-                <span class="h-card-price">89 ₺</span>
+                <span class="h-card-price">89 âº</span>
                 <button class="btn-pill" style="font-size:12px;padding:8px 14px;"><i class="ti ti-shopping-bag-plus"></i> Ekle</button>
               </div>
             </div>
@@ -878,55 +907,55 @@
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Koleksiyon kartı <code>.collection-card</code></span>
+        <span class="cmp-label">Koleksiyon kartÄ± <code>.collection-card</code></span>
         <div class="cmp-demo">
           <div class="collection-card" style="background:linear-gradient(135deg,#3B5C46 0%,#1F3A2E 100%);">
-            <div class="collection-card-cat">Seçki</div>
+            <div class="collection-card-cat">SeÃ§ki</div>
             <div class="collection-card-title">Edebiyat Klasikleri</div>
             <div class="collection-card-count">24 kitap</div>
           </div>
           <div class="collection-card" style="background:linear-gradient(135deg,#8B5A2B 0%,#4A2E14 100%);">
-            <div class="collection-card-cat">Seçki</div>
-            <div class="collection-card-title">Felsefe Serüveni</div>
+            <div class="collection-card-cat">SeÃ§ki</div>
+            <div class="collection-card-title">Felsefe SerÃ¼veni</div>
             <div class="collection-card-count">18 kitap</div>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Yazar kartı — Temel <code>.author-card</code></span>
+        <span class="cmp-label">Yazar kartÄ± â Temel <code>.author-card</code></span>
         <div class="cmp-demo">
           <div class="author-mini"><div class="author-mini-photo" style="background:#3B5C46">SA</div><div class="author-mini-name">Sabahattin Ali</div><div class="author-mini-meta">12 kitap</div></div>
-          <div class="author-mini"><div class="author-mini-photo" style="background:#8B5A2B">YK</div><div class="author-mini-name">Yaşar Kemal</div><div class="author-mini-meta">18 kitap</div></div>
-          <div class="author-mini"><div class="author-mini-photo" style="background:#A33F2C">OA</div><div class="author-mini-name">Oğuz Atay</div><div class="author-mini-meta">5 kitap</div></div>
+          <div class="author-mini"><div class="author-mini-photo" style="background:#8B5A2B">YK</div><div class="author-mini-name">YaÅar Kemal</div><div class="author-mini-meta">18 kitap</div></div>
+          <div class="author-mini"><div class="author-mini-photo" style="background:#A33F2C">OA</div><div class="author-mini-name">OÄuz Atay</div><div class="author-mini-meta">5 kitap</div></div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Yazar kartı — Detaylı <code>.author-detail</code></span>
+        <span class="cmp-label">Yazar kartÄ± â DetaylÄ± <code>.author-detail</code></span>
         <div class="cmp-demo">
           <div class="author-detail">
             <div class="author-detail-photo" style="background:#3B5C46">SA</div>
             <div class="author-detail-name">Sabahattin Ali</div>
-            <div class="author-detail-bio">Türk edebiyatının en önemli hikâye ve roman yazarlarından biri. Realizm akımının öncü ismi.</div>
-            <a href="#" class="author-detail-link">Kitaplarını Gör →</a>
+            <div class="author-detail-bio">TÃ¼rk edebiyatÄ±nÄ±n en Ã¶nemli hikÃ¢ye ve roman yazarlarÄ±ndan biri. Realizm akÄ±mÄ±nÄ±n Ã¶ncÃ¼ ismi.</div>
+            <a href="#" class="author-detail-link">KitaplarÄ±nÄ± GÃ¶r â</a>
           </div>
           <div class="author-detail">
             <div class="author-detail-photo" style="background:#8B5A2B">YK</div>
-            <div class="author-detail-name">Yaşar Kemal</div>
-            <div class="author-detail-bio">Anadolu'nun destansı anlatıcısı. Nobel Edebiyat Ödülü'ne aday gösterilmiş dünyaca ünlü yazar.</div>
-            <a href="#" class="author-detail-link">Kitaplarını Gör →</a>
+            <div class="author-detail-name">YaÅar Kemal</div>
+            <div class="author-detail-bio">Anadolu'nun destansÄ± anlatÄ±cÄ±sÄ±. Nobel Edebiyat ÃdÃ¼lÃ¼'ne aday gÃ¶sterilmiÅ dÃ¼nyaca Ã¼nlÃ¼ yazar.</div>
+            <a href="#" class="author-detail-link">KitaplarÄ±nÄ± GÃ¶r â</a>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">En çok satan kartı <code>.bs-item</code></span>
+        <span class="cmp-label">En Ã§ok satan kartÄ± <code>.bs-item</code></span>
         <div class="cmp-demo empty">
           <div class="bs-mini" style="width:100%;">
-            <div class="bs-mini-item"><span class="bs-mini-number">1</span><div class="bs-mini-cover">SABAHATTİN ALİ<br>Kürk Mantolu Madonna</div><div class="bs-mini-info">Kürk Mantolu Madonna<div class="p">89 ₺</div></div></div>
-            <div class="bs-mini-item"><span class="bs-mini-number">2</span><div class="bs-mini-cover" style="background:linear-gradient(135deg,#E8AB42,#9E6817);">YAŞAR KEMAL<br>İnce Memed</div><div class="bs-mini-info">İnce Memed<div class="p">110 ₺</div></div></div>
-            <div class="bs-mini-item"><span class="bs-mini-number">3</span><div class="bs-mini-cover" style="background:linear-gradient(135deg,#8B2D2D,#4F1818);">OĞUZ ATAY<br>Tutunamayanlar</div><div class="bs-mini-info">Tutunamayanlar<div class="p">145 ₺</div></div></div>
+            <div class="bs-mini-item"><span class="bs-mini-number">1</span><div class="bs-mini-cover">SABAHATTÄ°N ALÄ°<br>KÃ¼rk Mantolu Madonna</div><div class="bs-mini-info">KÃ¼rk Mantolu Madonna<div class="p">89 âº</div></div></div>
+            <div class="bs-mini-item"><span class="bs-mini-number">2</span><div class="bs-mini-cover" style="background:linear-gradient(135deg,#E8AB42,#9E6817);">YAÅAR KEMAL<br>Ä°nce Memed</div><div class="bs-mini-info">Ä°nce Memed<div class="p">110 âº</div></div></div>
+            <div class="bs-mini-item"><span class="bs-mini-number">3</span><div class="bs-mini-cover" style="background:linear-gradient(135deg,#8B2D2D,#4F1818);">OÄUZ ATAY<br>Tutunamayanlar</div><div class="bs-mini-info">Tutunamayanlar<div class="p">145 âº</div></div></div>
           </div>
         </div>
       </div>
@@ -935,25 +964,25 @@
     <!-- ============ SECTIONS ============ -->
     <section id="sections" class="cmp-section">
       <h2>Section'lar</h2>
-      <p class="cmp-desc">Sayfa-içi bölümler, bannerlar, detay hero, yorum alanı, filtre paneli ve mini sepet.</p>
+      <p class="cmp-desc">Sayfa-iÃ§i bÃ¶lÃ¼mler, bannerlar, detay hero, yorum alanÄ±, filtre paneli ve mini sepet.</p>
 
       <div class="cmp-row">
-        <span class="cmp-label">Section başlığı <code>.section-head</code></span>
+        <span class="cmp-label">Section baÅlÄ±ÄÄ± <code>.section-head</code></span>
         <div class="cmp-demo empty">
-          <div class="sh-demo" style="width:100%;"><h3>Öne Çıkanlar</h3><a href="#" class="btn-link">Tümünü Gör <i class="ti ti-arrow-right"></i></a></div>
+          <div class="sh-demo" style="width:100%;"><h3>Ãne ÃÄ±kanlar</h3><a href="#" class="btn-link">TÃ¼mÃ¼nÃ¼ GÃ¶r <i class="ti ti-arrow-right"></i></a></div>
         </div>
       </div>
 
       <div class="cmp-row">
         <span class="cmp-label">A-Z Filter <code>.alphabet</code></span>
         <div class="cmp-demo empty">
-          <div class="alpha-mini" style="width:100%;background:#fff;padding:18px 24px;border:1px solid #E8E1D2;justify-content:center;">
-            <button>Tümü</button>
-            <button>A</button><button>B</button><button>C</button><button class="dis">Ç</button><button>D</button>
+          <div class="alpha-mini" style="width:100%;background:#fff;padding:18px 24px;border:1px solid var(--border);justify-content:center;">
+            <button>TÃ¼mÃ¼</button>
+            <button>A</button><button>B</button><button>C</button><button class="dis">Ã</button><button>D</button>
             <button class="active">E</button><button>F</button><button class="dis">G</button><button>H</button>
-            <button>İ</button><button>K</button><button>L</button><button>M</button><button>N</button>
-            <button>O</button><button class="dis">Ö</button><button>P</button><button>R</button><button>S</button>
-            <button>Ş</button><button>T</button><button class="dis">U</button><button class="dis">Ü</button><button>V</button>
+            <button>Ä°</button><button>K</button><button>L</button><button>M</button><button>N</button>
+            <button>O</button><button class="dis">Ã</button><button>P</button><button>R</button><button>S</button>
+            <button>Å</button><button>T</button><button class="dis">U</button><button class="dis">Ã</button><button>V</button>
             <button>Y</button><button>Z</button>
           </div>
         </div>
@@ -965,7 +994,7 @@
           <div class="pb-mini" style="width:100%;">
             <span class="badge-new"><span class="tag">Edebiyat</span></span>
             <div class="pbm-title">Yazarlar</div>
-            <div class="pbm-desc">Runik kataloğunda yer alan tüm yazarları alfabetik olarak keşfedin.</div>
+            <div class="pbm-desc">Runik kataloÄunda yer alan tÃ¼m yazarlarÄ± alfabetik olarak keÅfedin.</div>
           </div>
         </div>
       </div>
@@ -974,20 +1003,20 @@
         <span class="cmp-label">CTA banner <code>.cta-banner</code></span>
         <div class="cmp-demo empty">
           <div class="cta-mini" style="width:100%;">
-            <h3>Edebiyatın<br>izini sürenler için.</h3>
-            <div class="actions"><button class="btn-orange" style="padding:18px 28px;letter-spacing:2px;text-transform:uppercase;">Yeni Kitaplar</button><button class="btn-cream" style="padding:18px 28px;">Kataloğu İndir</button></div>
+            <h3>EdebiyatÄ±n<br>izini sÃ¼renler iÃ§in.</h3>
+            <div class="actions"><button class="btn-orange" style="padding:18px 28px;letter-spacing:2px;text-transform:uppercase;">Yeni Kitaplar</button><button class="btn-cream" style="padding:18px 28px;">KataloÄu Ä°ndir</button></div>
           </div>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Banner altı sekme grubu <code>.banner-tabs</code></span>
-        <p class="cmp-desc" style="margin-top:4px;">Hero/banner altında koleksiyon veya tema seçici. Aktif sekme turuncu zemin + beyaz yazı, üstte koyu turuncu ince çizgi, altında banner'a yönlenen ok göstergesi. Tıklayınca seçim değişir.</p>
+        <span class="cmp-label">Banner altÄ± sekme grubu <code>.banner-tabs</code></span>
+        <p class="cmp-desc" style="margin-top:4px;">Hero/banner altÄ±nda koleksiyon veya tema seÃ§ici. Aktif sekme turuncu zemin + beyaz yazÄ±, Ã¼stte koyu turuncu ince Ã§izgi, altÄ±nda banner'a yÃ¶nlenen ok gÃ¶stergesi. TÄ±klayÄ±nca seÃ§im deÄiÅir.</p>
         <div class="cmp-demo empty" style="padding:0 0 20px;background:transparent;border:none;">
           <div class="banner-tabs" id="bannerTabsDemo" style="width:100%;">
-            <button class="banner-tab is-active" data-tab="0">Runik Mayıs Koleksiyonu</button>
-            <button class="banner-tab" data-tab="1">Runik Çocuk</button>
-            <button class="banner-tab" data-tab="2">Runik Genç</button>
+            <button class="banner-tab is-active" data-tab="0">Runik MayÄ±s Koleksiyonu</button>
+            <button class="banner-tab" data-tab="1">Runik Ãocuk</button>
+            <button class="banner-tab" data-tab="2">Runik GenÃ§</button>
             <button class="banner-tab" data-tab="3">Klasikler Serisi</button>
           </div>
         </div>
@@ -998,29 +1027,29 @@
         <div class="cmp-demo empty">
           <div class="book-detail-hero">
             <div class="bdh-cover">
-              <div class="bdh-cover-img">SABAHATTİN ALİ<br><span style="font-size:14px;margin-top:8px;display:block;">Kürk Mantolu Madonna</span></div>
+              <div class="bdh-cover-img">SABAHATTÄ°N ALÄ°<br><span style="font-size:14px;margin-top:8px;display:block;">KÃ¼rk Mantolu Madonna</span></div>
             </div>
             <div class="bdh-info">
               <div class="bdh-cat">Roman</div>
-              <div class="bdh-title">Kürk Mantolu Madonna</div>
+              <div class="bdh-title">KÃ¼rk Mantolu Madonna</div>
               <div class="bdh-author">Yazar: <a href="/yazarlar">Sabahattin Ali</a></div>
               <div class="bdh-meta">
                 <span><i class="ti ti-book"></i> 176 sayfa</span>
                 <span><i class="ti ti-calendar"></i> 1943</span>
-                <span class="stars-demo" style="font-size:14px;">★★★★★</span>
-                <span style="color:#6E5D4B;">(324 değerlendirme)</span>
+                <span class="stars-demo" style="font-size:14px;">âââââ</span>
+                <span style="color:var(--text-soft);">(324 deÄerlendirme)</span>
               </div>
               <div style="display:flex;gap:8px;margin-top:4px;">
                 <span class="badge-format"><i class="ti ti-book"></i> Ciltli</span>
                 <span class="badge-stock in-stock"><i class="ti ti-check"></i> Stokta</span>
               </div>
               <div class="bdh-price-box">
-                <span class="bdh-price">89 ₺</span>
-                <span class="bdh-price-old">120 ₺</span>
-                <span class="badge-discount" style="margin-left:8px;">%26 İndirim</span>
+                <span class="bdh-price">89 âº</span>
+                <span class="bdh-price-old">120 âº</span>
+                <span class="badge-discount" style="margin-left:8px;">%26 Ä°ndirim</span>
               </div>
               <div class="bdh-actions">
-                <div class="qty-stepper"><button>−</button><span>1</span><button>+</button></div>
+                <div class="qty-stepper"><button>â</button><span>1</span><button>+</button></div>
                 <button class="btn-orange"><i class="ti ti-shopping-bag-plus"></i> Sepete Ekle</button>
                 <button class="btn-icon"><i class="ti ti-heart"></i></button>
                 <button class="btn-icon"><i class="ti ti-share"></i></button>
@@ -1031,17 +1060,17 @@
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Yorum / review kartı <code>.review-item</code></span>
+        <span class="cmp-label">Yorum / review kartÄ± <code>.review-item</code></span>
         <div class="cmp-demo" style="flex-direction:column;align-items:stretch;">
           <div class="review-item">
             <div class="review-avatar">AY</div>
             <div class="review-body">
               <div class="review-head">
-                <span class="review-name">Ayşe Yılmaz</span>
-                <span class="review-stars">★★★★★</span>
-                <span class="review-date">2 gün önce</span>
+                <span class="review-name">AyÅe YÄ±lmaz</span>
+                <span class="review-stars">âââââ</span>
+                <span class="review-date">2 gÃ¼n Ã¶nce</span>
               </div>
-              <div class="review-text">Sabahattin Ali'nin en güzel eserlerinden biri. Raif Efendi'nin hikâyesi yıllar sonra bile aynı duyguyu veriyor. Kesinlikle herkesin okuması gereken bir kitap.</div>
+              <div class="review-text">Sabahattin Ali'nin en gÃ¼zel eserlerinden biri. Raif Efendi'nin hikÃ¢yesi yÄ±llar sonra bile aynÄ± duyguyu veriyor. Kesinlikle herkesin okumasÄ± gereken bir kitap.</div>
             </div>
           </div>
           <div class="review-item" style="border-bottom:none;">
@@ -1049,10 +1078,10 @@
             <div class="review-body">
               <div class="review-head">
                 <span class="review-name">Mehmet Kaya</span>
-                <span class="review-stars">★★★★<span class="empty">★</span></span>
-                <span class="review-date">1 hafta önce</span>
+                <span class="review-stars">ââââ<span class="empty">â</span></span>
+                <span class="review-date">1 hafta Ã¶nce</span>
               </div>
-              <div class="review-text">Çok akıcı bir dille yazılmış, bir solukta okudum. Sonu biraz buruk bırakıyor ama edebiyatın gücünü hissettiriyor.</div>
+              <div class="review-text">Ãok akÄ±cÄ± bir dille yazÄ±lmÄ±Å, bir solukta okudum. Sonu biraz buruk bÄ±rakÄ±yor ama edebiyatÄ±n gÃ¼cÃ¼nÃ¼ hissettiriyor.</div>
             </div>
           </div>
         </div>
@@ -1066,14 +1095,14 @@
             <div class="filter-section">
               <h5>Kategori</h5>
               <label class="form-check"><input type="checkbox" checked> Roman</label>
-              <label class="form-check"><input type="checkbox"> Şiir</label>
+              <label class="form-check"><input type="checkbox"> Åiir</label>
               <label class="form-check"><input type="checkbox" checked> Deneme</label>
               <label class="form-check"><input type="checkbox"> Tarih</label>
             </div>
             <div class="filter-section">
-              <h5>Fiyat Aralığı</h5>
+              <h5>Fiyat AralÄ±ÄÄ±</h5>
               <div class="range-slider" style="width:100%;">
-                <div class="range-slider-labels"><span>0 ₺</span><span>500 ₺</span></div>
+                <div class="range-slider-labels"><span>0 âº</span><span>500 âº</span></div>
                 <input type="range" min="0" max="500" value="200" style="width:100%;">
               </div>
             </div>
@@ -1094,32 +1123,32 @@
           <div class="mini-cart">
             <h4>Sepetim (2)</h4>
             <div class="cart-item">
-              <div class="cart-item-cover">SABAHATTİN ALİ<br>Kürk Mantolu</div>
+              <div class="cart-item-cover">SABAHATTÄ°N ALÄ°<br>KÃ¼rk Mantolu</div>
               <div class="cart-item-info">
-                <span class="cart-item-title">Kürk Mantolu Madonna</span>
+                <span class="cart-item-title">KÃ¼rk Mantolu Madonna</span>
                 <span class="cart-item-author">Sabahattin Ali</span>
                 <div class="cart-item-bottom">
-                  <span class="cart-item-price">89 ₺</span>
+                  <span class="cart-item-price">89 âº</span>
                   <button class="cart-item-remove"><i class="ti ti-trash"></i></button>
                 </div>
               </div>
             </div>
             <div class="cart-item">
-              <div class="cart-item-cover" style="background:linear-gradient(135deg,#E8AB42,#9E6817);">YAŞAR KEMAL<br>İnce Memed</div>
+              <div class="cart-item-cover" style="background:linear-gradient(135deg,#E8AB42,#9E6817);">YAÅAR KEMAL<br>Ä°nce Memed</div>
               <div class="cart-item-info">
-                <span class="cart-item-title">İnce Memed</span>
-                <span class="cart-item-author">Yaşar Kemal</span>
+                <span class="cart-item-title">Ä°nce Memed</span>
+                <span class="cart-item-author">YaÅar Kemal</span>
                 <div class="cart-item-bottom">
-                  <span class="cart-item-price">110 ₺</span>
+                  <span class="cart-item-price">110 âº</span>
                   <button class="cart-item-remove"><i class="ti ti-trash"></i></button>
                 </div>
               </div>
             </div>
             <div class="cart-total">
               <span class="cart-total-label">Toplam</span>
-              <span class="cart-total-price">199 ₺</span>
+              <span class="cart-total-price">199 âº</span>
             </div>
-            <button class="btn-orange" style="width:100%;justify-content:center;margin-top:14px;">Ödemeye Geç <i class="ti ti-arrow-right"></i></button>
+            <button class="btn-orange" style="width:100%;justify-content:center;margin-top:14px;">Ãdemeye GeÃ§ <i class="ti ti-arrow-right"></i></button>
           </div>
         </div>
       </div>
@@ -1128,60 +1157,60 @@
     <!-- ============ NAVIGATION ============ -->
     <section id="navigation" class="cmp-section">
       <h2>Navigasyon</h2>
-      <p class="cmp-desc">Header, breadcrumb, mega menü, pagination ve tab bar bileşenleri.</p>
+      <p class="cmp-desc">Header, breadcrumb, mega menÃ¼, pagination ve tab bar bileÅenleri.</p>
 
       <div class="cmp-row">
-        <span class="cmp-label">Header (yukarıda canlı görünüyor) <code>.site-header</code></span>
-        <p class="cmp-desc" style="margin-top:8px;">Logo + nav linkleri + icon butonlar. <strong>Yeni Çıkanlar</strong>, <strong>Çok Satanlar</strong>, <strong>Kategoriler (dropdown)</strong>, <strong>Yazarlar (dropdown)</strong>, <strong>Hakkımızda</strong>.</p>
+        <span class="cmp-label">Header (yukarÄ±da canlÄ± gÃ¶rÃ¼nÃ¼yor) <code>.site-header</code></span>
+        <p class="cmp-desc" style="margin-top:8px;">Logo + nav linkleri + icon butonlar. <strong>Yeni ÃÄ±kanlar</strong>, <strong>Ãok Satanlar</strong>, <strong>Kategoriler (dropdown)</strong>, <strong>Yazarlar (dropdown)</strong>, <strong>HakkÄ±mÄ±zda</strong>.</p>
       </div>
 
       <div class="cmp-row">
         <span class="cmp-label">Breadcrumb <code>.breadcrumb</code></span>
         <div class="cmp-demo">
-          <nav style="font-family:'Jost',sans-serif;font-size:12.5px;color:#9B8A75;letter-spacing:.4px;">
-            <a href="#" style="color:#9B8A75;text-decoration:none;">Anasayfa</a>
+          <nav style="font-family:'Jost',sans-serif;font-size:12.5px;color:var(--text-faint);letter-spacing:.4px;">
+            <a href="#" style="color:var(--text-faint);text-decoration:none;">Anasayfa</a>
             <span style="margin:0 8px;opacity:.5;">/</span>
-            <a href="#" style="color:#9B8A75;text-decoration:none;">Edebiyat</a>
+            <a href="#" style="color:var(--text-faint);text-decoration:none;">Edebiyat</a>
             <span style="margin:0 8px;opacity:.5;">/</span>
-            <a href="#" style="color:#9B8A75;text-decoration:none;">Roman</a>
+            <a href="#" style="color:var(--text-faint);text-decoration:none;">Roman</a>
             <span style="margin:0 8px;opacity:.5;">/</span>
-            <span style="color:#3B2A1C;">Kürk Mantolu Madonna</span>
+            <span style="color:var(--text);">KÃ¼rk Mantolu Madonna</span>
           </nav>
         </div>
       </div>
 
       <div class="cmp-row">
-        <span class="cmp-label">Mega menü <code>.mega-menu</code></span>
+        <span class="cmp-label">Mega menÃ¼ <code>.mega-menu</code></span>
         <div class="cmp-demo empty">
           <div class="mega-menu-demo">
             <div class="mega-col">
               <h5>Edebiyat</h5>
               <a href="/kitaplar?cat=Roman">Roman</a>
-              <a href="/kitaplar?cat=Şiir">Şiir</a>
-              <a href="#">Öykü</a>
+              <a href="/kitaplar?cat=Åiir">Åiir</a>
+              <a href="#">ÃykÃ¼</a>
               <a href="/kitaplar?cat=Deneme">Deneme</a>
               <a href="#">Tiyatro</a>
             </div>
             <div class="mega-col">
-              <h5>Bilim & Düşünce</h5>
+              <h5>Bilim & DÃ¼ÅÃ¼nce</h5>
               <a href="#">Felsefe</a>
               <a href="#">Psikoloji</a>
               <a href="/kitaplar?cat=Tarih">Tarih</a>
               <a href="#">Bilim</a>
             </div>
             <div class="mega-col">
-              <h5>Yaşam</h5>
-              <a href="#">Kişisel Gelişim</a>
+              <h5>YaÅam</h5>
+              <a href="#">KiÅisel GeliÅim</a>
               <a href="#">Seyahat</a>
               <a href="#">Yemek</a>
               <a href="#">Sanat</a>
             </div>
             <div class="mega-col">
-              <h5>Çocuk & Genç</h5>
+              <h5>Ãocuk & GenÃ§</h5>
               <a href="#">Resimli Kitap</a>
               <a href="#">Masal</a>
-              <a href="#">Genç Yetişkin</a>
-              <a href="#">Eğitim</a>
+              <a href="#">GenÃ§ YetiÅkin</a>
+              <a href="#">EÄitim</a>
             </div>
           </div>
         </div>
@@ -1196,7 +1225,7 @@
             <span class="active">2</span>
             <a href="#">3</a>
             <a href="#">4</a>
-            <span class="dots">…</span>
+            <span class="dots">â¦</span>
             <a href="#">12</a>
             <a href="#" class="pg-arrow"><i class="ti ti-chevron-right"></i></a>
           </nav>
@@ -1207,7 +1236,7 @@
         <span class="cmp-label">Tab bar <code>.tab-bar</code></span>
         <div class="cmp-demo empty" style="padding:0;">
           <div class="tab-bar" style="width:100%;">
-            <a href="#" class="active">Açıklama</a>
+            <a href="#" class="active">AÃ§Ä±klama</a>
             <a href="#">Detaylar</a>
             <a href="#">Yorumlar (24)</a>
             <a href="#">Benzer Kitaplar</a>
@@ -1219,33 +1248,33 @@
     <!-- ============ FOOTER ============ -->
     <section id="footer" class="cmp-section">
       <h2>Footer</h2>
-      <p class="cmp-desc">Tam genişlik koyu yeşil banner, 4 sütun link grubu, sosyal medya ikonları.</p>
+      <p class="cmp-desc">Tam geniÅlik koyu yeÅil banner, 4 sÃ¼tun link grubu, sosyal medya ikonlarÄ±.</p>
       <div class="cmp-row">
         <span class="cmp-label">Site footer <code>.site-footer</code></span>
-        <p class="cmp-desc" style="margin-top:8px;">Sayfanın altında canlı olarak görüntüleniyor ↓</p>
+        <p class="cmp-desc" style="margin-top:8px;">SayfanÄ±n altÄ±nda canlÄ± olarak gÃ¶rÃ¼ntÃ¼leniyor â</p>
       </div>
     </section>
 
   </main>
 </div>
 
-<!-- FOOTER (canlı örnek) -->
+<!-- FOOTER (canlÄ± Ã¶rnek) -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:flex-start;padding-bottom:48px;border-bottom:1px solid rgba(231,222,200,.12);">
       <div>
         <img src="/assets/runik-logo.png" alt="Runik" class="footer-logo-mini">
-        <p class="footer-tag-mini">Edebiyatın izini sürenler için.</p>
+        <p class="footer-tag-mini">EdebiyatÄ±n izini sÃ¼renler iÃ§in.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;">
-        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:18px;">Yayınevi</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Hakkımızda</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Yazarlar</a></div>
-        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:18px;">Yardım</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">SSS</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Kargo &amp; Teslimat</a></div>
-        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:18px;">Hesabım</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Giriş Yap</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Siparişlerim</a></div>
-        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:18px;">İletişim</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">info@runik.com.tr</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">İstanbul, Türkiye</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">YayÄ±nevi</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">HakkÄ±mÄ±zda</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Yazarlar</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">YardÄ±m</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">SSS</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Kargo &amp; Teslimat</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">HesabÄ±m</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">GiriÅ Yap</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">SipariÅlerim</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">Ä°letiÅim</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">info@runik.com.tr</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Ä°stanbul, TÃ¼rkiye</a></div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Runik Yayınevi. Tüm hakları saklıdır.</span>
+      <span>Â© 2026 Runik YayÄ±nevi. TÃ¼m haklarÄ± saklÄ±dÄ±r.</span>
       <div style="display:flex;gap:10px;">
         <a href="#" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-instagram"></i></a>
         <a href="#" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-x"></i></a>
@@ -1292,6 +1321,38 @@
       t.classList.add('is-active');
     });
   });
+</script>
+<!-- Tema toggle (test) -->
+<button id="runikThemeToggle" class="runik-theme-toggle" aria-label="Tema değiştir" title="Tema değiştir">
+  <span class="rtt-icon rtt-sun">☀</span>
+  <span class="rtt-track"><span class="rtt-thumb"></span></span>
+  <span class="rtt-icon rtt-moon">◐</span>
+  <span class="rtt-label">Tema</span>
+</button>
+<style>
+  .runik-theme-toggle{position:fixed;bottom:20px;left:20px;z-index:1000;background:var(--card);border:1px solid var(--border);padding:10px 14px;display:inline-flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:500;color:var(--text);cursor:pointer;box-shadow:0 10px 24px -10px rgba(0,0,0,.18);transition:background .2s ease,border-color .2s ease,color .2s ease;}
+  .runik-theme-toggle:hover{filter:brightness(.98);transform:translateY(-1px);}
+  .runik-theme-toggle .rtt-icon{font-size:12px;color:var(--text-faint);line-height:1;}
+  .runik-theme-toggle .rtt-track{width:30px;height:16px;background:var(--border);border-radius:99px;position:relative;transition:background .2s;}
+  .runik-theme-toggle .rtt-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;background:var(--accent);border-radius:50%;transition:transform .2s ease,background .2s ease;}
+  html[data-theme="light"] .runik-theme-toggle .rtt-thumb{transform:translateX(14px);background:#222;}
+  html[data-theme="light"] .runik-theme-toggle .rtt-sun{color:var(--border);}
+  html[data-theme="warm"] .runik-theme-toggle .rtt-moon,
+  :root:not([data-theme="light"]) .runik-theme-toggle .rtt-moon{color:var(--border);}
+  @media (max-width:680px){
+    .runik-theme-toggle .rtt-label{display:none;}
+  }
+</style>
+<script>
+(function(){
+  var b=document.getElementById('runikThemeToggle');if(!b)return;
+  b.addEventListener('click',function(){
+    var c=document.documentElement.getAttribute('data-theme')||'warm';
+    var n=c==='light'?'warm':'light';
+    document.documentElement.setAttribute('data-theme',n);
+    try{localStorage.setItem('runik-theme',n);}catch(e){}
+  });
+})();
 </script>
 </body>
 </html>

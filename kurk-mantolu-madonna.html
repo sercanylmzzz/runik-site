@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kürk Mantolu Madonna — Runik</title>
+<title>KÃ¼rk Mantolu Madonna â Runik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -11,50 +11,50 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   body{
-    background:#F7F4EF;
+    background:var(--bg);
     font-family:'Jost',sans-serif;
     min-height:100vh;
     padding:0 32px;
-    color:#3B2A1C;
+    color:var(--text);
   }
 
-  /* ============ SITE HEADER (3 satır) ============ */
+  /* ============ SITE HEADER (3 satÄ±r) ============ */
   .site-header{position:sticky;top:0;z-index:50;margin:0 -32px;}
   .h-top{background:#1F3A2E;color:#E7DEC8;font-family:'Jost',sans-serif;font-size:12.5px;}
   .h-top-inner{max-width:1240px;margin:0 auto;padding:10px 32px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;}
   .h-top-left{color:#C9BFA8;letter-spacing:.2px;}
-  .h-top-center{text-align:center;font-weight:500;color:#F4ECDD;letter-spacing:.3px;}
+  .h-top-center{text-align:center;font-weight:500;color:var(--bg-tint);letter-spacing:.3px;}
   .h-top-right{display:flex;justify-content:flex-end;gap:0;}
   .h-top-right a{color:#C9BFA8;text-decoration:none;padding:0 14px;border-right:1px solid rgba(231,222,200,.18);font-weight:500;transition:color .2s ease;}
-  .h-top-right a:hover{color:#F4ECDD;}
+  .h-top-right a:hover{color:var(--bg-tint);}
   .h-top-right a:last-child{border-right:none;padding-right:0;}
   .h-top-right a:first-child{padding-left:0;}
-  .h-main{background:rgba(247,244,239,.95);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid #E8E1D2;}
+  .h-main{background:rgba(247,244,239,.95);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--border);}
   .h-main-inner{max-width:1240px;margin:0 auto;padding:18px 32px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;}
-  .logo{display:inline-flex;align-items:center;text-decoration:none;color:#3B2A1C;}
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--text);}
   .logo-img{height:50px;width:auto;display:block;}
-  .h-search{display:flex;align-items:center;background:#fff;border:1px solid #E8E1D2;height:52px;padding:0 6px 0 22px;max-width:580px;transition:border-color .2s ease;}
-  .h-search:focus-within{border-color:#F2541B;}
-  .h-search input{flex:1;border:none;background:transparent;outline:none;font-family:'Jost',sans-serif;font-size:14px;color:#3B2A1C;}
-  .h-search input::placeholder{color:#9B8A75;}
-  .h-search button{background:#F2541B;color:#fff;border:none;width:44px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:filter .2s ease;}
+  .h-search{display:flex;align-items:center;background:#fff;border:1px solid var(--border);height:52px;padding:0 6px 0 22px;max-width:580px;transition:border-color .2s ease;}
+  .h-search:focus-within{border-color:var(--accent);}
+  .h-search input{flex:1;border:none;background:transparent;outline:none;font-family:'Jost',sans-serif;font-size:14px;color:var(--text);}
+  .h-search input::placeholder{color:var(--text-faint);}
+  .h-search button{background:var(--accent);color:#fff;border:none;width:44px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:filter .2s ease;}
   .h-search button:hover{filter:brightness(1.08);}
   .h-actions{display:flex;gap:12px;align-items:center;}
-  .h-user{display:inline-flex;align-items:center;gap:11px;padding:10px 18px;border:1px solid #E8E1D2;background:#fff;text-decoration:none;color:#3B2A1C;font-family:'Jost',sans-serif;transition:border-color .2s ease;}
-  .h-user:hover{border-color:#F2541B;}
-  .h-user-icon{font-size:22px;color:#F2541B;}
+  .h-user{display:inline-flex;align-items:center;gap:11px;padding:10px 18px;border:1px solid var(--border);background:#fff;text-decoration:none;color:var(--text);font-family:'Jost',sans-serif;transition:border-color .2s ease;}
+  .h-user:hover{border-color:var(--accent);}
+  .h-user-icon{font-size:22px;color:var(--accent);}
   .h-user-text{display:flex;flex-direction:column;line-height:1.1;}
   .h-user-text b{font-size:13px;font-weight:500;}
-  .h-user-text span{font-size:10.5px;color:#9B8A75;margin-top:3px;letter-spacing:.2px;}
-  .h-cart{background:#FAF3E3;display:inline-flex;align-items:center;gap:12px;padding:14px 22px;text-decoration:none;color:#3B2A1C;font-family:'Jost',sans-serif;font-size:13.5px;font-weight:500;position:relative;border:1px solid transparent;transition:border-color .2s ease;}
-  .h-cart:hover{border-color:#F2541B;}
-  .h-cart > i{font-size:22px;color:#F2541B;}
-  .h-cart .badge{position:absolute;top:8px;left:36px;background:#F2541B;color:#fff;min-width:18px;height:18px;padding:0 5px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;}
-  .h-nav{background:rgba(247,244,239,.95);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid #E8E1D2;position:relative;}
+  .h-user-text span{font-size:10.5px;color:var(--text-faint);margin-top:3px;letter-spacing:.2px;}
+  .h-cart{background:var(--bg-soft);display:inline-flex;align-items:center;gap:12px;padding:14px 22px;text-decoration:none;color:var(--text);font-family:'Jost',sans-serif;font-size:13.5px;font-weight:500;position:relative;border:1px solid transparent;transition:border-color .2s ease;}
+  .h-cart:hover{border-color:var(--accent);}
+  .h-cart > i{font-size:22px;color:var(--accent);}
+  .h-cart .badge{position:absolute;top:8px;left:36px;background:var(--accent);color:#fff;min-width:18px;height:18px;padding:0 5px;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;}
+  .h-nav{background:rgba(247,244,239,.95);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--border);position:relative;}
   .h-nav-inner{max-width:1240px;margin:0 auto;padding:0 32px;display:flex;gap:34px;align-items:center;flex-wrap:nowrap;}
   .h-nav .nav-item{display:inline-flex;align-items:center;}
-  .h-nav-link{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:#3B2A1C;text-decoration:none;padding:16px 0;display:inline-flex;align-items:center;gap:5px;letter-spacing:.2px;position:relative;cursor:pointer;background:transparent;border:none;}
-  .h-nav-link::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:#F2541B;transform:scaleX(0);transition:transform .25s ease;}
+  .h-nav-link{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:var(--text);text-decoration:none;padding:16px 0;display:inline-flex;align-items:center;gap:5px;letter-spacing:.2px;position:relative;cursor:pointer;background:transparent;border:none;}
+  .h-nav-link::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .25s ease;}
   .h-nav-link:hover::after,.h-nav .nav-item:hover .h-nav-link::after,.h-nav .nav-item.is-active .h-nav-link::after,.h-nav-link.is-active::after{transform:scaleX(1);}
   .h-nav-link i{font-size:14px;transition:transform .25s ease;}
   .h-nav .nav-item:hover .h-nav-link i,.h-nav .nav-item.is-active .h-nav-link i{transform:rotate(180deg);}
@@ -68,33 +68,33 @@
   }
 
   /* nav dropdown */
-  .nav-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid #E8E1D2;border-bottom:1px solid #E8E1D2;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease;z-index:40;}
+  .nav-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease;z-index:40;}
   .nav-dropdown.is-open{opacity:1;pointer-events:auto;transform:translateY(0);}
   .dropdown-inner{max-width:1240px;margin:0 auto;padding:44px 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:stretch;}
-  .dropdown-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid #E8E1D2;}
-  .dropdown-head .dh-title{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3B2A1C;font-weight:500;}
-  .dropdown-head .dh-title b{color:#9B8A75;font-weight:400;margin-left:6px;}
-  .dropdown-head .dh-meta{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;color:#9B8A75;text-transform:uppercase;}
+  .dropdown-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--border);}
+  .dropdown-head .dh-title{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text);font-weight:500;}
+  .dropdown-head .dh-title b{color:var(--text-faint);font-weight:400;margin-left:6px;}
+  .dropdown-head .dh-meta{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;color:var(--text-faint);text-transform:uppercase;}
   .dropdown-links{display:grid;grid-template-columns:1fr 1fr;gap:2px 36px;}
-  .dropdown-links a{display:block;font-family:'Jost',sans-serif;font-size:15px;font-weight:400;color:#3B2A1C;text-decoration:none;padding:10px 0;transition:color .2s ease,padding-left .2s ease;}
+  .dropdown-links a{display:block;font-family:'Jost',sans-serif;font-size:15px;font-weight:400;color:var(--text);text-decoration:none;padding:10px 0;transition:color .2s ease,padding-left .2s ease;}
   .dropdown-links a::after{display:none;}
-  .dropdown-links a:hover{color:#F2541B;padding-left:4px;}
+  .dropdown-links a:hover{color:var(--accent);padding-left:4px;}
   .dropdown-right{position:relative;aspect-ratio:5/3.4;overflow:hidden;background:#1F3A2E;display:flex;align-items:flex-end;justify-content:space-between;padding:28px;}
   .dropdown-right .dr-bg{position:absolute;inset:0;background-size:cover;background-position:right center;background-repeat:no-repeat;}
   .dropdown-right .dr-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(31,58,46,.92) 0%,rgba(31,58,46,.5) 60%,rgba(31,58,46,.15) 100%);}
-  .dropdown-right .dr-label{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#F4ECDD;line-height:1.1;max-width:200px;}
+  .dropdown-right .dr-label{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--bg-tint);line-height:1.1;max-width:200px;}
   .dropdown-right .dr-logo{position:relative;z-index:1;height:36px;width:auto;align-self:flex-end;filter:brightness(1.5);opacity:.9;}
 
   /* ============ BREADCRUMB ============ */
   .breadcrumb{
     max-width:1240px;margin:32px auto 28px;
     font-family:'Jost',sans-serif;font-size:12.5px;letter-spacing:.4px;
-    color:#9B8A75;
+    color:var(--text-faint);
   }
-  .breadcrumb a{color:#9B8A75;text-decoration:none;transition:color .2s ease;}
-  .breadcrumb a:hover{color:#3B2A1C;}
+  .breadcrumb a{color:var(--text-faint);text-decoration:none;transition:color .2s ease;}
+  .breadcrumb a:hover{color:var(--text);}
   .breadcrumb .sep{margin:0 8px;opacity:.5;}
-  .breadcrumb .current{color:#3B2A1C;}
+  .breadcrumb .current{color:var(--text);}
 
   /* ============ PRODUCT DETAIL ============ */
   .product-detail{
@@ -108,7 +108,7 @@
   /* ----- gallery (sol) ----- */
   .gallery{
     position:relative;
-    background:#F4ECDD;
+    background:var(--bg-tint);
     padding:28px;
   }
   .cover{
@@ -125,14 +125,14 @@
     background:#fff;
     border:none;cursor:pointer;
     display:flex;align-items:center;justify-content:center;
-    color:#3B2A1C;font-size:18px;
+    color:var(--text);font-size:18px;
     box-shadow:0 4px 10px -2px rgba(0,0,0,.08);
     transition:transform .2s ease,color .2s ease;
   }
-  .fav-toggle:hover{transform:scale(1.06);color:#F2541B;}
-  .fav-toggle.is-active{color:#F2541B;}
+  .fav-toggle:hover{transform:scale(1.06);color:var(--accent);}
+  .fav-toggle.is-active{color:var(--accent);}
 
-  /* gerçek kapak görseli */
+  /* gerÃ§ek kapak gÃ¶rseli */
   .cover-image{
     max-width:100%;max-height:100%;
     height:auto;width:auto;
@@ -141,7 +141,7 @@
     display:block;
   }
 
-  /* küçük resim seçici */
+  /* kÃ¼Ã§Ã¼k resim seÃ§ici */
   .thumbs{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -159,7 +159,7 @@
     overflow:hidden;
   }
   .thumb:hover{border-color:#D4C9B8;}
-  .thumb.is-active{border-color:#F2541B;}
+  .thumb.is-active{border-color:var(--accent);}
   .thumb img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}
   .thumb .mini{
     width:100%;height:100%;
@@ -181,57 +181,57 @@
     background-repeat:no-repeat,repeat-y;
   }
 
-  /* ----- info (sağ) ----- */
+  /* ----- info (saÄ) ----- */
   .info{
-    background:#F4ECDD;
+    background:var(--bg-tint);
     padding:48px 44px;
   }
   .info .cat-badge{
     display:inline-block;
     font-family:'Jost',sans-serif;
     font-size:11px;letter-spacing:2px;font-weight:500;
-    color:#F2541B;text-transform:uppercase;
+    color:var(--accent);text-transform:uppercase;
     margin-bottom:18px;
   }
   .info h1{
     font-family:'Cormorant Garamond',serif;
     font-size:54px;font-weight:600;line-height:1.05;
-    letter-spacing:.2px;color:#3B2A1C;
+    letter-spacing:.2px;color:var(--text);
     margin-bottom:18px;
   }
   .info .author{
     font-family:'Jost',sans-serif;
     font-size:18px;font-weight:500;
-    color:#F2541B;text-decoration:none;
+    color:var(--accent);text-decoration:none;
     border-bottom:1px solid transparent;
     transition:border-color .2s ease;
   }
-  .info .author:hover{border-color:#F2541B;}
+  .info .author:hover{border-color:var(--accent);}
 
   .rating{
     display:flex;align-items:center;gap:14px;
     margin-top:18px;
-    font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;
+    font-family:'Jost',sans-serif;font-size:13px;color:var(--text-soft);
   }
-  .stars{display:inline-flex;gap:3px;color:#F2541B;font-size:17px;line-height:1;}
+  .stars{display:inline-flex;gap:3px;color:var(--accent);font-size:17px;line-height:1;}
   .stars .empty{color:#E0D6C4;}
   .rating .pipe{opacity:.4;margin:0 6px;}
 
   .info .description{
     margin-top:22px;
     font-family:'Jost',sans-serif;font-size:14.5px;line-height:1.65;
-    color:#6E5D4B;font-weight:300;
+    color:var(--text-soft);font-weight:300;
   }
   .read-more{
     display:inline-flex;align-items:center;gap:8px;
     margin-top:14px;
     font-family:'Jost',sans-serif;font-size:13.5px;font-weight:500;
-    color:#F2541B;text-decoration:none;
+    color:var(--accent);text-decoration:none;
     cursor:pointer;
   }
   .read-more:hover{filter:brightness(.9);}
 
-  .info hr{border:none;border-top:1px solid #E8E1D2;margin:28px 0;}
+  .info hr{border:none;border-top:1px solid var(--border);margin:28px 0;}
 
   /* meta-row */
   .meta-row{
@@ -241,21 +241,21 @@
   .meta-item{display:flex;align-items:center;gap:11px;}
   .meta-item i{
     width:36px;height:36px;
-    border:1px solid #E8E1D2;
+    border:1px solid var(--border);
     display:flex;align-items:center;justify-content:center;
-    color:#3B2A1C;font-size:18px;flex-shrink:0;
+    color:var(--text);font-size:18px;flex-shrink:0;
   }
   .meta-item .ml{font-family:'Jost',sans-serif;}
-  .meta-item .ml .lab{font-size:11px;color:#9B8A75;letter-spacing:.4px;}
-  .meta-item .ml .val{font-size:13.5px;color:#3B2A1C;font-weight:500;margin-top:2px;}
+  .meta-item .ml .lab{font-size:11px;color:var(--text-faint);letter-spacing:.4px;}
+  .meta-item .ml .val{font-size:13.5px;color:var(--text);font-weight:500;margin-top:2px;}
 
   /* fiyat kutusu */
-  .price-box{background:#FAF3E3;padding:28px;margin:0 -8px;}
+  .price-box{background:var(--bg-soft);padding:28px;margin:0 -8px;}
   .price-wrap{display:flex;align-items:baseline;gap:14px;}
-  .price{font-family:'Jost',sans-serif;font-size:30px;font-weight:500;color:#F2541B;letter-spacing:.3px;}
-  .price-old{font-family:'Jost',sans-serif;font-size:16px;color:#9B8A75;text-decoration:line-through;}
-  .shipping{display:flex;align-items:center;gap:10px;margin-top:12px;font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;}
-  .shipping i{color:#9B8A75;font-size:17px;}
+  .price{font-family:'Jost',sans-serif;font-size:30px;font-weight:500;color:var(--accent);letter-spacing:.3px;}
+  .price-old{font-family:'Jost',sans-serif;font-size:16px;color:var(--text-faint);text-decoration:line-through;}
+  .shipping{display:flex;align-items:center;gap:10px;margin-top:12px;font-family:'Jost',sans-serif;font-size:13px;color:var(--text-soft);}
+  .shipping i{color:var(--text-faint);font-size:17px;}
   .actions{display:grid;grid-template-columns:1.4fr 1fr;gap:12px;margin-top:24px;}
   .btn-cart,.btn-fav{
     border:1px solid transparent;cursor:pointer;
@@ -265,41 +265,41 @@
     transition:filter .2s ease,background .2s ease;
     text-decoration:none;
   }
-  .btn-cart{background:#F2541B;color:#fff;}
+  .btn-cart{background:var(--accent);color:#fff;}
   .btn-cart:hover{filter:brightness(1.08);}
-  .btn-fav{background:transparent;border-color:#F2541B;color:#F2541B;}
+  .btn-fav{background:transparent;border-color:var(--accent);color:var(--accent);}
   .btn-fav:hover{background:rgba(242,84,27,.06);}
-  .delivery{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:'Jost',sans-serif;font-size:13px;color:#6E5D4B;}
-  .delivery i{color:#9B8A75;font-size:18px;}
+  .delivery{display:flex;align-items:center;gap:10px;margin-top:18px;font-family:'Jost',sans-serif;font-size:13px;color:var(--text-soft);}
+  .delivery i{color:var(--text-faint);font-size:18px;}
 
   /* ============ TABS ============ */
-  .tabs{max-width:1240px;margin:0 auto 80px;border-top:1px solid #E8E1D2;}
+  .tabs{max-width:1240px;margin:0 auto 80px;border-top:1px solid var(--border);}
   .tabs-nav{display:flex;gap:48px;}
   .tab{
     background:transparent;border:none;cursor:pointer;
     font-family:'Jost',sans-serif;font-size:14px;font-weight:400;letter-spacing:.3px;
-    color:#9B8A75;padding:22px 0;position:relative;transition:color .2s ease;
+    color:var(--text-faint);padding:22px 0;position:relative;transition:color .2s ease;
   }
-  .tab:hover{color:#3B2A1C;}
-  .tab.is-active{color:#3B2A1C;font-weight:500;}
-  .tab.is-active::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:#F2541B;}
+  .tab:hover{color:var(--text);}
+  .tab.is-active{color:var(--text);font-weight:500;}
+  .tab.is-active::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);}
   .tab-panels{padding:40px 0 0;}
   .tab-panel{display:none;}
   .tab-panel.is-active{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;}
-  .panel-body p{font-family:'Jost',sans-serif;font-size:15px;line-height:1.7;color:#3B2A1C;font-weight:300;}
+  .panel-body p{font-family:'Jost',sans-serif;font-size:15px;line-height:1.7;color:var(--text);font-weight:300;}
   .panel-body p + p{margin-top:18px;}
   .panel-body .quote{
     font-family:'Cormorant Garamond',serif;
     font-size:22px;font-style:italic;font-weight:500;
-    color:#3B2A1C;line-height:1.35;
-    padding-left:18px;border-left:2px solid #F2541B;
+    color:var(--text);line-height:1.35;
+    padding-left:18px;border-left:2px solid var(--accent);
     margin-top:24px;
   }
   .panel-table{background:#FBF7F0;padding:8px 24px;}
-  .panel-table .row{display:grid;grid-template-columns:1fr 1.4fr;padding:16px 0;border-bottom:1px solid #EDE3D2;font-family:'Jost',sans-serif;font-size:13.5px;}
+  .panel-table .row{display:grid;grid-template-columns:1fr 1.4fr;padding:16px 0;border-bottom:1px solid var(--border-2);font-family:'Jost',sans-serif;font-size:13.5px;}
   .panel-table .row:last-child{border-bottom:none;}
-  .panel-table .row .k{color:#9B8A75;letter-spacing:.3px;}
-  .panel-table .row .v{color:#3B2A1C;font-weight:500;}
+  .panel-table .row .k{color:var(--text-faint);letter-spacing:.3px;}
+  .panel-table .row .v{color:var(--text);font-weight:500;}
 
   @media (max-width:880px){
     .nav{display:none;}
@@ -347,7 +347,7 @@
   .footer-col h4{
     font-family:'Jost',sans-serif;
     font-size:12px;font-weight:500;letter-spacing:1.8px;
-    text-transform:uppercase;color:#F4ECDD;
+    text-transform:uppercase;color:var(--bg-tint);
     margin-bottom:22px;
   }
   .footer-col a{
@@ -357,7 +357,7 @@
     padding:5px 0;
     transition:color .2s ease;
   }
-  .footer-col a:hover{color:#F4ECDD;}
+  .footer-col a:hover{color:var(--bg-tint);}
   .footer-bottom{
     padding-top:32px;
     display:flex;align-items:center;justify-content:space-between;
@@ -383,25 +383,54 @@
     .footer-bottom{justify-content:flex-start;}
   }
 </style>
+<style id="runik-theme-vars">
+:root{
+  --bg:#F7F4EF;
+  --bg-soft:#FAF3E3;
+  --bg-tint:#F4ECDD;
+  --bg-tint-h:#FAEBD5;
+  --border:#E8E1D2;
+  --border-2:#EDE3D2;
+  --text:#3B2A1C;
+  --text-soft:#6E5D4B;
+  --text-faint:#9B8A75;
+  --accent:#F2541B;
+  --card:#FFFFFF;
+}
+html[data-theme="light"]{
+  --bg:#FFFFFF;
+  --bg-soft:#FAFAFA;
+  --bg-tint:#F2F2F2;
+  --bg-tint-h:#E8E8E8;
+  --border:#EAEAEA;
+  --border-2:#ECECEC;
+  --card:#FFFFFF;
+}
+/* Light tema: bazı koyu/krem dolgular için ek dokunuşlar */
+html[data-theme="light"] body{background:#FFFFFF;}
+html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
+html[data-theme="light"] .h-top{background:#FAFAFA;}
+</style>
+<script>(function(){try{var t=localStorage.getItem('runik-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 </head>
 <body>
 
 <!-- ============================================================
-     HIZLI DÜZENLEME ALANI — sadece aşağıdaki BOOK objesini değiştir
+     HIZLI DÃZENLEME ALANI â sadece aÅaÄÄ±daki BOOK objesini deÄiÅtir
      ============================================================ -->
 <script>
 const BOOK = {
   // temel bilgi
   category: 'Roman',
-  title: 'Kürk Mantolu Madonna',
+  title: 'KÃ¼rk Mantolu Madonna',
   author: 'Sabahattin Ali',
 
-  // değerlendirme
+  // deÄerlendirme
   rating: 4.8,
   reviewCount: 1247,
 
-  // açıklama
-  shortDescription: 'Sabahattin Ali\'nin başyapıtı sayılan Kürk Mantolu Madonna, içine kapanık ve sıradan görünen Raif Efendi\'nin Almanya\'da bir kadına duyduğu büyük aşkın hikâyesini anlatır. Bir defterin sayfalarında saklı kalan bu hikâye, hayatın yüzeyinin altında yatan derin tutkuları, yalnızlığı ve aşkın kırılganlığını gün yüzüne çıkarır.',
+  // aÃ§Ä±klama
+  shortDescription: 'Sabahattin Ali\'nin baÅyapÄ±tÄ± sayÄ±lan KÃ¼rk Mantolu Madonna, iÃ§ine kapanÄ±k ve sÄ±radan gÃ¶rÃ¼nen Raif Efendi\'nin Almanya\'da bir kadÄ±na duyduÄu bÃ¼yÃ¼k aÅkÄ±n hikÃ¢yesini anlatÄ±r. Bir defterin sayfalarÄ±nda saklÄ± kalan bu hikÃ¢ye, hayatÄ±n yÃ¼zeyinin altÄ±nda yatan derin tutkularÄ±, yalnÄ±zlÄ±ÄÄ± ve aÅkÄ±n kÄ±rÄ±lganlÄ±ÄÄ±nÄ± gÃ¼n yÃ¼zÃ¼ne Ã§Ä±karÄ±r.',
 
   // teknik
   pages: '160',
@@ -411,27 +440,27 @@ const BOOK = {
 
   // fiyat ve teslimat
   price: '89,00 TL',
-  oldPrice: '120,00 TL',  // çizili eski fiyat (boş bırakılırsa gizlenir)
-  freeShippingNote: '150 TL ve üzeri siparişlerde kargo ücretsiz.',
-  deliveryNote: 'Tahmini Teslimat: 1-2 iş günü içinde kargoda',
+  oldPrice: '120,00 TL',  // Ã§izili eski fiyat (boÅ bÄ±rakÄ±lÄ±rsa gizlenir)
+  freeShippingNote: '150 TL ve Ã¼zeri sipariÅlerde kargo Ã¼cretsiz.',
+  deliveryNote: 'Tahmini Teslimat: 1-2 iÅ gÃ¼nÃ¼ iÃ§inde kargoda',
 
   // sekmeler
   about: {
-    intro: 'Sabahattin Ali, 1943 yılında yayımlanan bu romanında; sıradan bir hayatın altında yatan büyük tutkuları, kimliğin trajedisini ve aşkın insanı nasıl dönüştürdüğünü incelikli bir dille anlatır. Türk edebiyatının en çok okunan ve sevilen romanlarından biridir.',
-    quote: 'Hakikaten dünyada hiçbir şey, hiçbir kimse, kalbimi bu kadar sarsmamıştı.'
+    intro: 'Sabahattin Ali, 1943 yÄ±lÄ±nda yayÄ±mlanan bu romanÄ±nda; sÄ±radan bir hayatÄ±n altÄ±nda yatan bÃ¼yÃ¼k tutkularÄ±, kimliÄin trajedisini ve aÅkÄ±n insanÄ± nasÄ±l dÃ¶nÃ¼ÅtÃ¼rdÃ¼ÄÃ¼nÃ¼ incelikli bir dille anlatÄ±r. TÃ¼rk edebiyatÄ±nÄ±n en Ã§ok okunan ve sevilen romanlarÄ±ndan biridir.',
+    quote: 'Hakikaten dÃ¼nyada hiÃ§bir Åey, hiÃ§bir kimse, kalbimi bu kadar sarsmamÄ±ÅtÄ±.'
   },
   details: {
-    'Yayınevi': 'Yapı Kredi Yayınları',
-    'İlk Baskı Yılı': '1943',
-    'Baskı Sayısı': '128. Baskı',
+    'YayÄ±nevi': 'YapÄ± Kredi YayÄ±nlarÄ±',
+    'Ä°lk BaskÄ± YÄ±lÄ±': '1943',
+    'BaskÄ± SayÄ±sÄ±': '128. BaskÄ±',
     'ISBN': '978-975-08-0306-0',
-    'Dil': 'Türkçe',
+    'Dil': 'TÃ¼rkÃ§e',
     'Kategori': 'Roman'
   },
 
-  // kapak (gerçek görsel)
+  // kapak (gerÃ§ek gÃ¶rsel)
   coverImage: '/assets/kurk-mantolu-madonna-cover.jpg',
-  coverColor: '#0AA3D4'   // thumbnail mini'ler için
+  coverColor: '#0AA3D4'   // thumbnail mini'ler iÃ§in
 };
 </script>
 <!-- ============================================================ -->
@@ -441,12 +470,12 @@ const BOOK = {
 <header class="site-header">
   <div class="h-top">
     <div class="h-top-inner">
-      <span class="h-top-left">Edebiyatın izini sürenler için, özenle seçilmiş kitaplar.</span>
-      <span class="h-top-center">Yeni Üyelere Özel İlk Sepette %15 İndirim</span>
+      <span class="h-top-left">EdebiyatÄ±n izini sÃ¼renler iÃ§in, Ã¶zenle seÃ§ilmiÅ kitaplar.</span>
+      <span class="h-top-center">Yeni Ãyelere Ãzel Ä°lk Sepette %15 Ä°ndirim</span>
       <span class="h-top-right">
         <a href="tel:+902120000000">+90 (212) 000 00 00</a>
-        <a href="#">Bayi Girişi</a>
-        <a href="#">Sipariş Takip</a>
+        <a href="#">Bayi GiriÅi</a>
+        <a href="#">SipariÅ Takip</a>
       </span>
     </div>
   </div>
@@ -456,13 +485,13 @@ const BOOK = {
         <img src="/assets/runik-logo.png" alt="Runik" class="logo-img">
       </a>
       <div class="h-search">
-        <input type="text" placeholder="Aradığınız kitap, kategori veya yazar yazınız">
+        <input type="text" placeholder="AradÄ±ÄÄ±nÄ±z kitap, kategori veya yazar yazÄ±nÄ±z">
         <button aria-label="Ara"><i class="ti ti-search"></i></button>
       </div>
       <div class="h-actions">
         <a href="#" class="h-user">
           <i class="ti ti-user h-user-icon"></i>
-          <span class="h-user-text"><b>Üye Girişi</b><span>veya Üye Ol</span></span>
+          <span class="h-user-text"><b>Ãye GiriÅi</b><span>veya Ãye Ol</span></span>
         </a>
         <a href="#" class="h-cart">
           <i class="ti ti-shopping-bag"></i> Sepetim
@@ -471,43 +500,43 @@ const BOOK = {
       </div>
     </div>
   </div>
-  <nav class="h-nav" aria-label="Ana menü">
+  <nav class="h-nav" aria-label="Ana menÃ¼">
     <div class="h-nav-inner">
       <div class="nav-item" data-dropdown="kategoriler">
         <button class="h-nav-link">Kitaplar <i class="ti ti-chevron-down"></i></button>
       </div>
-      <a class="h-nav-link" href="/kitaplar">Yeni Çıkanlar</a>
-      <a class="h-nav-link" href="/kitaplar">Çok Satanlar</a>
+      <a class="h-nav-link" href="/kitaplar">Yeni ÃÄ±kanlar</a>
+      <a class="h-nav-link" href="/kitaplar">Ãok Satanlar</a>
       <div class="nav-item" data-dropdown="yazarlar">
         <button class="h-nav-link">Yazarlar <i class="ti ti-chevron-down"></i></button>
       </div>
       <a class="h-nav-link" href="#">Koleksiyonlar</a>
       <a class="h-nav-link" href="#">Setler</a>
       <a class="h-nav-link" href="#">Dergi</a>
-      <a class="h-nav-link" href="#">Hakkımızda</a>
+      <a class="h-nav-link" href="#">HakkÄ±mÄ±zda</a>
     </div>
   </nav>
 
-  <!-- KATEGORİLER DROPDOWN -->
+  <!-- KATEGORÄ°LER DROPDOWN -->
   <div class="nav-dropdown" data-panel="kategoriler">
     <div class="dropdown-inner">
       <div class="dropdown-left">
         <div class="dropdown-head">
           <span class="dh-title">Kategoriler <b>(10)</b></span>
-          <a href="/kitaplar" class="dh-meta" style="text-decoration:none;color:#F2541B;">Tüm Kitaplar &rarr;</a>
+          <a href="/kitaplar" class="dh-meta" style="text-decoration:none;color:var(--accent);">TÃ¼m Kitaplar &rarr;</a>
         </div>
         <div class="dropdown-links">
-          <a href="/kitaplar?cat=Roman">Roman</a><a href="/kitaplar?cat=Şiir">Şiir</a>
-          <a href="/kitaplar?cat=Felsefe">Felsefe &amp; Düşünce</a><a href="/kitaplar?cat=Tarih">Tarih</a>
-          <a href="#">Çocuk</a><a href="#">Polisiye &amp; Gerilim</a>
-          <a href="/kitaplar?cat=Deneme">Deneme</a><a href="/kitaplar?cat=Biyografi">Biyografi &amp; Anı</a>
+          <a href="/kitaplar?cat=Roman">Roman</a><a href="/kitaplar?cat=Åiir">Åiir</a>
+          <a href="/kitaplar?cat=Felsefe">Felsefe &amp; DÃ¼ÅÃ¼nce</a><a href="/kitaplar?cat=Tarih">Tarih</a>
+          <a href="#">Ãocuk</a><a href="#">Polisiye &amp; Gerilim</a>
+          <a href="/kitaplar?cat=Deneme">Deneme</a><a href="/kitaplar?cat=Biyografi">Biyografi &amp; AnÄ±</a>
           <a href="#">Sanat &amp; Mimari</a><a href="#">Klasikler</a>
         </div>
       </div>
       <div class="dropdown-right">
         <div class="dr-bg" style="background-image:url('/assets/hero-runik.png');"></div>
         <div class="dr-overlay"></div>
-        <span class="dr-label">Kataloğumuzu keşfedin</span>
+        <span class="dr-label">KataloÄumuzu keÅfedin</span>
         <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
       </div>
     </div>
@@ -518,19 +547,19 @@ const BOOK = {
     <div class="dropdown-inner">
       <div class="dropdown-left">
         <div class="dropdown-head">
-          <span class="dh-title">Öne Çıkan Yazarlar <b>(8)</b></span>
-          <a href="/yazarlar" class="dh-meta" style="text-decoration:none;color:#F2541B;">Tüm Yazarlar &rarr;</a>
+          <span class="dh-title">Ãne ÃÄ±kan Yazarlar <b>(8)</b></span>
+          <a href="/yazarlar" class="dh-meta" style="text-decoration:none;color:var(--accent);">TÃ¼m Yazarlar &rarr;</a>
         </div>
         <div class="dropdown-links">
-          <a href="/yazarlar">Ahmet Hamdi Tanpınar</a><a href="/yazarlar">Elif Şafak</a>
-          <a href="/yazarlar">Nazım Hikmet</a><a href="/yazarlar">Oğuz Atay</a>
+          <a href="/yazarlar">Ahmet Hamdi TanpÄ±nar</a><a href="/yazarlar">Elif Åafak</a>
+          <a href="/yazarlar">NazÄ±m Hikmet</a><a href="/yazarlar">OÄuz Atay</a>
           <a href="/yazarlar">Orhan Pamuk</a><a href="/yazarlar">Sabahattin Ali</a>
-          <a href="/yazarlar">Sait Faik Abasıyanık</a><a href="/yazarlar">Yaşar Kemal</a>
+          <a href="/yazarlar">Sait Faik AbasÄ±yanÄ±k</a><a href="/yazarlar">YaÅar Kemal</a>
         </div>
       </div>
-      <div class="dropdown-right" style="background:linear-gradient(135deg,#3B2A1C,#1F3A2E);">
+      <div class="dropdown-right" style="background:linear-gradient(135deg,var(--text),#1F3A2E);">
         <div class="dr-overlay" style="background:linear-gradient(120deg,rgba(31,58,46,.7) 0%,transparent 100%);"></div>
-        <span class="dr-label" style="max-width:240px;">Edebiyatın seslerini keşfedin</span>
+        <span class="dr-label" style="max-width:240px;">EdebiyatÄ±n seslerini keÅfedin</span>
         <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
       </div>
     </div>
@@ -560,7 +589,7 @@ const BOOK = {
   <span class="sep">/</span>
   <a href="#" data-bind="category">Roman</a>
   <span class="sep">/</span>
-  <span class="current" data-bind="title">Kürk Mantolu Madonna</span>
+  <span class="current" data-bind="title">KÃ¼rk Mantolu Madonna</span>
 </nav>
 
 <!-- PRODUCT DETAIL -->
@@ -575,24 +604,24 @@ const BOOK = {
       <img class="cover-image" id="mainCover" src="" alt="">
     </div>
 
-    <div class="thumbs" role="tablist" aria-label="Görseller">
-      <button class="thumb is-active" aria-label="Ön kapak"><img src="" id="thumbMain" alt=""></button>
-      <button class="thumb spine" aria-label="Sırt"><span class="mini"></span></button>
-      <button class="thumb" aria-label="Açılı"><span class="mini"></span></button>
+    <div class="thumbs" role="tablist" aria-label="GÃ¶rseller">
+      <button class="thumb is-active" aria-label="Ãn kapak"><img src="" id="thumbMain" alt=""></button>
+      <button class="thumb spine" aria-label="SÄ±rt"><span class="mini"></span></button>
+      <button class="thumb" aria-label="AÃ§Ä±lÄ±"><span class="mini"></span></button>
       <button class="thumb back" aria-label="Arka kapak"><span class="mini"></span></button>
-      <button class="thumb open" aria-label="İç sayfa"><span class="mini"></span></button>
+      <button class="thumb open" aria-label="Ä°Ã§ sayfa"><span class="mini"></span></button>
     </div>
   </div>
 
-  <!-- Sağ: info -->
+  <!-- SaÄ: info -->
   <div class="info">
     <span class="cat-badge" data-bind="category">Roman</span>
-    <h1 data-bind="title">Kürk Mantolu Madonna</h1>
+    <h1 data-bind="title">KÃ¼rk Mantolu Madonna</h1>
     <a href="#" class="author" data-bind="author">Sabahattin Ali</a>
 
     <div class="rating">
-      <span class="stars" id="stars" aria-label="Yıldız değerlendirme"></span>
-      <span><strong data-bind="rating">4.8</strong> <span class="pipe">|</span> <span data-bind="reviewCount">1247</span> Değerlendirme</span>
+      <span class="stars" id="stars" aria-label="YÄ±ldÄ±z deÄerlendirme"></span>
+      <span><strong data-bind="rating">4.8</strong> <span class="pipe">|</span> <span data-bind="reviewCount">1247</span> DeÄerlendirme</span>
     </div>
 
     <p class="description" data-bind="shortDescription"></p>
@@ -603,7 +632,7 @@ const BOOK = {
     <div class="meta-row">
       <div class="meta-item">
         <i class="ti ti-book"></i>
-        <span class="ml"><span class="lab">Sayfa Sayısı</span><div class="val" data-bind="pages">160</div></span>
+        <span class="ml"><span class="lab">Sayfa SayÄ±sÄ±</span><div class="val" data-bind="pages">160</div></span>
       </div>
       <div class="meta-item">
         <i class="ti ti-ruler"></i>
@@ -615,7 +644,7 @@ const BOOK = {
       </div>
       <div class="meta-item">
         <i class="ti ti-file"></i>
-        <span class="ml"><span class="lab">Kağıt</span><div class="val" data-bind="paper">70 gr. Enso Creamy</div></span>
+        <span class="ml"><span class="lab">KaÄÄ±t</span><div class="val" data-bind="paper">70 gr. Enso Creamy</div></span>
       </div>
     </div>
 
@@ -626,7 +655,7 @@ const BOOK = {
       </div>
       <div class="shipping">
         <i class="ti ti-discount"></i>
-        <span data-bind="freeShippingNote">150 TL ve üzeri siparişlerde kargo ücretsiz.</span>
+        <span data-bind="freeShippingNote">150 TL ve Ã¼zeri sipariÅlerde kargo Ã¼cretsiz.</span>
       </div>
       <div class="actions">
         <button class="btn-cart"><i class="ti ti-shopping-bag-plus"></i> Sepete Ekle</button>
@@ -634,7 +663,7 @@ const BOOK = {
       </div>
       <div class="delivery">
         <i class="ti ti-truck"></i>
-        <span data-bind="deliveryNote">Tahmini Teslimat: 1-2 iş günü içinde kargoda</span>
+        <span data-bind="deliveryNote">Tahmini Teslimat: 1-2 iÅ gÃ¼nÃ¼ iÃ§inde kargoda</span>
       </div>
     </div>
   </div>
@@ -643,9 +672,9 @@ const BOOK = {
 <!-- TABS -->
 <section class="tabs">
   <div class="tabs-nav" role="tablist">
-    <button class="tab is-active" data-tab="about">Kitap Hakkında</button>
+    <button class="tab is-active" data-tab="about">Kitap HakkÄ±nda</button>
     <button class="tab" data-tab="details">Detaylar</button>
-    <button class="tab" data-tab="author">Yazar Hakkında</button>
+    <button class="tab" data-tab="author">Yazar HakkÄ±nda</button>
     <button class="tab" data-tab="reviews">Yorumlar (<span data-bind="reviewCount">1247</span>)</button>
   </div>
 
@@ -660,20 +689,20 @@ const BOOK = {
 
     <div class="tab-panel" data-panel="details">
       <div class="panel-body">
-        <p>Bu sekmede kitabın teknik özelliklerini ve baskı bilgilerini bulabilirsiniz.</p>
+        <p>Bu sekmede kitabÄ±n teknik Ã¶zelliklerini ve baskÄ± bilgilerini bulabilirsiniz.</p>
       </div>
       <div class="panel-table" id="detailsTable2"></div>
     </div>
 
     <div class="tab-panel" data-panel="author">
       <div class="panel-body">
-        <p>Sabahattin Ali (1907–1948), Türk edebiyatının en önemli yazarlarından biridir. Eğitimini Almanya'da tamamladı, öykü ve romanlarıyla toplumsal gerçekçi edebiyatın öncülerinden oldu. Kuyucaklı Yusuf, İçimizdeki Şeytan ve Kürk Mantolu Madonna gibi yapıtlarıyla tanınır.</p>
+        <p>Sabahattin Ali (1907â1948), TÃ¼rk edebiyatÄ±nÄ±n en Ã¶nemli yazarlarÄ±ndan biridir. EÄitimini Almanya'da tamamladÄ±, Ã¶ykÃ¼ ve romanlarÄ±yla toplumsal gerÃ§ekÃ§i edebiyatÄ±n Ã¶ncÃ¼lerinden oldu. KuyucaklÄ± Yusuf, Ä°Ã§imizdeki Åeytan ve KÃ¼rk Mantolu Madonna gibi yapÄ±tlarÄ±yla tanÄ±nÄ±r.</p>
       </div>
     </div>
 
     <div class="tab-panel" data-panel="reviews">
       <div class="panel-body">
-        <p>Henüz yorum gösterilmiyor. Yorumlar bölümü için bir yorum bileşeni eklenebilir.</p>
+        <p>HenÃ¼z yorum gÃ¶sterilmiyor. Yorumlar bÃ¶lÃ¼mÃ¼ iÃ§in bir yorum bileÅeni eklenebilir.</p>
       </div>
     </div>
   </div>
@@ -686,43 +715,43 @@ const BOOK = {
     <div class="footer-top">
       <div class="footer-brand">
         <img src="/assets/runik-logo.png" alt="Runik" class="footer-logo">
-        <p class="footer-tag">Edebiyatın izini sürenler için, özenle seçilmiş kitaplar.</p>
+        <p class="footer-tag">EdebiyatÄ±n izini sÃ¼renler iÃ§in, Ã¶zenle seÃ§ilmiÅ kitaplar.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>Yayınevi</h4>
-          <a href="#">Hakkımızda</a>
+          <h4>YayÄ±nevi</h4>
+          <a href="#">HakkÄ±mÄ±zda</a>
           <a href="/yazarlar">Yazarlar</a>
-          <a href="#">Künye</a>
+          <a href="#">KÃ¼nye</a>
           <a href="#">Kariyer</a>
-          <a href="#">Basın Odası</a>
+          <a href="#">BasÄ±n OdasÄ±</a>
         </div>
         <div class="footer-col">
-          <h4>Yardım</h4>
-          <a href="#">Sıkça Sorulanlar</a>
+          <h4>YardÄ±m</h4>
+          <a href="#">SÄ±kÃ§a Sorulanlar</a>
           <a href="#">Kargo &amp; Teslimat</a>
-          <a href="#">İade &amp; Değişim</a>
-          <a href="#">Gizlilik Politikası</a>
-          <a href="#">Kullanım Şartları</a>
+          <a href="#">Ä°ade &amp; DeÄiÅim</a>
+          <a href="#">Gizlilik PolitikasÄ±</a>
+          <a href="#">KullanÄ±m ÅartlarÄ±</a>
         </div>
         <div class="footer-col">
-          <h4>Hesabım</h4>
-          <a href="#">Giriş Yap</a>
-          <a href="#">Üye Ol</a>
-          <a href="#">Siparişlerim</a>
+          <h4>HesabÄ±m</h4>
+          <a href="#">GiriÅ Yap</a>
+          <a href="#">Ãye Ol</a>
+          <a href="#">SipariÅlerim</a>
           <a href="#">Favorilerim</a>
           <a href="#">Adreslerim</a>
         </div>
         <div class="footer-col">
-          <h4>İletişim</h4>
+          <h4>Ä°letiÅim</h4>
           <a href="mailto:info@runik.com.tr">info@runik.com.tr</a>
           <a href="tel:+902120000000">+90 212 000 00 00</a>
-          <a href="#">İstanbul, Türkiye</a>
+          <a href="#">Ä°stanbul, TÃ¼rkiye</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="copy">© 2026 Runik Yayınevi. Tüm hakları saklıdır.</span>
+      <span class="copy">Â© 2026 Runik YayÄ±nevi. TÃ¼m haklarÄ± saklÄ±dÄ±r.</span>
       <div class="footer-social">
         <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
         <a href="#" aria-label="X"><i class="ti ti-brand-x"></i></a>
@@ -744,14 +773,14 @@ const BOOK = {
     if(v !== undefined && v !== '') el.textContent = v;
   });
 
-  /* yıldızlar */
+  /* yÄ±ldÄ±zlar */
   (function renderStars(){
     var el = document.getElementById('stars');
     if(!el) return;
     var full = Math.round(BOOK.rating);
     var html = '';
     for(var i=1;i<=5;i++){
-      html += i<=full ? '★' : '<span class="empty">★</span>';
+      html += i<=full ? 'â' : '<span class="empty">â</span>';
     }
     el.innerHTML = html;
   })();
@@ -765,20 +794,20 @@ const BOOK = {
     document.getElementById('detailsTable2').innerHTML = rows;
   })();
 
-  /* kapak görseli ve thumb */
+  /* kapak gÃ¶rseli ve thumb */
   if(BOOK.coverImage){
     document.getElementById('mainCover').src = BOOK.coverImage;
-    document.getElementById('mainCover').alt = BOOK.title + ' — ' + BOOK.author;
+    document.getElementById('mainCover').alt = BOOK.title + ' â ' + BOOK.author;
     document.getElementById('thumbMain').src = BOOK.coverImage;
     document.getElementById('thumbMain').alt = BOOK.title;
   }
-  /* thumb mini'ler için renk */
+  /* thumb mini'ler iÃ§in renk */
   document.documentElement.style.setProperty('--cover-color', BOOK.coverColor);
   document.querySelectorAll('.thumb .mini').forEach(function(m){
     m.style.setProperty('--cover-color', BOOK.coverColor);
   });
 
-  /* eski fiyat boşsa gizle */
+  /* eski fiyat boÅsa gizle */
   if(!BOOK.oldPrice){
     document.getElementById('oldPrice').style.display = 'none';
   }
@@ -808,5 +837,37 @@ const BOOK = {
   });
 </script>
 
+<!-- Tema toggle (test) -->
+<button id="runikThemeToggle" class="runik-theme-toggle" aria-label="Tema değiştir" title="Tema değiştir">
+  <span class="rtt-icon rtt-sun">☀</span>
+  <span class="rtt-track"><span class="rtt-thumb"></span></span>
+  <span class="rtt-icon rtt-moon">◐</span>
+  <span class="rtt-label">Tema</span>
+</button>
+<style>
+  .runik-theme-toggle{position:fixed;bottom:20px;left:20px;z-index:1000;background:var(--card);border:1px solid var(--border);padding:10px 14px;display:inline-flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:500;color:var(--text);cursor:pointer;box-shadow:0 10px 24px -10px rgba(0,0,0,.18);transition:background .2s ease,border-color .2s ease,color .2s ease;}
+  .runik-theme-toggle:hover{filter:brightness(.98);transform:translateY(-1px);}
+  .runik-theme-toggle .rtt-icon{font-size:12px;color:var(--text-faint);line-height:1;}
+  .runik-theme-toggle .rtt-track{width:30px;height:16px;background:var(--border);border-radius:99px;position:relative;transition:background .2s;}
+  .runik-theme-toggle .rtt-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;background:var(--accent);border-radius:50%;transition:transform .2s ease,background .2s ease;}
+  html[data-theme="light"] .runik-theme-toggle .rtt-thumb{transform:translateX(14px);background:#222;}
+  html[data-theme="light"] .runik-theme-toggle .rtt-sun{color:var(--border);}
+  html[data-theme="warm"] .runik-theme-toggle .rtt-moon,
+  :root:not([data-theme="light"]) .runik-theme-toggle .rtt-moon{color:var(--border);}
+  @media (max-width:680px){
+    .runik-theme-toggle .rtt-label{display:none;}
+  }
+</style>
+<script>
+(function(){
+  var b=document.getElementById('runikThemeToggle');if(!b)return;
+  b.addEventListener('click',function(){
+    var c=document.documentElement.getAttribute('data-theme')||'warm';
+    var n=c==='light'?'warm':'light';
+    document.documentElement.setAttribute('data-theme',n);
+    try{localStorage.setItem('runik-theme',n);}catch(e){}
+  });
+})();
+</script>
 </body>
 </html>

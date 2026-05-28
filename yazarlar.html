@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yazarlar — Runik</title>
+<title>Yazarlar â Runik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -11,11 +11,11 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   body{
-    background:#F7F4EF;
+    background:var(--bg);
     font-family:'Jost',sans-serif;
     min-height:100vh;
     padding:0 32px;
-    color:#3B2A1C;
+    color:var(--text);
   }
 
   /* ============ SITE HEADER ============ */
@@ -25,39 +25,39 @@
     background:rgba(247,244,239,.88);
     -webkit-backdrop-filter:saturate(140%) blur(12px);
     backdrop-filter:saturate(140%) blur(12px);
-    border-bottom:1px solid #E8E1D2;
+    border-bottom:1px solid var(--border);
   }
   .header-inner{max-width:1240px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:32px;}
-  .logo{display:inline-flex;align-items:center;text-decoration:none;color:#3B2A1C;}
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--text);}
   .logo-img{height:46px;width:auto;display:block;}
   .nav{display:flex;gap:36px;align-items:center;}
-  .nav a,.nav-trigger{color:#3B2A1C;text-decoration:none;background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.4px;position:relative;padding:6px 0;transition:color .2s ease;display:inline-flex;align-items:center;gap:4px;}
+  .nav a,.nav-trigger{color:var(--text);text-decoration:none;background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:13px;font-weight:400;letter-spacing:.4px;position:relative;padding:6px 0;transition:color .2s ease;display:inline-flex;align-items:center;gap:4px;}
   .nav a::after,.nav-trigger::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left center;transition:transform .3s cubic-bezier(.16,1,.3,1);}
   .nav a:hover::after,.nav-item:hover .nav-trigger::after,.nav-item.is-active .nav-trigger::after{transform:scaleX(1);}
   .nav-trigger i{font-size:14px;transition:transform .3s ease;}
   .nav-item.is-active .nav-trigger i{transform:rotate(180deg);}
 
   /* nav dropdown */
-  .nav-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid #E8E1D2;border-bottom:1px solid #E8E1D2;opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease;z-index:40;}
+  .nav-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease;z-index:40;}
   .nav-dropdown.is-open{opacity:1;pointer-events:auto;transform:translateY(0);}
   .dropdown-inner{max-width:1240px;margin:0 auto;padding:44px 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:stretch;}
-  .dropdown-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid #E8E1D2;}
-  .dropdown-head .dh-title{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#3B2A1C;font-weight:500;}
-  .dropdown-head .dh-title b{color:#9B8A75;font-weight:400;margin-left:6px;}
-  .dropdown-head .dh-meta{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;color:#9B8A75;text-transform:uppercase;}
+  .dropdown-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--border);}
+  .dropdown-head .dh-title{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text);font-weight:500;}
+  .dropdown-head .dh-title b{color:var(--text-faint);font-weight:400;margin-left:6px;}
+  .dropdown-head .dh-meta{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;color:var(--text-faint);text-transform:uppercase;}
   .dropdown-links{display:grid;grid-template-columns:1fr 1fr;gap:2px 36px;}
-  .dropdown-links a{display:block;font-family:'Jost',sans-serif;font-size:15px;font-weight:400;color:#3B2A1C;text-decoration:none;padding:10px 0;transition:color .2s ease,padding-left .2s ease;}
+  .dropdown-links a{display:block;font-family:'Jost',sans-serif;font-size:15px;font-weight:400;color:var(--text);text-decoration:none;padding:10px 0;transition:color .2s ease,padding-left .2s ease;}
   .dropdown-links a::after{display:none;}
-  .dropdown-links a:hover{color:#F2541B;padding-left:4px;}
+  .dropdown-links a:hover{color:var(--accent);padding-left:4px;}
   .dropdown-right{position:relative;aspect-ratio:5/3.4;overflow:hidden;background:#1F3A2E;display:flex;align-items:flex-end;justify-content:space-between;padding:28px;}
   .dropdown-right .dr-bg{position:absolute;inset:0;background-size:cover;background-position:right center;background-repeat:no-repeat;}
   .dropdown-right .dr-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(31,58,46,.92) 0%,rgba(31,58,46,.5) 60%,rgba(31,58,46,.15) 100%);}
-  .dropdown-right .dr-label{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#F4ECDD;line-height:1.1;max-width:200px;}
+  .dropdown-right .dr-label{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--bg-tint);line-height:1.1;max-width:200px;}
   .dropdown-right .dr-logo{position:relative;z-index:1;height:36px;width:auto;align-self:flex-end;filter:brightness(1.5);opacity:.9;}
   .nav-actions{display:flex;gap:4px;align-items:center;}
-  .icon-btn{width:40px;height:40px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#3B2A1C;font-size:19px;transition:background .2s ease;position:relative;}
+  .icon-btn{width:40px;height:40px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);font-size:19px;transition:background .2s ease;position:relative;}
   .icon-btn:hover{background:rgba(59,42,28,.07);}
-  .icon-btn .badge{position:absolute;top:6px;right:6px;background:#F2541B;color:#fff;min-width:16px;height:16px;padding:0 4px;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;display:flex;align-items:center;justify-content:center;border-radius:8px;}
+  .icon-btn .badge{position:absolute;top:6px;right:6px;background:var(--accent);color:#fff;min-width:16px;height:16px;padding:0 4px;font-family:'Jost',sans-serif;font-size:9px;font-weight:600;display:flex;align-items:center;justify-content:center;border-radius:8px;}
 
   /* ============ PAGE DETAIL BANNER ============ */
   .page-banner{
@@ -66,7 +66,7 @@
     background:
       radial-gradient(circle at 80% 20%,rgba(255,255,255,.18) 0%,transparent 55%),
       radial-gradient(circle at 15% 80%,rgba(255,255,255,.1) 0%,transparent 50%),
-      linear-gradient(155deg,#FF8A3D 0%,#F2541B 55%,#C53A0E 100%);
+      linear-gradient(155deg,#FF8A3D 0%,var(--accent) 55%,#C53A0E 100%);
     color:#fff;
     text-align:center;
     position:relative;overflow:hidden;
@@ -92,7 +92,7 @@
     position:absolute;top:-6px;right:-10px;
     width:18px;height:18px;
     background:rgba(255,255,255,.92);
-    color:#F2541B;
+    color:var(--accent);
     font-size:13px;font-weight:600;
     display:flex;align-items:center;justify-content:center;
     border-radius:50%;
@@ -123,27 +123,27 @@
     justify-content:center;
     flex-wrap:wrap;
     gap:4px;
-    border:1px solid #E8E1D2;
+    border:1px solid var(--border);
   }
   .alpha-btn{
     width:34px;height:34px;
     background:transparent;border:none;
     cursor:pointer;
     font-family:'Jost',sans-serif;font-size:13px;font-weight:500;
-    color:#3B2A1C;letter-spacing:.3px;
+    color:var(--text);letter-spacing:.3px;
     display:flex;align-items:center;justify-content:center;
     transition:all .2s ease;
     border-radius:50%;
   }
-  .alpha-btn:hover:not(.disabled){background:#F4ECDD;}
-  .alpha-btn.is-active{background:#F2541B;color:#fff;}
+  .alpha-btn:hover:not(.disabled){background:var(--bg-tint);}
+  .alpha-btn.is-active{background:var(--accent);color:#fff;}
   .alpha-btn.disabled{color:#D5C9B7;cursor:not-allowed;}
   .alpha-btn.all{
     width:auto;padding:0 14px;
     font-weight:400;
     border-radius:0;
   }
-  .alpha-btn.all.is-active{background:#3B2A1C;color:#fff;}
+  .alpha-btn.all.is-active{background:var(--text);color:#fff;}
 
   /* ============ AUTHORS GRID ============ */
   .authors-wrap{
@@ -157,13 +157,13 @@
   .authors-current-letter{
     font-family:'Cormorant Garamond',serif;
     font-size:72px;font-weight:600;
-    color:#F2541B;
+    color:var(--accent);
     line-height:1;
   }
   .authors-count{
     font-family:'Jost',sans-serif;
     font-size:13px;letter-spacing:.4px;
-    color:#9B8A75;
+    color:var(--text-faint);
   }
   .authors-grid-full{
     display:grid;
@@ -178,10 +178,10 @@
   .author-item:hover{transform:translateY(-4px);}
   .author-item-photo{
     width:100%;aspect-ratio:1/1;
-    background:var(--c,#3B2A1C);
+    background:var(--c,var(--text));
     display:flex;align-items:center;justify-content:center;
     font-family:'Cormorant Garamond',serif;font-weight:600;
-    font-size:54px;color:#F4ECDD;letter-spacing:1px;
+    font-size:54px;color:var(--bg-tint);letter-spacing:1px;
     position:relative;overflow:hidden;
   }
   .author-item-photo::after{
@@ -192,32 +192,32 @@
   .author-item-name{
     font-family:'Cormorant Garamond',serif;
     font-size:18px;font-weight:600;
-    color:#3B2A1C;
+    color:var(--text);
     margin-top:16px;
     line-height:1.2;
   }
   .author-item-meta{
     font-family:'Jost',sans-serif;
     font-size:11.5px;
-    color:#9B8A75;letter-spacing:.4px;
+    color:var(--text-faint);letter-spacing:.4px;
     margin-top:5px;
   }
   .authors-empty{
     text-align:center;padding:80px 24px;
     font-family:'Cormorant Garamond',serif;
-    font-size:24px;color:#9B8A75;font-style:italic;
+    font-size:24px;color:var(--text-faint);font-style:italic;
   }
 
-  /* ============ FOOTER (kısa, paylaşılan) ============ */
+  /* ============ FOOTER (kÄ±sa, paylaÅÄ±lan) ============ */
   .site-footer{margin:0 -32px;background:#1F3A2E;color:#C9BFA8;}
   .footer-inner{max-width:1240px;margin:0 auto;padding:80px 32px 36px;}
   .footer-top{display:grid;grid-template-columns:1fr 2fr;gap:96px;align-items:flex-start;padding-bottom:56px;border-bottom:1px solid rgba(231,222,200,.12);}
   .footer-logo{height:108px;width:auto;display:block;}
   .footer-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;margin-top:24px;color:#E7DEC8;line-height:1.4;max-width:280px;}
   .footer-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;}
-  .footer-col h4{font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#F4ECDD;margin-bottom:22px;}
+  .footer-col h4{font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:22px;}
   .footer-col a{display:block;font-family:'Jost',sans-serif;font-size:13.5px;color:#A89C82;text-decoration:none;padding:5px 0;transition:color .2s ease;}
-  .footer-col a:hover{color:#F4ECDD;}
+  .footer-col a:hover{color:var(--bg-tint);}
   .footer-bottom{padding-top:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;font-family:'Jost',sans-serif;font-size:12px;color:#8D8268;letter-spacing:.3px;}
   .footer-social{display:flex;gap:10px;}
   .footer-social a{color:#C9BFA8;font-size:17px;text-decoration:none;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);transition:all .2s ease;}
@@ -234,64 +234,93 @@
     .footer-cols{grid-template-columns:repeat(2,1fr);}
   }
 </style>
+<style id="runik-theme-vars">
+:root{
+  --bg:#F7F4EF;
+  --bg-soft:#FAF3E3;
+  --bg-tint:#F4ECDD;
+  --bg-tint-h:#FAEBD5;
+  --border:#E8E1D2;
+  --border-2:#EDE3D2;
+  --text:#3B2A1C;
+  --text-soft:#6E5D4B;
+  --text-faint:#9B8A75;
+  --accent:#F2541B;
+  --card:#FFFFFF;
+}
+html[data-theme="light"]{
+  --bg:#FFFFFF;
+  --bg-soft:#FAFAFA;
+  --bg-tint:#F2F2F2;
+  --bg-tint-h:#E8E8E8;
+  --border:#EAEAEA;
+  --border-2:#ECECEC;
+  --card:#FFFFFF;
+}
+/* Light tema: bazı koyu/krem dolgular için ek dokunuşlar */
+html[data-theme="light"] body{background:#FFFFFF;}
+html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
+html[data-theme="light"] .h-top{background:#FAFAFA;}
+</style>
+<script>(function(){try{var t=localStorage.getItem('runik-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 </head>
 <body>
 
 <!-- ============================================================
-     YAZARLAR LİSTESİ — düzenlemek için sadece AUTHORS dizisini değiştir
+     YAZARLAR LÄ°STESÄ° â dÃ¼zenlemek iÃ§in sadece AUTHORS dizisini deÄiÅtir
      ============================================================ -->
 <script>
 const AUTHORS = [
-  { name:'Ahmet Hamdi Tanpınar', books:15, color:'#1F4654' },
-  { name:'Ahmet Ümit',           books:22, color:'#5A2E18' },
+  { name:'Ahmet Hamdi TanpÄ±nar', books:15, color:'#1F4654' },
+  { name:'Ahmet Ãmit',           books:22, color:'#5A2E18' },
   { name:'Aziz Nesin',           books:18, color:'#2D5A48' },
   { name:'Bilge Karasu',         books:7,  color:'#3D4A6E' },
   { name:'Buket Uzuner',         books:11, color:'#8B5A2B' },
-  { name:'Cemal Süreya',         books:6,  color:'#7A2D3F' },
-  { name:'Cemil Meriç',          books:9,  color:'#3B5C46' },
-  { name:'Çetin Altan',          books:14, color:'#6B4A8A' },
+  { name:'Cemal SÃ¼reya',         books:6,  color:'#7A2D3F' },
+  { name:'Cemil MeriÃ§',          books:9,  color:'#3B5C46' },
+  { name:'Ãetin Altan',          books:14, color:'#6B4A8A' },
   { name:'Edip Cansever',        books:8,  color:'#A33F2C' },
-  { name:'Elif Şafak',           books:20, color:'#5A3D7A' },
-  { name:'Erendiz Atasü',        books:6,  color:'#2A4A5F' },
-  { name:'Ferit Edgü',           books:10, color:'#5C3D2A' },
-  { name:'Gülten Akın',          books:5,  color:'#7A4B36' },
-  { name:'Halid Ziya Uşaklıgil', books:12, color:'#3F5048' },
-  { name:'Halide Edib Adıvar',   books:14, color:'#5A3D2D' },
-  { name:'Hasan Ali Toptaş',     books:9,  color:'#4A5A3D' },
-  { name:'İhsan Oktay Anar',     books:5,  color:'#3D2A1C' },
-  { name:'İnci Aral',            books:11, color:'#7A3D5A' },
+  { name:'Elif Åafak',           books:20, color:'#5A3D7A' },
+  { name:'Erendiz AtasÃ¼',        books:6,  color:'#2A4A5F' },
+  { name:'Ferit EdgÃ¼',           books:10, color:'#5C3D2A' },
+  { name:'GÃ¼lten AkÄ±n',          books:5,  color:'#7A4B36' },
+  { name:'Halid Ziya UÅaklÄ±gil', books:12, color:'#3F5048' },
+  { name:'Halide Edib AdÄ±var',   books:14, color:'#5A3D2D' },
+  { name:'Hasan Ali ToptaÅ',     books:9,  color:'#4A5A3D' },
+  { name:'Ä°hsan Oktay Anar',     books:5,  color:'#3D2A1C' },
+  { name:'Ä°nci Aral',            books:11, color:'#7A3D5A' },
   { name:'Kemal Tahir',          books:13, color:'#3A4F5A' },
   { name:'Latife Tekin',         books:8,  color:'#2D5A6E' },
   { name:'Murathan Mungan',      books:17, color:'#4A2D5A' },
-  { name:'Nazan Bekiroğlu',      books:7,  color:'#5A4A3D' },
-  { name:'Nazım Hikmet',         books:24, color:'#5A3D7A' },
-  { name:'Nedim Gürsel',         books:13, color:'#3D5A4A' },
-  { name:'Oğuz Atay',            books:5,  color:'#A33F2C' },
+  { name:'Nazan BekiroÄlu',      books:7,  color:'#5A4A3D' },
+  { name:'NazÄ±m Hikmet',         books:24, color:'#5A3D7A' },
+  { name:'Nedim GÃ¼rsel',         books:13, color:'#3D5A4A' },
+  { name:'OÄuz Atay',            books:5,  color:'#A33F2C' },
   { name:'Onat Kutlar',          books:6,  color:'#4A3D2A' },
   { name:'Orhan Kemal',          books:16, color:'#5A2D3D' },
   { name:'Orhan Pamuk',          books:16, color:'#2D3D5A' },
-  { name:'Orhan Veli Kanık',     books:7,  color:'#5A4A8A' },
-  { name:'Ömer Seyfettin',       books:18, color:'#3D5A3D' },
-  { name:'Özdemir Asaf',         books:8,  color:'#5A3D4A' },
+  { name:'Orhan Veli KanÄ±k',     books:7,  color:'#5A4A8A' },
+  { name:'Ãmer Seyfettin',       books:18, color:'#3D5A3D' },
+  { name:'Ãzdemir Asaf',         books:8,  color:'#5A3D4A' },
   { name:'Peyami Safa',          books:14, color:'#4A2D2D' },
-  { name:'Pınar Kür',            books:9,  color:'#7A4B5A' },
+  { name:'PÄ±nar KÃ¼r',            books:9,  color:'#7A4B5A' },
   { name:'Refik Halid Karay',    books:11, color:'#3D4A2A' },
-  { name:'Reşat Nuri Güntekin',  books:13, color:'#5A4A2D' },
+  { name:'ReÅat Nuri GÃ¼ntekin',  books:13, color:'#5A4A2D' },
   { name:'Sabahattin Ali',       books:12, color:'#3B5C46' },
-  { name:'Sait Faik Abasıyanık', books:14, color:'#2D5A48' },
-  { name:'Selim İleri',          books:15, color:'#4A5A6E' },
+  { name:'Sait Faik AbasÄ±yanÄ±k', books:14, color:'#2D5A48' },
+  { name:'Selim Ä°leri',          books:15, color:'#4A5A6E' },
   { name:'Sevgi Soysal',         books:6,  color:'#7A2D4A' },
-  { name:'Şavkar Altınel',       books:5,  color:'#3D2D5A' },
+  { name:'Åavkar AltÄ±nel',       books:5,  color:'#3D2D5A' },
   { name:'Tomris Uyar',          books:8,  color:'#5A3D6E' },
   { name:'Turgut Uyar',          books:7,  color:'#4A3D7A' },
-  { name:'Tuna Kiremitçi',       books:10, color:'#5A4A3D' },
-  { name:'Ülkü Tamer',           books:6,  color:'#3D4A5A' },
-  { name:'Vüsat O. Bener',       books:5,  color:'#5C3D2A' },
-  { name:'Yahya Kemal Beyatlı',  books:9,  color:'#3F5048' },
-  { name:'Yaşar Kemal',          books:18, color:'#8B5A2B' },
-  { name:'Yusuf Atılgan',        books:4,  color:'#3E5F32' },
-  { name:'Zafer Şenocak',        books:7,  color:'#5A2D6E' },
-  { name:'Zülfü Livaneli',       books:14, color:'#4A2D5A' }
+  { name:'Tuna KiremitÃ§i',       books:10, color:'#5A4A3D' },
+  { name:'ÃlkÃ¼ Tamer',           books:6,  color:'#3D4A5A' },
+  { name:'VÃ¼sat O. Bener',       books:5,  color:'#5C3D2A' },
+  { name:'Yahya Kemal BeyatlÄ±',  books:9,  color:'#3F5048' },
+  { name:'YaÅar Kemal',          books:18, color:'#8B5A2B' },
+  { name:'Yusuf AtÄ±lgan',        books:4,  color:'#3E5F32' },
+  { name:'Zafer Åenocak',        books:7,  color:'#5A2D6E' },
+  { name:'ZÃ¼lfÃ¼ Livaneli',       books:14, color:'#4A2D5A' }
 ];
 </script>
 <!-- ============================================================ -->
@@ -302,20 +331,20 @@ const AUTHORS = [
     <a class="logo" href="/" aria-label="Runik anasayfa">
       <img src="/assets/runik-logo.png" alt="Runik" class="logo-img">
     </a>
-    <nav class="nav" aria-label="Ana menü">
-      <a href="#">Yeni Çıkanlar</a>
-      <a href="#">Çok Satanlar</a>
+    <nav class="nav" aria-label="Ana menÃ¼">
+      <a href="#">Yeni ÃÄ±kanlar</a>
+      <a href="#">Ãok Satanlar</a>
       <div class="nav-item" data-dropdown="kategoriler">
         <button class="nav-trigger">Kategoriler <i class="ti ti-chevron-down"></i></button>
       </div>
       <div class="nav-item" data-dropdown="yazarlar">
         <button class="nav-trigger">Yazarlar <i class="ti ti-chevron-down"></i></button>
       </div>
-      <a href="#">Hakkımızda</a>
+      <a href="#">HakkÄ±mÄ±zda</a>
     </nav>
     <div class="nav-actions">
       <button class="icon-btn" aria-label="Ara"><i class="ti ti-search"></i></button>
-      <button class="icon-btn" aria-label="Hesabım"><i class="ti ti-user"></i></button>
+      <button class="icon-btn" aria-label="HesabÄ±m"><i class="ti ti-user"></i></button>
       <button class="icon-btn" aria-label="Favoriler"><i class="ti ti-heart"></i></button>
       <button class="icon-btn" aria-label="Sepet">
         <i class="ti ti-shopping-bag"></i>
@@ -324,26 +353,26 @@ const AUTHORS = [
     </div>
   </div>
 
-  <!-- KATEGORİLER DROPDOWN -->
+  <!-- KATEGORÄ°LER DROPDOWN -->
   <div class="nav-dropdown" data-panel="kategoriler">
     <div class="dropdown-inner">
       <div class="dropdown-left">
         <div class="dropdown-head">
           <span class="dh-title">Kategoriler <b>(10)</b></span>
-          <a href="/kitaplar" class="dh-meta" style="text-decoration:none;color:#F2541B;">Tüm Kitaplar &rarr;</a>
+          <a href="/kitaplar" class="dh-meta" style="text-decoration:none;color:var(--accent);">TÃ¼m Kitaplar &rarr;</a>
         </div>
         <div class="dropdown-links">
-          <a href="/kitaplar?cat=Roman">Roman</a><a href="/kitaplar?cat=Şiir">Şiir</a>
-          <a href="/kitaplar?cat=Felsefe">Felsefe &amp; Düşünce</a><a href="/kitaplar?cat=Tarih">Tarih</a>
-          <a href="#">Çocuk</a><a href="#">Polisiye &amp; Gerilim</a>
-          <a href="/kitaplar?cat=Deneme">Deneme</a><a href="/kitaplar?cat=Biyografi">Biyografi &amp; Anı</a>
+          <a href="/kitaplar?cat=Roman">Roman</a><a href="/kitaplar?cat=Åiir">Åiir</a>
+          <a href="/kitaplar?cat=Felsefe">Felsefe &amp; DÃ¼ÅÃ¼nce</a><a href="/kitaplar?cat=Tarih">Tarih</a>
+          <a href="#">Ãocuk</a><a href="#">Polisiye &amp; Gerilim</a>
+          <a href="/kitaplar?cat=Deneme">Deneme</a><a href="/kitaplar?cat=Biyografi">Biyografi &amp; AnÄ±</a>
           <a href="#">Sanat &amp; Mimari</a><a href="#">Klasikler</a>
         </div>
       </div>
       <div class="dropdown-right">
         <div class="dr-bg" style="background-image:url('/assets/hero-runik.png');"></div>
         <div class="dr-overlay"></div>
-        <span class="dr-label">Kataloğumuzu keşfedin</span>
+        <span class="dr-label">KataloÄumuzu keÅfedin</span>
         <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
       </div>
     </div>
@@ -354,19 +383,19 @@ const AUTHORS = [
     <div class="dropdown-inner">
       <div class="dropdown-left">
         <div class="dropdown-head">
-          <span class="dh-title">Öne Çıkan Yazarlar <b>(8)</b></span>
-          <a href="/yazarlar" class="dh-meta" style="text-decoration:none;color:#F2541B;">Tüm Yazarlar &rarr;</a>
+          <span class="dh-title">Ãne ÃÄ±kan Yazarlar <b>(8)</b></span>
+          <a href="/yazarlar" class="dh-meta" style="text-decoration:none;color:var(--accent);">TÃ¼m Yazarlar &rarr;</a>
         </div>
         <div class="dropdown-links">
-          <a href="/yazarlar">Ahmet Hamdi Tanpınar</a><a href="/yazarlar">Elif Şafak</a>
-          <a href="/yazarlar">Nazım Hikmet</a><a href="/yazarlar">Oğuz Atay</a>
+          <a href="/yazarlar">Ahmet Hamdi TanpÄ±nar</a><a href="/yazarlar">Elif Åafak</a>
+          <a href="/yazarlar">NazÄ±m Hikmet</a><a href="/yazarlar">OÄuz Atay</a>
           <a href="/yazarlar">Orhan Pamuk</a><a href="/yazarlar">Sabahattin Ali</a>
-          <a href="/yazarlar">Sait Faik Abasıyanık</a><a href="/yazarlar">Yaşar Kemal</a>
+          <a href="/yazarlar">Sait Faik AbasÄ±yanÄ±k</a><a href="/yazarlar">YaÅar Kemal</a>
         </div>
       </div>
-      <div class="dropdown-right" style="background:linear-gradient(135deg,#3B2A1C,#1F3A2E);">
+      <div class="dropdown-right" style="background:linear-gradient(135deg,var(--text),#1F3A2E);">
         <div class="dr-overlay" style="background:linear-gradient(120deg,rgba(31,58,46,.7) 0%,transparent 100%);"></div>
-        <span class="dr-label" style="max-width:240px;">Edebiyatın seslerini keşfedin</span>
+        <span class="dr-label" style="max-width:240px;">EdebiyatÄ±n seslerini keÅfedin</span>
         <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
       </div>
     </div>
@@ -393,20 +422,20 @@ const AUTHORS = [
   <div class="page-banner-inner">
     <span class="pb-badge">Edebiyat</span>
     <h1 class="pb-title">Yazarlar</h1>
-    <p class="pb-description">Runik kataloğunda yer alan tüm yazarları alfabetik olarak keşfedin. Sayfaların ardındaki sesleri tek bir liste içinde bulun.</p>
+    <p class="pb-description">Runik kataloÄunda yer alan tÃ¼m yazarlarÄ± alfabetik olarak keÅfedin. SayfalarÄ±n ardÄ±ndaki sesleri tek bir liste iÃ§inde bulun.</p>
   </div>
 </section>
 
 <!-- A-Z FILTER -->
 <div class="alphabet" id="alphabet">
-  <button class="alpha-btn all is-active" data-letter="all">Tümü</button>
+  <button class="alpha-btn all is-active" data-letter="all">TÃ¼mÃ¼</button>
   <!-- harfler JS ile render edilir -->
 </div>
 
 <!-- AUTHORS GRID -->
 <section class="authors-wrap">
   <header class="authors-header" id="authorsHeader">
-    <h2 class="authors-current-letter" id="currentLetter">Tüm Yazarlar</h2>
+    <h2 class="authors-current-letter" id="currentLetter">TÃ¼m Yazarlar</h2>
     <span class="authors-count" id="authorsCount"></span>
   </header>
   <div class="authors-grid-full" id="authorsGrid"></div>
@@ -418,43 +447,43 @@ const AUTHORS = [
     <div class="footer-top">
       <div class="footer-brand">
         <img src="/assets/runik-logo.png" alt="Runik" class="footer-logo">
-        <p class="footer-tag">Edebiyatın izini sürenler için, özenle seçilmiş kitaplar.</p>
+        <p class="footer-tag">EdebiyatÄ±n izini sÃ¼renler iÃ§in, Ã¶zenle seÃ§ilmiÅ kitaplar.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>Yayınevi</h4>
-          <a href="#">Hakkımızda</a>
+          <h4>YayÄ±nevi</h4>
+          <a href="#">HakkÄ±mÄ±zda</a>
           <a href="/yazarlar">Yazarlar</a>
-          <a href="#">Künye</a>
+          <a href="#">KÃ¼nye</a>
           <a href="#">Kariyer</a>
-          <a href="#">Basın Odası</a>
+          <a href="#">BasÄ±n OdasÄ±</a>
         </div>
         <div class="footer-col">
-          <h4>Yardım</h4>
-          <a href="#">Sıkça Sorulanlar</a>
+          <h4>YardÄ±m</h4>
+          <a href="#">SÄ±kÃ§a Sorulanlar</a>
           <a href="#">Kargo &amp; Teslimat</a>
-          <a href="#">İade &amp; Değişim</a>
-          <a href="#">Gizlilik Politikası</a>
-          <a href="#">Kullanım Şartları</a>
+          <a href="#">Ä°ade &amp; DeÄiÅim</a>
+          <a href="#">Gizlilik PolitikasÄ±</a>
+          <a href="#">KullanÄ±m ÅartlarÄ±</a>
         </div>
         <div class="footer-col">
-          <h4>Hesabım</h4>
-          <a href="#">Giriş Yap</a>
-          <a href="#">Üye Ol</a>
-          <a href="#">Siparişlerim</a>
+          <h4>HesabÄ±m</h4>
+          <a href="#">GiriÅ Yap</a>
+          <a href="#">Ãye Ol</a>
+          <a href="#">SipariÅlerim</a>
           <a href="#">Favorilerim</a>
           <a href="#">Adreslerim</a>
         </div>
         <div class="footer-col">
-          <h4>İletişim</h4>
+          <h4>Ä°letiÅim</h4>
           <a href="mailto:info@runik.com.tr">info@runik.com.tr</a>
           <a href="tel:+902120000000">+90 212 000 00 00</a>
-          <a href="#">İstanbul, Türkiye</a>
+          <a href="#">Ä°stanbul, TÃ¼rkiye</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Runik Yayınevi. Tüm hakları saklıdır.</span>
+      <span>Â© 2026 Runik YayÄ±nevi. TÃ¼m haklarÄ± saklÄ±dÄ±r.</span>
       <div class="footer-social">
         <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
         <a href="#" aria-label="X"><i class="ti ti-brand-x"></i></a>
@@ -466,8 +495,8 @@ const AUTHORS = [
 </footer>
 
 <script>
-  /* ============ DİL YARDIMCILARI ============ */
-  // Türkçe harf normalleştirme (İ, Ş, Ğ, Ü, Ö, Ç gibi karakterleri kendi grubuna atar)
+  /* ============ DÄ°L YARDIMCILARI ============ */
+  // TÃ¼rkÃ§e harf normalleÅtirme (Ä°, Å, Ä, Ã, Ã, Ã gibi karakterleri kendi grubuna atar)
   function firstLetter(name){
     var ch = name.trim().charAt(0).toUpperCase();
     return ch;
@@ -480,7 +509,7 @@ const AUTHORS = [
       .join('');
   }
 
-  var TURKISH_ALPHABET = ['A','B','C','Ç','D','E','F','G','H','I','İ','J','K','L','M','N','O','Ö','P','R','S','Ş','T','U','Ü','V','Y','Z'];
+  var TURKISH_ALPHABET = ['A','B','C','Ã','D','E','F','G','H','I','Ä°','J','K','L','M','N','O','Ã','P','R','S','Å','T','U','Ã','V','Y','Z'];
 
   /* ============ A-Z BAR RENDER ============ */
   (function(){
@@ -506,11 +535,11 @@ const AUTHORS = [
       ? AUTHORS
       : AUTHORS.filter(function(a){ return firstLetter(a.name) === letter; });
 
-    headerLetter.textContent = letter === 'all' ? 'Tüm Yazarlar' : letter;
+    headerLetter.textContent = letter === 'all' ? 'TÃ¼m Yazarlar' : letter;
     countEl.textContent = list.length + ' yazar';
 
     if(list.length === 0){
-      grid.innerHTML = '<div class="authors-empty">Bu harfle başlayan yazar bulunmuyor.</div>';
+      grid.innerHTML = '<div class="authors-empty">Bu harfle baÅlayan yazar bulunmuyor.</div>';
       grid.style.gridTemplateColumns = '1fr';
       return;
     }
@@ -536,5 +565,37 @@ const AUTHORS = [
   render('all');
 </script>
 
+<!-- Tema toggle (test) -->
+<button id="runikThemeToggle" class="runik-theme-toggle" aria-label="Tema değiştir" title="Tema değiştir">
+  <span class="rtt-icon rtt-sun">☀</span>
+  <span class="rtt-track"><span class="rtt-thumb"></span></span>
+  <span class="rtt-icon rtt-moon">◐</span>
+  <span class="rtt-label">Tema</span>
+</button>
+<style>
+  .runik-theme-toggle{position:fixed;bottom:20px;left:20px;z-index:1000;background:var(--card);border:1px solid var(--border);padding:10px 14px;display:inline-flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:500;color:var(--text);cursor:pointer;box-shadow:0 10px 24px -10px rgba(0,0,0,.18);transition:background .2s ease,border-color .2s ease,color .2s ease;}
+  .runik-theme-toggle:hover{filter:brightness(.98);transform:translateY(-1px);}
+  .runik-theme-toggle .rtt-icon{font-size:12px;color:var(--text-faint);line-height:1;}
+  .runik-theme-toggle .rtt-track{width:30px;height:16px;background:var(--border);border-radius:99px;position:relative;transition:background .2s;}
+  .runik-theme-toggle .rtt-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;background:var(--accent);border-radius:50%;transition:transform .2s ease,background .2s ease;}
+  html[data-theme="light"] .runik-theme-toggle .rtt-thumb{transform:translateX(14px);background:#222;}
+  html[data-theme="light"] .runik-theme-toggle .rtt-sun{color:var(--border);}
+  html[data-theme="warm"] .runik-theme-toggle .rtt-moon,
+  :root:not([data-theme="light"]) .runik-theme-toggle .rtt-moon{color:var(--border);}
+  @media (max-width:680px){
+    .runik-theme-toggle .rtt-label{display:none;}
+  }
+</style>
+<script>
+(function(){
+  var b=document.getElementById('runikThemeToggle');if(!b)return;
+  b.addEventListener('click',function(){
+    var c=document.documentElement.getAttribute('data-theme')||'warm';
+    var n=c==='light'?'warm':'light';
+    document.documentElement.setAttribute('data-theme',n);
+    try{localStorage.setItem('runik-theme',n);}catch(e){}
+  });
+})();
+</script>
 </body>
 </html>
