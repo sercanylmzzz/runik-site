@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Runik Yayınevi — edebiyatın sessiz peşinde, özenle seçilmiş kitaplar yayımlayan, hikâyenin ardına düşen bağımsız bir yayınevi.">
+<link rel="canonical" href="https://runik-site.vercel.app/hakkimizda">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://runik-site.vercel.app/hakkimizda">
+<meta property="og:title" content="Hakkımızda">
+<meta property="og:description" content="Runik Yayınevi — edebiyatın sessiz peşinde, özenle seçilmiş kitaplar yayımlayan, hikâyenin ardına düşen bağımsız bir yayınevi.">
+<meta property="og:image" content="https://runik-site.vercel.app/assets/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Runik Yayınevi">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hakkımızda">
+<meta name="twitter:description" content="Runik Yayınevi — edebiyatın sessiz peşinde, özenle seçilmiş kitaplar yayımlayan, hikâyenin ardına düşen bağımsız bir yayınevi.">
+<meta name="twitter:image" content="https://runik-site.vercel.app/assets/og-default.jpg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-180.png">
+<title>Hakkımızda · Runik Yayınevi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style id="runik-theme-vars">
+:root{
+  --bg:#F7F4EF;
+  --bg-soft:#FAF3E3;
+  --bg-tint:#F4ECDD;
+  --bg-tint-h:#FAEBD5;
+  --border:#E8E1D2;
+  --border-2:#EDE3D2;
+  --text:#3B2A1C;
+  --text-soft:#6E5D4B;
+  --text-faint:#9B8A75;
+  --accent:#F2541B;
+  --card:#FFFFFF;
+}
+html[data-theme="light"]{
+  --bg:#FFFFFF;
+  --bg-soft:#FAFAFA;
+  --bg-tint:#F2F2F2;
+  --bg-tint-h:#E8E8E8;
+  --border:#EAEAEA;
+  --border-2:#ECECEC;
+  --card:#FFFFFF;
+}
+html[data-theme="light"] body{background:#FFFFFF;}
+html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
+</style>
+<script>(function(){try{var t=localStorage.getItem('runik-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);font-family:'Jost',sans-serif;color:var(--text);min-height:100vh;padding:0 32px;display:flex;flex-direction:column;}
+  a{color:inherit;}
+  /* ============ SITE HEADER (sade) ============ */
+  .site-header{position:sticky;top:0;z-index:50;margin:0 -32px;background:rgba(247,244,239,.88);-webkit-backdrop-filter:saturate(140%) blur(12px);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--border);}
+  .header-inner{max-width:1240px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:32px;}
+  .logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--text);}
+  .logo-img{height:46px;width:auto;display:block;}
+  .header-nav{display:flex;gap:30px;align-items:center;}
+  .header-nav a{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:var(--text);text-decoration:none;position:relative;padding:6px 0;}
+  .header-nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .25s ease;}
+  .header-nav a:hover::after,.header-nav a[aria-current="page"]::after{transform:scaleX(1);}
+
+  /* ============ PAGE BANNER ============ */
+  .pb{padding:80px 24px 64px;max-width:1240px;margin:0 auto;text-align:center;}
+  .pb-eyebrow{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2.8px;text-transform:uppercase;color:var(--accent);font-weight:500;}
+  .pb h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px, 6vw, 64px);font-weight:600;line-height:1.05;margin-top:18px;letter-spacing:.3px;}
+  .pb-lead{font-family:'Jost',sans-serif;font-size:16px;color:var(--text-soft);font-weight:300;line-height:1.65;margin:22px auto 0;max-width:640px;}
+
+  /* ============ CONTENT WRAP ============ */
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px 96px;}
+  .prose{max-width:760px;margin:0 auto;}
+  .prose h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;line-height:1.2;color:var(--text);margin:40px 0 14px;}
+  .prose h3{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);margin:32px 0 12px;}
+  .prose p{font-family:'Jost',sans-serif;font-size:15.5px;color:var(--text-soft);line-height:1.75;font-weight:300;margin-bottom:16px;}
+  .prose ul,.prose ol{margin:0 0 16px 22px;color:var(--text-soft);font-family:'Jost',sans-serif;font-size:15px;line-height:1.75;font-weight:300;}
+  .prose li{margin-bottom:6px;}
+  .prose a{color:var(--accent);border-bottom:1px solid var(--accent);text-decoration:none;}
+  .prose strong{color:var(--text);font-weight:500;}
+  .prose hr{border:0;border-top:1px solid var(--border);margin:36px 0;}
+
+  /* ============ BUTONLAR ============ */
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;padding:14px 26px;text-decoration:none;border:1px solid var(--text);color:var(--text);background:transparent;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease;}
+  .btn:hover{background:var(--text);color:var(--bg);}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .btn.primary:hover{filter:brightness(.95);background:var(--accent);color:#fff;}
+  .btn i{font-size:16px;}
+
+  /* ============ FOOTER ============ */
+  .site-footer{margin:0 -32px;padding:48px 32px 28px;background:var(--bg-soft);border-top:1px solid var(--border);font-family:'Jost',sans-serif;color:var(--text-soft);}
+  .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;}
+  .footer-brand{display:flex;flex-direction:column;gap:14px;}
+  .footer-brand img{height:42px;width:auto;}
+  .footer-brand p{font-size:13px;line-height:1.6;font-weight:300;max-width:280px;}
+  .footer-col h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:14px;}
+  .footer-col a{display:block;font-size:13.5px;color:var(--text-soft);text-decoration:none;padding:5px 0;font-weight:300;transition:color .2s;}
+  .footer-col a:hover{color:var(--accent);}
+  .footer-bottom{max-width:1240px;margin:36px auto 0;padding-top:22px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--text-faint);letter-spacing:.4px;}
+  .footer-bottom .social{display:flex;gap:14px;}
+  .footer-bottom .social a{color:var(--text-faint);font-size:18px;}
+  .footer-bottom .social a:hover{color:var(--accent);}
+
+  @media (max-width:880px){
+    body{padding:0 16px;}
+    .site-header,.site-footer{margin:0 -16px;}
+    .header-nav{gap:18px;}
+    .header-nav a{font-size:13px;}
+    .footer-inner{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    .header-nav a{display:none;}
+    .header-nav a:first-child,.header-nav a:nth-child(2){display:inline;}
+    .pb{padding:50px 12px 36px;}
+    .footer-inner{grid-template-columns:1fr;}
+  }
+</style>
+
+<style>
+  .v-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:0 24px;}
+  .v-card{background:var(--card);border:1px solid var(--border);padding:32px 28px;transition:transform .25s,border-color .25s;}
+  .v-card:hover{transform:translateY(-4px);border-color:var(--accent);}
+  .v-card .ic{font-size:30px;color:var(--accent);}
+  .v-card h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin:14px 0 10px;color:var(--text);}
+  .v-card p{font-family:'Jost',sans-serif;font-size:13.5px;color:var(--text-soft);line-height:1.6;font-weight:300;}
+  .story{max-width:760px;margin:96px auto 0;padding:0 24px;}
+  .story h2{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:var(--text);text-align:center;margin-bottom:32px;}
+  .story p{font-family:'Jost',sans-serif;font-size:16px;color:var(--text-soft);line-height:1.85;font-weight:300;margin-bottom:18px;}
+  .story p:first-letter{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:600;float:left;line-height:.9;padding:6px 10px 0 0;color:var(--accent);}
+  .meta-row{max-width:1100px;margin:80px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .meta-card{background:var(--bg-soft);border:1px solid var(--border-2);padding:32px 28px;scroll-margin-top:100px;}
+  .meta-card h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--text);}
+  .meta-card .mi{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:10px;}
+  .meta-card p{font-family:'Jost',sans-serif;font-size:14px;color:var(--text-soft);line-height:1.7;font-weight:300;margin:10px 0 14px;}
+  .meta-card a{font-family:'Jost',sans-serif;font-size:13px;color:var(--text);border-bottom:1px solid var(--text);text-decoration:none;padding-bottom:3px;}
+  .meta-card a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+  .cta-band{max-width:1240px;margin:96px auto 0;padding:56px 32px;text-align:center;background:var(--bg-soft);border:1px solid var(--border);}
+  .cta-band h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--text);margin-bottom:14px;}
+  .cta-band p{font-family:'Jost',sans-serif;font-size:14.5px;color:var(--text-soft);font-weight:300;line-height:1.65;max-width:520px;margin:0 auto 26px;}
+  .cta-band .btns{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  @media (max-width:880px){.v-grid,.meta-row{grid-template-columns:1fr 1fr;}}
+  @media (max-width:520px){.v-grid,.meta-row{grid-template-columns:1fr;}}
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/" aria-label="Runik anasayfa">
+      <img src="/assets/runik-logo.png" alt="Runik" class="logo-img">
+    </a>
+    <nav class="header-nav" aria-label="Ana menü">
+      <a href="/kitaplar">Kitaplar</a>
+      <a href="/yazarlar">Yazarlar</a>
+      <a href="/hakkimizda">Hakkımızda</a>
+      <a href="/iletisim">İletişim</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+  <section class="pb">
+    <span class="pb-eyebrow">Hakkımızda</span>
+    <h1>Edebiyatın sessiz peşinde.</h1>
+    <p class="pb-lead">
+      Runik, hikâyenin ardına düşen bağımsız bir yayınevidir. Bir metni kitaba çevirmek
+      —kâğıdını, harfini, sırtını seçmek— bizim için en yavaş ama en huzurlu iştir.
+    </p>
+  </section>
+
+  <section class="v-grid">
+    <div class="v-card">
+      <i class="ic ti ti-feather"></i>
+      <h3>Özen</h3>
+      <p>Her başlık, editöryal bir karar zinciri. Dizgi de, kapak da, çevirinin tonu da bu özenin parçası.</p>
+    </div>
+    <div class="v-card">
+      <i class="ic ti ti-book-2"></i>
+      <h3>Hikâye</h3>
+      <p>Önce metin. Sonra her şey. Bir hikâyeye inanmadan kitap yapmıyoruz; inandığımızda da gözümüzü kapatmıyoruz.</p>
+    </div>
+    <div class="v-card">
+      <i class="ic ti ti-infinity"></i>
+      <h3>Süreklilik</h3>
+      <p>Yeni sesleri, eski ustalarla aynı raftan görmek istiyoruz. Bir yıl değil, on yıl sonra da okunsun diye yayımlıyoruz.</p>
+    </div>
+    <div class="v-card">
+      <i class="ic ti ti-users"></i>
+      <h3>İşbirliği</h3>
+      <p>Yazarla, çevirmenle, tasarımcıyla, okurla. Kitap çok elden geçer, biz bu elleri görünür tutarız.</p>
+    </div>
+  </section>
+
+  <section class="story">
+    <h2>Hikâyemiz</h2>
+    <p>
+      Runik küçük bir masada başladı. Birkaç kitap, birkaç fikir, ve "bir dergiyi
+      kitap yapsak" tartışması. O masadan bugün altmıştan fazla başlık çıktı; ama
+      masa hâlâ aynı yerinde duruyor. Türkçe edebiyatın klasiklerini yeni
+      okurlarla buluştururken, çağdaş sesleri ilk kitaplarından itibaren takip ediyoruz.
+    </p>
+    <p>
+      İşimiz iki yönlü: Bir kanat geride kalmış metinleri yeniden ortaya çıkarmak —
+      itinasız basımlardan, dağıtım dışı kalmış nüshalardan kurtarıp, okunaklı bir
+      raf düzenine kazandırmak. Diğer kanat yeni yazarları —ilk şiir kitabını
+      yayımlamak isteyenleri, ilk romanını bitirmiş olanları— küçük ama yargılı
+      bir editör ekibiyle desteklemek.
+    </p>
+    <p>
+      Biz, edebiyatın acelesi olmadığına inananlardanız.
+    </p>
+  </section>
+
+  <section class="meta-row">
+    <article class="meta-card" id="kunye">
+      <span class="mi">Künye</span>
+      <h3>Yasal Bilgi</h3>
+      <p>Runik Yayınevi Tic. Ltd. Şti. — İstanbul. Sertifika No: <strong>00000</strong>. Tüm yayın hakları saklıdır.</p>
+      <a href="/iletisim">İletişime geç →</a>
+    </article>
+    <article class="meta-card" id="kariyer">
+      <span class="mi">Kariyer</span>
+      <h3>Bizimle çalış</h3>
+      <p>Editör, çevirmen, dijital tasarım veya satış birimleri için CV'ni dilediğin zaman bize ulaştırabilirsin.</p>
+      <a href="mailto:kariyer@runik.com.tr">kariyer@runik.com.tr →</a>
+    </article>
+    <article class="meta-card" id="basin">
+      <span class="mi">Basın</span>
+      <h3>Basın Odası</h3>
+      <p>Basın bültenleri, yüksek çözünürlüklü kapak ve yazar görselleri, röportaj talepleri için.</p>
+      <a href="mailto:basin@runik.com.tr">basin@runik.com.tr →</a>
+    </article>
+  </section>
+
+  <section class="cta-band">
+    <h2>Bizi yakından tanı.</h2>
+    <p>Kataloğumuza göz at, yeni çıkanları takip et veya doğrudan bize yaz.</p>
+    <div class="btns">
+      <a class="btn primary" href="/kitaplar">Tüm Kitaplar <i class="ti ti-arrow-right"></i></a>
+      <a class="btn" href="/iletisim">İletişim</a>
+    </div>
+  </section>
+</main>
+
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/assets/runik-logo.png" alt="Runik">
+      <p>Edebiyatın izini sürenler için, özenle seçilmiş kitaplar.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Yayınevi</h4>
+      <a href="/hakkimizda">Hakkımızda</a>
+      <a href="/yazarlar">Yazarlar</a>
+      <a href="/hakkimizda#kunye">Künye</a>
+      <a href="/hakkimizda#kariyer">Kariyer</a>
+      <a href="/hakkimizda#basin">Basın Odası</a>
+    </div>
+    <div class="footer-col">
+      <h4>Yardım</h4>
+      <a href="/yardim#siparis">Sipariş Takibi</a>
+      <a href="/yardim#kargo">Kargo &amp; Teslimat</a>
+      <a href="/yardim#iade">İade &amp; Değişim</a>
+      <a href="/gizlilik">Gizlilik Politikası</a>
+      <a href="/kullanim-sartlari">Kullanım Şartları</a>
+    </div>
+    <div class="footer-col">
+      <h4>İletişim</h4>
+      <a href="/iletisim">İletişim Formu</a>
+      <a href="mailto:info@runik.com.tr">info@runik.com.tr</a>
+      <a href="tel:+902120000000">+90 212 000 00 00</a>
+      <a href="/iletisim#adres">İstanbul, Türkiye</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Runik Yayınevi. Tüm hakları saklıdır.</span>
+    <div class="social">
+      <a href="https://instagram.com/runikyayinevi" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+      <a href="https://x.com/runikyayinevi" aria-label="X"><i class="ti ti-brand-x"></i></a>
+      <a href="https://youtube.com/@runikyayinevi" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+      <a href="https://linkedin.com/company/runik" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+<button id="runikThemeToggle" class="runik-theme-toggle" aria-label="Tema değiştir" title="Tema değiştir">
+  <span class="rtt-icon rtt-sun">&#9728;</span>
+  <span class="rtt-track"><span class="rtt-thumb"></span></span>
+  <span class="rtt-icon rtt-moon">&#9680;</span>
+  <span class="rtt-label">Tema</span>
+</button>
+<style>
+  .runik-theme-toggle{position:fixed;bottom:20px;left:20px;z-index:1000;background:var(--card);border:1px solid var(--border);padding:10px 14px;display:inline-flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;font-weight:500;color:var(--text);cursor:pointer;box-shadow:0 10px 24px -10px rgba(0,0,0,.18);transition:background .2s ease,border-color .2s ease,color .2s ease;}
+  .runik-theme-toggle:hover{filter:brightness(.98);transform:translateY(-1px);}
+  .runik-theme-toggle .rtt-icon{font-size:12px;color:var(--text-faint);line-height:1;}
+  .runik-theme-toggle .rtt-track{width:30px;height:16px;background:var(--border);border-radius:99px;position:relative;transition:background .2s;}
+  .runik-theme-toggle .rtt-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;background:var(--accent);border-radius:50%;transition:transform .2s ease,background .2s ease;}
+  html[data-theme="light"] .runik-theme-toggle .rtt-thumb{transform:translateX(14px);background:#222;}
+  @media (max-width:680px){.runik-theme-toggle .rtt-label{display:none;}}
+</style>
+<script>
+(function(){var b=document.getElementById('runikThemeToggle');if(!b)return;b.addEventListener('click',function(){var c=document.documentElement.getAttribute('data-theme')||'warm';var n=c==='light'?'warm':'light';document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('runik-theme',n);}catch(e){}});})();
+</script>
+
+
+</body>
+</html>

@@ -524,7 +524,7 @@ html[data-theme="light"] .h-top{background:#FAFAFA;}
       <a href="/">Anasayfa</a>
       <a href="/yazarlar">Yazarlar</a>
       <a href="/components" class="is-active">Bileşenler</a>
-      <a href="#">Hakkımızda</a>
+      <a href="/hakkimizda">Hakkımızda</a>
     </nav>
     <div class="nav-actions">
       <button class="icon-btn" aria-label="Ara"><i class="ti ti-search"></i></button>
@@ -955,13 +955,13 @@ html[data-theme="light"] .h-top{background:#FAFAFA;}
             <div class="author-detail-photo" style="background:#3B5C46">SA</div>
             <div class="author-detail-name">Sabahattin Ali</div>
             <div class="author-detail-bio">Türk edebiyatının en önemli hikâye ve roman yazarlarından biri. Realizm akımının öncü ismi.</div>
-            <a href="#" class="author-detail-link">Kitaplarını Gör →</a>
+            <a href="/kitaplar" class="author-detail-link">Kitaplarını Gör →</a>
           </div>
           <div class="author-detail">
             <div class="author-detail-photo" style="background:#8B5A2B">YK</div>
             <div class="author-detail-name">Yaşar Kemal</div>
             <div class="author-detail-bio">Anadolu'nun destansı anlatıcısı. Nobel Edebiyat Ödülü'ne aday gösterilmiş dünyaca ünlü yazar.</div>
-            <a href="#" class="author-detail-link">Kitaplarını Gör →</a>
+            <a href="/kitaplar" class="author-detail-link">Kitaplarını Gör →</a>
           </div>
         </div>
       </div>
@@ -1185,11 +1185,11 @@ html[data-theme="light"] .h-top{background:#FAFAFA;}
         <span class="cmp-label">Breadcrumb <code>.breadcrumb</code></span>
         <div class="cmp-demo">
           <nav style="font-family:'Jost',sans-serif;font-size:12.5px;color:var(--text-faint);letter-spacing:.4px;">
-            <a href="#" style="color:var(--text-faint);text-decoration:none;">Anasayfa</a>
+            <a href="/" style="color:var(--text-faint);text-decoration:none;">Anasayfa</a>
             <span style="margin:0 8px;opacity:.5;">/</span>
-            <a href="#" style="color:var(--text-faint);text-decoration:none;">Edebiyat</a>
+            <a href="/kitaplar" style="color:var(--text-faint);text-decoration:none;">Edebiyat</a>
             <span style="margin:0 8px;opacity:.5;">/</span>
-            <a href="#" style="color:var(--text-faint);text-decoration:none;">Roman</a>
+            <a href="/kitaplar?cat=Roman" style="color:var(--text-faint);text-decoration:none;">Roman</a>
             <span style="margin:0 8px;opacity:.5;">/</span>
             <span style="color:var(--text);">Kürk Mantolu Madonna</span>
           </nav>
@@ -1204,30 +1204,30 @@ html[data-theme="light"] .h-top{background:#FAFAFA;}
               <h5>Edebiyat</h5>
               <a href="/kitaplar?cat=Roman">Roman</a>
               <a href="/kitaplar?cat=Şiir">Şiir</a>
-              <a href="#">Öykü</a>
+              <a href="/kitaplar?cat=Öykü">Öykü</a>
               <a href="/kitaplar?cat=Deneme">Deneme</a>
-              <a href="#">Tiyatro</a>
+              <a href="/kitaplar">Tiyatro</a>
             </div>
             <div class="mega-col">
               <h5>Bilim & Düşünce</h5>
-              <a href="#">Felsefe</a>
-              <a href="#">Psikoloji</a>
+              <a href="/kitaplar?cat=Felsefe">Felsefe</a>
+              <a href="/kitaplar">Psikoloji</a>
               <a href="/kitaplar?cat=Tarih">Tarih</a>
-              <a href="#">Bilim</a>
+              <a href="/kitaplar">Bilim</a>
             </div>
             <div class="mega-col">
               <h5>Yaşam</h5>
-              <a href="#">Kişisel Gelişim</a>
-              <a href="#">Seyahat</a>
-              <a href="#">Yemek</a>
-              <a href="#">Sanat</a>
+              <a href="/kitaplar">Kişisel Gelişim</a>
+              <a href="/kitaplar">Seyahat</a>
+              <a href="/kitaplar">Yemek</a>
+              <a href="/kitaplar">Sanat</a>
             </div>
             <div class="mega-col">
               <h5>Çocuk & Genç</h5>
-              <a href="#">Resimli Kitap</a>
-              <a href="#">Masal</a>
-              <a href="#">Genç Yetişkin</a>
-              <a href="#">Eğitim</a>
+              <a href="/kitaplar">Resimli Kitap</a>
+              <a href="/kitaplar">Masal</a>
+              <a href="/kitaplar">Genç Yetişkin</a>
+              <a href="/kitaplar">Eğitim</a>
             </div>
           </div>
         </div>
@@ -1284,18 +1284,18 @@ html[data-theme="light"] .h-top{background:#FAFAFA;}
         <p class="footer-tag-mini">Edebiyatın izini sürenler için.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;">
-        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">Yayınevi</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Hakkımızda</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Yazarlar</a></div>
-        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">Yardım</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">SSS</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Kargo &amp; Teslimat</a></div>
-        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">Hesabım</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Giriş Yap</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Siparişlerim</a></div>
-        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">İletişim</h4><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">info@runik.com.tr</a><a href="#" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">İstanbul, Türkiye</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">Yayınevi</h4><a href="/hakkimizda" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Hakkımızda</a><a href="/yazarlar" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Yazarlar</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">Yardım</h4><a href="/yardim" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">SSS</a><a href="/yardim#kargo" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Kargo &amp; Teslimat</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">Hesabım</h4><a href="/iletisim" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Giriş Yap</a><a href="/iletisim" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">Siparişlerim</a></div>
+        <div><h4 style="font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--bg-tint);margin-bottom:18px;">İletişim</h4><a href="mailto:info@runik.com.tr" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">info@runik.com.tr</a><a href="/iletisim#adres" style="display:block;font-family:Jost,sans-serif;font-size:13px;color:#A89C82;text-decoration:none;padding:4px 0;">İstanbul, Türkiye</a></div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Runik Yayınevi. Tüm hakları saklıdır.</span>
       <div style="display:flex;gap:10px;">
-        <a href="#" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-instagram"></i></a>
-        <a href="#" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-x"></i></a>
-        <a href="#" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-youtube"></i></a>
+        <a href="https://instagram.com/runikyayinevi" target="_blank" rel="noopener" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-instagram"></i></a>
+        <a href="https://x.com/runikyayinevi" target="_blank" rel="noopener" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-x"></i></a>
+        <a href="https://youtube.com/runikyayinevi" target="_blank" rel="noopener" style="color:#C9BFA8;font-size:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(231,222,200,.18);text-decoration:none;"><i class="ti ti-brand-youtube"></i></a>
       </div>
     </div>
   </div>
