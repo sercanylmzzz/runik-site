@@ -432,6 +432,8 @@ const BOOKS = [
     <div class="form-select">
       <select id="sortSelect">
         <option value="default">Önerilen</option>
+        <option value="new">Yeni Çıkanlar</option>
+        <option value="bestseller">Çok Satanlar</option>
         <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
         <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
         <option value="title-asc">İsim: A → Z</option>
@@ -545,13 +547,41 @@ const BOOKS = [
     maxPrice: 300,
     sort: 'default',
     page: 1,
-    perPage: 12
+    perPage: 12,
+    q: ''
   };
 
-  // URL parametresi: ?cat=Roman gibi
+  // URL parametreleri: ?cat=Roman | ?sort=new|bestseller | ?q=arama
   (function(){
     var p = new URLSearchParams(location.search);
-    if(p.get('cat')) state.categories.add(p.get('cat'));
+    if(p.get('cat'))  state.categories.add(p.get('cat'));
+    if(p.get('sort')) state.sort = p.get('sort');  // new | bestseller | price-asc | price-desc | default
+    if(p.get('q'))    state.q    = p.get('q').toLocaleLowerCase('tr');
+
+    // UI sync: sort dropdown'una URL değerini yansıt
+    var ss = document.getElementById('sortSelect');
+    if(ss && state.sort && state.sort !== 'default') {
+      // Önce eşleşen option var mı kontrol et
+      var opt = Array.prototype.find.call(ss.options, function(o){ return o.value === state.sort; });
+      if(opt) ss.value = state.sort;
+    }
+
+    // Banner: arama veya özel sıralama varsa başlığı/açıklamayı uyarla
+    var title = document.querySelector('.pb-title');
+    var desc  = document.querySelector('.pb-description');
+    if(p.get('q') && title) {
+      title.textContent = '"' + p.get('q') + '" için sonuçlar';
+      if(desc) desc.textContent = 'Aramanıza uygun başlıkları listeliyoruz. Filtreyi temizleyerek tüm katalogla görüntüleyebilirsin.';
+    } else if(state.sort === 'new' && title) {
+      title.textContent = 'Yeni Çıkanlar';
+      if(desc) desc.textContent = 'Runik kataloğunun en yeni eklentileri — yayın yılına göre sıralanmış.';
+    } else if(state.sort === 'bestseller' && title) {
+      title.textContent = 'Çok Satanlar';
+      if(desc) desc.textContent = 'Okurların en çok ilgi gösterdiği başlıklar — Runik kataloğunda öne çıkanlar.';
+    } else if(p.get('cat') && title) {
+      title.textContent = p.get('cat');
+      if(desc) desc.textContent = '"' + p.get('cat') + '" kategorisindeki başlıklar.';
+    }
   })();
 
   /* ============ FILTRELERİ DOLDUR ============ */
@@ -611,23 +641,33 @@ const BOOKS = [
 
   /* ============ FILTRELE + SIRALA + RENDER ============ */
   function applyFilters(){
+    var trL = function(s){ return (s||'').toLocaleLowerCase('tr'); };
     return BOOKS.filter(function(b){
       if(state.categories.size && !state.categories.has(b.category)) return false;
       if(state.formats.size    && !state.formats.has(b.format))      return false;
       if(state.authors.size    && !state.authors.has(b.author))      return false;
       if(b.price > state.maxPrice) return false;
+      if(state.q){
+        var q = state.q;
+        if(trL(b.title).indexOf(q)<0 && trL(b.author).indexOf(q)<0 && trL(b.category).indexOf(q)<0) return false;
+      }
       return true;
     });
   }
   function applySort(list){
     var s = state.sort;
     var arr = list.slice();
-    if(s==='price-asc')  arr.sort(function(a,b){ return a.price-b.price; });
-    if(s==='price-desc') arr.sort(function(a,b){ return b.price-a.price; });
-    if(s==='title-asc')  arr.sort(function(a,b){ return a.title.localeCompare(b.title,'tr'); });
-    if(s==='title-desc') arr.sort(function(a,b){ return b.title.localeCompare(a.title,'tr'); });
-    if(s==='year-desc')  arr.sort(function(a,b){ return b.year-a.year; });
-    if(s==='year-asc')   arr.sort(function(a,b){ return a.year-b.year; });
+    if(s==='price-asc')   arr.sort(function(a,b){ return a.price-b.price; });
+    if(s==='price-desc')  arr.sort(function(a,b){ return b.price-a.price; });
+    if(s==='title-asc')   arr.sort(function(a,b){ return a.title.localeCompare(b.title,'tr'); });
+    if(s==='title-desc')  arr.sort(function(a,b){ return b.title.localeCompare(a.title,'tr'); });
+    if(s==='year-desc' || s==='new')  arr.sort(function(a,b){ return b.year-a.year; });
+    if(s==='year-asc')    arr.sort(function(a,b){ return a.year-b.year; });
+    if(s==='bestseller'){
+      // ribbon='sale' önce, sonra fiyat azalan
+      var rank = function(b){ return b.ribbon === 'sale' ? 0 : (b.ribbon === 'new' ? 1 : 2); };
+      arr.sort(function(a,b){ var r = rank(a) - rank(b); return r !== 0 ? r : (b.price - a.price); });
+    }
     return arr;
   }
   function paginate(list){
@@ -729,5 +769,6 @@ const BOOKS = [
   });
 })();
 </script>
+<script defer src="/assets/app.js"></script>
 </body>
 </html>
