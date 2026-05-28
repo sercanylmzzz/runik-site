@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KÄ±rmÄ±zÄ± Defter â Runik</title>
+<title>Kırmızı Defter — Runik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
     color:var(--text);
   }
 
-  /* ============ SITE HEADER (index ile aynÄ±) ============ */
+  /* ============ SITE HEADER (index ile aynı) ============ */
   .site-header{
     position:sticky;top:0;z-index:50;
     margin:0 -32px;
@@ -110,7 +110,7 @@
   .fav-toggle:hover{transform:scale(1.06);color:var(--accent);}
   .fav-toggle.is-active{color:var(--accent);}
 
-  /* CSS ile Ã§izilmiÅ kitap kapaÄÄ± */
+  /* CSS ile çizilmiş kitap kapağı */
   .book-cover{
     width:100%;max-width:420px;
     aspect-ratio:2/3;
@@ -166,7 +166,7 @@
     opacity:.9;
   }
 
-  /* kÃ¼Ã§Ã¼k resim seÃ§ici */
+  /* küçük resim seçici */
   .thumbs{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -212,7 +212,7 @@
     background-repeat:no-repeat,repeat-y;
   }
 
-  /* ----- info (saÄ) ----- */
+  /* ----- info (sağ) ----- */
   .info{
     background:var(--bg-tint);
     padding:48px 44px;
@@ -441,7 +441,6 @@ html[data-theme="light"]{
   --border-2:#ECECEC;
   --card:#FFFFFF;
 }
-/* Light tema: bazı koyu/krem dolgular için ek dokunuşlar */
 html[data-theme="light"] body{background:#FFFFFF;}
 html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
 html[data-theme="light"] .h-top{background:#FAFAFA;}
@@ -451,21 +450,21 @@ html[data-theme="light"] .h-top{background:#FAFAFA;}
 <body>
 
 <!-- ============================================================
-     HIZLI DÃZENLEME ALANI â sadece aÅaÄÄ±daki BOOK objesini deÄiÅtir
+     HIZLI DÜZENLEME ALANI — sadece aşağıdaki BOOK objesini değiştir
      ============================================================ -->
 <script>
 const BOOK = {
   // temel bilgi
   category: 'Roman',
-  title: 'KÄ±rmÄ±zÄ± Defter',
+  title: 'Kırmızı Defter',
   author: 'M. Kara',
 
-  // deÄerlendirme
+  // değerlendirme
   rating: 4.6,
   reviewCount: 128,
 
-  // aÃ§Ä±klama
-  shortDescription: 'KÄ±rmÄ±zÄ± Defter, hafÄ±zanÄ±n kÄ±rÄ±lganlÄ±ÄÄ± ile yÃ¼zleÅen bir adamÄ±n iÃ§ dÃ¼nyasÄ±nda geÃ§en sarsÄ±cÄ± bir yolculuk. GeÃ§miÅin izlerini silmeye Ã§alÄ±Åan kahraman, karÅÄ±laÅtÄ±ÄÄ± insanlar ve anÄ±lar aracÄ±lÄ±ÄÄ±yla kendini yeniden kurmaya Ã§alÄ±ÅÄ±r.',
+  // açıklama
+  shortDescription: 'Kırmızı Defter, hafızanın kırılganlığı ile yüzleşen bir adamın iç dünyasında geçen sarsıcı bir yolculuk. Geçmişin izlerini silmeye çalışan kahraman, karşılaştığı insanlar ve anılar aracılığıyla kendini yeniden kurmaya çalışır.',
 
   // teknik
   pages: '192',
@@ -475,26 +474,26 @@ const BOOK = {
 
   // fiyat ve teslimat
   price: '240,00 TL',
-  freeShippingNote: '150 TL ve Ã¼zeri sipariÅlerde kargo Ã¼cretsiz.',
-  deliveryNote: 'Tahmini Teslimat: 2-3 iÅ gÃ¼nÃ¼ iÃ§inde kargoda',
+  freeShippingNote: '150 TL ve üzeri siparişlerde kargo ücretsiz.',
+  deliveryNote: 'Tahmini Teslimat: 2-3 iş günü içinde kargoda',
 
   // sekmeler
   about: {
-    intro: 'M. Kara, bu romanÄ±nda kimlik, piÅmanlÄ±k ve affetme Ã¼zerine derinlikli ve etkileyici bir anlatÄ± sunuyor.',
-    quote: 'BazÄ± defterler kapanmaz, sadece renk deÄiÅtirir.'
+    intro: 'M. Kara, bu romanında kimlik, pişmanlık ve affetme üzerine derinlikli ve etkileyici bir anlatı sunuyor.',
+    quote: 'Bazı defterler kapanmaz, sadece renk değiştirir.'
   },
   details: {
-    'YayÄ±nevi': 'Runik YayÄ±nlarÄ±',
-    'Ä°lk BaskÄ± YÄ±lÄ±': 'Nisan 2024',
-    'BaskÄ± SayÄ±sÄ±': '1. BaskÄ±',
+    'Yayınevi': 'Runik Yayınları',
+    'İlk Baskı Yılı': 'Nisan 2024',
+    'Baskı Sayısı': '1. Baskı',
     'ISBN': '978-625-01-2345-6',
     'Kategori': 'Roman'
   },
 
-  // kapak gÃ¶rseli (CSS) renk + opsiyonel gÃ¶rsel
+  // kapak görseli (CSS) renk + opsiyonel görsel
   coverColor: '#C03A2B',     // ana kapak rengi
-  // not: kapak CSS ile Ã§iziliyor; gerÃ§ek gÃ¶rsel istersen
-  // .book-cover'Ä±n yerine <img> koyabilirsin
+  // not: kapak CSS ile çiziliyor; gerçek görsel istersen
+  // .book-cover'ın yerine <img> koyabilirsin
 };
 </script>
 
@@ -507,20 +506,20 @@ const BOOK = {
     <a class="logo" href="/" aria-label="Runik anasayfa">
       <img src="/assets/runik-logo.png" alt="Runik" class="logo-img">
     </a>
-    <nav class="nav" aria-label="Ana menÃ¼">
-      <a href="#">Yeni ÃÄ±kanlar</a>
-      <a href="#">Ãok Satanlar</a>
+    <nav class="nav" aria-label="Ana menü">
+      <a href="#">Yeni Çıkanlar</a>
+      <a href="#">Çok Satanlar</a>
       <div class="nav-item" data-dropdown="kategoriler">
         <button class="nav-trigger">Kategoriler <i class="ti ti-chevron-down"></i></button>
       </div>
       <div class="nav-item" data-dropdown="yazarlar">
         <button class="nav-trigger">Yazarlar <i class="ti ti-chevron-down"></i></button>
       </div>
-      <a href="#">HakkÄ±mÄ±zda</a>
+      <a href="#">Hakkımızda</a>
     </nav>
     <div class="nav-actions">
       <button class="icon-btn" aria-label="Ara"><i class="ti ti-search"></i></button>
-      <button class="icon-btn" aria-label="HesabÄ±m"><i class="ti ti-user"></i></button>
+      <button class="icon-btn" aria-label="Hesabım"><i class="ti ti-user"></i></button>
       <button class="icon-btn" aria-label="Favoriler"><i class="ti ti-heart"></i></button>
       <button class="icon-btn" aria-label="Sepet">
         <i class="ti ti-shopping-bag"></i>
@@ -529,26 +528,26 @@ const BOOK = {
     </div>
   </div>
 
-  <!-- KATEGORÄ°LER DROPDOWN -->
+  <!-- KATEGORİLER DROPDOWN -->
   <div class="nav-dropdown" data-panel="kategoriler">
     <div class="dropdown-inner">
       <div class="dropdown-left">
         <div class="dropdown-head">
           <span class="dh-title">Kategoriler <b>(10)</b></span>
-          <a href="/kitaplar" class="dh-meta" style="text-decoration:none;color:var(--accent);">TÃ¼m Kitaplar &rarr;</a>
+          <a href="/kitaplar" class="dh-meta" style="text-decoration:none;color:var(--accent);">Tüm Kitaplar &rarr;</a>
         </div>
         <div class="dropdown-links">
-          <a href="/kitaplar?cat=Roman">Roman</a><a href="/kitaplar?cat=Åiir">Åiir</a>
-          <a href="/kitaplar?cat=Felsefe">Felsefe &amp; DÃ¼ÅÃ¼nce</a><a href="/kitaplar?cat=Tarih">Tarih</a>
-          <a href="#">Ãocuk</a><a href="#">Polisiye &amp; Gerilim</a>
-          <a href="/kitaplar?cat=Deneme">Deneme</a><a href="/kitaplar?cat=Biyografi">Biyografi &amp; AnÄ±</a>
+          <a href="/kitaplar?cat=Roman">Roman</a><a href="/kitaplar?cat=Şiir">Şiir</a>
+          <a href="/kitaplar?cat=Felsefe">Felsefe &amp; Düşünce</a><a href="/kitaplar?cat=Tarih">Tarih</a>
+          <a href="#">Çocuk</a><a href="#">Polisiye &amp; Gerilim</a>
+          <a href="/kitaplar?cat=Deneme">Deneme</a><a href="/kitaplar?cat=Biyografi">Biyografi &amp; Anı</a>
           <a href="#">Sanat &amp; Mimari</a><a href="#">Klasikler</a>
         </div>
       </div>
       <div class="dropdown-right">
         <div class="dr-bg" style="background-image:url('/assets/hero-runik.png');"></div>
         <div class="dr-overlay"></div>
-        <span class="dr-label">KataloÄumuzu keÅfedin</span>
+        <span class="dr-label">Kataloğumuzu keşfedin</span>
         <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
       </div>
     </div>
@@ -559,19 +558,19 @@ const BOOK = {
     <div class="dropdown-inner">
       <div class="dropdown-left">
         <div class="dropdown-head">
-          <span class="dh-title">Ãne ÃÄ±kan Yazarlar <b>(8)</b></span>
-          <a href="/yazarlar" class="dh-meta" style="text-decoration:none;color:var(--accent);">TÃ¼m Yazarlar &rarr;</a>
+          <span class="dh-title">Öne Çıkan Yazarlar <b>(8)</b></span>
+          <a href="/yazarlar" class="dh-meta" style="text-decoration:none;color:var(--accent);">Tüm Yazarlar &rarr;</a>
         </div>
         <div class="dropdown-links">
-          <a href="/yazarlar">Ahmet Hamdi TanpÄ±nar</a><a href="/yazarlar">Elif Åafak</a>
-          <a href="/yazarlar">NazÄ±m Hikmet</a><a href="/yazarlar">OÄuz Atay</a>
+          <a href="/yazarlar">Ahmet Hamdi Tanpınar</a><a href="/yazarlar">Elif Şafak</a>
+          <a href="/yazarlar">Nazım Hikmet</a><a href="/yazarlar">Oğuz Atay</a>
           <a href="/yazarlar">Orhan Pamuk</a><a href="/yazarlar">Sabahattin Ali</a>
-          <a href="/yazarlar">Sait Faik AbasÄ±yanÄ±k</a><a href="/yazarlar">YaÅar Kemal</a>
+          <a href="/yazarlar">Sait Faik Abasıyanık</a><a href="/yazarlar">Yaşar Kemal</a>
         </div>
       </div>
       <div class="dropdown-right" style="background:linear-gradient(135deg,var(--text),#1F3A2E);">
         <div class="dr-overlay" style="background:linear-gradient(120deg,rgba(31,58,46,.7) 0%,transparent 100%);"></div>
-        <span class="dr-label" style="max-width:240px;">EdebiyatÄ±n seslerini keÅfedin</span>
+        <span class="dr-label" style="max-width:240px;">Edebiyatın seslerini keşfedin</span>
         <img src="/assets/runik-logo.png" alt="Runik" class="dr-logo">
       </div>
     </div>
@@ -601,7 +600,7 @@ const BOOK = {
   <span class="sep">/</span>
   <a href="#" data-bind="category">Roman</a>
   <span class="sep">/</span>
-  <span class="current" data-bind="title">KÄ±rmÄ±zÄ± Defter</span>
+  <span class="current" data-bind="title">Kırmızı Defter</span>
 </nav>
 
 <!-- PRODUCT DETAIL -->
@@ -619,34 +618,34 @@ const BOOK = {
           <span class="bc-brand">RUNIK</span>
           <span class="bc-glyph"></span>
         </div>
-        <div class="bc-title" data-bind="title">KÄ±rmÄ±zÄ± Defter</div>
+        <div class="bc-title" data-bind="title">Kırmızı Defter</div>
         <div class="bc-author" data-bind="author">M. Kara</div>
         <div class="bc-genre" data-bind="category">Roman</div>
         <span class="bc-publisher"></span>
       </div>
     </div>
 
-    <div class="thumbs" role="tablist" aria-label="GÃ¶rseller">
-      <button class="thumb is-active" aria-label="Ãn kapak"><span class="mini"></span></button>
-      <button class="thumb spine" aria-label="SÄ±rt"><span class="mini"></span></button>
-      <button class="thumb" aria-label="AÃ§Ä±lÄ±"><span class="mini"></span></button>
+    <div class="thumbs" role="tablist" aria-label="Görseller">
+      <button class="thumb is-active" aria-label="Ön kapak"><span class="mini"></span></button>
+      <button class="thumb spine" aria-label="Sırt"><span class="mini"></span></button>
+      <button class="thumb" aria-label="Açılı"><span class="mini"></span></button>
       <button class="thumb back" aria-label="Arka kapak"><span class="mini"></span></button>
-      <button class="thumb open" aria-label="Ä°Ã§ sayfa"><span class="mini"></span></button>
+      <button class="thumb open" aria-label="İç sayfa"><span class="mini"></span></button>
     </div>
   </div>
 
-  <!-- SaÄ: info -->
+  <!-- Sağ: info -->
   <div class="info">
     <span class="cat-badge" data-bind="category">Roman</span>
-    <h1 data-bind="title">KÄ±rmÄ±zÄ± Defter</h1>
+    <h1 data-bind="title">Kırmızı Defter</h1>
     <a href="#" class="author" data-bind="author">M. Kara</a>
 
     <div class="rating">
-      <span class="stars" id="stars" aria-label="YÄ±ldÄ±z deÄerlendirme"></span>
-      <span><strong data-bind="rating">4.6</strong> <span class="pipe">|</span> <span data-bind="reviewCount">128</span> DeÄerlendirme</span>
+      <span class="stars" id="stars" aria-label="Yıldız değerlendirme"></span>
+      <span><strong data-bind="rating">4.6</strong> <span class="pipe">|</span> <span data-bind="reviewCount">128</span> Değerlendirme</span>
     </div>
 
-    <p class="description" data-bind="shortDescription">KÄ±rmÄ±zÄ± Defter, hafÄ±zanÄ±n kÄ±rÄ±lganlÄ±ÄÄ±â¦</p>
+    <p class="description" data-bind="shortDescription">Kırmızı Defter, hafızanın kırılganlığı…</p>
     <a class="read-more" id="readMore">Daha Fazla Oku <i class="ti ti-chevron-down"></i></a>
 
     <hr>
@@ -654,7 +653,7 @@ const BOOK = {
     <div class="meta-row">
       <div class="meta-item">
         <i class="ti ti-book"></i>
-        <span class="ml"><span class="lab">Sayfa SayÄ±sÄ±</span><div class="val" data-bind="pages">192</div></span>
+        <span class="ml"><span class="lab">Sayfa Sayısı</span><div class="val" data-bind="pages">192</div></span>
       </div>
       <div class="meta-item">
         <i class="ti ti-ruler"></i>
@@ -666,7 +665,7 @@ const BOOK = {
       </div>
       <div class="meta-item">
         <i class="ti ti-file"></i>
-        <span class="ml"><span class="lab">KaÄÄ±t</span><div class="val" data-bind="paper">70 gr. Enso Creamy</div></span>
+        <span class="ml"><span class="lab">Kağıt</span><div class="val" data-bind="paper">70 gr. Enso Creamy</div></span>
       </div>
     </div>
 
@@ -674,7 +673,7 @@ const BOOK = {
       <div class="price" data-bind="price">240,00 TL</div>
       <div class="shipping">
         <i class="ti ti-discount"></i>
-        <span data-bind="freeShippingNote">150 TL ve Ã¼zeri sipariÅlerde kargo Ã¼cretsiz.</span>
+        <span data-bind="freeShippingNote">150 TL ve üzeri siparişlerde kargo ücretsiz.</span>
       </div>
       <div class="actions">
         <button class="btn-cart"><i class="ti ti-shopping-bag-plus"></i> Sepete Ekle</button>
@@ -682,7 +681,7 @@ const BOOK = {
       </div>
       <div class="delivery">
         <i class="ti ti-truck"></i>
-        <span data-bind="deliveryNote">Tahmini Teslimat: 2-3 iÅ gÃ¼nÃ¼ iÃ§inde kargoda</span>
+        <span data-bind="deliveryNote">Tahmini Teslimat: 2-3 iş günü içinde kargoda</span>
       </div>
     </div>
   </div>
@@ -691,37 +690,37 @@ const BOOK = {
 <!-- TABS -->
 <section class="tabs">
   <div class="tabs-nav" role="tablist">
-    <button class="tab is-active" data-tab="about">Kitap HakkÄ±nda</button>
+    <button class="tab is-active" data-tab="about">Kitap Hakkında</button>
     <button class="tab" data-tab="details">Detaylar</button>
-    <button class="tab" data-tab="author">Yazar HakkÄ±nda</button>
+    <button class="tab" data-tab="author">Yazar Hakkında</button>
     <button class="tab" data-tab="reviews">Yorumlar (<span data-bind="reviewCount">128</span>)</button>
   </div>
 
   <div class="tab-panels">
     <div class="tab-panel is-active" data-panel="about">
       <div class="panel-body">
-        <p data-bind="about.intro">M. Kara, bu romanÄ±nda kimlik, piÅmanlÄ±k ve affetme Ã¼zerine derinlikli ve etkileyici bir anlatÄ± sunuyor.</p>
-        <p class="quote" data-bind="about.quote">"BazÄ± defterler kapanmaz, sadece renk deÄiÅtirir."</p>
+        <p data-bind="about.intro">M. Kara, bu romanında kimlik, pişmanlık ve affetme üzerine derinlikli ve etkileyici bir anlatı sunuyor.</p>
+        <p class="quote" data-bind="about.quote">"Bazı defterler kapanmaz, sadece renk değiştirir."</p>
       </div>
       <div class="panel-table" id="detailsTable"></div>
     </div>
 
     <div class="tab-panel" data-panel="details">
       <div class="panel-body">
-        <p>Bu sekmede kitabÄ±n teknik Ã¶zelliklerini ve baskÄ± bilgilerini bulabilirsiniz.</p>
+        <p>Bu sekmede kitabın teknik özelliklerini ve baskı bilgilerini bulabilirsiniz.</p>
       </div>
       <div class="panel-table" id="detailsTable2"></div>
     </div>
 
     <div class="tab-panel" data-panel="author">
       <div class="panel-body">
-        <p>Yazar biyografisi iÃ§in BOOK.author alanÄ±nÄ± ve bu bÃ¶lÃ¼mÃ¼ gÃ¼ncelleyebilirsiniz.</p>
+        <p>Yazar biyografisi için BOOK.author alanını ve bu bölümü güncelleyebilirsiniz.</p>
       </div>
     </div>
 
     <div class="tab-panel" data-panel="reviews">
       <div class="panel-body">
-        <p>HenÃ¼z yorum bulunmuyor. (Yorumlar BOOK.reviewCount deÄerinden baÄÄ±msÄ±z olarak buraya eklenir.)</p>
+        <p>Henüz yorum bulunmuyor. (Yorumlar BOOK.reviewCount değerinden bağımsız olarak buraya eklenir.)</p>
       </div>
     </div>
   </div>
@@ -734,43 +733,43 @@ const BOOK = {
     <div class="footer-top">
       <div class="footer-brand">
         <img src="/assets/runik-logo.png" alt="Runik" class="footer-logo">
-        <p class="footer-tag">EdebiyatÄ±n izini sÃ¼renler iÃ§in, Ã¶zenle seÃ§ilmiÅ kitaplar.</p>
+        <p class="footer-tag">Edebiyatın izini sürenler için, özenle seçilmiş kitaplar.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>YayÄ±nevi</h4>
-          <a href="#">HakkÄ±mÄ±zda</a>
+          <h4>Yayınevi</h4>
+          <a href="#">Hakkımızda</a>
           <a href="/yazarlar">Yazarlar</a>
-          <a href="#">KÃ¼nye</a>
+          <a href="#">Künye</a>
           <a href="#">Kariyer</a>
-          <a href="#">BasÄ±n OdasÄ±</a>
+          <a href="#">Basın Odası</a>
         </div>
         <div class="footer-col">
-          <h4>YardÄ±m</h4>
-          <a href="#">SÄ±kÃ§a Sorulanlar</a>
+          <h4>Yardım</h4>
+          <a href="#">Sıkça Sorulanlar</a>
           <a href="#">Kargo &amp; Teslimat</a>
-          <a href="#">Ä°ade &amp; DeÄiÅim</a>
-          <a href="#">Gizlilik PolitikasÄ±</a>
-          <a href="#">KullanÄ±m ÅartlarÄ±</a>
+          <a href="#">İade &amp; Değişim</a>
+          <a href="#">Gizlilik Politikası</a>
+          <a href="#">Kullanım Şartları</a>
         </div>
         <div class="footer-col">
-          <h4>HesabÄ±m</h4>
-          <a href="#">GiriÅ Yap</a>
-          <a href="#">Ãye Ol</a>
-          <a href="#">SipariÅlerim</a>
+          <h4>Hesabım</h4>
+          <a href="#">Giriş Yap</a>
+          <a href="#">Üye Ol</a>
+          <a href="#">Siparişlerim</a>
           <a href="#">Favorilerim</a>
           <a href="#">Adreslerim</a>
         </div>
         <div class="footer-col">
-          <h4>Ä°letiÅim</h4>
+          <h4>İletişim</h4>
           <a href="mailto:info@runik.com.tr">info@runik.com.tr</a>
           <a href="tel:+902120000000">+90 212 000 00 00</a>
-          <a href="#">Ä°stanbul, TÃ¼rkiye</a>
+          <a href="#">İstanbul, Türkiye</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="copy">Â© 2026 Runik YayÄ±nevi. TÃ¼m haklarÄ± saklÄ±dÄ±r.</span>
+      <span class="copy">© 2026 Runik Yayınevi. Tüm hakları saklıdır.</span>
       <div class="footer-social">
         <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
         <a href="#" aria-label="X"><i class="ti ti-brand-x"></i></a>
@@ -792,14 +791,14 @@ const BOOK = {
     if(v !== undefined) el.textContent = v;
   });
 
-  /* yÄ±ldÄ±zlar */
+  /* yıldızlar */
   (function renderStars(){
     var el = document.getElementById('stars');
     if(!el) return;
     var full = Math.round(BOOK.rating);
     var html = '';
     for(var i=1;i<=5;i++){
-      html += i<=full ? 'â' : '<span class="empty">â</span>';
+      html += i<=full ? '★' : '<span class="empty">★</span>';
     }
     el.innerHTML = html;
   })();
@@ -844,10 +843,10 @@ const BOOK = {
 </script>
 
 <!-- Tema toggle (test) -->
-<button id="runikThemeToggle" class="runik-theme-toggle" aria-label="Tema değiştir" title="Tema değiştir">
-  <span class="rtt-icon rtt-sun">☀</span>
+<button id="runikThemeToggle" class="runik-theme-toggle" aria-label="Tema degistir" title="Tema degistir">
+  <span class="rtt-icon rtt-sun">&#9728;</span>
   <span class="rtt-track"><span class="rtt-thumb"></span></span>
-  <span class="rtt-icon rtt-moon">◐</span>
+  <span class="rtt-icon rtt-moon">&#9680;</span>
   <span class="rtt-label">Tema</span>
 </button>
 <style>
@@ -858,7 +857,6 @@ const BOOK = {
   .runik-theme-toggle .rtt-thumb{position:absolute;top:2px;left:2px;width:12px;height:12px;background:var(--accent);border-radius:50%;transition:transform .2s ease,background .2s ease;}
   html[data-theme="light"] .runik-theme-toggle .rtt-thumb{transform:translateX(14px);background:#222;}
   html[data-theme="light"] .runik-theme-toggle .rtt-sun{color:var(--border);}
-  html[data-theme="warm"] .runik-theme-toggle .rtt-moon,
   :root:not([data-theme="light"]) .runik-theme-toggle .rtt-moon{color:var(--border);}
   @media (max-width:680px){
     .runik-theme-toggle .rtt-label{display:none;}
