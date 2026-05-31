@@ -129,21 +129,26 @@
     display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
   }
   .color-tile{
-    aspect-ratio:1/.85;
+    background:var(--card);
+    border:1px solid var(--border);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .color-tile .ct-swatch{
     background:var(--c);
-    position:relative;
-    display:flex;flex-direction:column;justify-content:flex-end;
-    padding:18px;
-    border:1px solid rgba(59,42,28,.08);
+    aspect-ratio:1/.62;
+    border-bottom:1px solid rgba(59,42,28,.06);
+  }
+  .color-tile .ct-info{
+    padding:14px 16px 16px;
   }
   .color-tile .ct-hex{
     font-family:'Jost',sans-serif;font-size:13px;font-weight:500;
-    color:var(--text,#fff);letter-spacing:.3px;
+    color:var(--text);letter-spacing:.2px;display:block;
   }
   .color-tile .ct-name{
-    font-family:'Jost',sans-serif;font-size:11px;
-    color:var(--text,rgba(255,255,255,.75));letter-spacing:.4px;
-    margin-top:3px;
+    font-family:'Jost',sans-serif;font-size:11px;font-weight:300;
+    color:var(--text-soft);letter-spacing:.4px;margin-top:4px;display:block;
   }
 
   /* ============ TYPOGRAPHY SAMPLES ============ */
@@ -566,22 +571,22 @@ html[data-theme="light"] .h-top{background:#FAFAFA;}
       <h2>Renkler</h2>
       <p class="cmp-desc">Krem ve sıcak kahve tonları üzerine kurulu palet. Turuncu vurgu (accent), koyu yeşil derinlik için, koyu kahve metinler için.</p>
       <div class="colors-grid" style="margin-top:24px;">
-        <div class="color-tile" style="--c:var(--accent)"><span class="ct-hex">var(--accent)</span><span class="ct-name">Primary / Orange</span></div>
-        <div class="color-tile" style="--c:#FF8A3D"><span class="ct-hex">#FF8A3D</span><span class="ct-name">Orange Light</span></div>
-        <div class="color-tile" style="--c:#C53A0E"><span class="ct-hex">#C53A0E</span><span class="ct-name">Orange Deep</span></div>
-        <div class="color-tile" style="--c:#1F3A2E"><span class="ct-hex">#1F3A2E</span><span class="ct-name">Forest Green</span></div>
-        <div class="color-tile" style="--c:var(--text)"><span class="ct-hex">var(--text)</span><span class="ct-name">Text / Bark</span></div>
-        <div class="color-tile" style="--c:var(--text-soft)"><span class="ct-hex">var(--text-soft)</span><span class="ct-name">Text Soft</span></div>
-        <div class="color-tile" style="--c:var(--text-faint)"><span class="ct-hex">var(--text-faint)</span><span class="ct-name">Muted</span></div>
-        <div class="color-tile" style="--c:#A68A6D"><span class="ct-hex">#A68A6D</span><span class="ct-name">Tan</span></div>
-        <div class="color-tile" style="--c:var(--bg);--text:var(--text);border-color:var(--border);"><span class="ct-hex">var(--bg)</span><span class="ct-name">Body Cream</span></div>
-        <div class="color-tile" style="--c:#F1EADA;--text:var(--text);"><span class="ct-hex">#F1EADA</span><span class="ct-name">Surface</span></div>
-        <div class="color-tile" style="--c:var(--bg-tint);--text:var(--text);"><span class="ct-hex">var(--bg-tint)</span><span class="ct-name">Container</span></div>
-        <div class="color-tile" style="--c:#ECE6DC;--text:var(--text);"><span class="ct-hex">#ECE6DC</span><span class="ct-name">Card Cream</span></div>
-        <div class="color-tile" style="--c:var(--bg-soft);--text:var(--text);"><span class="ct-hex">var(--bg-soft)</span><span class="ct-name">Price Box</span></div>
-        <div class="color-tile" style="--c:var(--border);--text:var(--text);"><span class="ct-hex">var(--border)</span><span class="ct-name">Border</span></div>
-        <div class="color-tile" style="--c:#EFE9D9;--text:var(--text);"><span class="ct-hex">#EFE9D9</span><span class="ct-name">On Forest</span></div>
-        <div class="color-tile" style="--c:#fff;--text:var(--text);border-color:var(--border);"><span class="ct-hex">#FFFFFF</span><span class="ct-name">White</span></div>
+        <div class="color-tile" style="--c:var(--accent)"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--accent)</span><span class="ct-name">Primary / Orange</span></div></div>
+        <div class="color-tile" style="--c:#FF8A3D"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#FF8A3D</span><span class="ct-name">Orange Light</span></div></div>
+        <div class="color-tile" style="--c:#C53A0E"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#C53A0E</span><span class="ct-name">Orange Deep</span></div></div>
+        <div class="color-tile" style="--c:#1F3A2E"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#1F3A2E</span><span class="ct-name">Forest Green</span></div></div>
+        <div class="color-tile" style="--c:var(--text)"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--text)</span><span class="ct-name">Text / Bark</span></div></div>
+        <div class="color-tile" style="--c:var(--text-soft)"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--text-soft)</span><span class="ct-name">Text Soft</span></div></div>
+        <div class="color-tile" style="--c:var(--text-faint)"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--text-faint)</span><span class="ct-name">Muted</span></div></div>
+        <div class="color-tile" style="--c:#A68A6D"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#A68A6D</span><span class="ct-name">Tan</span></div></div>
+        <div class="color-tile" style="--c:var(--bg);border-color:var(--border);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--bg)</span><span class="ct-name">Body Cream</span></div></div>
+        <div class="color-tile" style="--c:#F1EADA;"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#F1EADA</span><span class="ct-name">Surface</span></div></div>
+        <div class="color-tile" style="--c:var(--bg-tint);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--bg-tint)</span><span class="ct-name">Container</span></div></div>
+        <div class="color-tile" style="--c:#ECE6DC;"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#ECE6DC</span><span class="ct-name">Card Cream</span></div></div>
+        <div class="color-tile" style="--c:var(--bg-soft);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--bg-soft)</span><span class="ct-name">Price Box</span></div></div>
+        <div class="color-tile" style="--c:var(--border);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--border)</span><span class="ct-name">Border</span></div></div>
+        <div class="color-tile" style="--c:#EFE9D9;"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#EFE9D9</span><span class="ct-name">On Forest</span></div></div>
+        <div class="color-tile" style="--c:#fff;border-color:var(--border);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#FFFFFF</span><span class="ct-name">White</span></div></div>
       </div>
     </section>
 
