@@ -253,20 +253,20 @@
   --text-faint:    #9B8A75;  /* Muted */
   --tan:           #A68A6D;  /* dekoratif sıcak nötr */
 
-  /* Yüzeyler: yükselti merdiveni (açık = üstte) */
-  --card:          #FFFFFF;  /* en üst kart yüzeyi */
-  --surface:       #FBF6EC;  /* yükseltilmiş: kart varyantı, section */
-  --bg:            #F4ECDB;  /* body / sayfa zemini */
-  --bg-sunken:     #EBE1CD;  /* gömülü kutular: fiyat, well */
-  --border:        #E0D5BF;  /* sınır & ayraç */
+  /* Yüzeyler: body BEYAZ, üst basamaklarda warm tint korunur */
+  --card:          #FFFFFF;  /* en üst kart yüzeyi (body ile aynı, border ayırır) */
+  --surface:       #FBF6EC;  /* yükseltilmiş cream alan (section, vurgu) */
+  --bg:            #FFFFFF;  /* body / sayfa zemini — BEYAZ */
+  --bg-sunken:     #F4ECDB;  /* gömülü warm (fiyat kutusu, h-top tanıtım, h-cart) */
+  --border:        #ECE5D2;  /* sınır — beyaz üstünde net görünür warm bej */
 
   /* State layers — yapısal hover/active */
-  --card-hover:    #FBF6EC;  /* card → surface basamağı */
-  --card-active:   #F4ECDB;  /* card → bg basamağı */
+  --card-hover:    #FBF6EC;  /* white card → surface cream basamağı */
+  --card-active:   #F4ECDB;  /* card → daha doygun cream */
   --surface-hover: #F4ECDB;
   --surface-active:#EBE1CD;
-  --bg-hover:      #EBE1CD;
-  --bg-active:     #E2D8C2;
+  --bg-hover:      #FBF6EC;  /* white body → subtle cream hover */
+  --bg-active:     #F4ECDB;
 
   /* Geriye dönük uyumluluk (eski isim → yeni anlam) */
   --bg-tint:       var(--surface);     /* eski "Container" */
@@ -293,6 +293,8 @@ html[data-theme="light"] body{background:#FFFFFF;}
 html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
 html[data-theme="light"] .h-top{background:#FAFAFA;}
 
+  html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
+  html[data-theme="light"] .h-top{background:#FAFAFA;}
   html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
   html[data-theme="light"] .h-top{background:#FAFAFA;}
 </style>
