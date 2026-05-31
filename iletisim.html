@@ -27,30 +27,66 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
 <style id="runik-theme-vars">
+/* ============================================================
+   Runik design tokens (warm tema)
+   ------------------------------------------------------------
+   Yüzeyler 5 token'a indirildi; her basamak ~%4-5 ayrı.
+   Hover/active = merdivende bir basamak aşağı (yapısal, ad-hoc değil).
+   ============================================================ */
 :root{
-  --bg:#F7F4EF;
-  --bg-soft:#FAF3E3;
-  --bg-tint:#F4ECDD;
-  --bg-tint-h:#FAEBD5;
-  --border:#E8E1D2;
-  --border-2:#EDE3D2;
-  --text:#3B2A1C;
-  --text-soft:#6E5D4B;
-  --text-faint:#9B8A75;
-  --accent:#F2541B;
-  --card:#FFFFFF;
+  /* Marka */
+  --accent:        #F2541B;  /* Primary / Orange */
+  --accent-light:  #FF8A3D;  /* Orange Light */
+  --accent-deep:   #C53A0E;  /* Orange Deep */
+  --forest:        #1F3A2E;  /* Forest Green */
+
+  /* Metin */
+  --text:          #3B2A1C;  /* Bark — en koyu */
+  --text-soft:     #6E5D4B;  /* ikincil */
+  --text-faint:    #9B8A75;  /* Muted */
+  --tan:           #A68A6D;  /* dekoratif sıcak nötr */
+
+  /* Yüzeyler: yükselti merdiveni (açık = üstte) */
+  --card:          #FFFFFF;  /* en üst kart yüzeyi */
+  --surface:       #FBF6EC;  /* yükseltilmiş: kart varyantı, section */
+  --bg:            #F4ECDB;  /* body / sayfa zemini */
+  --bg-sunken:     #EBE1CD;  /* gömülü kutular: fiyat, well */
+  --border:        #E0D5BF;  /* sınır & ayraç */
+
+  /* State layers — yapısal hover/active */
+  --card-hover:    #FBF6EC;  /* card → surface basamağı */
+  --card-active:   #F4ECDB;  /* card → bg basamağı */
+  --surface-hover: #F4ECDB;
+  --surface-active:#EBE1CD;
+  --bg-hover:      #EBE1CD;
+  --bg-active:     #E2D8C2;
+
+  /* Geriye dönük uyumluluk (eski isim → yeni anlam) */
+  --bg-tint:       var(--surface);     /* eski "Container" */
+  --bg-soft:       var(--bg-sunken);   /* eski "Price Box" */
+  --bg-tint-h:     var(--surface-hover);
+  --border-2:      var(--border);
 }
 html[data-theme="light"]{
-  --bg:#FFFFFF;
-  --bg-soft:#FAFAFA;
-  --bg-tint:#F2F2F2;
-  --bg-tint-h:#E8E8E8;
-  --border:#EAEAEA;
-  --border-2:#ECECEC;
-  --card:#FFFFFF;
+  /* Light: aynı merdiven, sade nötr */
+  --card:          #FFFFFF;
+  --surface:       #FAFAFA;
+  --bg:            #FFFFFF;
+  --bg-sunken:     #F2F2F2;
+  --border:        #EAEAEA;
+
+  --card-hover:    #FAFAFA;
+  --card-active:   #F2F2F2;
+  --surface-hover: #F2F2F2;
+  --surface-active:#EAEAEA;
+  --bg-hover:      #F7F7F7;
+  --bg-active:     #ECECEC;
 }
 html[data-theme="light"] body{background:#FFFFFF;}
 html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
+html[data-theme="light"] .h-top{background:#FAFAFA;}
+
+  html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
 </style>
 <script>(function(){try{var t=localStorage.getItem('runik-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 
