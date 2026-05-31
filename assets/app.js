@@ -289,7 +289,8 @@
         clearTimeout(debounce);
         debounce = setTimeout(function(){ render(input.value); }, 160);
       });
-      input.addEventListener('focus', function(){ if(input.value) render(input.value); });
+      // Focus'ta input boş olsa bile dropdown açılır (önerilen aramalar)
+      input.addEventListener('focus', function(){ render(input.value); });
       input.addEventListener('keydown', function(e){
         if(e.key === 'Enter'){
           e.preventDefault();
@@ -310,9 +311,58 @@
         if(q) { e.preventDefault(); location.href = '/kitaplar?q=' + encodeURIComponent(q); }
       });
 
+      // Suggest dropdown öneri seçildiğinde input'a yaz + arama yap
+      dropdown.addEventListener('click', function(e){
+        var chip = e.target.closest('[data-suggest]');
+        if(chip){
+          e.preventDefault();
+          var q = chip.getAttribute('data-suggest');
+          input.value = q;
+          location.href = '/kitaplar?q=' + encodeURIComponent(q);
+        }
+      });
+
+      function renderSuggestions(){
+        // Popüler kategoriler (chip'ler)
+        var popularSearches = [
+          { label: 'Roman',          q: 'Roman',          url: '/kitaplar?cat=Roman' },
+          { label: 'Şiir',           q: 'Şiir',           url: '/kitaplar?cat=Şiir' },
+          { label: 'Felsefe',        q: 'Felsefe',        url: '/kitaplar?cat=Felsefe' },
+          { label: 'Tarih',          q: 'Tarih',          url: '/kitaplar?cat=Tarih' },
+          { label: 'Sabahattin Ali', q: 'Sabahattin Ali', url: '/yazar/sabahattin-ali' },
+          { label: 'Yeni Çıkanlar',  q: '',               url: '/kitaplar?sort=new' },
+          { label: 'Çok Satanlar',   q: '',               url: '/kitaplar?sort=bestseller' }
+        ];
+        // Öne çıkan kitaplar (BOOK_INDEX ilk 4)
+        var featured = BOOK_INDEX.slice(0, 4);
+
+        var html = '';
+        html += '<div class="rs-section">';
+        html +=   '<div class="rs-section-title">Popüler Aramalar</div>';
+        html +=   '<div class="rs-chips">' + popularSearches.map(function(p){
+          return '<a class="rs-chip" href="'+p.url+'">'+p.label+'</a>';
+        }).join('') + '</div>';
+        html += '</div>';
+
+        html += '<div class="rs-section">';
+        html +=   '<div class="rs-section-title">Öne Çıkan Kitaplar</div>';
+        html +=   featured.map(function(b){
+          return '<a class="rs-item" href="'+b.url+'">' +
+            '<div class="rs-info"><div class="rs-title">'+b.title+'</div><div class="rs-sub">'+b.author+' · '+b.category+'</div></div>' +
+            '<div class="rs-price">'+fmtTL(b.price)+'</div>' +
+          '</a>';
+        }).join('');
+        html += '</div>';
+
+        html += '<a class="rs-all" href="/kitaplar">Tüm kitaplara göz at <i class="ti ti-arrow-right"></i></a>';
+
+        dropdown.innerHTML = html;
+        dropdown.classList.add('show');
+      }
+
       function render(q){
         q = trLower((q||'').trim());
-        if(!q){ dropdown.classList.remove('show'); return; }
+        if(!q){ renderSuggestions(); return; }
         var hits = BOOK_INDEX.filter(function(b){
           return trLower(b.title).indexOf(q)>=0 || trLower(b.author).indexOf(q)>=0 || trLower(b.category).indexOf(q)>=0;
         }).slice(0, 6);
@@ -395,14 +445,30 @@
       .runik-drawer .rd-note{font-family:'Jost',sans-serif;font-size:11px;color:var(--text-faint,#9B8A75);text-align:center;margin-top:10px;letter-spacing:.4px;}
 
       /* Arama autocomplete */
-      .runik-suggest{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card,#fff);border:1px solid var(--border,#E8E1D2);box-shadow:0 18px 40px -18px rgba(59,42,28,.18);max-height:420px;overflow-y:auto;display:none;z-index:60;}
+      .runik-suggest{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card,#fff);border:1px solid var(--border,#ECE5D2);box-shadow:0 18px 40px -18px rgba(59,42,28,.22);max-height:480px;overflow-y:auto;display:none;z-index:60;}
       .runik-suggest.show{display:block;}
-      .runik-suggest .rs-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 18px;text-decoration:none;color:var(--text,#3B2A1C);border-bottom:1px solid var(--border-2,#EDE3D2);}
-      .runik-suggest .rs-item:hover{background:var(--bg-soft,#FAF3E3);}
-      .runik-suggest .rs-title{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:var(--text,#3B2A1C);}
+
+      /* Önerilen aramalar bölümü */
+      .runik-suggest .rs-section{padding:14px 0 6px;}
+      .runik-suggest .rs-section + .rs-section{border-top:1px solid var(--border-2,#ECE5D2);margin-top:4px;}
+      .runik-suggest .rs-section-title{font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint,#9B8A75);font-weight:500;padding:0 18px 10px;}
+      .runik-suggest .rs-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 10px;}
+      .runik-suggest .rs-chip{display:inline-flex;align-items:center;padding:7px 14px;background:var(--bg-soft,#F4ECDB);border:1px solid var(--border,#ECE5D2);color:var(--text,#3B2A1C);font-family:'Jost',sans-serif;font-size:12.5px;font-weight:500;text-decoration:none;letter-spacing:.3px;transition:all .18s ease;}
+      .runik-suggest .rs-chip:hover{background:var(--accent,#F2541B);border-color:var(--accent,#F2541B);color:#fff;}
+
+      /* Sonuç satırları (kitap kartı tarzı) */
+      .runik-suggest .rs-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 18px;text-decoration:none;color:var(--text,#3B2A1C);border-bottom:1px solid var(--border-2,#ECE5D2);transition:background .15s ease,color .15s ease;}
+      .runik-suggest .rs-section .rs-item:last-child{border-bottom:0;}
+      .runik-suggest .rs-item:hover{background:var(--bg-soft,#F4ECDB);color:var(--accent,#F2541B);}
+      .runik-suggest .rs-title{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:inherit;}
       .runik-suggest .rs-sub{font-family:'Jost',sans-serif;font-size:12px;color:var(--text-faint,#9B8A75);margin-top:2px;font-weight:300;}
       .runik-suggest .rs-price{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--accent,#F2541B);white-space:nowrap;}
-      .runik-suggest .rs-all{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent,#F2541B);text-decoration:none;font-weight:500;border-top:1px solid var(--border,#E8E1D2);background:var(--bg-soft,#FAF3E3);}
+
+      /* "Tüm sonuçları gör" çubuğu */
+      .runik-suggest .rs-all{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent,#F2541B);text-decoration:none;font-weight:500;border-top:1px solid var(--border,#ECE5D2);background:var(--bg-soft,#F4ECDB);}
+      .runik-suggest .rs-all:hover{filter:brightness(.95);}
+
+      /* Boş durum */
       .runik-suggest .rs-empty{padding:18px 22px;font-family:'Jost',sans-serif;font-size:13.5px;color:var(--text-soft,#6E5D4B);font-weight:300;}
       .runik-suggest .rs-empty a{color:var(--accent,#F2541B);font-weight:500;}
 
