@@ -126,8 +126,9 @@
 
   /* ============ COLOR TILES ============ */
   .colors-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px;margin-bottom:8px;
   }
+  .colors-grid-3{grid-template-columns:repeat(3,1fr);}
   .color-tile{
     background:var(--card);
     border:1px solid var(--border);
@@ -135,7 +136,6 @@
     display:flex;flex-direction:column;
   }
   .color-tile .ct-swatch{
-    background:var(--c);
     aspect-ratio:1/.62;
     border-bottom:1px solid rgba(59,42,28,.06);
   }
@@ -143,12 +143,66 @@
     padding:14px 16px 16px;
   }
   .color-tile .ct-hex{
-    font-family:'Jost',sans-serif;font-size:13px;font-weight:500;
+    font-family:'Jost',sans-serif;font-size:12.5px;font-weight:500;
     color:var(--text);letter-spacing:.2px;display:block;
   }
   .color-tile .ct-name{
     font-family:'Jost',sans-serif;font-size:11px;font-weight:300;
     color:var(--text-soft);letter-spacing:.4px;margin-top:4px;display:block;
+  }
+
+  /* Grup başlıkları (renk paleti içinde) */
+  .cmp-group-title{
+    font-family:'Jost',sans-serif;font-size:11px;font-weight:500;
+    letter-spacing:2px;text-transform:uppercase;color:var(--accent);
+    margin:34px 0 4px;display:flex;align-items:baseline;gap:10px;
+  }
+  .cmp-group-title small{
+    font-size:11px;letter-spacing:.3px;text-transform:none;
+    color:var(--text-faint);font-weight:300;
+  }
+
+  /* State layer satırları */
+  .state-row{
+    background:var(--card);border:1px solid var(--border);
+    padding:14px 16px;display:flex;flex-direction:column;gap:10px;
+  }
+  .state-label{
+    font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.6px;
+    text-transform:uppercase;color:var(--text-soft);font-weight:500;
+  }
+  .state-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+  .state-bar span{
+    height:54px;display:flex;align-items:flex-end;justify-content:flex-start;
+    padding:6px 8px;
+    font-family:'Jost',sans-serif;font-size:10px;letter-spacing:1.4px;
+    text-transform:uppercase;color:var(--text-faint);font-weight:500;
+    border:1px solid var(--border);
+  }
+  .state-bar span::after{content:attr(data-l);}
+
+  /* Geriye dönük alias listesi */
+  .alias-list{
+    margin-top:18px;background:var(--surface);
+    border:1px solid var(--border);
+    display:flex;flex-direction:column;
+  }
+  .alias{
+    padding:12px 18px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    border-bottom:1px solid var(--border);
+    font-family:'Jost',sans-serif;font-size:13px;
+  }
+  .alias:last-child{border-bottom:0;}
+  .alias code{
+    font-family:'SF Mono',Menlo,monospace;font-size:12.5px;
+    background:var(--card);color:var(--text);
+    padding:3px 8px;border:1px solid var(--border);
+  }
+  .alias .ar{color:var(--text-faint);font-size:14px;}
+  .alias .an{
+    color:var(--text-soft);font-size:12px;font-weight:300;
+    letter-spacing:.3px;margin-left:auto;
   }
 
   /* ============ TYPOGRAPHY SAMPLES ============ */
@@ -489,27 +543,60 @@
   }
 </style>
 <style id="runik-theme-vars">
+/* ============================================================
+   Runik design tokens (warm tema)
+   ------------------------------------------------------------
+   Yüzeyler 5 token'a indirildi; her basamak ~%4-5 ayrı.
+   Hover/active = merdivende bir basamak aşağı (yapısal, ad-hoc değil).
+   ============================================================ */
 :root{
-  --bg:#F7F4EF;
-  --bg-soft:#FAF3E3;
-  --bg-tint:#F4ECDD;
-  --bg-tint-h:#FAEBD5;
-  --border:#E8E1D2;
-  --border-2:#EDE3D2;
-  --text:#3B2A1C;
-  --text-soft:#6E5D4B;
-  --text-faint:#9B8A75;
-  --accent:#F2541B;
-  --card:#FFFFFF;
+  /* Marka */
+  --accent:        #F2541B;  /* Primary / Orange */
+  --accent-light:  #FF8A3D;  /* Orange Light */
+  --accent-deep:   #C53A0E;  /* Orange Deep */
+  --forest:        #1F3A2E;  /* Forest Green */
+
+  /* Metin */
+  --text:          #3B2A1C;  /* Bark — en koyu */
+  --text-soft:     #6E5D4B;  /* ikincil */
+  --text-faint:    #9B8A75;  /* Muted */
+  --tan:           #A68A6D;  /* dekoratif sıcak nötr */
+
+  /* Yüzeyler: yükselti merdiveni (açık = üstte) */
+  --card:          #FFFFFF;  /* en üst kart yüzeyi */
+  --surface:       #FBF6EC;  /* yükseltilmiş: kart varyantı, section */
+  --bg:            #F4ECDB;  /* body / sayfa zemini */
+  --bg-sunken:     #EBE1CD;  /* gömülü kutular: fiyat, well */
+  --border:        #E0D5BF;  /* sınır & ayraç */
+
+  /* State layers — yapısal hover/active */
+  --card-hover:    #FBF6EC;  /* card → surface basamağı */
+  --card-active:   #F4ECDB;  /* card → bg basamağı */
+  --surface-hover: #F4ECDB;
+  --surface-active:#EBE1CD;
+  --bg-hover:      #EBE1CD;
+  --bg-active:     #E2D8C2;
+
+  /* Geriye dönük uyumluluk (eski isim → yeni anlam) */
+  --bg-tint:       var(--surface);     /* eski "Container" */
+  --bg-soft:       var(--bg-sunken);   /* eski "Price Box" */
+  --bg-tint-h:     var(--surface-hover);
+  --border-2:      var(--border);
 }
 html[data-theme="light"]{
-  --bg:#FFFFFF;
-  --bg-soft:#FAFAFA;
-  --bg-tint:#F2F2F2;
-  --bg-tint-h:#E8E8E8;
-  --border:#EAEAEA;
-  --border-2:#ECECEC;
-  --card:#FFFFFF;
+  /* Light: aynı merdiven, sade nötr */
+  --card:          #FFFFFF;
+  --surface:       #FAFAFA;
+  --bg:            #FFFFFF;
+  --bg-sunken:     #F2F2F2;
+  --border:        #EAEAEA;
+
+  --card-hover:    #FAFAFA;
+  --card-active:   #F2F2F2;
+  --surface-hover: #F2F2F2;
+  --surface-active:#EAEAEA;
+  --bg-hover:      #F7F7F7;
+  --bg-active:     #ECECEC;
 }
 html[data-theme="light"] body{background:#FFFFFF;}
 html[data-theme="light"] .site-header{background:rgba(255,255,255,.92);}
@@ -569,24 +656,60 @@ html[data-theme="light"] .h-top{background:#FAFAFA;}
     <!-- ============ COLORS ============ -->
     <section id="colors" class="cmp-section">
       <h2>Renkler</h2>
-      <p class="cmp-desc">Krem ve sıcak kahve tonları üzerine kurulu palet. Turuncu vurgu (accent), koyu yeşil derinlik için, koyu kahve metinler için.</p>
-      <div class="colors-grid" style="margin-top:24px;">
-        <div class="color-tile" style="--c:var(--accent)"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--accent)</span><span class="ct-name">Primary / Orange</span></div></div>
-        <div class="color-tile" style="--c:#FF8A3D"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#FF8A3D</span><span class="ct-name">Orange Light</span></div></div>
-        <div class="color-tile" style="--c:#C53A0E"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#C53A0E</span><span class="ct-name">Orange Deep</span></div></div>
-        <div class="color-tile" style="--c:#1F3A2E"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#1F3A2E</span><span class="ct-name">Forest Green</span></div></div>
-        <div class="color-tile" style="--c:var(--text)"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--text)</span><span class="ct-name">Text / Bark</span></div></div>
-        <div class="color-tile" style="--c:var(--text-soft)"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--text-soft)</span><span class="ct-name">Text Soft</span></div></div>
-        <div class="color-tile" style="--c:var(--text-faint)"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--text-faint)</span><span class="ct-name">Muted</span></div></div>
-        <div class="color-tile" style="--c:#A68A6D"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#A68A6D</span><span class="ct-name">Tan</span></div></div>
-        <div class="color-tile" style="--c:var(--bg);border-color:var(--border);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--bg)</span><span class="ct-name">Body Cream</span></div></div>
-        <div class="color-tile" style="--c:#F1EADA;"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#F1EADA</span><span class="ct-name">Surface</span></div></div>
-        <div class="color-tile" style="--c:var(--bg-tint);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--bg-tint)</span><span class="ct-name">Container</span></div></div>
-        <div class="color-tile" style="--c:#ECE6DC;"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#ECE6DC</span><span class="ct-name">Card Cream</span></div></div>
-        <div class="color-tile" style="--c:var(--bg-soft);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--bg-soft)</span><span class="ct-name">Price Box</span></div></div>
-        <div class="color-tile" style="--c:var(--border);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">var(--border)</span><span class="ct-name">Border</span></div></div>
-        <div class="color-tile" style="--c:#EFE9D9;"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#EFE9D9</span><span class="ct-name">On Forest</span></div></div>
-        <div class="color-tile" style="--c:#fff;border-color:var(--border);"><div class="ct-swatch"></div><div class="ct-info"><span class="ct-hex">#FFFFFF</span><span class="ct-name">White</span></div></div>
+      <p class="cmp-desc">Krem ve sıcak kahve tonları üzerine kurulu palet. Yüzeyler 5 token'lık bir merdiven oluşturur — her basamak ~%4-5 farklı. Hover/active, ayrı bir renk değil, merdivende bir basamak aşağı; zeminle çakışması yapısal olarak imkânsız.</p>
+
+      <!-- Marka -->
+      <h3 class="cmp-group-title">Marka</h3>
+      <div class="colors-grid">
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--accent);"></div><div class="ct-info"><span class="ct-hex">var(--accent) · #F2541B</span><span class="ct-name">Primary / Orange</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--accent-light);"></div><div class="ct-info"><span class="ct-hex">var(--accent-light) · #FF8A3D</span><span class="ct-name">Orange Light</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--accent-deep);"></div><div class="ct-info"><span class="ct-hex">var(--accent-deep) · #C53A0E</span><span class="ct-name">Orange Deep</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--forest);"></div><div class="ct-info"><span class="ct-hex">var(--forest) · #1F3A2E</span><span class="ct-name">Forest Green</span></div></div>
+      </div>
+
+      <!-- Metin -->
+      <h3 class="cmp-group-title">Metin</h3>
+      <div class="colors-grid">
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--text);"></div><div class="ct-info"><span class="ct-hex">var(--text) · #3B2A1C</span><span class="ct-name">Bark — en koyu</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--text-soft);"></div><div class="ct-info"><span class="ct-hex">var(--text-soft) · #6E5D4B</span><span class="ct-name">Soft — ikincil</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--text-faint);"></div><div class="ct-info"><span class="ct-hex">var(--text-faint) · #9B8A75</span><span class="ct-name">Muted — silik</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--tan);"></div><div class="ct-info"><span class="ct-hex">var(--tan) · #A68A6D</span><span class="ct-name">Tan — dekoratif</span></div></div>
+      </div>
+
+      <!-- Yüzeyler -->
+      <h3 class="cmp-group-title">Yüzey Merdiveni <small>(açık üstte → koyu altta)</small></h3>
+      <div class="colors-grid">
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--card);"></div><div class="ct-info"><span class="ct-hex">var(--card) · #FFFFFF</span><span class="ct-name">Card — en üst</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--surface);"></div><div class="ct-info"><span class="ct-hex">var(--surface) · #FBF6EC</span><span class="ct-name">Surface — yükseltilmiş</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--bg);"></div><div class="ct-info"><span class="ct-hex">var(--bg) · #F4ECDB</span><span class="ct-name">Body — sayfa zemini</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--bg-sunken);"></div><div class="ct-info"><span class="ct-hex">var(--bg-sunken) · #EBE1CD</span><span class="ct-name">Sunken — gömülü</span></div></div>
+        <div class="color-tile"><div class="ct-swatch" style="background:var(--border);"></div><div class="ct-info"><span class="ct-hex">var(--border) · #E0D5BF</span><span class="ct-name">Border</span></div></div>
+      </div>
+
+      <!-- State Layers -->
+      <h3 class="cmp-group-title">State Layer'lar <small>(hover = bir basamak aşağı)</small></h3>
+      <div class="colors-grid colors-grid-3">
+        <div class="state-row">
+          <div class="state-label">Card</div>
+          <div class="state-bar"><span style="background:var(--card)" data-l="rest">rest</span><span style="background:var(--card-hover)" data-l="hover">hover</span><span style="background:var(--card-active)" data-l="active">active</span></div>
+        </div>
+        <div class="state-row">
+          <div class="state-label">Surface</div>
+          <div class="state-bar"><span style="background:var(--surface)" data-l="rest">rest</span><span style="background:var(--surface-hover)" data-l="hover">hover</span><span style="background:var(--surface-active)" data-l="active">active</span></div>
+        </div>
+        <div class="state-row">
+          <div class="state-label">Body</div>
+          <div class="state-bar"><span style="background:var(--bg)" data-l="rest">rest</span><span style="background:var(--bg-hover)" data-l="hover">hover</span><span style="background:var(--bg-active)" data-l="active">active</span></div>
+        </div>
+      </div>
+
+      <!-- Geriye dönük uyumluluk -->
+      <h3 class="cmp-group-title">Geriye Dönük Aliaslar <small>(eski isim → yeni anlam)</small></h3>
+      <div class="alias-list">
+        <div class="alias"><code>--bg-tint</code> <span class="ar">→</span> <code>var(--surface)</code> <span class="an">Container</span></div>
+        <div class="alias"><code>--bg-soft</code> <span class="ar">→</span> <code>var(--bg-sunken)</code> <span class="an">Price Box</span></div>
+        <div class="alias"><code>--bg-tint-h</code> <span class="ar">→</span> <code>var(--surface-hover)</code> <span class="an">eski tint hover</span></div>
+        <div class="alias"><code>--border-2</code> <span class="ar">→</span> <code>var(--border)</code> <span class="an">tek border token</span></div>
       </div>
     </section>
 
